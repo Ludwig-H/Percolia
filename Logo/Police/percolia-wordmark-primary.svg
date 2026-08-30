@@ -1,43 +1,43 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1192 210" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1009 210" role="img" aria-labelledby="title desc">
   <title id="title">Percolia wordmark — primary</title>
-  <desc id="desc">Custom geometric Percolia lettering with a distinctive threshold gap in the P.</desc>
+  <desc id="desc">Full-size distinctive P followed by geometric small capitals.</desc>
 
   <style>
     .glyph-path{fill:none;stroke:#082C4C;stroke-width:14;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
     .glyph-node{vector-effect:non-scaling-stroke}.tone-ink{fill:#082C4C}.tone-blue{fill:#1C83D4}.tone-cyan{fill:#20C9C4}
   </style>
 
-  <g id="percolia-wordmark" data-version="0.1.0">
+  <g id="percolia-wordmark" data-version="0.2.0" data-style="small-caps">
   <g id="letter-1-P" data-glyph="P" transform="translate(20 0)">
     <path id="letter-1-P-stroke-1" class="glyph-path" d="M 22 172 V 38 H 76 Q 112 38 112 72 V 82 Q 112 116 78 116 H 62"/>
     <circle id="letter-1-P-node-1" class="glyph-node tone-blue" data-role="threshold-origin" cx="22" cy="116" r="6.2"/>
     <circle id="letter-1-P-node-2" class="glyph-node tone-cyan" data-role="threshold-terminal" cx="62" cy="116" r="6.2"/>
   </g>
-  <g id="letter-2-E" data-glyph="E" transform="translate(176 0)">
+  <g id="letter-2-E" data-glyph="E" transform="translate(176 37.84) scale(0.78)">
     <path id="letter-2-E-stroke-1" class="glyph-path" d="M 22 38 V 172"/>
     <path id="letter-2-E-stroke-2" class="glyph-path" d="M 22 38 H 104"/>
     <path id="letter-2-E-stroke-3" class="glyph-path" d="M 22 104 H 88"/>
     <path id="letter-2-E-stroke-4" class="glyph-path" d="M 22 172 H 104"/>
   </g>
-  <g id="letter-3-R" data-glyph="R" transform="translate(316 0)">
+  <g id="letter-3-R" data-glyph="R" transform="translate(291.36 37.84) scale(0.78)">
     <path id="letter-3-R-stroke-1" class="glyph-path" d="M 22 172 V 38 H 76 Q 112 38 112 72 V 82 Q 112 116 78 116 H 22"/>
     <path id="letter-3-R-stroke-2" class="glyph-path" d="M 70 116 L 120 172"/>
   </g>
-  <g id="letter-4-C" data-glyph="C" transform="translate(476 0)">
+  <g id="letter-4-C" data-glyph="C" transform="translate(422.32 37.84) scale(0.78)">
     <path id="letter-4-C-stroke-1" class="glyph-path" d="M 112 58 Q 96 38 72 38 H 54 Q 22 38 22 70 V 140 Q 22 172 54 172 H 72 Q 96 172 112 152"/>
   </g>
-  <g id="letter-5-O" data-glyph="O" transform="translate(630 0)">
+  <g id="letter-5-O" data-glyph="O" transform="translate(548.6 37.84) scale(0.78)">
     <path id="letter-5-O-stroke-1" class="glyph-path" d="M 54 38 H 80 Q 112 38 112 70 V 140 Q 112 172 80 172 H 54 Q 22 172 22 140 V 70 Q 22 38 54 38 Z"/>
   </g>
-  <g id="letter-6-L" data-glyph="L" transform="translate(790 0)">
+  <g id="letter-6-L" data-glyph="L" transform="translate(679.56 37.84) scale(0.78)">
     <path id="letter-6-L-stroke-1" class="glyph-path" d="M 22 38 V 172 H 100"/>
   </g>
-  <g id="letter-7-I" data-glyph="I" transform="translate(924 0)">
+  <g id="letter-7-I" data-glyph="I" transform="translate(790.24 37.84) scale(0.78)">
     <path id="letter-7-I-stroke-1" class="glyph-path" d="M 18 38 H 72"/>
     <path id="letter-7-I-stroke-2" class="glyph-path" d="M 45 38 V 172"/>
     <path id="letter-7-I-stroke-3" class="glyph-path" d="M 18 172 H 72"/>
   </g>
-  <g id="letter-8-A" data-glyph="A" transform="translate(1040 0)">
+  <g id="letter-8-A" data-glyph="A" transform="translate(886.88 37.84) scale(0.78)">
     <path id="letter-8-A-stroke-1" class="glyph-path" d="M 16 172 L 56 38 H 80 L 120 172"/>
     <path id="letter-8-A-stroke-2" class="glyph-path" d="M 35 112 H 101"/>
   </g>

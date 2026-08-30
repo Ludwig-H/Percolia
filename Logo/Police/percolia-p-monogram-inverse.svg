@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
   <title id="title">Percolia P monogram — inverse</title>
-  <desc id="desc">Standalone custom P with two separated threshold nodes.</desc>
+  <desc id="desc">Standalone custom P with two threshold nodes.</desc>
 
   <style>
     .glyph-path{fill:none;stroke:#FFFFFF;stroke-width:18;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}

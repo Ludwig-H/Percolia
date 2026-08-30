@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 690" role="img" aria-labelledby="title desc">
   <title id="title">Percolia Display glyph sheet</title>
-  <desc id="desc">Editable construction sheet for the eight custom glyphs used in PERCOLIA.</desc>
+  <desc id="desc">Construction sheet for the custom letters used in Percolia.</desc>
 
   <style>
     .glyph-path{fill:none;stroke:#082C4C;stroke-width:14;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
@@ -9,7 +9,7 @@
 
   <style>.sheet-bg{fill:#fff}.cell{fill:none;stroke:#DDE9EE}.guide{stroke:#D4E4EA;stroke-dasharray:4 5}.sheet-label{fill:#5D7385;font:600 18px system-ui,sans-serif}.sheet-title{fill:#082C4C;font:700 28px system-ui,sans-serif}</style>
   <rect class="sheet-bg" width="1120" height="690"/>
-  <text class="sheet-title" x="40" y="48">PERCOLIA DISPLAY — VECTOR CONSTRUCTION v0.1</text>
+  <text class="sheet-title" x="40" y="48">PERCOLIA DISPLAY — SMALL-CAPS WORDMARK v0.2</text>
   <g id="cell-1-P" transform="translate(0 90)">
     <rect class="cell" x="12" y="12" width="256" height="276" rx="16"/>
     <line class="guide" x1="22" y1="70" x2="250" y2="70"/>

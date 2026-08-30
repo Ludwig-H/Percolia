@@ -1,18 +1,10 @@
-name: Build brand assets
+name: Build and validate brand assets
 
 on:
   push:
     branches: [main]
     paths:
-      - "Logo/Police/build_wordmark.py"
-      - "Logo/Police/source/**"
-      - "Logo/Oiseau/build_bird.py"
-      - "Logo/Oiseau/build_demo.py"
-      - "Logo/Oiseau/test_wing_model.py"
-      - "Logo/Oiseau/bird-animation.js"
-      - "Logo/Oiseau/bird-animation.css"
-      - "Logo/Oiseau/source/**"
-      - "Logo/build_lockups.py"
+      - "Logo/**"
       - ".github/workflows/build-brand.yml"
   workflow_dispatch:
 
@@ -28,13 +20,15 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Generate brand assets
+
+      - name: Generate assets
         run: |
           python Logo/Police/build_wordmark.py
           python Logo/Oiseau/build_bird.py
           python Logo/build_lockups.py
           python Logo/Oiseau/build_demo.py
-      - name: Validate parametric model and generated assets
+
+      - name: Validate model and generated files
         run: |
           python -m py_compile \
             Logo/Police/build_wordmark.py \
@@ -43,6 +37,7 @@ jobs:
             Logo/Oiseau/test_wing_model.py \
             Logo/build_lockups.py
           python Logo/Oiseau/test_wing_model.py
+          node --check Logo/Oiseau/bird-animation.js
           python - <<'PY'
           from pathlib import Path
           import json
@@ -56,22 +51,18 @@ jobs:
           demo = Path('Logo/Oiseau/demo.html').read_text(encoding='utf-8')
           assert '<script src=' not in demo
           assert 'fetch(' not in demo
-          assert 'data-flight-bird' in demo
-          assert 'Catmull' in demo
+          assert 'data-flight-bird="outbound"' in demo
+          assert 'data-flight-bird="inbound"' in demo
           PY
-          node --check Logo/Oiseau/bird-animation.js
+
       - name: Commit generated assets
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add \
-            Logo/*.svg \
-            Logo/Police/*.svg \
-            Logo/Oiseau/*.svg \
-            Logo/Oiseau/demo.html
+          git add -A
           if git diff --cached --quiet; then
-            echo "Assets already up to date."
+            echo "Generated assets are already up to date."
           else
-            git commit -m "Génère les actifs de la marque"
+            git commit -m "Génère les actifs de l’oiseau-réseau directionnel"
             git push
           fi

@@ -1,65 +1,78 @@
-# Charte graphique Percolia — v0.3
+# Charte graphique Percolia — v0.4
 
 ## 1. Positionnement
 
-Percolia transforme des données complexes et bruitées en structures fiables. L’identité doit exprimer la géométrie, le contrôle de la connectivité, la robustesse et la confiance industrielle, sans adopter les codes visuels interchangeables de « l’IA magique ».
+Percolia transforme des données complexes et bruitées en structures fiables. L’identité traduit la géométrie, la sélection des bonnes connexions, la robustesse et la confiance industrielle, sans reprendre les codes interchangeables de « l’IA magique ».
 
 ## 2. Mot-symbole
 
-- Le `P` conserve sa forme et ses deux nœuds distinctifs.
+- Le `P` conserve sa forme, sa coupure et ses deux nœuds distinctifs.
 - `ERCOLIA` est composé en petites capitales à 78 % de la hauteur du `P`.
-- Le mot-symbole doit rester un SVG ; il ne doit pas être reconstitué avec une police approchante.
+- Le mot-symbole reste un SVG et ne doit pas être reconstitué avec une police approchante.
 
 ## 3. Oiseau
 
 ### Signature statique
 
-Le petit oiseau est perché sur le haut du `P`. Il reste un accent et ne doit pas rivaliser avec le nom.
+Le petit oiseau-réseau est perché sur le haut du `P`. Il reste un accent : il ne doit ni dominer le nom ni être agrandi comme une mascotte.
 
-### Version animée
+### Forme
 
-Le vol suit quatre principes :
+La référence est le **premier modèle triangulé** :
 
-1. battement lent, période nominale de 5,2 secondes ;
-2. déformation continue de l’aile, sans rotation rigide de polygones ;
-3. repli du coude et du poignet pendant la remontée ;
-4. scan LiDAR bref et discret, une fois par boucle.
+- corps, tête et queue formés de facettes ;
+- contour Encre ;
+- alternance mesurée de Signal et Seuil ;
+- points dispersés uniquement dans les grandes illustrations ;
+- remplissages translucides.
 
-L’oiseau ne doit pas battre des ailes en permanence dans une interface de travail. L’animation complète est réservée à la page d’accueil, à une transition ou à une démonstration.
+Le modèle paramétrique lisse exploré précédemment est abandonné.
+
+### Animation
+
+La séquence complète emploie deux oiseaux :
+
+1. l’oiseau perché part vers la droite et sort du cadre ;
+2. aucun mouvement inverse n’est appliqué à cet objet ;
+3. un second oiseau arrive depuis la droite et vole vers la gauche ;
+4. il atterrit sur le `P`, puis l’animation s’arrête.
+
+Les ailes sont déformables. La chaîne épaule–coude–poignet est plus ouverte pendant la descente et se replie pendant la remontée. Une simple rotation rigide du dessin est interdite.
 
 ## 4. Couleurs
 
 | Nom | Hex | Usage |
 |---|---:|---|
 | Encre | `#082C4C` | contours, texte, couleur principale |
-| Signal | `#1C83D4` | arêtes actives, articulation secondaire |
-| Seuil | `#20C9C4` | nœuds critiques, retour LiDAR |
-| Brume | `#EAF5F7` | surfaces et arrière-plans techniques |
+| Signal | `#1C83D4` | arêtes actives, facettes secondaires |
+| Seuil | `#20C9C4` | nœuds critiques, bref retour LiDAR |
+| Brume | `#EAF5F7` | surfaces et fonds techniques |
 | Ardoise | `#5D7385` | texte secondaire |
 | Blanc | `#FFFFFF` | fond principal et version inversée |
 
 ## 5. Densité graphique
 
-- Les facettes sont translucides.
-- Les nœuds sont rares et petits.
+- Les facettes restent translucides.
 - Les contours dominent sur le remplissage.
-- Le réseau doit rester lisible à 96 px ; sous cette taille, utiliser l’oiseau compact.
+- Les nœuds ne doivent pas former un semis illisible à petite taille.
+- Sous 96 px, utiliser l’oiseau compact perché.
 
-## 6. Animation
+## 6. Rythme
 
-- Période nominale : `5200 ms`.
-- Trajectoire complète : environ `24,5 s`.
-- Pas d’accélération brutale aux extrêmes du battement.
-- Aucun clignotement répété du scan.
-- Respect obligatoire de `prefers-reduced-motion`.
+- Période nominale d’un battement : `3200 ms`.
+- Aucun battement rapide ou vibratoire.
+- Un court intervalle vide sépare la sortie du premier oiseau de l’entrée du second.
+- L’animation est exécutée une seule fois ; seul le bouton « Rejouer » la relance.
+- `prefers-reduced-motion` laisse la signature statique.
 
 ## 7. Interdits
 
 Ne pas :
 
 - transformer l’oiseau en mascotte cartoon ;
-- épaissir les facettes jusqu’à masquer la silhouette ;
-- accélérer le battement pour produire un effet de vibration ;
-- ajouter des dégradés arc-en-ciel, effets néon ou ombres lourdes ;
-- dissocier le petit oiseau du `P` dans la signature statique ;
-- modifier uniquement les SVG générés sans mettre à jour les sources JSON et Python.
+- remettre le modèle lisse abandonné ;
+- faire demi-tour au même oiseau hors champ ;
+- secouer une aile rigide par rotation CSS ;
+- épaissir les facettes jusqu’à masquer le réseau ;
+- ajouter des effets néon, arc-en-ciel ou des ombres lourdes ;
+- modifier seulement les SVG générés sans mettre à jour le JSON et les générateurs.

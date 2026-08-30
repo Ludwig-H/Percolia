@@ -1,603 +1,1072 @@
 {
-  "name": "Percolia Parametric Network Bird",
-  "version": "0.6.0",
+  "name": "Percolia Initial Network Bird",
+  "version": "0.8.0",
   "viewBox": [
-    -126,
-    -96,
-    264,
-    188
+    0,
+    0,
+    640,
+    360
   ],
   "palette": {
     "ink": "#082C4C",
     "blue": "#1C83D4",
     "cyan": "#20C9C4",
     "mist": "#EAF5F7",
-    "slate": "#5D7385",
-    "white": "#FFFFFF"
+    "white": "#FFFFFF",
+    "slate": "#5D7385"
   },
   "body": {
-    "outline": "M -52 -6 C -35 -24 -5 -29 24 -19 C 37 -15 43 -9 47 -3 C 54 -9 63 -13 73 -12 C 85 -11 94 -4 96 5 C 94 15 85 21 73 20 C 62 19 54 14 48 8 C 40 20 24 31 4 33 C -18 35 -40 25 -52 12 C -61 8 -65 3 -64 -1 C -63 -4 -59 -6 -52 -6 Z",
-    "outline_width": 1.7,
     "nodes": {
-      "tail_root": [
-        -52,
-        3,
-        1.5,
-        "blue",
-        "node"
-      ],
-      "back_1": [
-        -29,
-        -17,
-        1.4,
+      "t0": [
+        78,
+        210,
+        3.4,
         "ink",
         "node"
       ],
-      "back_2": [
-        3,
-        -21,
-        1.6,
-        "blue",
-        "node"
-      ],
-      "shoulder_near": [
-        -4,
-        -14,
-        2.1,
-        "cyan",
-        "joint"
-      ],
-      "shoulder_far": [
-        0,
-        -9,
-        1.8,
-        "blue",
-        "joint"
-      ],
-      "neck": [
-        47,
-        -3,
-        1.6,
+      "t1": [
+        126,
+        184,
+        3.0,
         "ink",
         "node"
       ],
-      "crown": [
-        68,
-        -12,
-        1.7,
+      "t2": [
+        184,
+        178,
+        3.5,
         "blue",
         "node"
       ],
-      "head": [
+      "t3": [
+        140,
+        216,
+        3.0,
+        "ink",
+        "node"
+      ],
+      "t4": [
         88,
-        -4,
-        1.8,
+        252,
+        3.4,
         "ink",
         "node"
       ],
-      "beak": [
-        120,
-        4,
-        1.7,
+      "t5": [
+        192,
+        226,
+        3.5,
+        "ink",
+        "node"
+      ],
+      "t6": [
+        150,
+        202,
+        4.6,
         "cyan",
         "critical"
       ],
-      "throat": [
-        84,
-        13,
-        1.5,
+      "b0": [
+        190,
+        178,
+        3.1,
         "ink",
         "node"
       ],
-      "chest": [
-        48,
-        8,
-        1.6,
+      "b1": [
+        220,
+        144,
+        3.8,
         "blue",
         "node"
       ],
-      "belly": [
-        6,
-        27,
-        1.7,
-        "cyan",
+      "b2": [
+        262,
+        158,
+        3.2,
+        "ink",
         "node"
       ],
-      "core": [
-        6,
-        3,
-        2.5,
+      "b3": [
+        306,
+        184,
+        4.5,
+        "cyan",
+        "critical"
+      ],
+      "b4": [
+        350,
+        202,
+        3.5,
+        "ink",
+        "node"
+      ],
+      "b5": [
+        330,
+        244,
+        3.8,
+        "blue",
+        "node"
+      ],
+      "b6": [
+        276,
+        270,
+        3.7,
+        "ink",
+        "node"
+      ],
+      "b7": [
+        220,
+        244,
+        3.2,
+        "ink",
+        "node"
+      ],
+      "b8": [
+        248,
+        204,
+        4.6,
+        "cyan",
+        "critical"
+      ],
+      "b9": [
+        292,
+        224,
+        3.0,
+        "ink",
+        "node"
+      ],
+      "n0": [
+        342,
+        158,
+        4.6,
+        "cyan",
+        "critical"
+      ],
+      "n1": [
+        368,
+        116,
+        3.4,
+        "ink",
+        "node"
+      ],
+      "c0": [
+        380,
+        208,
+        3.4,
+        "ink",
+        "node"
+      ],
+      "h0": [
+        404,
+        96,
+        3.7,
+        "blue",
+        "node"
+      ],
+      "h1": [
+        444,
+        106,
+        3.1,
+        "ink",
+        "node"
+      ],
+      "h2": [
+        466,
+        130,
+        4.0,
+        "blue",
+        "node"
+      ],
+      "h3": [
+        450,
+        158,
+        3.5,
+        "ink",
+        "node"
+      ],
+      "h4": [
+        408,
+        166,
+        3.3,
+        "ink",
+        "node"
+      ],
+      "h5": [
+        407,
+        132,
+        4.8,
         "cyan",
         "critical"
       ],
       "eye": [
-        80,
-        -4,
-        1.15,
+        438,
+        124,
+        2.3,
         "ink",
         "decorative"
       ],
-      "tail_tip_up": [
-        -92,
-        -12,
-        1.1,
-        "blue",
-        "node"
-      ],
-      "tail_tip_down": [
-        -92,
-        14,
-        1.1,
+      "q1": [
+        532,
+        144,
+        3.0,
         "cyan",
+        "critical"
+      ],
+      "q2": [
+        469,
+        151,
+        2.8,
+        "ink",
         "node"
       ]
     },
     "edges": [
       [
-        "tail_root",
-        "back_1",
-        "outline"
+        "t0",
+        "t1",
+        "mesh"
       ],
       [
-        "back_1",
-        "back_2",
-        "outline"
+        "t1",
+        "t2",
+        "mesh"
       ],
       [
-        "back_2",
-        "neck",
-        "outline"
-      ],
-      [
-        "neck",
-        "crown",
-        "outline"
-      ],
-      [
-        "crown",
-        "head",
-        "outline"
-      ],
-      [
-        "head",
-        "beak",
+        "t0",
+        "t6",
         "critical"
       ],
       [
-        "beak",
-        "throat",
+        "t6",
+        "t2",
+        "mesh"
+      ],
+      [
+        "t0",
+        "t4",
         "outline"
       ],
       [
-        "throat",
-        "chest",
+        "t4",
+        "t3",
+        "mesh"
+      ],
+      [
+        "t3",
+        "t5",
+        "mesh"
+      ],
+      [
+        "t4",
+        "t5",
         "outline"
       ],
       [
-        "chest",
-        "belly",
+        "t3",
+        "t6",
+        "mesh"
+      ],
+      [
+        "t6",
+        "t5",
+        "mesh"
+      ],
+      [
+        "t2",
+        "t6",
+        "mesh"
+      ],
+      [
+        "t2",
+        "b0",
         "outline"
       ],
       [
-        "belly",
-        "tail_root",
+        "t2",
+        "b1",
         "outline"
       ],
       [
-        "tail_root",
-        "tail_tip_up",
+        "t5",
+        "b7",
         "outline"
       ],
       [
-        "tail_root",
-        "tail_tip_down",
+        "b0",
+        "b1",
+        "mesh"
+      ],
+      [
+        "b0",
+        "b8",
+        "mesh"
+      ],
+      [
+        "b1",
+        "b2",
+        "mesh"
+      ],
+      [
+        "b1",
+        "b8",
+        "mesh"
+      ],
+      [
+        "b2",
+        "b3",
+        "mesh"
+      ],
+      [
+        "b2",
+        "b8",
+        "mesh"
+      ],
+      [
+        "b3",
+        "b8",
+        "critical"
+      ],
+      [
+        "t6",
+        "b8",
+        "critical"
+      ],
+      [
+        "b3",
+        "b9",
+        "mesh"
+      ],
+      [
+        "b8",
+        "b9",
+        "mesh"
+      ],
+      [
+        "b8",
+        "b7",
+        "mesh"
+      ],
+      [
+        "b7",
+        "b9",
+        "mesh"
+      ],
+      [
+        "b7",
+        "b6",
         "outline"
       ],
       [
-        "tail_root",
-        "core",
+        "b6",
+        "b9",
         "mesh"
       ],
       [
-        "back_1",
-        "core",
+        "b6",
+        "b5",
+        "outline"
+      ],
+      [
+        "b5",
+        "b9",
         "mesh"
       ],
       [
-        "back_2",
-        "core",
+        "b5",
+        "b4",
+        "outline"
+      ],
+      [
+        "b4",
+        "b9",
         "mesh"
       ],
       [
-        "neck",
-        "core",
+        "b3",
+        "b4",
         "mesh"
       ],
       [
-        "crown",
-        "core",
+        "b4",
+        "c0",
+        "outline"
+      ],
+      [
+        "b5",
+        "c0",
         "mesh"
       ],
       [
-        "head",
-        "core",
+        "b3",
+        "n0",
+        "critical"
+      ],
+      [
+        "n0",
+        "n1",
+        "outline"
+      ],
+      [
+        "n1",
+        "h0",
+        "outline"
+      ],
+      [
+        "h0",
+        "h1",
+        "outline"
+      ],
+      [
+        "h1",
+        "h2",
+        "outline"
+      ],
+      [
+        "h2",
+        "h3",
         "mesh"
       ],
       [
-        "throat",
-        "core",
+        "h3",
+        "h4",
+        "outline"
+      ],
+      [
+        "h4",
+        "c0",
+        "outline"
+      ],
+      [
+        "c0",
+        "b4",
         "mesh"
       ],
       [
-        "chest",
-        "core",
+        "n0",
+        "h5",
+        "critical"
+      ],
+      [
+        "n1",
+        "h5",
         "mesh"
       ],
       [
-        "belly",
-        "core",
+        "h0",
+        "h5",
+        "mesh"
+      ],
+      [
+        "h1",
+        "h5",
+        "mesh"
+      ],
+      [
+        "h2",
+        "h5",
+        "critical"
+      ],
+      [
+        "h3",
+        "h5",
+        "mesh"
+      ],
+      [
+        "h4",
+        "h5",
+        "mesh"
+      ],
+      [
+        "n0",
+        "h4",
+        "mesh"
+      ],
+      [
+        "n0",
+        "c0",
+        "mesh"
+      ],
+      [
+        "h2",
+        "q1",
+        "critical"
+      ],
+      [
+        "q1",
+        "q2",
+        "outline"
+      ],
+      [
+        "q2",
+        "h3",
+        "outline"
+      ],
+      [
+        "q2",
+        "h2",
         "mesh"
       ]
     ],
     "faces": [
       [
-        "body_f01",
+        "f01",
         [
-          "tail_root",
-          "back_1",
-          "core"
-        ],
-        "blue",
-        0.04
-      ],
-      [
-        "body_f02",
-        [
-          "back_1",
-          "back_2",
-          "core"
+          "t0",
+          "t1",
+          "t6"
         ],
         "cyan",
-        0.055
+        0.1
       ],
       [
-        "body_f03",
+        "f02",
         [
-          "back_2",
-          "neck",
-          "core"
+          "t1",
+          "t2",
+          "t6"
         ],
         "blue",
-        0.06
+        0.1
       ],
       [
-        "body_f04",
+        "f03",
         [
-          "neck",
-          "crown",
-          "core"
+          "t0",
+          "t6",
+          "t4"
         ],
         "cyan",
-        0.055
+        0.08
       ],
       [
-        "body_f05",
+        "f04",
         [
-          "crown",
-          "head",
-          "core"
+          "t4",
+          "t6",
+          "t3"
         ],
         "blue",
-        0.05
+        0.08
       ],
       [
-        "body_f06",
+        "f05",
         [
-          "head",
-          "throat",
-          "core"
+          "t3",
+          "t6",
+          "t5"
+        ],
+        "ink",
+        0.07
+      ],
+      [
+        "f10",
+        [
+          "b0",
+          "b1",
+          "b8"
         ],
         "cyan",
-        0.05
+        0.1
       ],
       [
-        "body_f07",
+        "f11",
         [
-          "throat",
-          "chest",
-          "core"
+          "b1",
+          "b2",
+          "b8"
         ],
         "blue",
-        0.045
+        0.12
       ],
       [
-        "body_f08",
+        "f12",
         [
-          "chest",
-          "belly",
-          "core"
+          "b2",
+          "b3",
+          "b8"
         ],
         "cyan",
-        0.045
+        0.16
       ],
       [
-        "body_f09",
+        "f13",
         [
-          "belly",
-          "tail_root",
-          "core"
+          "b3",
+          "b9",
+          "b8"
         ],
         "blue",
-        0.035
+        0.15
+      ],
+      [
+        "f14",
+        [
+          "b3",
+          "b4",
+          "b9"
+        ],
+        "ink",
+        0.08
+      ],
+      [
+        "f15",
+        [
+          "b4",
+          "b5",
+          "b9"
+        ],
+        "blue",
+        0.11
+      ],
+      [
+        "f16",
+        [
+          "b5",
+          "b6",
+          "b9"
+        ],
+        "cyan",
+        0.1
+      ],
+      [
+        "f17",
+        [
+          "b6",
+          "b7",
+          "b9"
+        ],
+        "ink",
+        0.07
+      ],
+      [
+        "f18",
+        [
+          "b7",
+          "b8",
+          "b9"
+        ],
+        "blue",
+        0.09
+      ],
+      [
+        "f30",
+        [
+          "n0",
+          "n1",
+          "h5"
+        ],
+        "cyan",
+        0.1
+      ],
+      [
+        "f31",
+        [
+          "n1",
+          "h0",
+          "h5"
+        ],
+        "blue",
+        0.11
+      ],
+      [
+        "f32",
+        [
+          "h0",
+          "h1",
+          "h5"
+        ],
+        "cyan",
+        0.08
+      ],
+      [
+        "f33",
+        [
+          "h1",
+          "h2",
+          "h5"
+        ],
+        "blue",
+        0.14
+      ],
+      [
+        "f34",
+        [
+          "h2",
+          "h3",
+          "h5"
+        ],
+        "cyan",
+        0.12
+      ],
+      [
+        "f35",
+        [
+          "h3",
+          "h4",
+          "h5"
+        ],
+        "ink",
+        0.08
+      ],
+      [
+        "f36",
+        [
+          "h4",
+          "n0",
+          "h5"
+        ],
+        "blue",
+        0.09
+      ],
+      [
+        "f37",
+        [
+          "b3",
+          "n0",
+          "b4"
+        ],
+        "cyan",
+        0.1
+      ],
+      [
+        "f38",
+        [
+          "n0",
+          "h4",
+          "c0"
+        ],
+        "blue",
+        0.08
+      ],
+      [
+        "f39",
+        [
+          "n0",
+          "c0",
+          "b4"
+        ],
+        "ink",
+        0.07
+      ],
+      [
+        "f40",
+        [
+          "h4",
+          "h3",
+          "c0"
+        ],
+        "cyan",
+        0.08
+      ],
+      [
+        "f41",
+        [
+          "h2",
+          "q1",
+          "q2"
+        ],
+        "blue",
+        0.12
+      ],
+      [
+        "f42",
+        [
+          "h2",
+          "q2",
+          "h3"
+        ],
+        "cyan",
+        0.08
       ]
+    ]
+  },
+  "scatter": {
+    "s08": [
+      116,
+      207,
+      2.0,
+      "blue",
+      "scatter"
     ],
-    "scan_origin": [
-      94,
-      4
+    "s07": [
+      147,
+      55,
+      1.4,
+      "ink",
+      "scatter"
     ],
-    "perch_point": [
-      0,
-      34
+    "s04": [
+      95,
+      112,
+      1.8,
+      "ink",
+      "scatter"
     ],
-    "tail_paths": [
-      "M -52 0 C -65 -4 -78 -8 -92 -12 C -81 -3 -68 4 -52 7 Z",
-      "M -52 6 C -65 8 -79 11 -92 14 C -80 7 -67 1 -52 0 Z"
+    "s02": [
+      60,
+      138,
+      1.8,
+      "blue",
+      "scatter"
+    ],
+    "s01": [
+      42,
+      178,
+      2.2,
+      "ink",
+      "scatter"
+    ],
+    "s03": [
+      68,
+      246,
+      2.3,
+      "cyan",
+      "scatter"
+    ],
+    "s06": [
+      126,
+      80,
+      1.7,
+      "cyan",
+      "scatter"
+    ],
+    "s09": [
+      147,
+      263,
+      1.4,
+      "ink",
+      "scatter"
+    ],
+    "s05": [
+      106,
+      285,
+      1.6,
+      "blue",
+      "scatter"
+    ],
+    "s10": [
+      158,
+      126,
+      1.5,
+      "cyan",
+      "scatter"
     ]
   },
   "wing": {
-    "segment_lengths": [
-      39,
-      46,
-      55
-    ],
-    "stations": [
-      0.0,
-      0.16,
-      0.33,
-      0.5,
-      0.68,
-      0.85,
-      1.0
-    ],
-    "root_chord": 18.5,
-    "chord_exponent": 0.6,
-    "chord_bulge": 0.46,
-    "tip_chord": 0.8,
     "shoulders": {
       "near": [
-        -4,
-        -14,
-        0
+        238,
+        157
       ],
       "far": [
-        0,
-        -9,
-        -1.0
+        253,
+        166
       ]
     },
-    "camera": {
-      "x_from_y": 0.16,
-      "x_from_z": 0.07,
-      "y_from_y": 0.32,
-      "y_from_z": -0.74
+    "segment_lengths": [
+      54,
+      58,
+      64
+    ],
+    "chords": [
+      23,
+      29,
+      20,
+      1.6
+    ],
+    "phase_stations": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "period_ms": 3200,
+    "stroke_center_deg": 180,
+    "stroke_amplitude_deg": 52,
+    "stroke_harmonic_deg": 5,
+    "stroke_harmonic_phase_deg": -28,
+    "elbow_base_deg": 9,
+    "elbow_fold_deg": 35,
+    "wrist_base_deg": 6,
+    "wrist_fold_deg": 48,
+    "fold_phase_deg": 0,
+    "fold_exponent": 1.45,
+    "near_phase_offset": 0,
+    "far_phase_offset": 0.065,
+    "near_scale": 1,
+    "far_scale": 0.92,
+    "far_opacity": 0.34,
+    "leading_fraction": 0.34,
+    "folded_pose": {
+      "stroke_deg": 165,
+      "elbow_deg": 28,
+      "wrist_deg": 34,
+      "span_scale": 0.64,
+      "chord_scale": 0.78
     },
-    "flight": {
-      "period_ms": 5200,
-      "stroke_center_deg": -3,
-      "stroke_h1_deg": 30,
-      "stroke_h2_deg": 3.8,
-      "stroke_h2_phase_deg": -24,
-      "sweep_center_deg": 7,
-      "sweep_amp_deg": 8,
-      "sweep_phase_deg": 18,
-      "elbow_base_deg": 13,
-      "elbow_fold_deg": 18,
-      "wrist_base_deg": 8,
-      "wrist_fold_deg": 28,
-      "fold_phase_deg": -20,
-      "fold_exponent": 1.35,
-      "pronation_deg": 10,
-      "pronation_phase_deg": 34,
-      "heave": 1.8,
-      "pitch_deg": 2.2
-    },
-    "perched": {
-      "span_scale": 0.31,
-      "chord_scale": 0.7,
-      "stroke_deg": -8,
-      "sweep_deg": 58,
-      "elbow_deg": 66,
-      "wrist_deg": 82,
-      "pronation_deg": 0
-    }
+    "glide_phase": 0.18
   },
   "legs": {
     "near": {
       "hip": [
-        1,
-        28
+        306,
+        247
       ],
       "knee": [
-        0,
-        39
+        307,
+        263
       ],
       "ankle": [
-        7,
-        49
+        302,
+        279
       ],
       "toes": [
         [
-          -4,
-          52
+          290,
+          284
         ],
         [
-          7,
-          52
+          303,
+          285
         ],
         [
-          18,
-          50
+          315,
+          282
         ]
       ]
     },
     "far": {
       "hip": [
-        13,
-        27
+        326,
+        238
       ],
       "knee": [
-        15,
-        38
+        329,
+        255
       ],
       "ankle": [
-        20,
-        48
+        323,
+        274
       ],
       "toes": [
         [
-          9,
-          51
+          312,
+          279
         ],
         [
-          20,
-          52
+          324,
+          280
         ],
         [
-          31,
-          49
+          336,
+          277
         ]
       ]
     }
   },
-  "flight_path": {
-    "cycle_ms": 24500,
-    "perch_ms": 2200,
-    "takeoff_ms": 1900,
-    "flight_ms": 18200,
-    "landing_ms": 2200,
-    "scan_progress": 0.48
-  },
-  "folded_wing": {
-    "outline": "M -30 -10 C -8 -17 22 -12 44 1 C 27 9 5 15 -20 12 C -35 9 -40 1 -30 -10 Z",
-    "nodes": {
-      "root": [
-        -30,
-        -8,
-        1.5,
-        "cyan",
-        "joint"
-      ],
-      "top": [
-        0,
-        -12,
-        1.4,
-        "blue",
-        "node"
-      ],
-      "tip": [
-        44,
-        1,
-        1.5,
-        "cyan",
-        "critical"
-      ],
-      "bottom": [
-        -20,
-        12,
-        1.3,
-        "ink",
-        "node"
-      ],
-      "core": [
-        4,
-        2,
-        2.0,
-        "blue",
-        "node"
-      ]
+  "flight": {
+    "stage_viewBox": [
+      0,
+      0,
+      1360,
+      760
+    ],
+    "perch": [
+      260,
+      538
+    ],
+    "bird_anchor": [
+      306,
+      245
+    ],
+    "timeline_ms": {
+      "initial_perch": 1900,
+      "takeoff": 1250,
+      "outbound": 5100,
+      "empty": 900,
+      "inbound": 5050,
+      "landing": 1550,
+      "final_hold": 1800
     },
-    "edges": [
+    "outbound_curve": [
       [
-        "root",
-        "top",
-        "outline"
+        395,
+        350
       ],
       [
-        "top",
-        "tip",
-        "outline"
+        655,
+        250
       ],
       [
-        "tip",
-        "bottom",
-        "outline"
+        1005,
+        165
       ],
       [
-        "bottom",
-        "root",
-        "outline"
-      ],
-      [
-        "root",
-        "core",
-        "critical"
-      ],
-      [
-        "top",
-        "core",
-        "mesh"
-      ],
-      [
-        "tip",
-        "core",
-        "mesh"
-      ],
-      [
-        "bottom",
-        "core",
-        "mesh"
+        1460,
+        128
       ]
     ],
-    "faces": [
+    "inbound_curve": [
       [
-        "fold_f01",
-        [
-          "root",
-          "top",
-          "core"
-        ],
-        "cyan",
-        0.055
+        1460,
+        198
       ],
       [
-        "fold_f02",
-        [
-          "top",
-          "tip",
-          "core"
-        ],
-        "blue",
-        0.065
+        1110,
+        218
       ],
       [
-        "fold_f03",
-        [
-          "tip",
-          "bottom",
-          "core"
-        ],
-        "cyan",
-        0.05
+        620,
+        330
       ],
       [
-        "fold_f04",
-        [
-          "bottom",
-          "root",
-          "core"
-        ],
-        "blue",
-        0.04
+        315,
+        444
+      ]
+    ],
+    "landing_curve": [
+      [
+        315,
+        444
+      ],
+      [
+        287,
+        470
+      ],
+      [
+        268,
+        514
+      ],
+      [
+        260,
+        538
+      ]
+    ],
+    "bird_scale": 0.29,
+    "perched_scale": 0.25,
+    "scan_progress": 0.52,
+    "scan_duration_fraction": 0.08,
+    "one_shot": true,
+    "takeoff_curve": [
+      [
+        260,
+        538
+      ],
+      [
+        266,
+        495
+      ],
+      [
+        315,
+        405
+      ],
+      [
+        395,
+        350
       ]
     ]
   }

@@ -1,70 +1,48 @@
-# Oiseau-réseau Percolia — modèle paramétrique v0.6
+# Oiseau-réseau Percolia — direction 03
 
-L’oiseau n’est plus animé par rotation de morceaux de SVG. Le contour de chaque aile, sa triangulation et ses nœuds sont **recalculés à chaque image** à partir d’un modèle cinématique continu.
+Cette direction revient au **premier oiseau triangulé** de Percolia. Le corps, la tête, le bec et la queue conservent leur topologie en réseau. Les essais fondés sur une silhouette paramétrique lisse sont abandonnés : ils perdaient le caractère du premier jet et produisaient une animation inutilement démonstrative.
 
-## Intention graphique
+## Séquence retenue
 
-L’oiseau reste un accent discret de la marque :
+La démonstration `demo.html` est volontairement simple :
 
-- petit et perché sur le `P` dans la signature statique ;
-- silhouette calme, profilée et lisible ;
-- ailes longues et légères plutôt qu’un assemblage de losanges ;
-- maillage intérieur peu contrasté ;
-- scan LiDAR bref, secondaire et non décoratif.
+1. un petit oiseau est perché sur le `P` ;
+2. un **premier oiseau** déploie ses ailes, décolle et traverse la scène de gauche à droite ;
+3. il sort entièrement du cadre et disparaît ;
+4. la scène reste vide pendant un court instant ;
+5. un **second oiseau**, objet SVG distinct, arrive depuis la droite et vole vers la gauche ;
+6. il ralentit, sort ses pattes et se pose sur le `P` ;
+7. l’animation s’arrête sur la signature finale.
 
-La version animée décolle du `P`, suit une trajectoire fermée, effectue un scan, puis revient se poser.
+Le premier oiseau ne fait donc jamais demi-tour. Le retour est assuré par un second oiseau venant de la direction opposée.
 
-## Modèle mathématique des ailes
+## Mouvement des ailes
 
-On note
+Le réseau du corps reste fixe. Chaque aile est recalculée à partir d’une chaîne à trois segments :
 
-\[
-\theta(t)=\frac{2\pi t}{T}, \qquad T=5{,}2\ \mathrm{s}.
-\]
+```text
+épaule → coude → poignet → extrémité
+```
 
-L’angle de battement est une série de Fourier à deux harmoniques :
+Pour une phase `θ = 2πt/T`, l’angle principal est :
 
-\[
-\phi(t)=\phi_0+A_1\cos\theta(t)+A_2\cos\bigl(2\theta(t)-\delta\bigr).
-\]
+```text
+φ(t) = φ₀ + A cos(θ) + A₂ cos(2θ + δ)
+```
 
-Le repli pendant la remontée est commandé par
+La seconde harmonique évite un mouvement parfaitement sinusoïdal. Le repli de la remontée est commandé par :
 
-\[
-f(t)=\left(\frac{1+\sin(\theta(t)-\eta)}{2}\right)^p,
-\]
+```text
+u(t) = ((1 - sin(θ + η)) / 2)^p
+β(t) = β₀ + Δβ u(t)
+γ(t) = γ₀ + Δγ u(t)
+```
 
-puis
+`β` et `γ` contrôlent respectivement le coude et le poignet. Pendant la descente, l’aile est plus déployée. Pendant la remontée, elle se replie pour réduire visuellement la surface exposée. La période nominale est de `3,2 s`, suffisamment lente pour rester lisible à la taille du logo.
 
-\[
-\beta(t)=\beta_0+\Delta\beta f(t),
-\qquad
-\gamma(t)=\gamma_0+\Delta\gamma f(t),
-\]
+À chaque image, les sept sommets du contour, les sept facettes, les arêtes et les nœuds de l’aile sont recalculés. Il ne s’agit donc pas d’un polygone rigide simplement tourné autour d’un point.
 
-où `β` est la flexion du coude et `γ` celle du poignet.
-
-Les quatre points du squelette sont obtenus par cinématique directe :
-
-\[
-E=S+L_1u(\chi),
-\quad
-W=E+L_2u(\chi+\beta),
-\quad
-T=W+L_3u(\chi+\beta+\gamma),
-\]
-
-avec `u(a)=(cos a,sin a)`.
-
-Une spline de Catmull–Rom passant par `S,E,W,T` définit le bord d’attaque. La corde locale est
-
-\[
-c(s)=c_0(1-s)^q\bigl(1+b\sin(\pi s)\bigr), \qquad s\in[0,1].
-\]
-
-Le bord de fuite, les facettes et les diagonales du réseau sont construits à partir de sept stations le long de l’envergure. L’aile est ensuite plongée en 3D, tournée autour de l’axe du corps et projetée dans le plan du SVG par une projection orthographique oblique.
-
-## Fichiers
+## Fichiers canoniques
 
 ```text
 Logo/Oiseau/
@@ -84,9 +62,9 @@ Logo/Oiseau/
     └── bird_model.json
 ```
 
-`source/bird_model.json` est la source de vérité. Les SVG et la page autonome sont générés.
+`source/bird_model.json` est la source de vérité. Les SVG et la page autonome sont générés et versionnés afin d’être consultables directement sur GitHub.
 
-## Régénération et validation
+## Régénération
 
 ```bash
 python Logo/Oiseau/build_bird.py
@@ -96,36 +74,25 @@ python Logo/Oiseau/test_wing_model.py
 node --check Logo/Oiseau/bird-animation.js
 ```
 
-Le test numérique vérifie notamment :
+Le test vérifie notamment :
 
-- la fermeture exacte du cycle ;
+- la fermeture exacte du cycle d’aile ;
 - la continuité image par image ;
-- l’absence de coordonnées non finies ;
-- la positivité de la corde ;
-- une période de battement réellement lente.
+- la conservation des longueurs des trois segments ;
+- une aire d’aile toujours positive ;
+- le déplacement strictement croissant en `x` pour l’oiseau sortant ;
+- le déplacement strictement décroissant en `x` pour l’oiseau entrant ;
+- le départ et l’arrivée au même point du `P`.
 
-## Intégration web
+## Intégration
 
-La page `demo.html` est autonome. Elle ne charge aucune ressource externe et peut être téléchargée puis ouverte directement dans un navigateur.
+`demo.html` est autonome : aucun `fetch`, aucune police distante et aucune bibliothèque JavaScript externe. Pour le site, le contrôleur expose :
 
-Pour une intégration dans le site, le SVG doit être inline :
-
-```html
-<div id="bird" data-flight-bird>
-  <!-- percolia-bird-compact.svg inline -->
-</div>
-<script src="bird-animation.js"></script>
-<script>
-  const controller = initPercoliaBird(document.querySelector('#bird svg'), {
-    birdElement: document.querySelector('#bird'),
-    stageElement: document.querySelector('[data-flight-stage]'),
-    perchElement: document.querySelector('[data-perch]')
-  });
-</script>
+```text
+play()
+pause()
+restart()
+seek(milliseconds)
 ```
 
-L’API expose `play()`, `pause()`, `restart()`, `scan()`, `pulse()` et `destroy()`.
-
-## Accessibilité
-
-`prefers-reduced-motion` désactive le vol continu. Le SVG reste visible dans une pose statique et le contenu de marque demeure lisible.
+`prefers-reduced-motion` désactive le vol et laisse simplement l’oiseau perché sur le `P`.

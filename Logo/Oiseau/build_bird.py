@@ -1,433 +1,341 @@
 #!/usr/bin/env python3
-"""Generate the parametric Percolia network bird.
+"""Generate the Percolia network bird SVG variants.
 
-The wing surface is sampled from a continuous kinematic model. Each SVG
-contains stable data attributes and an embedded copy of the model so that the
-browser controller can recompute the geometry frame by frame.
+The body/head/tail topology is restored from the first Percolia direction.
+Only the wings are parametric: each frame is recomputed from a three-link
+kinematic chain and converted back into the same triangulated network style.
 """
 from __future__ import annotations
 
-import html
 import json
 import math
 from pathlib import Path
-from typing import Iterable, Sequence
+from typing import Iterable
+from xml.sax.saxutils import escape
 
 ROOT = Path(__file__).resolve().parent
 SOURCE = ROOT / "source" / "bird_model.json"
 
 
 def fmt(value: float) -> str:
-    if abs(value) < 5e-8:
+    if abs(value) < 5e-7:
         value = 0.0
-    return f"{value:.4f}".rstrip("0").rstrip(".")
+    return f"{value:.3f}".rstrip("0").rstrip(".")
 
 
 def load_model() -> dict:
     return json.loads(SOURCE.read_text(encoding="utf-8"))
 
 
-def deg(value: float) -> float:
-    return math.radians(value)
+def color(name: str, palette: dict, variant: str) -> str:
+    if variant == "mono":
+        return palette["ink"]
+    if variant == "inverse" and name == "ink":
+        return palette["white"]
+    return palette[name]
 
 
-def lerp(a: float, b: float, t: float) -> float:
-    return a + (b - a) * t
+def add(a: tuple[float, float], b: tuple[float, float]) -> tuple[float, float]:
+    return a[0] + b[0], a[1] + b[1]
 
 
-def catmull(points: Sequence[tuple[float, float]], t: float) -> tuple[float, float]:
-    n = len(points)
-    scaled = min(max(t, 0.0), 0.999999999) * (n - 1)
-    i = min(n - 2, int(scaled))
-    u = scaled - i
-    p0 = points[max(0, i - 1)]
-    p1 = points[i]
-    p2 = points[i + 1]
-    p3 = points[min(n - 1, i + 2)]
-
-    def component(k: int) -> float:
-        return 0.5 * (
-            2 * p1[k]
-            + (-p0[k] + p2[k]) * u
-            + (2 * p0[k] - 5 * p1[k] + 4 * p2[k] - p3[k]) * u * u
-            + (-p0[k] + 3 * p1[k] - 3 * p2[k] + p3[k]) * u * u * u
-        )
-
-    return component(0), component(1)
+def sub(a: tuple[float, float], b: tuple[float, float]) -> tuple[float, float]:
+    return a[0] - b[0], a[1] - b[1]
 
 
-def local_wing_frame(model: dict, phase: float, openness: float) -> dict:
+def mul(a: tuple[float, float], scalar: float) -> tuple[float, float]:
+    return a[0] * scalar, a[1] * scalar
+
+
+def norm(a: tuple[float, float]) -> float:
+    return math.hypot(a[0], a[1])
+
+
+def unit(a: tuple[float, float]) -> tuple[float, float]:
+    length = norm(a)
+    if length < 1e-9:
+        raise ValueError("null vector in wing geometry")
+    return a[0] / length, a[1] / length
+
+
+def normal(a: tuple[float, float]) -> tuple[float, float]:
+    ux, uy = unit(a)
+    return -uy, ux
+
+
+def lerp_point(a: tuple[float, float], b: tuple[float, float], t: float) -> tuple[float, float]:
+    return a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t
+
+
+def points_string(points: Iterable[tuple[float, float]]) -> str:
+    return " ".join(f"{fmt(x)},{fmt(y)}" for x, y in points)
+
+
+def periodic_pose(model: dict, phase: float, side: str) -> dict:
     wing = model["wing"]
-    flight = wing["flight"]
-    perched = wing["perched"]
+    phase = (phase + wing[f"{side}_phase_offset"]) % 1.0
     theta = math.tau * phase
-    theta2 = 2 * theta + deg(flight["stroke_h2_phase_deg"])
-    fold_raw = 0.5 * (1 + math.sin(theta + deg(flight["fold_phase_deg"])))
-    fold = fold_raw ** flight["fold_exponent"]
-
-    stroke_flight = (
-        flight["stroke_center_deg"]
-        + flight["stroke_h1_deg"] * math.cos(theta)
-        + flight["stroke_h2_deg"] * math.cos(theta2)
+    stroke = (
+        wing["stroke_center_deg"]
+        + wing["stroke_amplitude_deg"] * math.cos(theta)
+        + wing["stroke_harmonic_deg"]
+        * math.cos(2 * theta + math.radians(wing["stroke_harmonic_phase_deg"]))
     )
-    sweep_flight = flight["sweep_center_deg"] + flight["sweep_amp_deg"] * math.sin(
-        theta + deg(flight["sweep_phase_deg"])
-    )
-    elbow_flight = flight["elbow_base_deg"] + flight["elbow_fold_deg"] * fold
-    wrist_flight = flight["wrist_base_deg"] + flight["wrist_fold_deg"] * fold
-    pronation_flight = flight["pronation_deg"] * math.sin(
-        theta + deg(flight["pronation_phase_deg"])
-    )
-
+    # The wing is extended during the downstroke and folds during the
+    # recovery stroke. The sine gate is smooth and exactly periodic.
+    upstroke = ((1 - math.sin(theta + math.radians(wing["fold_phase_deg"]))) / 2) ** wing["fold_exponent"]
     return {
-        "stroke": lerp(perched["stroke_deg"], stroke_flight, openness),
-        "sweep": lerp(perched["sweep_deg"], sweep_flight, openness),
-        "elbow": lerp(perched["elbow_deg"], elbow_flight, openness),
-        "wrist": lerp(perched["wrist_deg"], wrist_flight, openness),
-        "pronation": lerp(perched["pronation_deg"], pronation_flight, openness),
-        "span_scale": lerp(perched["span_scale"], 1.0, openness),
-        "chord_scale": lerp(perched["chord_scale"], 1.0, openness),
+        "stroke_deg": stroke,
+        "elbow_deg": wing["elbow_base_deg"] + wing["elbow_fold_deg"] * upstroke,
+        "wrist_deg": wing["wrist_base_deg"] + wing["wrist_fold_deg"] * upstroke,
+        "span_scale": wing[f"{side}_scale"],
+        "chord_scale": math.sqrt(wing[f"{side}_scale"]),
     }
 
 
-def local_skeleton(model: dict, frame: dict) -> list[tuple[float, float]]:
-    l1, l2, l3 = [length * frame["span_scale"] for length in model["wing"]["segment_lengths"]]
-    a0 = deg(frame["sweep"])
-    a1 = a0 + deg(frame["elbow"])
-    a2 = a1 + deg(frame["wrist"])
-    s = (0.0, 0.0)
-    e = (l1 * math.cos(a0), l1 * math.sin(a0))
-    w = (e[0] + l2 * math.cos(a1), e[1] + l2 * math.sin(a1))
-    tip = (w[0] + l3 * math.cos(a2), w[1] + l3 * math.sin(a2))
-    return [s, e, w, tip]
+def folded_pose(model: dict, side: str) -> dict:
+    pose = dict(model["wing"]["folded_pose"])
+    pose["span_scale"] *= model["wing"][f"{side}_scale"]
+    pose["chord_scale"] *= math.sqrt(model["wing"][f"{side}_scale"])
+    return pose
 
 
-def chord(model: dict, station: float, scale: float) -> float:
+def wing_geometry(model: dict, pose: dict, side: str) -> dict:
     wing = model["wing"]
-    base = wing["root_chord"] * ((1 - station) ** wing["chord_exponent"])
-    bulge = 1 + wing["chord_bulge"] * math.sin(math.pi * station)
-    return (base * bulge + wing["tip_chord"] * (1 - station)) * scale
+    shoulder = tuple(wing["shoulders"][side])
+    l1, l2, l3 = [length * pose["span_scale"] for length in wing["segment_lengths"]]
+    a1 = math.radians(pose["stroke_deg"])
+    a2 = a1 + math.radians(pose["elbow_deg"])
+    a3 = a2 + math.radians(pose["wrist_deg"])
 
+    s = shoulder
+    e = add(s, (l1 * math.cos(a1), l1 * math.sin(a1)))
+    w = add(e, (l2 * math.cos(a2), l2 * math.sin(a2)))
+    t = add(w, (l3 * math.cos(a3), l3 * math.sin(a3)))
+    joints = [s, e, w, t]
 
-def project_point(model: dict, side: str, local: tuple[float, float], z_twist: float, stroke_deg: float) -> tuple[float, float]:
-    sign = -1.0 if side == "near" else 1.0
-    shoulder = model["wing"]["shoulders"][side]
-    u, v = local
-    # Local u is span, v is sweep toward the tail. Rotate the wing plane around
-    # the body x-axis. Multiplying the stroke by side keeps both wings on the
-    # same physical up/down half-cycle.
-    phi = deg(stroke_deg * sign)
-    body_x = shoulder[0] - v
-    lateral = shoulder[1] + sign * u
-    vertical = shoulder[2] + z_twist
-    rel_y = lateral - shoulder[1]
-    rel_z = vertical - shoulder[2]
-    y3 = shoulder[1] + rel_y * math.cos(phi) - rel_z * math.sin(phi)
-    z3 = shoulder[2] + rel_y * math.sin(phi) + rel_z * math.cos(phi)
-    camera = model["wing"]["camera"]
-    screen_x = body_x + camera.get("x_from_y", 0.0) * y3 + camera["x_from_z"] * z3
-    screen_y = camera["y_from_y"] * y3 + camera["y_from_z"] * z3
-    return screen_x, screen_y
-
-
-def wing_geometry(model: dict, side: str, phase: float, openness: float) -> dict:
-    frame = local_wing_frame(model, phase, openness)
-    skeleton = local_skeleton(model, frame)
-    stations = model["wing"]["stations"]
-    leading_local: list[tuple[float, float]] = []
-    trailing_local: list[tuple[float, float]] = []
-    for station in stations:
-        lead = catmull(skeleton, station)
-        eps = 1e-3
-        before = catmull(skeleton, max(0.0, station - eps))
-        after = catmull(skeleton, min(1.0, station + eps))
-        tangent = (after[0] - before[0], after[1] - before[1])
-        norm = math.hypot(*tangent) or 1.0
-        # Use a continuous rearward normal. A sign test on the geometric
-        # normal creates a visible discontinuity when the tangent crosses the
-        # vertical direction during a folded upstroke.
-        normal_raw = (-0.35 * tangent[1] / norm, 1.0)
-        normal_norm = math.hypot(*normal_raw) or 1.0
-        normal = (normal_raw[0] / normal_norm, normal_raw[1] / normal_norm)
-        c = chord(model, station, frame["chord_scale"])
-        leading_local.append((lead[0] - normal[0] * c * 0.16, lead[1] - normal[1] * c * 0.16))
-        trailing_local.append((lead[0] + normal[0] * c * 0.84, lead[1] + normal[1] * c * 0.84))
-
-    pronation = deg(frame["pronation"])
-    leading = []
-    trailing = []
-    for station, lead, trail in zip(stations, leading_local, trailing_local):
-        c = chord(model, station, frame["chord_scale"])
-        twist = math.sin(pronation) * c * (0.12 + 0.26 * station)
-        leading.append(project_point(model, side, lead, -twist * 0.12, frame["stroke"]))
-        trailing.append(project_point(model, side, trail, twist, frame["stroke"]))
-
-    joints_local = {
-        "shoulder": skeleton[0],
-        "elbow": skeleton[1],
-        "wrist": skeleton[2],
-        "tip": skeleton[3],
-    }
-    joints = {
-        name: project_point(model, side, point, 0.0, frame["stroke"])
-        for name, point in joints_local.items()
-    }
-    return {"leading": leading, "trailing": trailing, "joints": joints, "frame": frame}
-
-
-def smooth_open_path(points: Sequence[tuple[float, float]]) -> str:
-    if len(points) < 2:
-        return ""
-    parts = [f"M {fmt(points[0][0])} {fmt(points[0][1])}"]
-    n = len(points)
-    for i in range(n - 1):
-        p0 = points[max(0, i - 1)]
-        p1 = points[i]
-        p2 = points[i + 1]
-        p3 = points[min(n - 1, i + 2)]
-        c1 = (p1[0] + (p2[0] - p0[0]) / 6, p1[1] + (p2[1] - p0[1]) / 6)
-        c2 = (p2[0] - (p3[0] - p1[0]) / 6, p2[1] - (p3[1] - p1[1]) / 6)
-        parts.append(
-            f"C {fmt(c1[0])} {fmt(c1[1])} {fmt(c2[0])} {fmt(c2[1])} {fmt(p2[0])} {fmt(p2[1])}"
-        )
-    return " ".join(parts)
-
-
-def wing_outline(geometry: dict) -> str:
-    leading = geometry["leading"]
-    trailing = list(reversed(geometry["trailing"]))
-    return smooth_open_path(leading) + " L " + f"{fmt(trailing[0][0])} {fmt(trailing[0][1])} " + " ".join(
-        smooth_open_path(trailing).split()[3:]
-    ) + " Z"
-
-
-def render_wing(model: dict, side: str, variant: str, phase: float, openness: float, compact: bool) -> str:
-    geometry = wing_geometry(model, side, phase, openness)
-    leading = geometry["leading"]
-    trailing = geometry["trailing"]
-    palette = model["palette"]
-    ink = palette["white"] if variant == "inverse" else palette["ink"]
-    blue = ink if variant == "mono" else palette["blue"]
-    cyan = ink if variant == "mono" else palette["cyan"]
-    opacity = 0.90 if side == "near" else 0.24
-    if compact:
-        opacity = 0.0
-    fill = cyan if side == "near" else blue
-    outline = wing_outline(geometry)
-    out = [
-        f'    <g id="wing-{side}" data-wing="{side}" opacity="{fmt(opacity)}">',
-        f'      <path id="wing-{side}-surface" data-wing-outline="{side}" d="{outline}" fill="{fill}" fill-opacity="0.038" stroke="{ink}" stroke-width="1.45" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>',
-        f'      <g id="wing-{side}-faces" data-wing-faces="{side}">',
+    tangents = [
+        sub(e, s),
+        add(unit(sub(e, s)), unit(sub(w, e))),
+        add(unit(sub(w, e)), unit(sub(t, w))),
+        sub(t, w),
     ]
-    for i in range(len(leading) - 1):
-        a, b = leading[i], leading[i + 1]
-        c, d = trailing[i + 1], trailing[i]
-        tones = (cyan, blue) if (i + (0 if side == "near" else 1)) % 2 == 0 else (blue, cyan)
-        out.append(
-            f'        <polygon data-wing-face="{side}:{i}:a" points="{fmt(a[0])},{fmt(a[1])} {fmt(b[0])},{fmt(b[1])} {fmt(d[0])},{fmt(d[1])}" fill="{tones[0]}" fill-opacity="0.038"/>'
-        )
-        out.append(
-            f'        <polygon data-wing-face="{side}:{i}:b" points="{fmt(b[0])},{fmt(b[1])} {fmt(c[0])},{fmt(c[1])} {fmt(d[0])},{fmt(d[1])}" fill="{tones[1]}" fill-opacity="0.032"/>'
-        )
-    out.extend([
-        "      </g>",
-        f'      <g id="wing-{side}-mesh" data-wing-mesh="{side}" fill="none" stroke="{ink}" stroke-width="0.9" stroke-opacity="0.48" stroke-linecap="round" vector-effect="non-scaling-stroke">',
-    ])
-    for i in range(len(leading)):
-        out.append(
-            f'        <line data-wing-spar="{side}:{i}" x1="{fmt(leading[i][0])}" y1="{fmt(leading[i][1])}" x2="{fmt(trailing[i][0])}" y2="{fmt(trailing[i][1])}"/>'
-        )
-    for i in range(len(leading) - 1):
-        a = trailing[i] if i % 2 == 0 else leading[i]
-        b = leading[i + 1] if i % 2 == 0 else trailing[i + 1]
-        out.append(
-            f'        <line data-wing-diagonal="{side}:{i}" x1="{fmt(a[0])}" y1="{fmt(a[1])}" x2="{fmt(b[0])}" y2="{fmt(b[1])}"/>'
-        )
-    out.append("      </g>")
-    out.append(f'      <g id="wing-{side}-joints" data-wing-joints="{side}">')
-    joint_tones = {"shoulder": cyan, "elbow": blue, "wrist": cyan, "tip": blue}
-    radii = {"shoulder": 2.0, "elbow": 1.7, "wrist": 1.7, "tip": 1.45}
-    for name in ("shoulder", "elbow", "wrist", "tip"):
-        x, y = geometry["joints"][name]
-        out.append(
-            f'        <circle data-wing-joint="{side}:{name}" cx="{fmt(x)}" cy="{fmt(y)}" r="{fmt(radii[name])}" fill="{joint_tones[name]}"/>'
-        )
-    out.extend(["      </g>", "    </g>"])
-    return "\n".join(out)
+    normals = [normal(vector) for vector in tangents]
+    widths = [value * pose["chord_scale"] for value in wing["chords"]]
+    lead_fraction = wing["leading_fraction"]
+    leading = [sub(point, mul(nrm, width * lead_fraction)) for point, nrm, width in zip(joints, normals, widths)]
+    trailing = [add(point, mul(nrm, width * (1 - lead_fraction))) for point, nrm, width in zip(joints, normals, widths)]
+
+    # Seven boundary vertices, deliberately matching the graphic density of
+    # the original bird. The tip is shared by leading and trailing edges.
+    boundary = [leading[0], leading[1], leading[2], t, trailing[2], trailing[1], trailing[0]]
+    core = (
+        0.18 * s[0] + 0.33 * e[0] + 0.34 * w[0] + 0.15 * t[0],
+        0.18 * s[1] + 0.33 * e[1] + 0.34 * w[1] + 0.15 * t[1],
+    )
+    return {"boundary": boundary, "core": core, "joints": joints}
 
 
-def render_body(model: dict, variant: str) -> str:
+def blend_geometry(a: dict, b: dict, t: float) -> dict:
+    return {
+        "boundary": [lerp_point(x, y, t) for x, y in zip(a["boundary"], b["boundary"])],
+        "core": lerp_point(a["core"], b["core"], t),
+        "joints": [lerp_point(x, y, t) for x, y in zip(a["joints"], b["joints"])],
+    }
+
+
+def svg_header(model: dict, variant: str, compact: bool) -> list[str]:
+    palette = model["palette"]
+    if compact:
+        view_box = [55, 34, 520, 292]
+    else:
+        view_box = model["viewBox"]
+    x, y, width, height = view_box
+    background = palette["ink"] if variant == "inverse" else None
+    lines = [
+        '<?xml version="1.0" encoding="UTF-8"?>',
+        f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="{fmt(x)} {fmt(y)} {fmt(width)} {fmt(height)}" role="img" aria-labelledby="title desc" class="percolia-bird">',
+        '  <title id="title">Oiseau-réseau Percolia</title>',
+        '  <desc id="desc">Le modèle d’oiseau en réseau initial, doté d’ailes cinématiques déformables.</desc>',
+    ]
+    if background:
+        lines.append(f'  <rect x="{fmt(x)}" y="{fmt(y)}" width="{fmt(width)}" height="{fmt(height)}" fill="{background}"/>')
+    metadata = json.dumps(model, ensure_ascii=False, separators=(",", ":"))
+    lines.append(f'  <metadata id="percolia-network-model" data-network-model="true"><![CDATA[{metadata}]]></metadata>')
+    return lines
+
+
+def render_mesh(model: dict, variant: str) -> str:
     body = model["body"]
     palette = model["palette"]
-    ink = palette["white"] if variant == "inverse" else palette["ink"]
-    blue = ink if variant == "mono" else palette["blue"]
-    cyan = ink if variant == "mono" else palette["cyan"]
-    tone = {"ink": ink, "blue": blue, "cyan": cyan}
-    out = [f'    <g id="bird-body" data-part="body">']
-    for index, tail_path in enumerate(body.get("tail_paths", []), 1):
-        tail_fill = cyan if index == 1 else blue
-        out.append(
-            f'      <path id="tail-feather-{index}" d="{tail_path}" fill="{tail_fill}" fill-opacity="0.035" stroke="{ink}" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>'
+    inverse = variant == "inverse"
+    mono = variant == "mono"
+    base = palette["white"] if inverse else palette["ink"]
+    edge_styles = {
+        "mesh": (1.25, base, 0.78),
+        "outline": (1.85, base, 0.98),
+        "critical": (2.15, palette["blue"] if not mono else base, 1.0),
+    }
+    lines = ['    <g id="bird-body-network" data-layer="body">', '      <g id="body-faces" data-layer="faces">']
+    for face_id, node_ids, fill_name, opacity in body["faces"]:
+        pts = [tuple(body["nodes"][node][:2]) for node in node_ids]
+        lines.append(
+            f'        <polygon id="{escape(face_id)}" points="{points_string(pts)}" fill="{color(fill_name, palette, variant)}" fill-opacity="{fmt(opacity)}" data-anim="face"/>'
         )
-    out.extend([
-        f'      <path id="body-outline" d="{body["outline"]}" fill="{ink}" fill-opacity="0.018" stroke="{ink}" stroke-width="{fmt(body["outline_width"])}" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>',
-        '      <g id="body-faces" data-layer="faces">',
-    ])
-    nodes = body["nodes"]
-    for face_id, ids, fill, opacity in body["faces"]:
-        pts = " ".join(f"{fmt(nodes[n][0])},{fmt(nodes[n][1])}" for n in ids)
-        out.append(
-            f'        <polygon id="{face_id}" points="{pts}" fill="{tone[fill]}" fill-opacity="{fmt(opacity)}" data-anim="face" data-phase="2"/>'
+    lines.extend(['      </g>', '      <g id="body-edges" data-layer="edges" fill="none" stroke-linecap="round" stroke-linejoin="round">'])
+    for index, (a, b, kind) in enumerate(body["edges"], 1):
+        x1, y1 = body["nodes"][a][:2]
+        x2, y2 = body["nodes"][b][:2]
+        width, stroke, opacity = edge_styles[kind]
+        lines.append(
+            f'        <line id="body-edge-{index:02d}" x1="{fmt(x1)}" y1="{fmt(y1)}" x2="{fmt(x2)}" y2="{fmt(y2)}" stroke="{stroke}" stroke-opacity="{fmt(opacity)}" stroke-width="{fmt(width)}" data-anim="edge" data-kind="{kind}" vector-effect="non-scaling-stroke"/>'
         )
-    out.extend([
-        "      </g>",
-        f'      <g id="body-edges" data-layer="edges" fill="none" stroke-linecap="round" stroke-linejoin="round">',
-    ])
-    styles = {"outline": (1.2, ink, 0.86), "mesh": (0.85, ink, 0.55), "critical": (1.35, blue, 0.9)}
-    for i, (a, b, kind) in enumerate(body["edges"], 1):
-        x1, y1 = nodes[a][:2]
-        x2, y2 = nodes[b][:2]
-        width, stroke, opacity = styles[kind]
-        out.append(
-            f'        <line id="body-edge-{i:02d}" x1="{fmt(x1)}" y1="{fmt(y1)}" x2="{fmt(x2)}" y2="{fmt(y2)}" stroke="{stroke}" stroke-width="{fmt(width)}" stroke-opacity="{fmt(opacity)}" data-anim="edge" data-kind="{kind}" data-phase="2" vector-effect="non-scaling-stroke"/>'
+    lines.extend(['      </g>', '      <g id="body-nodes" data-layer="nodes">'])
+    for node_id, (x, y, radius, fill_name, kind) in body["nodes"].items():
+        node_stroke = palette["ink"] if inverse else palette["white"]
+        if mono:
+            node_stroke = palette["white"]
+        lines.append(
+            f'        <circle id="body-node-{escape(node_id)}" cx="{fmt(x)}" cy="{fmt(y)}" r="{fmt(radius)}" fill="{color(fill_name, palette, variant)}" stroke="{node_stroke}" stroke-width="0.75" data-anim="node" data-kind="{kind}" vector-effect="non-scaling-stroke"/>'
         )
-    out.extend(["      </g>", '      <g id="body-nodes" data-layer="nodes">'])
-    for node_id, (x, y, radius, fill, kind) in nodes.items():
-        out.append(
-            f'        <circle id="body-node-{node_id}" cx="{fmt(x)}" cy="{fmt(y)}" r="{fmt(radius)}" fill="{tone[fill]}" data-anim="node" data-kind="{kind}" data-phase="2"/>'
-        )
-    out.extend(["      </g>", "    </g>"])
-    return "\n".join(out)
-
-
-def render_folded_wing(model: dict, variant: str, visible: bool) -> str:
-    mesh = model["folded_wing"]
-    palette = model["palette"]
-    ink = palette["white"] if variant == "inverse" else palette["ink"]
-    blue = ink if variant == "mono" else palette["blue"]
-    cyan = ink if variant == "mono" else palette["cyan"]
-    tone = {"ink": ink, "blue": blue, "cyan": cyan}
-    nodes = mesh["nodes"]
-    out = [
-        f'    <g id="folded-wing" data-folded-wing="true" opacity="{1 if visible else 0}">',
-        f'      <path d="{mesh["outline"]}" fill="{cyan}" fill-opacity="0.045" stroke="{ink}" stroke-width="1.25" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>',
-        '      <g data-layer="faces">',
-    ]
-    for face_id, ids, fill, opacity in mesh["faces"]:
-        pts = " ".join(f"{fmt(nodes[n][0])},{fmt(nodes[n][1])}" for n in ids)
-        out.append(f'        <polygon id="{face_id}" points="{pts}" fill="{tone[fill]}" fill-opacity="{fmt(opacity)}" data-anim="face" data-phase="2"/>')
-    out.extend(['      </g>', '      <g data-layer="edges" fill="none" stroke-linecap="round" stroke-linejoin="round">'])
-    styles = {"outline": (1.05, ink, .82), "mesh": (.75, ink, .48), "critical": (1.15, blue, .85)}
-    for i, (a,b,kind) in enumerate(mesh["edges"],1):
-        x1,y1=nodes[a][:2]; x2,y2=nodes[b][:2]; width,stroke,opacity=styles[kind]
-        out.append(f'        <line id="folded-edge-{i:02d}" x1="{fmt(x1)}" y1="{fmt(y1)}" x2="{fmt(x2)}" y2="{fmt(y2)}" stroke="{stroke}" stroke-width="{fmt(width)}" stroke-opacity="{fmt(opacity)}" data-anim="edge" data-kind="{kind}" data-phase="2" vector-effect="non-scaling-stroke"/>')
-    out.extend(['      </g>', '      <g data-layer="nodes">'])
-    for node_id,(x,y,r,fill,kind) in nodes.items():
-        out.append(f'        <circle id="folded-node-{node_id}" cx="{fmt(x)}" cy="{fmt(y)}" r="{fmt(r)}" fill="{tone[fill]}" data-anim="node" data-kind="{kind}" data-phase="2"/>')
-    out.extend(['      </g>', '    </g>'])
-    return "\n".join(out)
-
-def render_legs(model: dict, variant: str, compact: bool) -> str:
-    palette = model["palette"]
-    ink = palette["white"] if variant == "inverse" else palette["ink"]
-    out = ['    <g id="bird-legs" data-part="legs" fill="none" stroke-linecap="round" stroke-linejoin="round">']
-    for side, leg in model["legs"].items():
-        opacity = 0.82 if side == "near" else 0.42
-        if not compact:
-            opacity *= 0.4
-        hip, knee, ankle = leg["hip"], leg["knee"], leg["ankle"]
-        out.append(f'      <g id="leg-{side}" data-leg="{side}" opacity="{fmt(opacity)}">')
-        out.append(
-            f'        <polyline points="{fmt(hip[0])},{fmt(hip[1])} {fmt(knee[0])},{fmt(knee[1])} {fmt(ankle[0])},{fmt(ankle[1])}" stroke="{ink}" stroke-width="1.15" vector-effect="non-scaling-stroke"/>'
-        )
-        for x, y in leg["toes"]:
-            out.append(
-                f'        <line x1="{fmt(ankle[0])}" y1="{fmt(ankle[1])}" x2="{fmt(x)}" y2="{fmt(y)}" stroke="{ink}" stroke-width="0.85" vector-effect="non-scaling-stroke"/>'
-            )
-        out.append("      </g>")
-    out.append("    </g>")
-    return "\n".join(out)
-
-
-def render_lidar(model: dict, variant: str) -> str:
-    palette = model["palette"]
-    blue = palette["ink"] if variant == "mono" else palette["blue"]
-    cyan = palette["ink"] if variant == "mono" else palette["cyan"]
-    x, y = model["body"]["scan_origin"]
-    return "\n".join(
-        [
-            f'    <g id="lidar-scan" data-layer="lidar" transform="translate({fmt(x)} {fmt(y)})" opacity="0" pointer-events="none">',
-            '      <g id="lidar-sweep" data-lidar-sweep="true">',
-            f'        <path d="M 0 0 L 62 -10 A 63 63 0 0 1 62 10 Z" fill="{cyan}" fill-opacity="0.11"/>',
-            f'        <line x1="0" y1="0" x2="66" y2="0" stroke="{blue}" stroke-width="1.1" stroke-linecap="round" vector-effect="non-scaling-stroke"/>',
-            "      </g>",
-            f'      <circle id="lidar-return" cx="69" cy="0" r="2.2" fill="{cyan}" opacity="0"/>',
-            f'      <circle id="lidar-ring" cx="69" cy="0" r="2.5" fill="none" stroke="{cyan}" stroke-width="0.9" opacity="0" vector-effect="non-scaling-stroke"/>',
-            "    </g>",
-        ]
-    )
+    lines.extend(['      </g>', '    </g>'])
+    return "\n".join(lines)
 
 
 def render_scatter(model: dict, variant: str) -> str:
     palette = model["palette"]
-    tone = lambda name: palette["ink"] if variant == "mono" else (palette["white"] if variant == "inverse" and name == "ink" else palette[name])
-    dots = [(-116, -57, 0.9, "cyan"), (-101, -72, 0.75, "ink"), (-86, -54, 0.95, "blue"), (-119, 47, 0.7, "blue"), (-96, 59, 0.9, "cyan"), (-78, 50, 0.65, "ink")]
-    out = ['    <g id="bird-scatter" data-layer="scatter" opacity="0.38">']
-    for i, (x, y, radius, color) in enumerate(dots, 1):
-        out.append(
-            f'      <circle id="scatter-{i:02d}" cx="{fmt(x)}" cy="{fmt(y)}" r="{fmt(radius)}" fill="{tone(color)}" data-anim="scatter"/>'
+    lines = ['    <g id="bird-scatter" data-layer="scatter" opacity="0.50">']
+    for node_id, (x, y, radius, fill_name, _kind) in model["scatter"].items():
+        lines.append(
+            f'      <circle id="scatter-{escape(node_id)}" cx="{fmt(x)}" cy="{fmt(y)}" r="{fmt(radius)}" fill="{color(fill_name, palette, variant)}" data-anim="scatter"/>'
         )
-    out.append("    </g>")
-    return "\n".join(out)
+    lines.append('    </g>')
+    return "\n".join(lines)
 
 
-def render_bird(model: dict, variant: str, compact: bool = False) -> str:
+def render_wing(model: dict, variant: str, side: str, geometry: dict, opacity: float) -> str:
     palette = model["palette"]
-    background = palette["ink"] if variant == "inverse" else None
-    viewbox = [-118, -70, 248, 132] if compact else model["viewBox"]
-    x, y, w, h = viewbox
-    phase = 0.12
-    openness = 0.0 if compact else 1.0
-    title = "Oiseau-réseau paramétrique Percolia"
-    desc = "Un oiseau géométrique aux ailes continues, générées par cinématique et projection 3D."
-    out = [
-        '<?xml version="1.0" encoding="UTF-8"?>',
-        f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="{fmt(x)} {fmt(y)} {fmt(w)} {fmt(h)}" role="img" aria-labelledby="title desc" class="percolia-bird">',
-        f'  <title id="title">{html.escape(title)}</title>',
-        f'  <desc id="desc">{html.escape(desc)}</desc>',
-    ]
-    if background:
-        out.append(f'  <rect x="{fmt(x)}" y="{fmt(y)}" width="{fmt(w)}" height="{fmt(h)}" fill="{background}"/>')
-    model_json = html.escape(json.dumps(model, ensure_ascii=False, separators=(",", ":")))
-    out.append(
-        f'  <g id="percolia-bird" data-percolia-bird="true" data-model-version="{html.escape(model["version"])}">'
+    inverse = variant == "inverse"
+    mono = variant == "mono"
+    ink = palette["white"] if inverse else palette["ink"]
+    if mono:
+        wing_colors = [ink] * 7
+    else:
+        wing_colors = [palette["cyan"], palette["blue"], palette["ink"], palette["cyan"], palette["blue"], palette["cyan"], palette["blue"]]
+    boundary = geometry["boundary"]
+    core = geometry["core"]
+    group_opacity = opacity
+    lines = [f'    <g id="wing-{side}" data-wing-side="{side}" opacity="{fmt(group_opacity)}">']
+    lines.append(
+        f'      <polygon id="wing-{side}-outline" data-wing-outline="true" points="{points_string(boundary)}" fill="{palette["mist"]}" fill-opacity="{fmt(0.25 if side == "near" else 0.16)}" stroke="{ink}" stroke-width="1.55" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>'
     )
-    out.append(f'    <metadata id="percolia-bird-model">{model_json}</metadata>')
-    if not compact:
-        out.append(render_scatter(model, variant))
-    out.append('    <g id="bird-rig" data-part="rig">')
-    out.append(render_wing(model, "far", variant, phase, openness, compact))
-    out.append(render_legs(model, variant, compact))
-    out.append(render_body(model, variant))
-    out.append(render_folded_wing(model, variant, compact))
-    out.append(render_wing(model, "near", variant, phase, openness, compact))
-    out.append(render_lidar(model, variant))
-    out.append("    </g>")
-    out.extend(["  </g>", "</svg>", ""])
-    return "\n".join(out)
+    lines.append(f'      <g id="wing-{side}-faces" data-layer="faces">')
+    for index in range(7):
+        a = boundary[index]
+        b = boundary[(index + 1) % 7]
+        lines.append(
+            f'        <polygon id="wing-{side}-face-{index:02d}" data-wing-face="{index}" points="{points_string([a, b, core])}" fill="{wing_colors[index]}" fill-opacity="{fmt(0.10 if side == "near" else 0.055)}"/>'
+        )
+    lines.append('      </g>')
+    lines.append(f'      <g id="wing-{side}-edges" fill="none" stroke-linecap="round" stroke-linejoin="round">')
+    for index in range(7):
+        a = boundary[index]
+        b = boundary[(index + 1) % 7]
+        lines.append(
+            f'        <line id="wing-{side}-boundary-{index:02d}" data-wing-boundary="{index}" x1="{fmt(a[0])}" y1="{fmt(a[1])}" x2="{fmt(b[0])}" y2="{fmt(b[1])}" stroke="{ink}" stroke-width="1.45" vector-effect="non-scaling-stroke"/>'
+        )
+        lines.append(
+            f'        <line id="wing-{side}-spoke-{index:02d}" data-wing-spoke="{index}" x1="{fmt(a[0])}" y1="{fmt(a[1])}" x2="{fmt(core[0])}" y2="{fmt(core[1])}" stroke="{palette["blue"] if not mono and index in (1, 3, 5) else ink}" stroke-width="0.85" vector-effect="non-scaling-stroke"/>'
+        )
+    lines.append('      </g>')
+    lines.append(f'      <g id="wing-{side}-nodes" data-layer="nodes">')
+    for index, point in enumerate(boundary):
+        fill = palette["cyan"] if not mono and index in (0, 3, 5) else palette["blue"] if not mono and index in (1, 4) else ink
+        lines.append(
+            f'        <circle id="wing-{side}-node-{index:02d}" data-wing-node="{index}" cx="{fmt(point[0])}" cy="{fmt(point[1])}" r="{fmt(2.7 if index == 3 else 2.25)}" fill="{fill}" stroke="{palette["white"]}" stroke-width="0.65" vector-effect="non-scaling-stroke"/>'
+        )
+    lines.append(
+        f'        <circle id="wing-{side}-core" data-wing-core="true" cx="{fmt(core[0])}" cy="{fmt(core[1])}" r="3.4" fill="{palette["cyan"] if not mono else ink}" stroke="{palette["white"]}" stroke-width="0.75" vector-effect="non-scaling-stroke"/>'
+    )
+    lines.extend(['      </g>', '    </g>'])
+    return "\n".join(lines)
+
+
+def render_legs(model: dict, variant: str, tucked: bool) -> str:
+    palette = model["palette"]
+    stroke = palette["white"] if variant == "inverse" else palette["ink"]
+    lines = ['    <g id="bird-legs" data-layer="legs" fill="none" stroke-linecap="round" stroke-linejoin="round">']
+    for side, leg in model["legs"].items():
+        opacity = 0.42 if side == "far" else 0.92
+        hip = tuple(leg["hip"])
+        knee = tuple(leg["knee"])
+        ankle = tuple(leg["ankle"])
+        if tucked:
+            knee = lerp_point(hip, knee, 0.45)
+            ankle = lerp_point(hip, ankle, 0.35)
+        lines.append(f'      <g id="leg-{side}" data-leg="{side}" opacity="{fmt(opacity)}">')
+        lines.append(
+            f'        <polyline data-leg-main="true" points="{points_string([hip, knee, ankle])}" stroke="{stroke}" stroke-width="1.55" vector-effect="non-scaling-stroke"/>'
+        )
+        for index, toe in enumerate(leg["toes"]):
+            toe_point = ankle if tucked else tuple(toe)
+            lines.append(
+                f'        <line data-leg-toe="{index}" x1="{fmt(ankle[0])}" y1="{fmt(ankle[1])}" x2="{fmt(toe_point[0])}" y2="{fmt(toe_point[1])}" stroke="{stroke}" stroke-width="1.05" vector-effect="non-scaling-stroke"/>'
+            )
+        lines.append('      </g>')
+    lines.append('    </g>')
+    return "\n".join(lines)
+
+
+def render_lidar(model: dict) -> str:
+    palette = model["palette"]
+    beak = model["body"]["nodes"]["q1"][:2]
+    x, y = beak
+    return "\n".join(
+        [
+            f'    <g id="lidar-scan" data-lidar="true" transform="translate({fmt(x)} {fmt(y)})" opacity="0" pointer-events="none">',
+            f'      <path data-lidar-beam="true" d="M 0 0 L 88 -17 A 90 90 0 0 1 88 17 Z" fill="{palette["cyan"]}" fill-opacity="0.14"/>',
+            f'      <line data-lidar-ray="true" x1="0" y1="0" x2="94" y2="0" stroke="{palette["blue"]}" stroke-width="1.55" stroke-linecap="round" vector-effect="non-scaling-stroke"/>',
+            f'      <circle data-lidar-return="true" cx="98" cy="0" r="3" fill="{palette["cyan"]}" opacity="0" filter="url(#scan-glow)"/>',
+            '    </g>',
+        ]
+    )
+
+
+def render_bird(model: dict, variant: str, compact: bool) -> str:
+    lines = svg_header(model, variant, compact)
+    lines.append('  <defs><filter id="scan-glow" x="-300%" y="-300%" width="600%" height="600%"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>')
+    lines.append(f'  <g id="percolia-bird" data-percolia-bird="true" data-model-version="{escape(model["version"])}">')
+
+    if compact:
+        lines.append(render_mesh(model, variant))
+        geometry = wing_geometry(model, folded_pose(model, "near"), "near")
+        lines.append(render_wing(model, variant, "near", geometry, 0.96))
+        lines.append(render_legs(model, variant, tucked=False))
+    else:
+        lines.append(render_scatter(model, variant))
+        far_geometry = wing_geometry(model, periodic_pose(model, model["wing"]["glide_phase"], "far"), "far")
+        near_geometry = wing_geometry(model, periodic_pose(model, model["wing"]["glide_phase"], "near"), "near")
+        lines.append(render_wing(model, variant, "far", far_geometry, model["wing"]["far_opacity"]))
+        lines.append(render_mesh(model, variant))
+        lines.append(render_wing(model, variant, "near", near_geometry, 0.98))
+        lines.append(render_legs(model, variant, tucked=True))
+        lines.append(render_lidar(model))
+    lines.extend(['  </g>', '</svg>', ''])
+    return "\n".join(lines)
 
 
 def main() -> None:
     model = load_model()
     outputs = {
-        "percolia-bird-primary.svg": render_bird(model, "primary"),
-        "percolia-bird-mono.svg": render_bird(model, "mono"),
-        "percolia-bird-inverse.svg": render_bird(model, "inverse"),
-        "percolia-bird-compact.svg": render_bird(model, "primary", compact=True),
+        "percolia-bird-primary.svg": render_bird(model, "primary", False),
+        "percolia-bird-mono.svg": render_bird(model, "mono", False),
+        "percolia-bird-inverse.svg": render_bird(model, "inverse", False),
+        "percolia-bird-compact.svg": render_bird(model, "primary", True),
     }
-    for name, content in outputs.items():
-        (ROOT / name).write_text(content, encoding="utf-8")
-        print(f"wrote {name}")
+    for filename, content in outputs.items():
+        (ROOT / filename).write_text(content, encoding="utf-8")
+        print(f"wrote {filename}")
 
 
 if __name__ == "__main__":

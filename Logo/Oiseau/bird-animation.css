@@ -1,35 +1,34 @@
-.percolia-bird-shell {
-  display: grid;
-  place-items: center;
-  overflow: visible;
+/* Percolia directional network-bird host styles. */
+.percolia-flight-stage {
+  position: relative;
+  overflow: hidden;
   isolation: isolate;
 }
 
-.percolia-bird-shell > svg {
+.percolia-flight-stage [data-flight-bird],
+.percolia-flight-stage [data-perched-bird] {
+  transform-box: view-box;
+  transform-origin: 0 0;
+  will-change: transform, opacity;
+}
+
+.percolia-flight-stage [data-flight-bird] > svg,
+.percolia-flight-stage [data-perched-bird] > svg {
   display: block;
-  width: 100%;
-  height: auto;
+  width: 640px;
+  height: 360px;
   overflow: visible;
 }
 
-[data-flight-bird] {
-  transform-origin: 50% 100%;
-  will-change: transform;
-}
-
-.percolia-bird [data-wing-outline],
-.percolia-bird [data-wing-face],
-.percolia-bird [data-wing-spar],
-.percolia-bird [data-wing-diagonal],
-.percolia-bird [data-wing-joint] {
-  will-change: d, points, x1, y1, x2, y2, cx, cy;
+.percolia-flight-stage [data-perched-bird] {
+  transition: opacity 160ms linear;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  [data-flight-bird],
-  .percolia-bird * {
-    animation-duration: 0.001ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.001ms !important;
+  .percolia-flight-stage [data-flight-bird] {
+    display: none;
+  }
+  .percolia-flight-stage [data-perched-bird] {
+    opacity: 1 !important;
   }
 }

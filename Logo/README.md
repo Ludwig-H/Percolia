@@ -6,10 +6,10 @@
 
 La marque associe :
 
-- un `P` distinctif, conservé dans sa forme initiale ;
+- le `P` distinctif conservé dans sa forme initiale ;
 - `ERCOLIA` en petites capitales géométriques ;
-- un petit oiseau-réseau perché sur le `P` ;
-- une version animée dont les ailes sont calculées par un modèle paramétrique continu.
+- le premier oiseau-réseau, restauré et perché sur le `P` ;
+- une animation directionnelle utilisant deux oiseaux distincts.
 
 ## Sources canoniques
 
@@ -23,11 +23,12 @@ Logo/
 └── Oiseau/
     ├── build_bird.py
     ├── build_demo.py
+    ├── bird-animation.js
     ├── test_wing_model.py
     └── source/bird_model.json
 ```
 
-Les SVG, la planche de marque et `Oiseau/demo.html` sont des fichiers générés. Ils sont néanmoins versionnés pour être consultables directement sur GitHub.
+Les SVG, la planche de marque et `Oiseau/demo.html` sont générés mais versionnés pour rester visibles immédiatement.
 
 ## Construction
 
@@ -37,10 +38,15 @@ python Logo/Oiseau/build_bird.py
 python Logo/build_lockups.py
 python Logo/Oiseau/build_demo.py
 python Logo/Oiseau/test_wing_model.py
+node --check Logo/Oiseau/bird-animation.js
 ```
 
-La démonstration autonome est disponible dans [`Oiseau/demo.html`](Oiseau/demo.html).
+La démonstration autonome se trouve dans [`Oiseau/demo.html`](Oiseau/demo.html).
+
+## Choix abandonné
+
+Le modèle d’oiseau paramétrique lisse des essais précédents n’est plus utilisé. Il a été remplacé par la topologie triangulée du premier jet, jugée plus reconnaissable et plus cohérente avec Percolia.
 
 ## Statut
 
-Cette direction est un prototype de marque éditable. Une recherche d’antériorités graphique et typographique reste nécessaire avant dépôt définitif.
+Cette direction reste un prototype de marque éditable. Une recherche d’antériorités graphique et typographique demeure nécessaire avant dépôt définitif.

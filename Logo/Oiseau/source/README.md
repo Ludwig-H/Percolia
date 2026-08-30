@@ -1,13 +1,13 @@
-# Modèle paramétrique de l’oiseau
+# Source de l’oiseau-réseau
 
-`bird_model.json` est la source de vérité. Les ailes ne sont plus des groupes rigides tournés autour de trois pivots.
+`bird_model.json` contient :
 
-Chaque aile est construite à chaque image à partir de :
+- la topologie restaurée du premier oiseau Percolia ;
+- les facettes, arêtes, nœuds et points dispersés ;
+- les paramètres cinématiques des deux ailes ;
+- la pose repliée utilisée sur le `P` ;
+- les pattes ;
+- les quatre courbes de Bézier de la séquence directionnelle ;
+- les durées de décollage, sortie, silence, retour et atterrissage.
 
-- trois longueurs osseuses : humérus, avant-bras et main ;
-- trois angles articulaires : balayage, flexion du coude et flexion du poignet ;
-- un angle de battement hors du plan ;
-- une loi de corde continue pour la membrane et les rémiges ;
-- une projection orthographique oblique d’un modèle 3D vers le SVG 2D.
-
-Le contour et le maillage intérieur sont recalculés à chaque image. Les paramètres de vitesse, d’amplitude, de repli et de projection restent éditables dans le JSON.
+Les SVG générés ne doivent pas être modifiés isolément. Toute évolution de la forme ou du mouvement doit partir de ce JSON et des générateurs Python.

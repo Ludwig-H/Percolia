@@ -1,12 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 410" role="img" aria-labelledby="title desc">
-  <title id="title">Logo vertical Percolia</title>
-  <desc id="desc">Signature centrée avec le petit oiseau-réseau perché sur le P.</desc>
-  <style>
+<title id="title">Logo vertical Percolia</title>
+<desc id="desc">Petit oiseau-réseau perché sur le P.</desc>
+<style>
     .glyph-path{fill:none;stroke:#082C4C;stroke-width:14;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
     .glyph-node{vector-effect:non-scaling-stroke}.tone-ink{fill:#082C4C}.tone-blue{fill:#1C83D4}.tone-cyan{fill:#20C9C4}
-  </style>
-  <g id="logo-stacked">
-    <g transform="translate(56 145) scale(.98)"><g xmlns="http://www.w3.org/2000/svg" id="percolia-wordmark" data-version="0.2.0" data-style="small-caps">
+  </style><g id="logo-stacked">
+<g transform="translate(56 145) scale(.98)"><g xmlns="http://www.w3.org/2000/svg" id="percolia-wordmark" data-version="0.2.0" data-style="small-caps">
   <g id="letter-1-P" data-glyph="P" transform="translate(20 0)">
     <path id="letter-1-P-stroke-1" class="glyph-path" d="M 22 172 V 38 H 76 Q 112 38 112 72 V 82 Q 112 116 78 116 H 62" />
     <circle id="letter-1-P-node-1" class="glyph-node tone-blue" data-role="threshold-origin" cx="22" cy="116" r="6.2" />
@@ -42,375 +41,192 @@
   </g>
   </g>
 </g>
-    <g transform="translate(149 167) scale(.47)"><g xmlns="http://www.w3.org/2000/svg" id="percolia-bird" data-percolia-bird="true" data-model-version="0.4.0" data-elbow="-35,-16" data-wrist="-34,7" data-hip-near="-13,18" data-hip-far="-1,18">
-    <g id="wing-far" class="bird-wing bird-wing-far" data-side="far" transform="translate(-3 -11) scale(1 -0.82)" opacity="0">
-      <g id="wing-far-upper" data-bone="wing-far-upper" transform="rotate(-50)">
-      <g id="wing-far-upper-faces" data-layer="faces">
-        <polygon id="wing-far-upper-upper-f01" points="0,0 -17,-13 -16,-1" fill="#20C9C4" fill-opacity="0.07" data-phase="0" data-anim="face" />
-        <polygon id="wing-far-upper-upper-f02" points="-17,-13 -35,-16 -16,-1" fill="#1C83D4" fill-opacity="0.09" data-phase="0" data-anim="face" />
-        <polygon id="wing-far-upper-upper-f03" points="-35,-16 -29,7 -16,-1" fill="#20C9C4" fill-opacity="0.08" data-phase="0" data-anim="face" />
-        <polygon id="wing-far-upper-upper-f04" points="-29,7 -8,10 -16,-1" fill="#082C4C" fill-opacity="0.04" data-phase="0" data-anim="face" />
-        <polygon id="wing-far-upper-upper-f05" points="-8,10 0,0 -16,-1" fill="#1C83D4" fill-opacity="0.05" data-phase="0" data-anim="face" />
+<g transform="translate(151 166) scale(.36)"><g xmlns="http://www.w3.org/2000/svg" id="percolia-bird" data-percolia-bird="true" data-model-version="0.6.0">
+    <metadata id="percolia-bird-model">{"name":"Percolia Parametric Network Bird","version":"0.6.0","viewBox":[-126,-96,264,188],"palette":{"ink":"#082C4C","blue":"#1C83D4","cyan":"#20C9C4","mist":"#EAF5F7","slate":"#5D7385","white":"#FFFFFF"},"body":{"outline":"M -52 -6 C -35 -24 -5 -29 24 -19 C 37 -15 43 -9 47 -3 C 54 -9 63 -13 73 -12 C 85 -11 94 -4 96 5 C 94 15 85 21 73 20 C 62 19 54 14 48 8 C 40 20 24 31 4 33 C -18 35 -40 25 -52 12 C -61 8 -65 3 -64 -1 C -63 -4 -59 -6 -52 -6 Z","outline_width":1.7,"nodes":{"tail_root":[-52,3,1.5,"blue","node"],"back_1":[-29,-17,1.4,"ink","node"],"back_2":[3,-21,1.6,"blue","node"],"shoulder_near":[-4,-14,2.1,"cyan","joint"],"shoulder_far":[0,-9,1.8,"blue","joint"],"neck":[47,-3,1.6,"ink","node"],"crown":[68,-12,1.7,"blue","node"],"head":[88,-4,1.8,"ink","node"],"beak":[120,4,1.7,"cyan","critical"],"throat":[84,13,1.5,"ink","node"],"chest":[48,8,1.6,"blue","node"],"belly":[6,27,1.7,"cyan","node"],"core":[6,3,2.5,"cyan","critical"],"eye":[80,-4,1.15,"ink","decorative"],"tail_tip_up":[-92,-12,1.1,"blue","node"],"tail_tip_down":[-92,14,1.1,"cyan","node"]},"edges":[["tail_root","back_1","outline"],["back_1","back_2","outline"],["back_2","neck","outline"],["neck","crown","outline"],["crown","head","outline"],["head","beak","critical"],["beak","throat","outline"],["throat","chest","outline"],["chest","belly","outline"],["belly","tail_root","outline"],["tail_root","tail_tip_up","outline"],["tail_root","tail_tip_down","outline"],["tail_root","core","mesh"],["back_1","core","mesh"],["back_2","core","mesh"],["neck","core","mesh"],["crown","core","mesh"],["head","core","mesh"],["throat","core","mesh"],["chest","core","mesh"],["belly","core","mesh"]],"faces":[["body_f01",["tail_root","back_1","core"],"blue",0.04],["body_f02",["back_1","back_2","core"],"cyan",0.055],["body_f03",["back_2","neck","core"],"blue",0.06],["body_f04",["neck","crown","core"],"cyan",0.055],["body_f05",["crown","head","core"],"blue",0.05],["body_f06",["head","throat","core"],"cyan",0.05],["body_f07",["throat","chest","core"],"blue",0.045],["body_f08",["chest","belly","core"],"cyan",0.045],["body_f09",["belly","tail_root","core"],"blue",0.035]],"scan_origin":[94,4],"perch_point":[0,34],"tail_paths":["M -52 0 C -65 -4 -78 -8 -92 -12 C -81 -3 -68 4 -52 7 Z","M -52 6 C -65 8 -79 11 -92 14 C -80 7 -67 1 -52 0 Z"]},"wing":{"segment_lengths":[39,46,55],"stations":[0.0,0.16,0.33,0.5,0.68,0.85,1.0],"root_chord":18.5,"chord_exponent":0.6,"chord_bulge":0.46,"tip_chord":0.8,"shoulders":{"near":[-4,-14,0],"far":[0,-9,-1.0]},"camera":{"x_from_y":0.16,"x_from_z":0.07,"y_from_y":0.32,"y_from_z":-0.74},"flight":{"period_ms":5200,"stroke_center_deg":-3,"stroke_h1_deg":30,"stroke_h2_deg":3.8,"stroke_h2_phase_deg":-24,"sweep_center_deg":7,"sweep_amp_deg":8,"sweep_phase_deg":18,"elbow_base_deg":13,"elbow_fold_deg":18,"wrist_base_deg":8,"wrist_fold_deg":28,"fold_phase_deg":-20,"fold_exponent":1.35,"pronation_deg":10,"pronation_phase_deg":34,"heave":1.8,"pitch_deg":2.2},"perched":{"span_scale":0.31,"chord_scale":0.7,"stroke_deg":-8,"sweep_deg":58,"elbow_deg":66,"wrist_deg":82,"pronation_deg":0}},"legs":{"near":{"hip":[1,28],"knee":[0,39],"ankle":[7,49],"toes":[[-4,52],[7,52],[18,50]]},"far":{"hip":[13,27],"knee":[15,38],"ankle":[20,48],"toes":[[9,51],[20,52],[31,49]]}},"flight_path":{"cycle_ms":24500,"perch_ms":2200,"takeoff_ms":1900,"flight_ms":18200,"landing_ms":2200,"scan_progress":0.48},"folded_wing":{"outline":"M -30 -10 C -8 -17 22 -12 44 1 C 27 9 5 15 -20 12 C -35 9 -40 1 -30 -10 Z","nodes":{"root":[-30,-8,1.5,"cyan","joint"],"top":[0,-12,1.4,"blue","node"],"tip":[44,1,1.5,"cyan","critical"],"bottom":[-20,12,1.3,"ink","node"],"core":[4,2,2.0,"blue","node"]},"edges":[["root","top","outline"],["top","tip","outline"],["tip","bottom","outline"],["bottom","root","outline"],["root","core","critical"],["top","core","mesh"],["tip","core","mesh"],["bottom","core","mesh"]],"faces":[["fold_f01",["root","top","core"],"cyan",0.055],["fold_f02",["top","tip","core"],"blue",0.065],["fold_f03",["tip","bottom","core"],"cyan",0.05],["fold_f04",["bottom","root","core"],"blue",0.04]]}}</metadata>
+    <g id="bird-rig" data-part="rig">
+    <g id="wing-far" data-wing="far" opacity="0">
+      <path id="wing-far-surface" data-wing-outline="far" d="M 0.6539 -1.8822 C 0.0809 -1.6355 -1.2784 -0.8618 -2.7841 -0.402 C -4.2898 0.0577 -6.148 0.8606 -8.3802 0.8762 C -10.6125 0.8917 -13.8315 0.3367 -16.1779 -0.3088 C -18.5243 -0.9543 -21.6817 -1.9375 -22.4587 -2.9968 C -23.2357 -4.0562 -21.4794 -5.6257 -20.8401 -6.6649 C -20.2007 -7.7042 -18.9922 -8.8045 -18.6226 -9.2324 L -18.6226 -9.2324 C -19.8052 -8.7401 -23.5343 -7.3105 -25.7185 -6.2782 C -27.9027 -5.246 -31.1906 -3.7786 -31.7278 -3.0388 C -32.265 -2.2991 -30.4181 -2.1551 -28.9418 -1.8397 C -27.4654 -1.5243 -24.7666 -1.1155 -22.8698 -1.1463 C -20.9731 -1.1772 -19.2278 -1.6335 -17.5613 -2.0247 C -15.8947 -2.4159 -13.6522 -3.2486 -12.8703 -3.4933 Z" fill="#1C83D4" fill-opacity="0.038" stroke="#082C4C" stroke-width="1.45" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke" />
+      <g id="wing-far-faces" data-wing-faces="far">
+        <polygon data-wing-face="far:0:a" points="0.6539,-1.8822 -2.7841,-0.402 -12.8703,-3.4933" fill="#1C83D4" fill-opacity="0.038" />
+        <polygon data-wing-face="far:0:b" points="-2.7841,-0.402 -17.5613,-2.0247 -12.8703,-3.4933" fill="#20C9C4" fill-opacity="0.032" />
+        <polygon data-wing-face="far:1:a" points="-2.7841,-0.402 -8.3802,0.8762 -17.5613,-2.0247" fill="#20C9C4" fill-opacity="0.038" />
+        <polygon data-wing-face="far:1:b" points="-8.3802,0.8762 -22.8698,-1.1463 -17.5613,-2.0247" fill="#1C83D4" fill-opacity="0.032" />
+        <polygon data-wing-face="far:2:a" points="-8.3802,0.8762 -16.1779,-0.3088 -22.8698,-1.1463" fill="#1C83D4" fill-opacity="0.038" />
+        <polygon data-wing-face="far:2:b" points="-16.1779,-0.3088 -28.9418,-1.8397 -22.8698,-1.1463" fill="#20C9C4" fill-opacity="0.032" />
+        <polygon data-wing-face="far:3:a" points="-16.1779,-0.3088 -22.4587,-2.9968 -28.9418,-1.8397" fill="#20C9C4" fill-opacity="0.038" />
+        <polygon data-wing-face="far:3:b" points="-22.4587,-2.9968 -31.7278,-3.0388 -28.9418,-1.8397" fill="#1C83D4" fill-opacity="0.032" />
+        <polygon data-wing-face="far:4:a" points="-22.4587,-2.9968 -20.8401,-6.6649 -31.7278,-3.0388" fill="#1C83D4" fill-opacity="0.038" />
+        <polygon data-wing-face="far:4:b" points="-20.8401,-6.6649 -25.7185,-6.2782 -31.7278,-3.0388" fill="#20C9C4" fill-opacity="0.032" />
+        <polygon data-wing-face="far:5:a" points="-20.8401,-6.6649 -18.6226,-9.2324 -25.7185,-6.2782" fill="#20C9C4" fill-opacity="0.038" />
+        <polygon data-wing-face="far:5:b" points="-18.6226,-9.2324 -18.6226,-9.2324 -25.7185,-6.2782" fill="#1C83D4" fill-opacity="0.032" />
       </g>
-      <g id="wing-far-upper-edges" data-layer="edges" fill="none" stroke-linecap="round" stroke-linejoin="round">
-        <line id="wing-far-upper-edge-01" x1="0" y1="0" x2="-17" y2="-13" stroke="#082C4C" stroke-width="1.55" stroke-opacity="0.94" data-phase="0" data-anim="edge" data-kind="outline" vector-effect="non-scaling-stroke" />
-        <line id="wing-far-upper-edge-02" x1="-17" y1="-13" x2="-35" y2="-16" stroke="#082C4C" stroke-width="1.55" stroke-opacity="0.94" data-phase="0" data-anim="edge" data-kind="outline" vector-effect="non-scaling-stroke" />
-        <line id="wing-far-upper-edge-03" x1="-35" y1="-16" x2="-29" y2="7" stroke="#082C4C" stroke-width="1.55" stroke-opacity="0.94" data-phase="0" data-anim="edge" data-kind="outline" vector-effect="non-scaling-stroke" />
-        <line id="wing-far-upper-edge-04" x1="-29" y1="7" x2="-8" y2="10" stroke="#082C4C" stroke-width="1.55" stroke-opacity="0.94" data-phase="0" data-anim="edge" data-kind="outline" vector-effect="non-scaling-stroke" />
-        <line id="wing-far-upper-edge-05" x1="-8" y1="10" x2="0" y2="0" stroke="#082C4C" stroke-width="1.55" stroke-opacity="0.94" data-phase="0" data-anim="edge" data-kind="outline" vector-effect="non-scaling-stroke" />
-        <line id="wing-far-upper-edge-06" x1="0" y1="0" x2="-16" y2="-1" stroke="#1C83D4" stroke-width="1.85" stroke-opacity="1" data-phase="0" data-anim="edge" data-kind="critical" vector-effect="non-scaling-stroke" />
-        <line id="wing-far-upper-edge-07" x1="-17" y1="-13" x2="-16" y2="-1" stroke="#082C4C" stroke-width="1.05" stroke-opacity="0.8" data-phase="0" data-anim="edge" data-kind="mesh" vector-effect="non-scaling-stroke" />
-        <line id="wing-far-upper-edge-08" x1="-35" y1="-16" x2="-16" y2="-1" stroke="#082C4C" stroke-width="1.05" stroke-opacity="0.8" data-phase="0" data-anim="edge" data-kind="mesh" vector-effect="non-scaling-stroke" />
-        <line id="wing-far-upper-edge-09" x1="-29" y1="7" x2="-16" y2="-1" stroke="#082C4C" stroke-width="1.05" stroke-opacity="0.8" data-phase="0" data-anim="edge" data-kind="mesh" vector-effect="non-scaling-stroke" />
-        <line id="wing-far-upper-edge-10" x1="-8" y1="10" x2="-16" y2="-1" stroke="#082C4C" stroke-width="1.05" stroke-opacity="0.8" data-phase="0" data-anim="edge" data-kind="mesh" vector-effect="non-scaling-stroke" />
+      <g id="wing-far-mesh" data-wing-mesh="far" fill="none" stroke="#082C4C" stroke-width="0.9" stroke-opacity="0.48" stroke-linecap="round" vector-effect="non-scaling-stroke">
+        <line data-wing-spar="far:0" x1="0.6539" y1="-1.8822" x2="-12.8703" y2="-3.4933" />
+        <line data-wing-spar="far:1" x1="-2.7841" y1="-0.402" x2="-17.5613" y2="-2.0247" />
+        <line data-wing-spar="far:2" x1="-8.3802" y1="0.8762" x2="-22.8698" y2="-1.1463" />
+        <line data-wing-spar="far:3" x1="-16.1779" y1="-0.3088" x2="-28.9418" y2="-1.8397" />
+        <line data-wing-spar="far:4" x1="-22.4587" y1="-2.9968" x2="-31.7278" y2="-3.0388" />
+        <line data-wing-spar="far:5" x1="-20.8401" y1="-6.6649" x2="-25.7185" y2="-6.2782" />
+        <line data-wing-spar="far:6" x1="-18.6226" y1="-9.2324" x2="-18.6226" y2="-9.2324" />
+        <line data-wing-diagonal="far:0" x1="-12.8703" y1="-3.4933" x2="-2.7841" y2="-0.402" />
+        <line data-wing-diagonal="far:1" x1="-2.7841" y1="-0.402" x2="-22.8698" y2="-1.1463" />
+        <line data-wing-diagonal="far:2" x1="-22.8698" y1="-1.1463" x2="-16.1779" y2="-0.3088" />
+        <line data-wing-diagonal="far:3" x1="-16.1779" y1="-0.3088" x2="-31.7278" y2="-3.0388" />
+        <line data-wing-diagonal="far:4" x1="-31.7278" y1="-3.0388" x2="-20.8401" y2="-6.6649" />
+        <line data-wing-diagonal="far:5" x1="-20.8401" y1="-6.6649" x2="-18.6226" y2="-9.2324" />
       </g>
-      <g id="wing-far-upper-nodes" data-layer="nodes">
-        <circle id="wing-far-upper-node-s" cx="0" cy="0" r="2.2" fill="#20C9C4" fill-opacity="1" stroke="#FFFFFF" stroke-opacity="1" stroke-width="0.65" data-phase="0" data-anim="node" data-kind="critical" vector-effect="non-scaling-stroke" />
-        <circle id="wing-far-upper-node-u1" cx="-17" cy="-13" r="1.7" fill="#082C4C" fill-opacity="1" stroke="#FFFFFF" stroke-opacity="1" stroke-width="0.65" data-phase="0" data-anim="node" data-kind="node" vector-effect="non-scaling-stroke" />
-        <circle id="wing-far-upper-node-e" cx="-35" cy="-16" r="2.2" fill="#1C83D4" fill-opacity="1" stroke="#FFFFFF" stroke-opacity="1" stroke-width="0.65" data-phase="0" data-anim="node" data-kind="joint" vector-effect="non-scaling-stroke" />
-        <circle id="wing-far-upper-node-u2" cx="-29" cy="7" r="1.7" fill="#082C4C" fill-opacity="1" stroke="#FFFFFF" stroke-opacity="1" stroke-width="0.65" data-phase="0" data-anim="node" data-kind="node" vector-effect="non-scaling-stroke" />
-        <circle id="wing-far-upper-node-u3" cx="-8" cy="10" r="1.7" fill="#082C4C" fill-opacity="1" stroke="#FFFFFF" stroke-opacity="1" stroke-width="0.65" data-phase="0" data-anim="node" data-kind="node" vector-effect="non-scaling-stroke" />
-        <circle id="wing-far-upper-node-uc" cx="-16" cy="-1" r="2.1" fill="#20C9C4" fill-opacity="1" stroke="#FFFFFF" stroke-opacity="1" stroke-width="0.65" data-phase="0" data-anim="node" data-kind="critical" vector-effect="non-scaling-stroke" />
-      </g>
-        <g id="wing-far-forearm" data-bone="wing-far-forearm" transform="translate(-35 -16) rotate(182)">
-      <g id="wing-far-forearm-faces" data-layer="faces">
-        <polygon id="wing-far-forearm-forearm-f01" points="0,0 -17,-8 -16,4" fill="#1C83D4" fill-opacity="0.07" data-phase="1" data-anim="face" />
-        <polygon id="wing-far-forearm-forearm-f02" points="-17,-8 -34,7 -16,4" fill="#20C9C4" fill-opacity="0.09" data-phase="1" data-anim="face" />
-        <polygon id="wing-far-forearm-forearm-f03" points="-34,7 -24,17 -16,4" fill="#1C83D4" fill-opacity="0.08" data-phase="1" data-anim="face" />
-        <polygon id="wing-far-forearm-forearm-f04" points="-24,17 -5,13 -16,4" fill="#082C4C" fill-opacity="0.04" data-phase="1" data-anim="face" />
-        <polygon id="wing-far-forearm-forearm-f05" points="-5,13 0,0 -16,4" fill="#20C9C4" fill-opacity="0.05" data-phase="1" data-anim="face" />
-      </g>
-      <g id="wing-far-forearm-edges" data-layer="edges" fill="none" stroke-linecap="round" stroke-linejoin="round">
-        <line id="wing-far-forearm-edge-01" x1="0" y1="0" x2="-17" y2="-8" stroke="#082C4C" stroke-width="1.55" stroke-opacity="0.94" data-phase="1" data-anim="edge" data-kind="outline" vector-effect="non-scaling-stroke" />
-        <line id="wing-far-forearm-edge-02" x1="-17" y1="-8" x2="-34" y2="7" stroke="#082C4C" stroke-width="1.55" stroke-opacity="0.94" data-phase="1" data-anim="edge" data-kind="outline" vector-effect="non-scaling-stroke" />
-        <line id="wing-far-forearm-edge-03" x1="-34" y1="7" x2="-24" y2="17" stroke="#082C4C" stroke-width="1.55" stroke-opacity="0.94" data-phase="1" data-anim="edge" data-kind="outline" vector-effect="non-scaling-stroke" />
-        <line id="wing-far-forearm-edge-04" x1="-24" y1="17" x2="-5" y2="13" stroke="#082C4C" stroke-width="1.55" stroke-opacity="0.94" data-phase="1" data-anim="edge" data-kind="outline" vector-effect="non-scaling-stroke" />
-        <line id="wing-far-forearm-edge-05" x1="-5" y1="13" x2="0" y2="0" stroke="#082C4C" stroke-width="1.55" stroke-opacity="0.94" data-phase="1" data-anim="edge" data-kind="outline" vector-effect="non-scaling-stroke" />
-        <line id="wing-far-forearm-edge-06" x1="0" y1="0" x2="-16" y2="4" stroke="#082C4C" stroke-width="1.05" stroke-opacity="0.8" data-phase="1" data-anim="edge" data-kind="mesh" vector-effect="non-scaling-stroke" />
-        <line id="wing-far-forearm-edge-07" x1="-17" y1="-8" x2="-16" y2="4" stroke="#082C4C" stroke-width="1.05" stroke-opacity="0.8" data-phase="1" data-anim="edge" data-kind="mesh" vector-effect="non-scaling-stroke" />
-        <line id="wing-far-forearm-edge-08" x1="-34" y1="7" x2="-16" y2="4" stroke="#1C83D4" stroke-width="1.85" stroke-opacity="1" data-phase="1" data-anim="edge" data-kind="critical" vector-effect="non-scaling-stroke" />
-        <line id="wing-far-forearm-edge-09" x1="-24" y1="17" x2="-16" y2="4" stroke="#082C4C" stroke-width="1.05" stroke-opacity="0.8" data-phase="1" data-anim="edge" data-kind="mesh" vector-effect="non-scaling-stroke" />
-        <line id="wing-far-forearm-edge-10" x1="-5" y1="13" x2="-16" y2="4" stroke="#082C4C" stroke-width="1.05" stroke-opacity="0.8" data-phase="1" data-anim="edge" data-kind="mesh" vector-effect="non-scaling-stroke" />
-      </g>
-      <g id="wing-far-forearm-nodes" data-layer="nodes">
-        <circle id="wing-far-forearm-node-e" cx="0" cy="0" r="2.1" fill="#1C83D4" fill-opacity="1" stroke="#FFFFFF" stroke-opacity="1" stroke-width="0.65" data-phase="1" data-anim="node" data-kind="joint" vector-effect="non-scaling-stroke" />
-        <circle id="wing-far-forearm-node-f1" cx="-17" cy="-8" r="1.6" fill="#082C4C" fill-opacity="1" stroke="#FFFFFF" stroke-opacity="1" stroke-width="0.65" data-phase="1" data-anim="node" data-kind="node" vector-effect="non-scaling-stroke" />
-        <circle id="wing-far-forearm-node-w" cx="-34" cy="7" r="2.2" fill="#20C9C4" fill-opacity="1" stroke="#FFFFFF" stroke-opacity="1" stroke-width="0.65" data-phase="1" data-anim="node" data-kind="joint" vector-effect="non-scaling-stroke" />
-        <circle id="wing-far-forearm-node-f2" cx="-24" cy="17" r="1.6" fill="#082C4C" fill-opacity="1" stroke="#FFFFFF" stroke-opacity="1" stroke-width="0.65" data-phase="1" data-anim="node" data-kind="node" vector-effect="non-scaling-stroke" />
-        <circle id="wing-far-forearm-node-f3" cx="-5" cy="13" r="1.6" fill="#082C4C" fill-opacity="1" stroke="#FFFFFF" stroke-opacity="1" stroke-width="0.65" data-phase="1" data-anim="node" data-kind="node" vector-effect="non-scaling-stroke" />
-        <circle id="wing-far-forearm-node-fc" cx="-16" cy="4" r="2" fill="#1C83D4" fill-opacity="1" stroke="#FFFFFF" stroke-opacity="1" stroke-width="0.65" data-phase="1" data-anim="node" data-kind="node" vector-effect="non-scaling-stroke" />
-      </g>
-          <g id="wing-far-hand" data-bone="wing-far-hand" transform="translate(-34 7) rotate(-138)">
-      <g id="wing-far-hand-faces" data-layer="faces">
-        <polygon id="wing-far-hand-hand-f01" points="0,0 -12,-8 -24,4" fill="#20C9C4" fill-opacity="0.06" data-phase="2" data-anim="face" />
-        <polygon id="wing-far-hand-hand-f02" points="-12,-8 -46,-12 -24,4" fill="#1C83D4" fill-opacity="0.08" data-phase="2" data-anim="face" />
-        <polygon id="wing-far-hand-hand-f03" points="-46,-12 -61,-4 -24,4" fill="#20C9C4" fill-opacity="0.09" data-phase="2" data-anim="face" />
-        <polygon id="wing-far-hand-hand-f04" points="-61,-4 -62,5 -24,4" fill="#1C83D4" fill-opacity="0.08" data-phase="2" data-anim="face" />
-        <polygon id="wing-far-hand-hand-f05" points="-62,5 -54,13 -24,4" fill="#082C4C" fill-opacity="0.04" data-phase="2" data-anim="face" />
-        <polygon id="wing-far-hand-hand-f06" points="-54,13 -42,19 -24,4" fill="#20C9C4" fill-opacity="0.06" data-phase="2" data-anim="face" />
-        <polygon id="wing-far-hand-hand-f07" points="-42,19 -8,16 -24,4" fill="#1C83D4" fill-opacity="0.06" data-phase="2" data-anim="face" />
-        <polygon id="wing-far-hand-hand-f08" points="-8,16 0,0 -24,4" fill="#20C9C4" fill-opacity="0.05" data-phase="2" data-anim="face" />
-      </g>
-      <g id="wing-far-hand-edges" data-layer="edges" fill="none" stroke-linecap="round" stroke-linejoin="round">
-        <line id="wing-far-hand-edge-01" x1="0" y1="0" x2="-12" y2="-8" stroke="#082C4C" stroke-width="1.55" stroke-opacity="0.94" data-phase="2" data-anim="edge" data-kind="outline" vector-effect="non-scaling-stroke" />
-        <line id="wing-far-hand-edge-02" x1="-12" y1="-8" x2="-46" y2="-12" stroke="#082C4C" stroke-width="1.55" stroke-opacity="0.94" data-phase="2" data-anim="edge" data-kind="outline" vector-effect="non-scaling-stroke" />
-        <line id="wing-far-hand-edge-03" x1="-46" y1="-12" x2="-61" y2="-4" stroke="#082C4C" stroke-width="1.55" stroke-opacity="0.94" data-phase="2" data-anim="edge" data-kind="outline" vector-effect="non-scaling-stroke" />
-        <line id="wing-far-hand-edge-04" x1="-61" y1="-4" x2="-62" y2="5" stroke="#082C4C" stroke-width="1.55" stroke-opacity="0.94" data-phase="2" data-anim="edge" data-kind="outline" vector-effect="non-scaling-stroke" />
-        <line id="wing-far-hand-edge-05" x1="-62" y1="5" x2="-54" y2="13" stroke="#082C4C" stroke-width="1.55" stroke-opacity="0.94" data-phase="2" data-anim="edge" data-kind="outline" vector-effect="non-scaling-stroke" />
-        <line id="wing-far-hand-edge-06" x1="-54" y1="13" x2="-42" y2="19" stroke="#082C4C" stroke-width="1.55" stroke-opacity="0.94" data-phase="2" data-anim="edge" data-kind="outline" vector-effect="non-scaling-stroke" />
-        <line id="wing-far-hand-edge-07" x1="-42" y1="19" x2="-8" y2="16" stroke="#082C4C" stroke-width="1.55" stroke-opacity="0.94" data-phase="2" data-anim="edge" data-kind="outline" vector-effect="non-scaling-stroke" />
-        <line id="wing-far-hand-edge-08" x1="-8" y1="16" x2="0" y2="0" stroke="#082C4C" stroke-width="1.55" stroke-opacity="0.94" data-phase="2" data-anim="edge" data-kind="outline" vector-effect="non-scaling-stroke" />
-        <line id="wing-far-hand-edge-09" x1="0" y1="0" x2="-24" y2="4" stroke="#1C83D4" stroke-width="1.85" stroke-opacity="1" data-phase="2" data-anim="edge" data-kind="critical" vector-effect="non-scaling-stroke" />
-        <line id="wing-far-hand-edge-10" x1="-12" y1="-8" x2="-24" y2="4" stroke="#082C4C" stroke-width="1.05" stroke-opacity="0.8" data-phase="2" data-anim="edge" data-kind="mesh" vector-effect="non-scaling-stroke" />
-        <line id="wing-far-hand-edge-11" x1="-46" y1="-12" x2="-24" y2="4" stroke="#082C4C" stroke-width="1.05" stroke-opacity="0.8" data-phase="2" data-anim="edge" data-kind="mesh" vector-effect="non-scaling-stroke" />
-        <line id="wing-far-hand-edge-12" x1="-61" y1="-4" x2="-24" y2="4" stroke="#082C4C" stroke-width="1.05" stroke-opacity="0.8" data-phase="2" data-anim="edge" data-kind="mesh" vector-effect="non-scaling-stroke" />
-        <line id="wing-far-hand-edge-13" x1="-62" y1="5" x2="-24" y2="4" stroke="#082C4C" stroke-width="1.05" stroke-opacity="0.8" data-phase="2" data-anim="edge" data-kind="mesh" vector-effect="non-scaling-stroke" />
-        <line id="wing-far-hand-edge-14" x1="-54" y1="13" x2="-24" y2="4" stroke="#082C4C" stroke-width="1.05" stroke-opacity="0.8" data-phase="2" data-anim="edge" data-kind="mesh" vector-effect="non-scaling-stroke" />
-        <line id="wing-far-hand-edge-15" x1="-42" y1="19" x2="-24" y2="4" stroke="#082C4C" stroke-width="1.05" stroke-opacity="0.8" data-phase="2" data-anim="edge" data-kind="mesh" vector-effect="non-scaling-stroke" />
-        <line id="wing-far-hand-edge-16" x1="-8" y1="16" x2="-24" y2="4" stroke="#082C4C" stroke-width="1.05" stroke-opacity="0.8" data-phase="2" data-anim="edge" data-kind="mesh" vector-effect="non-scaling-stroke" />
-      </g>
-      <g id="wing-far-hand-nodes" data-layer="nodes">
-        <circle id="wing-far-hand-node-w" cx="0" cy="0" r="2.1" fill="#20C9C4" fill-opacity="1" stroke="#FFFFFF" stroke-opacity="1" stroke-width="0.65" data-phase="2" data-anim="node" data-kind="joint" vector-effect="non-scaling-stroke" />
-        <circle id="wing-far-hand-node-h1" cx="-12" cy="-8" r="1.5" fill="#082C4C" fill-opacity="1" stroke="#FFFFFF" stroke-opacity="1" stroke-width="0.65" data-phase="2" data-anim="node" data-kind="node" vector-effect="non-scaling-stroke" />
-        <circle id="wing-far-hand-node-p0" cx="-46" cy="-12" r="1.5" fill="#1C83D4" fill-opacity="1" stroke="#FFFFFF" stroke-opacity="1" stroke-width="0.65" data-phase="2" data-anim="node" data-kind="feather" vector-effect="non-scaling-stroke" />
-        <circle id="wing-far-hand-node-p1" cx="-61" cy="-4" r="1.6" fill="#20C9C4" fill-opacity="1" stroke="#FFFFFF" stroke-opacity="1" stroke-width="0.65" data-phase="2" data-anim="node" data-kind="feather" vector-effect="non-scaling-stroke" />
-        <circle id="wing-far-hand-node-p2" cx="-62" cy="5" r="1.5" fill="#1C83D4" fill-opacity="1" stroke="#FFFFFF" stroke-opacity="1" stroke-width="0.65" data-phase="2" data-anim="node" data-kind="feather" vector-effect="non-scaling-stroke" />
-        <circle id="wing-far-hand-node-p3" cx="-54" cy="13" r="1.5" fill="#082C4C" fill-opacity="1" stroke="#FFFFFF" stroke-opacity="1" stroke-width="0.65" data-phase="2" data-anim="node" data-kind="feather" vector-effect="non-scaling-stroke" />
-        <circle id="wing-far-hand-node-p4" cx="-42" cy="19" r="1.5" fill="#1C83D4" fill-opacity="1" stroke="#FFFFFF" stroke-opacity="1" stroke-width="0.65" data-phase="2" data-anim="node" data-kind="feather" vector-effect="non-scaling-stroke" />
-        <circle id="wing-far-hand-node-h2" cx="-8" cy="16" r="1.6" fill="#082C4C" fill-opacity="1" stroke="#FFFFFF" stroke-opacity="1" stroke-width="0.65" data-phase="2" data-anim="node" data-kind="node" vector-effect="non-scaling-stroke" />
-        <circle id="wing-far-hand-node-hc" cx="-24" cy="4" r="2" fill="#20C9C4" fill-opacity="1" stroke="#FFFFFF" stroke-opacity="1" stroke-width="0.65" data-phase="2" data-anim="node" data-kind="critical" vector-effect="non-scaling-stroke" />
-      </g>
-          </g>
-        </g>
+      <g id="wing-far-joints" data-wing-joints="far">
+        <circle data-wing-joint="far:shoulder" cx="-1.51" cy="-2.14" r="2" fill="#20C9C4" />
+        <circle data-wing-joint="far:elbow" cx="-10.8102" cy="0.55" r="1.7" fill="#1C83D4" />
+        <circle data-wing-joint="far:wrist" cx="-23.818" cy="-2.7981" r="1.7" fill="#20C9C4" />
+        <circle data-wing-joint="far:tip" cx="-18.6226" cy="-9.2324" r="1.45" fill="#1C83D4" />
       </g>
     </g>
-    <g id="bird-tail" data-bone="tail" transform="rotate(0 -44 6)">
-      <g id="tail-faces" data-layer="faces">
-        <polygon id="tail-tail-f01" points="-46,-3 -105,-15 -68,7" fill="#1C83D4" fill-opacity="0.0658" data-phase="1" data-anim="face" />
-        <polygon id="tail-tail-f02" points="-105,-15 -91,4 -68,7" fill="#20C9C4" fill-opacity="0.0846" data-phase="1" data-anim="face" />
-        <polygon id="tail-tail-f03" points="-91,4 -104,25 -68,7" fill="#1C83D4" fill-opacity="0.0752" data-phase="1" data-anim="face" />
-        <polygon id="tail-tail-f04" points="-104,25 -41,14 -68,7" fill="#20C9C4" fill-opacity="0.0564" data-phase="1" data-anim="face" />
-        <polygon id="tail-tail-f05" points="-41,14 -46,-3 -68,7" fill="#082C4C" fill-opacity="0.0376" data-phase="1" data-anim="face" />
+    <g id="bird-legs" data-part="legs" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <g id="leg-near" data-leg="near" opacity="0.82">
+        <polyline points="1,28 0,39 7,49" stroke="#082C4C" stroke-width="1.15" vector-effect="non-scaling-stroke" />
+        <line x1="7" y1="49" x2="-4" y2="52" stroke="#082C4C" stroke-width="0.85" vector-effect="non-scaling-stroke" />
+        <line x1="7" y1="49" x2="7" y2="52" stroke="#082C4C" stroke-width="0.85" vector-effect="non-scaling-stroke" />
+        <line x1="7" y1="49" x2="18" y2="50" stroke="#082C4C" stroke-width="0.85" vector-effect="non-scaling-stroke" />
       </g>
-      <g id="tail-edges" data-layer="edges" fill="none" stroke-linecap="round" stroke-linejoin="round">
-        <line id="tail-edge-01" x1="-46" y1="-3" x2="-105" y2="-15" stroke="#082C4C" stroke-width="1.55" stroke-opacity="0.8836" data-phase="1" data-anim="edge" data-kind="outline" vector-effect="non-scaling-stroke" />
-        <line id="tail-edge-02" x1="-105" y1="-15" x2="-91" y2="4" stroke="#082C4C" stroke-width="1.55" stroke-opacity="0.8836" data-phase="1" data-anim="edge" data-kind="outline" vector-effect="non-scaling-stroke" />
-        <line id="tail-edge-03" x1="-91" y1="4" x2="-104" y2="25" stroke="#082C4C" stroke-width="1.55" stroke-opacity="0.8836" data-phase="1" data-anim="edge" data-kind="outline" vector-effect="non-scaling-stroke" />
-        <line id="tail-edge-04" x1="-104" y1="25" x2="-41" y2="14" stroke="#082C4C" stroke-width="1.55" stroke-opacity="0.8836" data-phase="1" data-anim="edge" data-kind="outline" vector-effect="non-scaling-stroke" />
-        <line id="tail-edge-05" x1="-41" y1="14" x2="-46" y2="-3" stroke="#082C4C" stroke-width="1.55" stroke-opacity="0.8836" data-phase="1" data-anim="edge" data-kind="outline" vector-effect="non-scaling-stroke" />
-        <line id="tail-edge-06" x1="-46" y1="-3" x2="-68" y2="7" stroke="#082C4C" stroke-width="1.05" stroke-opacity="0.752" data-phase="1" data-anim="edge" data-kind="mesh" vector-effect="non-scaling-stroke" />
-        <line id="tail-edge-07" x1="-105" y1="-15" x2="-68" y2="7" stroke="#082C4C" stroke-width="1.05" stroke-opacity="0.752" data-phase="1" data-anim="edge" data-kind="mesh" vector-effect="non-scaling-stroke" />
-        <line id="tail-edge-08" x1="-91" y1="4" x2="-68" y2="7" stroke="#1C83D4" stroke-width="1.85" stroke-opacity="0.94" data-phase="1" data-anim="edge" data-kind="critical" vector-effect="non-scaling-stroke" />
-        <line id="tail-edge-09" x1="-104" y1="25" x2="-68" y2="7" stroke="#082C4C" stroke-width="1.05" stroke-opacity="0.752" data-phase="1" data-anim="edge" data-kind="mesh" vector-effect="non-scaling-stroke" />
-        <line id="tail-edge-10" x1="-41" y1="14" x2="-68" y2="7" stroke="#082C4C" stroke-width="1.05" stroke-opacity="0.752" data-phase="1" data-anim="edge" data-kind="mesh" vector-effect="non-scaling-stroke" />
-      </g>
-      <g id="tail-nodes" data-layer="nodes">
-        <circle id="tail-node-tb0" cx="-46" cy="-3" r="1.7" fill="#082C4C" fill-opacity="0.94" stroke="#FFFFFF" stroke-opacity="0.94" stroke-width="0.65" data-phase="1" data-anim="node" data-kind="outline" vector-effect="non-scaling-stroke" />
-        <circle id="tail-node-tb1" cx="-41" cy="14" r="1.7" fill="#082C4C" fill-opacity="0.94" stroke="#FFFFFF" stroke-opacity="0.94" stroke-width="0.65" data-phase="1" data-anim="node" data-kind="outline" vector-effect="non-scaling-stroke" />
-        <circle id="tail-node-tt0" cx="-105" cy="-15" r="1.7" fill="#1C83D4" fill-opacity="0.94" stroke="#FFFFFF" stroke-opacity="0.94" stroke-width="0.65" data-phase="1" data-anim="node" data-kind="node" vector-effect="non-scaling-stroke" />
-        <circle id="tail-node-tt1" cx="-91" cy="4" r="1.9" fill="#20C9C4" fill-opacity="0.94" stroke="#FFFFFF" stroke-opacity="0.94" stroke-width="0.65" data-phase="1" data-anim="node" data-kind="critical" vector-effect="non-scaling-stroke" />
-        <circle id="tail-node-tt2" cx="-104" cy="25" r="1.7" fill="#1C83D4" fill-opacity="0.94" stroke="#FFFFFF" stroke-opacity="0.94" stroke-width="0.65" data-phase="1" data-anim="node" data-kind="node" vector-effect="non-scaling-stroke" />
-        <circle id="tail-node-tc" cx="-68" cy="7" r="2.3" fill="#20C9C4" fill-opacity="0.94" stroke="#FFFFFF" stroke-opacity="0.94" stroke-width="0.65" data-phase="1" data-anim="node" data-kind="critical" vector-effect="non-scaling-stroke" />
+      <g id="leg-far" data-leg="far" opacity="0.42">
+        <polyline points="13,27 15,38 20,48" stroke="#082C4C" stroke-width="1.15" vector-effect="non-scaling-stroke" />
+        <line x1="20" y1="48" x2="9" y2="51" stroke="#082C4C" stroke-width="0.85" vector-effect="non-scaling-stroke" />
+        <line x1="20" y1="48" x2="20" y2="52" stroke="#082C4C" stroke-width="0.85" vector-effect="non-scaling-stroke" />
+        <line x1="20" y1="48" x2="31" y2="49" stroke="#082C4C" stroke-width="0.85" vector-effect="non-scaling-stroke" />
       </g>
     </g>
-    <g id="bird-body" data-bone="body" transform="rotate(0 -5 2)">
+    <g id="bird-body" data-part="body">
+      <path id="tail-feather-1" d="M -52 0 C -65 -4 -78 -8 -92 -12 C -81 -3 -68 4 -52 7 Z" fill="#20C9C4" fill-opacity="0.035" stroke="#082C4C" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke" />
+      <path id="tail-feather-2" d="M -52 6 C -65 8 -79 11 -92 14 C -80 7 -67 1 -52 0 Z" fill="#1C83D4" fill-opacity="0.035" stroke="#082C4C" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke" />
+      <path id="body-outline" d="M -52 -6 C -35 -24 -5 -29 24 -19 C 37 -15 43 -9 47 -3 C 54 -9 63 -13 73 -12 C 85 -11 94 -4 96 5 C 94 15 85 21 73 20 C 62 19 54 14 48 8 C 40 20 24 31 4 33 C -18 35 -40 25 -52 12 C -61 8 -65 3 -64 -1 C -63 -4 -59 -6 -52 -6 Z" fill="#082C4C" fill-opacity="0.018" stroke="#082C4C" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke" />
       <g id="body-faces" data-layer="faces">
-        <polygon id="body-body-f01" points="-50,3 -30,-14 -6,2" fill="#20C9C4" fill-opacity="0.07" data-phase="2" data-anim="face" />
-        <polygon id="body-body-f02" points="-30,-14 -5,-21 -6,2" fill="#1C83D4" fill-opacity="0.09" data-phase="2" data-anim="face" />
-        <polygon id="body-body-f03" points="-5,-21 23,-15 -6,2" fill="#082C4C" fill-opacity="0.04" data-phase="2" data-anim="face" />
-        <polygon id="body-body-f04" points="23,-15 42,-4 -6,2" fill="#20C9C4" fill-opacity="0.11" data-phase="2" data-anim="face" />
-        <polygon id="body-body-f05" points="42,-4 28,17 -6,2" fill="#1C83D4" fill-opacity="0.1" data-phase="2" data-anim="face" />
-        <polygon id="body-body-f06" points="28,17 3,25 -6,2" fill="#20C9C4" fill-opacity="0.07" data-phase="2" data-anim="face" />
-        <polygon id="body-body-f07" points="3,25 -26,20 -6,2" fill="#082C4C" fill-opacity="0.04" data-phase="2" data-anim="face" />
-        <polygon id="body-body-f08" points="-26,20 -50,3 -6,2" fill="#1C83D4" fill-opacity="0.06" data-phase="2" data-anim="face" />
+        <polygon id="body_f01" points="-52,3 -29,-17 6,3" fill="#1C83D4" fill-opacity="0.04" data-anim="face" data-phase="2" />
+        <polygon id="body_f02" points="-29,-17 3,-21 6,3" fill="#20C9C4" fill-opacity="0.055" data-anim="face" data-phase="2" />
+        <polygon id="body_f03" points="3,-21 47,-3 6,3" fill="#1C83D4" fill-opacity="0.06" data-anim="face" data-phase="2" />
+        <polygon id="body_f04" points="47,-3 68,-12 6,3" fill="#20C9C4" fill-opacity="0.055" data-anim="face" data-phase="2" />
+        <polygon id="body_f05" points="68,-12 88,-4 6,3" fill="#1C83D4" fill-opacity="0.05" data-anim="face" data-phase="2" />
+        <polygon id="body_f06" points="88,-4 84,13 6,3" fill="#20C9C4" fill-opacity="0.05" data-anim="face" data-phase="2" />
+        <polygon id="body_f07" points="84,13 48,8 6,3" fill="#1C83D4" fill-opacity="0.045" data-anim="face" data-phase="2" />
+        <polygon id="body_f08" points="48,8 6,27 6,3" fill="#20C9C4" fill-opacity="0.045" data-anim="face" data-phase="2" />
+        <polygon id="body_f09" points="6,27 -52,3 6,3" fill="#1C83D4" fill-opacity="0.035" data-anim="face" data-phase="2" />
       </g>
       <g id="body-edges" data-layer="edges" fill="none" stroke-linecap="round" stroke-linejoin="round">
-        <line id="body-edge-01" x1="-50" y1="3" x2="-30" y2="-14" stroke="#082C4C" stroke-width="1.55" stroke-opacity="0.94" data-phase="2" data-anim="edge" data-kind="outline" vector-effect="non-scaling-stroke" />
-        <line id="body-edge-02" x1="-30" y1="-14" x2="-5" y2="-21" stroke="#082C4C" stroke-width="1.55" stroke-opacity="0.94" data-phase="2" data-anim="edge" data-kind="outline" vector-effect="non-scaling-stroke" />
-        <line id="body-edge-03" x1="-5" y1="-21" x2="23" y2="-15" stroke="#082C4C" stroke-width="1.55" stroke-opacity="0.94" data-phase="2" data-anim="edge" data-kind="outline" vector-effect="non-scaling-stroke" />
-        <line id="body-edge-04" x1="23" y1="-15" x2="42" y2="-4" stroke="#082C4C" stroke-width="1.55" stroke-opacity="0.94" data-phase="2" data-anim="edge" data-kind="outline" vector-effect="non-scaling-stroke" />
-        <line id="body-edge-05" x1="42" y1="-4" x2="28" y2="17" stroke="#082C4C" stroke-width="1.55" stroke-opacity="0.94" data-phase="2" data-anim="edge" data-kind="outline" vector-effect="non-scaling-stroke" />
-        <line id="body-edge-06" x1="28" y1="17" x2="3" y2="25" stroke="#082C4C" stroke-width="1.55" stroke-opacity="0.94" data-phase="2" data-anim="edge" data-kind="outline" vector-effect="non-scaling-stroke" />
-        <line id="body-edge-07" x1="3" y1="25" x2="-26" y2="20" stroke="#082C4C" stroke-width="1.55" stroke-opacity="0.94" data-phase="2" data-anim="edge" data-kind="outline" vector-effect="non-scaling-stroke" />
-        <line id="body-edge-08" x1="-26" y1="20" x2="-50" y2="3" stroke="#082C4C" stroke-width="1.55" stroke-opacity="0.94" data-phase="2" data-anim="edge" data-kind="outline" vector-effect="non-scaling-stroke" />
-        <line id="body-edge-09" x1="-50" y1="3" x2="-6" y2="2" stroke="#082C4C" stroke-width="1.05" stroke-opacity="0.8" data-phase="2" data-anim="edge" data-kind="mesh" vector-effect="non-scaling-stroke" />
-        <line id="body-edge-10" x1="-30" y1="-14" x2="-6" y2="2" stroke="#082C4C" stroke-width="1.05" stroke-opacity="0.8" data-phase="2" data-anim="edge" data-kind="mesh" vector-effect="non-scaling-stroke" />
-        <line id="body-edge-11" x1="-5" y1="-21" x2="-6" y2="2" stroke="#082C4C" stroke-width="1.05" stroke-opacity="0.8" data-phase="2" data-anim="edge" data-kind="mesh" vector-effect="non-scaling-stroke" />
-        <line id="body-edge-12" x1="23" y1="-15" x2="-6" y2="2" stroke="#082C4C" stroke-width="1.05" stroke-opacity="0.8" data-phase="2" data-anim="edge" data-kind="mesh" vector-effect="non-scaling-stroke" />
-        <line id="body-edge-13" x1="42" y1="-4" x2="-6" y2="2" stroke="#1C83D4" stroke-width="1.85" stroke-opacity="1" data-phase="2" data-anim="edge" data-kind="critical" vector-effect="non-scaling-stroke" />
-        <line id="body-edge-14" x1="28" y1="17" x2="-6" y2="2" stroke="#082C4C" stroke-width="1.05" stroke-opacity="0.8" data-phase="2" data-anim="edge" data-kind="mesh" vector-effect="non-scaling-stroke" />
-        <line id="body-edge-15" x1="3" y1="25" x2="-6" y2="2" stroke="#082C4C" stroke-width="1.05" stroke-opacity="0.8" data-phase="2" data-anim="edge" data-kind="mesh" vector-effect="non-scaling-stroke" />
-        <line id="body-edge-16" x1="-26" y1="20" x2="-6" y2="2" stroke="#082C4C" stroke-width="1.05" stroke-opacity="0.8" data-phase="2" data-anim="edge" data-kind="mesh" vector-effect="non-scaling-stroke" />
+        <line id="body-edge-01" x1="-52" y1="3" x2="-29" y2="-17" stroke="#082C4C" stroke-width="1.2" stroke-opacity="0.86" data-anim="edge" data-kind="outline" data-phase="2" vector-effect="non-scaling-stroke" />
+        <line id="body-edge-02" x1="-29" y1="-17" x2="3" y2="-21" stroke="#082C4C" stroke-width="1.2" stroke-opacity="0.86" data-anim="edge" data-kind="outline" data-phase="2" vector-effect="non-scaling-stroke" />
+        <line id="body-edge-03" x1="3" y1="-21" x2="47" y2="-3" stroke="#082C4C" stroke-width="1.2" stroke-opacity="0.86" data-anim="edge" data-kind="outline" data-phase="2" vector-effect="non-scaling-stroke" />
+        <line id="body-edge-04" x1="47" y1="-3" x2="68" y2="-12" stroke="#082C4C" stroke-width="1.2" stroke-opacity="0.86" data-anim="edge" data-kind="outline" data-phase="2" vector-effect="non-scaling-stroke" />
+        <line id="body-edge-05" x1="68" y1="-12" x2="88" y2="-4" stroke="#082C4C" stroke-width="1.2" stroke-opacity="0.86" data-anim="edge" data-kind="outline" data-phase="2" vector-effect="non-scaling-stroke" />
+        <line id="body-edge-06" x1="88" y1="-4" x2="120" y2="4" stroke="#1C83D4" stroke-width="1.35" stroke-opacity="0.9" data-anim="edge" data-kind="critical" data-phase="2" vector-effect="non-scaling-stroke" />
+        <line id="body-edge-07" x1="120" y1="4" x2="84" y2="13" stroke="#082C4C" stroke-width="1.2" stroke-opacity="0.86" data-anim="edge" data-kind="outline" data-phase="2" vector-effect="non-scaling-stroke" />
+        <line id="body-edge-08" x1="84" y1="13" x2="48" y2="8" stroke="#082C4C" stroke-width="1.2" stroke-opacity="0.86" data-anim="edge" data-kind="outline" data-phase="2" vector-effect="non-scaling-stroke" />
+        <line id="body-edge-09" x1="48" y1="8" x2="6" y2="27" stroke="#082C4C" stroke-width="1.2" stroke-opacity="0.86" data-anim="edge" data-kind="outline" data-phase="2" vector-effect="non-scaling-stroke" />
+        <line id="body-edge-10" x1="6" y1="27" x2="-52" y2="3" stroke="#082C4C" stroke-width="1.2" stroke-opacity="0.86" data-anim="edge" data-kind="outline" data-phase="2" vector-effect="non-scaling-stroke" />
+        <line id="body-edge-11" x1="-52" y1="3" x2="-92" y2="-12" stroke="#082C4C" stroke-width="1.2" stroke-opacity="0.86" data-anim="edge" data-kind="outline" data-phase="2" vector-effect="non-scaling-stroke" />
+        <line id="body-edge-12" x1="-52" y1="3" x2="-92" y2="14" stroke="#082C4C" stroke-width="1.2" stroke-opacity="0.86" data-anim="edge" data-kind="outline" data-phase="2" vector-effect="non-scaling-stroke" />
+        <line id="body-edge-13" x1="-52" y1="3" x2="6" y2="3" stroke="#082C4C" stroke-width="0.85" stroke-opacity="0.55" data-anim="edge" data-kind="mesh" data-phase="2" vector-effect="non-scaling-stroke" />
+        <line id="body-edge-14" x1="-29" y1="-17" x2="6" y2="3" stroke="#082C4C" stroke-width="0.85" stroke-opacity="0.55" data-anim="edge" data-kind="mesh" data-phase="2" vector-effect="non-scaling-stroke" />
+        <line id="body-edge-15" x1="3" y1="-21" x2="6" y2="3" stroke="#082C4C" stroke-width="0.85" stroke-opacity="0.55" data-anim="edge" data-kind="mesh" data-phase="2" vector-effect="non-scaling-stroke" />
+        <line id="body-edge-16" x1="47" y1="-3" x2="6" y2="3" stroke="#082C4C" stroke-width="0.85" stroke-opacity="0.55" data-anim="edge" data-kind="mesh" data-phase="2" vector-effect="non-scaling-stroke" />
+        <line id="body-edge-17" x1="68" y1="-12" x2="6" y2="3" stroke="#082C4C" stroke-width="0.85" stroke-opacity="0.55" data-anim="edge" data-kind="mesh" data-phase="2" vector-effect="non-scaling-stroke" />
+        <line id="body-edge-18" x1="88" y1="-4" x2="6" y2="3" stroke="#082C4C" stroke-width="0.85" stroke-opacity="0.55" data-anim="edge" data-kind="mesh" data-phase="2" vector-effect="non-scaling-stroke" />
+        <line id="body-edge-19" x1="84" y1="13" x2="6" y2="3" stroke="#082C4C" stroke-width="0.85" stroke-opacity="0.55" data-anim="edge" data-kind="mesh" data-phase="2" vector-effect="non-scaling-stroke" />
+        <line id="body-edge-20" x1="48" y1="8" x2="6" y2="3" stroke="#082C4C" stroke-width="0.85" stroke-opacity="0.55" data-anim="edge" data-kind="mesh" data-phase="2" vector-effect="non-scaling-stroke" />
+        <line id="body-edge-21" x1="6" y1="27" x2="6" y2="3" stroke="#082C4C" stroke-width="0.85" stroke-opacity="0.55" data-anim="edge" data-kind="mesh" data-phase="2" vector-effect="non-scaling-stroke" />
       </g>
       <g id="body-nodes" data-layer="nodes">
-        <circle id="body-node-bt" cx="-50" cy="3" r="1.8" fill="#082C4C" fill-opacity="1" stroke="#FFFFFF" stroke-opacity="1" stroke-width="0.65" data-phase="2" data-anim="node" data-kind="outline" vector-effect="non-scaling-stroke" />
-        <circle id="body-node-b1" cx="-30" cy="-14" r="1.9" fill="#1C83D4" fill-opacity="1" stroke="#FFFFFF" stroke-opacity="1" stroke-width="0.65" data-phase="2" data-anim="node" data-kind="node" vector-effect="non-scaling-stroke" />
-        <circle id="body-node-b2" cx="-5" cy="-21" r="2" fill="#082C4C" fill-opacity="1" stroke="#FFFFFF" stroke-opacity="1" stroke-width="0.65" data-phase="2" data-anim="node" data-kind="node" vector-effect="non-scaling-stroke" />
-        <circle id="body-node-b3" cx="23" cy="-15" r="1.9" fill="#1C83D4" fill-opacity="1" stroke="#FFFFFF" stroke-opacity="1" stroke-width="0.65" data-phase="2" data-anim="node" data-kind="node" vector-effect="non-scaling-stroke" />
-        <circle id="body-node-b4" cx="42" cy="-4" r="2.2" fill="#20C9C4" fill-opacity="1" stroke="#FFFFFF" stroke-opacity="1" stroke-width="0.65" data-phase="2" data-anim="node" data-kind="critical" vector-effect="non-scaling-stroke" />
-        <circle id="body-node-b5" cx="28" cy="17" r="1.9" fill="#082C4C" fill-opacity="1" stroke="#FFFFFF" stroke-opacity="1" stroke-width="0.65" data-phase="2" data-anim="node" data-kind="node" vector-effect="non-scaling-stroke" />
-        <circle id="body-node-b6" cx="3" cy="25" r="2" fill="#1C83D4" fill-opacity="1" stroke="#FFFFFF" stroke-opacity="1" stroke-width="0.65" data-phase="2" data-anim="node" data-kind="node" vector-effect="non-scaling-stroke" />
-        <circle id="body-node-b7" cx="-26" cy="20" r="1.9" fill="#082C4C" fill-opacity="1" stroke="#FFFFFF" stroke-opacity="1" stroke-width="0.65" data-phase="2" data-anim="node" data-kind="node" vector-effect="non-scaling-stroke" />
-        <circle id="body-node-bc" cx="-6" cy="2" r="2.6" fill="#20C9C4" fill-opacity="1" stroke="#FFFFFF" stroke-opacity="1" stroke-width="0.65" data-phase="2" data-anim="node" data-kind="critical" vector-effect="non-scaling-stroke" />
+        <circle id="body-node-tail_root" cx="-52" cy="3" r="1.5" fill="#1C83D4" data-anim="node" data-kind="node" data-phase="2" />
+        <circle id="body-node-back_1" cx="-29" cy="-17" r="1.4" fill="#082C4C" data-anim="node" data-kind="node" data-phase="2" />
+        <circle id="body-node-back_2" cx="3" cy="-21" r="1.6" fill="#1C83D4" data-anim="node" data-kind="node" data-phase="2" />
+        <circle id="body-node-shoulder_near" cx="-4" cy="-14" r="2.1" fill="#20C9C4" data-anim="node" data-kind="joint" data-phase="2" />
+        <circle id="body-node-shoulder_far" cx="0" cy="-9" r="1.8" fill="#1C83D4" data-anim="node" data-kind="joint" data-phase="2" />
+        <circle id="body-node-neck" cx="47" cy="-3" r="1.6" fill="#082C4C" data-anim="node" data-kind="node" data-phase="2" />
+        <circle id="body-node-crown" cx="68" cy="-12" r="1.7" fill="#1C83D4" data-anim="node" data-kind="node" data-phase="2" />
+        <circle id="body-node-head" cx="88" cy="-4" r="1.8" fill="#082C4C" data-anim="node" data-kind="node" data-phase="2" />
+        <circle id="body-node-beak" cx="120" cy="4" r="1.7" fill="#20C9C4" data-anim="node" data-kind="critical" data-phase="2" />
+        <circle id="body-node-throat" cx="84" cy="13" r="1.5" fill="#082C4C" data-anim="node" data-kind="node" data-phase="2" />
+        <circle id="body-node-chest" cx="48" cy="8" r="1.6" fill="#1C83D4" data-anim="node" data-kind="node" data-phase="2" />
+        <circle id="body-node-belly" cx="6" cy="27" r="1.7" fill="#20C9C4" data-anim="node" data-kind="node" data-phase="2" />
+        <circle id="body-node-core" cx="6" cy="3" r="2.5" fill="#20C9C4" data-anim="node" data-kind="critical" data-phase="2" />
+        <circle id="body-node-eye" cx="80" cy="-4" r="1.15" fill="#082C4C" data-anim="node" data-kind="decorative" data-phase="2" />
+        <circle id="body-node-tail_tip_up" cx="-92" cy="-12" r="1.1" fill="#1C83D4" data-anim="node" data-kind="node" data-phase="2" />
+        <circle id="body-node-tail_tip_down" cx="-92" cy="14" r="1.1" fill="#20C9C4" data-anim="node" data-kind="node" data-phase="2" />
       </g>
     </g>
-    <g id="folded-wing" data-bone="folded-wing" opacity="0.96">
-      <g id="folded-wing-faces" data-layer="faces">
-        <polygon id="folded-wing-fold-f01" points="-6,-15 -24,-14 -25,1" fill="#20C9C4" fill-opacity="0.08" data-phase="3" data-anim="face" />
-        <polygon id="folded-wing-fold-f02" points="-24,-14 -47,-2 -25,1" fill="#1C83D4" fill-opacity="0.1" data-phase="3" data-anim="face" />
-        <polygon id="folded-wing-fold-f03" points="-47,-2 -42,12 -25,1" fill="#20C9C4" fill-opacity="0.08" data-phase="3" data-anim="face" />
-        <polygon id="folded-wing-fold-f04" points="-42,12 -16,18 -25,1" fill="#1C83D4" fill-opacity="0.07" data-phase="3" data-anim="face" />
-        <polygon id="folded-wing-fold-f05" points="-16,18 -6,-15 -25,1" fill="#082C4C" fill-opacity="0.04" data-phase="3" data-anim="face" />
+    <g id="folded-wing" data-folded-wing="true" opacity="1">
+      <path d="M -30 -10 C -8 -17 22 -12 44 1 C 27 9 5 15 -20 12 C -35 9 -40 1 -30 -10 Z" fill="#20C9C4" fill-opacity="0.045" stroke="#082C4C" stroke-width="1.25" stroke-linejoin="round" vector-effect="non-scaling-stroke" />
+      <g data-layer="faces">
+        <polygon id="fold_f01" points="-30,-8 0,-12 4,2" fill="#20C9C4" fill-opacity="0.055" data-anim="face" data-phase="2" />
+        <polygon id="fold_f02" points="0,-12 44,1 4,2" fill="#1C83D4" fill-opacity="0.065" data-anim="face" data-phase="2" />
+        <polygon id="fold_f03" points="44,1 -20,12 4,2" fill="#20C9C4" fill-opacity="0.05" data-anim="face" data-phase="2" />
+        <polygon id="fold_f04" points="-20,12 -30,-8 4,2" fill="#1C83D4" fill-opacity="0.04" data-anim="face" data-phase="2" />
       </g>
-      <g id="folded-wing-edges" data-layer="edges" fill="none" stroke-linecap="round" stroke-linejoin="round">
-        <line id="folded-wing-edge-01" x1="-6" y1="-15" x2="-24" y2="-14" stroke="#082C4C" stroke-width="1.55" stroke-opacity="0.94" data-phase="3" data-anim="edge" data-kind="outline" vector-effect="non-scaling-stroke" />
-        <line id="folded-wing-edge-02" x1="-24" y1="-14" x2="-47" y2="-2" stroke="#082C4C" stroke-width="1.55" stroke-opacity="0.94" data-phase="3" data-anim="edge" data-kind="outline" vector-effect="non-scaling-stroke" />
-        <line id="folded-wing-edge-03" x1="-47" y1="-2" x2="-42" y2="12" stroke="#082C4C" stroke-width="1.55" stroke-opacity="0.94" data-phase="3" data-anim="edge" data-kind="outline" vector-effect="non-scaling-stroke" />
-        <line id="folded-wing-edge-04" x1="-42" y1="12" x2="-16" y2="18" stroke="#082C4C" stroke-width="1.55" stroke-opacity="0.94" data-phase="3" data-anim="edge" data-kind="outline" vector-effect="non-scaling-stroke" />
-        <line id="folded-wing-edge-05" x1="-16" y1="18" x2="-6" y2="-15" stroke="#082C4C" stroke-width="1.55" stroke-opacity="0.94" data-phase="3" data-anim="edge" data-kind="outline" vector-effect="non-scaling-stroke" />
-        <line id="folded-wing-edge-06" x1="-6" y1="-15" x2="-25" y2="1" stroke="#1C83D4" stroke-width="1.85" stroke-opacity="1" data-phase="3" data-anim="edge" data-kind="critical" vector-effect="non-scaling-stroke" />
-        <line id="folded-wing-edge-07" x1="-24" y1="-14" x2="-25" y2="1" stroke="#082C4C" stroke-width="1.05" stroke-opacity="0.8" data-phase="3" data-anim="edge" data-kind="mesh" vector-effect="non-scaling-stroke" />
-        <line id="folded-wing-edge-08" x1="-47" y1="-2" x2="-25" y2="1" stroke="#082C4C" stroke-width="1.05" stroke-opacity="0.8" data-phase="3" data-anim="edge" data-kind="mesh" vector-effect="non-scaling-stroke" />
-        <line id="folded-wing-edge-09" x1="-42" y1="12" x2="-25" y2="1" stroke="#082C4C" stroke-width="1.05" stroke-opacity="0.8" data-phase="3" data-anim="edge" data-kind="mesh" vector-effect="non-scaling-stroke" />
-        <line id="folded-wing-edge-10" x1="-16" y1="18" x2="-25" y2="1" stroke="#082C4C" stroke-width="1.05" stroke-opacity="0.8" data-phase="3" data-anim="edge" data-kind="mesh" vector-effect="non-scaling-stroke" />
+      <g data-layer="edges" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <line id="folded-edge-01" x1="-30" y1="-8" x2="0" y2="-12" stroke="#082C4C" stroke-width="1.05" stroke-opacity="0.82" data-anim="edge" data-kind="outline" data-phase="2" vector-effect="non-scaling-stroke" />
+        <line id="folded-edge-02" x1="0" y1="-12" x2="44" y2="1" stroke="#082C4C" stroke-width="1.05" stroke-opacity="0.82" data-anim="edge" data-kind="outline" data-phase="2" vector-effect="non-scaling-stroke" />
+        <line id="folded-edge-03" x1="44" y1="1" x2="-20" y2="12" stroke="#082C4C" stroke-width="1.05" stroke-opacity="0.82" data-anim="edge" data-kind="outline" data-phase="2" vector-effect="non-scaling-stroke" />
+        <line id="folded-edge-04" x1="-20" y1="12" x2="-30" y2="-8" stroke="#082C4C" stroke-width="1.05" stroke-opacity="0.82" data-anim="edge" data-kind="outline" data-phase="2" vector-effect="non-scaling-stroke" />
+        <line id="folded-edge-05" x1="-30" y1="-8" x2="4" y2="2" stroke="#1C83D4" stroke-width="1.15" stroke-opacity="0.85" data-anim="edge" data-kind="critical" data-phase="2" vector-effect="non-scaling-stroke" />
+        <line id="folded-edge-06" x1="0" y1="-12" x2="4" y2="2" stroke="#082C4C" stroke-width="0.75" stroke-opacity="0.48" data-anim="edge" data-kind="mesh" data-phase="2" vector-effect="non-scaling-stroke" />
+        <line id="folded-edge-07" x1="44" y1="1" x2="4" y2="2" stroke="#082C4C" stroke-width="0.75" stroke-opacity="0.48" data-anim="edge" data-kind="mesh" data-phase="2" vector-effect="non-scaling-stroke" />
+        <line id="folded-edge-08" x1="-20" y1="12" x2="4" y2="2" stroke="#082C4C" stroke-width="0.75" stroke-opacity="0.48" data-anim="edge" data-kind="mesh" data-phase="2" vector-effect="non-scaling-stroke" />
       </g>
-      <g id="folded-wing-nodes" data-layer="nodes">
-        <circle id="folded-wing-node-r" cx="-6" cy="-15" r="2" fill="#20C9C4" fill-opacity="1" stroke="#FFFFFF" stroke-opacity="1" stroke-width="0.65" data-phase="3" data-anim="node" data-kind="critical" vector-effect="non-scaling-stroke" />
-        <circle id="folded-wing-node-f1" cx="-24" cy="-14" r="1.7" fill="#1C83D4" fill-opacity="1" stroke="#FFFFFF" stroke-opacity="1" stroke-width="0.65" data-phase="3" data-anim="node" data-kind="node" vector-effect="non-scaling-stroke" />
-        <circle id="folded-wing-node-f2" cx="-47" cy="-2" r="1.8" fill="#082C4C" fill-opacity="1" stroke="#FFFFFF" stroke-opacity="1" stroke-width="0.65" data-phase="3" data-anim="node" data-kind="node" vector-effect="non-scaling-stroke" />
-        <circle id="folded-wing-node-f3" cx="-42" cy="12" r="1.7" fill="#1C83D4" fill-opacity="1" stroke="#FFFFFF" stroke-opacity="1" stroke-width="0.65" data-phase="3" data-anim="node" data-kind="node" vector-effect="non-scaling-stroke" />
-        <circle id="folded-wing-node-f4" cx="-16" cy="18" r="1.7" fill="#082C4C" fill-opacity="1" stroke="#FFFFFF" stroke-opacity="1" stroke-width="0.65" data-phase="3" data-anim="node" data-kind="node" vector-effect="non-scaling-stroke" />
-        <circle id="folded-wing-node-fc" cx="-25" cy="1" r="2.2" fill="#20C9C4" fill-opacity="1" stroke="#FFFFFF" stroke-opacity="1" stroke-width="0.65" data-phase="3" data-anim="node" data-kind="critical" vector-effect="non-scaling-stroke" />
+      <g data-layer="nodes">
+        <circle id="folded-node-root" cx="-30" cy="-8" r="1.5" fill="#20C9C4" data-anim="node" data-kind="joint" data-phase="2" />
+        <circle id="folded-node-top" cx="0" cy="-12" r="1.4" fill="#1C83D4" data-anim="node" data-kind="node" data-phase="2" />
+        <circle id="folded-node-tip" cx="44" cy="1" r="1.5" fill="#20C9C4" data-anim="node" data-kind="critical" data-phase="2" />
+        <circle id="folded-node-bottom" cx="-20" cy="12" r="1.3" fill="#082C4C" data-anim="node" data-kind="node" data-phase="2" />
+        <circle id="folded-node-core" cx="4" cy="2" r="2" fill="#1C83D4" data-anim="node" data-kind="node" data-phase="2" />
       </g>
     </g>
-    <g id="wing-near" class="bird-wing bird-wing-near" data-side="near" transform="translate(-6 -16)" opacity="0">
-      <g id="wing-near-upper" data-bone="wing-near-upper" transform="rotate(-54)">
-      <g id="wing-near-upper-faces" data-layer="faces">
-        <polygon id="wing-near-upper-upper-f01" points="0,0 -17,-13 -16,-1" fill="#20C9C4" fill-opacity="0.07" data-phase="3" data-anim="face" />
-        <polygon id="wing-near-upper-upper-f02" points="-17,-13 -35,-16 -16,-1" fill="#1C83D4" fill-opacity="0.09" data-phase="3" data-anim="face" />
-        <polygon id="wing-near-upper-upper-f03" points="-35,-16 -29,7 -16,-1" fill="#20C9C4" fill-opacity="0.08" data-phase="3" data-anim="face" />
-        <polygon id="wing-near-upper-upper-f04" points="-29,7 -8,10 -16,-1" fill="#082C4C" fill-opacity="0.04" data-phase="3" data-anim="face" />
-        <polygon id="wing-near-upper-upper-f05" points="-8,10 0,0 -16,-1" fill="#1C83D4" fill-opacity="0.05" data-phase="3" data-anim="face" />
+    <g id="wing-near" data-wing="near" opacity="0">
+      <path id="wing-near-surface" data-wing-outline="near" d="M -4.2707 -4.6113 C -5.0299 -4.737 -6.9731 -5.1312 -8.8258 -5.3654 C -10.6784 -5.5996 -13.1426 -6.0086 -15.3866 -6.0165 C -17.6306 -6.0245 -20.4307 -5.7417 -22.2899 -5.4129 C -24.1492 -5.084 -26.5645 -4.5832 -26.5421 -4.0435 C -26.5196 -3.5038 -23.5787 -2.7043 -22.155 -2.1749 C -20.7313 -1.6454 -18.6923 -1.0849 -17.9998 -0.8669 L -17.9998 -0.8669 C -19.5541 -1.1177 -24.362 -1.846 -27.3253 -2.3718 C -30.2886 -2.8977 -34.6839 -3.6453 -35.7794 -4.0221 C -36.8749 -4.399 -35.1366 -4.4723 -33.8984 -4.633 C -32.6601 -4.7936 -30.2698 -5.0019 -28.3498 -4.9862 C -26.4298 -4.9705 -24.3401 -4.738 -22.3783 -4.5387 C -20.4165 -4.3395 -17.5455 -3.9153 -16.5789 -3.7906 Z" fill="#20C9C4" fill-opacity="0.038" stroke="#082C4C" stroke-width="1.45" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke" />
+      <g id="wing-near-faces" data-wing-faces="near">
+        <polygon data-wing-face="near:0:a" points="-4.2707,-4.6113 -8.8258,-5.3654 -16.5789,-3.7906" fill="#20C9C4" fill-opacity="0.038" />
+        <polygon data-wing-face="near:0:b" points="-8.8258,-5.3654 -22.3783,-4.5387 -16.5789,-3.7906" fill="#1C83D4" fill-opacity="0.032" />
+        <polygon data-wing-face="near:1:a" points="-8.8258,-5.3654 -15.3866,-6.0165 -22.3783,-4.5387" fill="#1C83D4" fill-opacity="0.038" />
+        <polygon data-wing-face="near:1:b" points="-15.3866,-6.0165 -28.3498,-4.9862 -22.3783,-4.5387" fill="#20C9C4" fill-opacity="0.032" />
+        <polygon data-wing-face="near:2:a" points="-15.3866,-6.0165 -22.2899,-5.4129 -28.3498,-4.9862" fill="#20C9C4" fill-opacity="0.038" />
+        <polygon data-wing-face="near:2:b" points="-22.2899,-5.4129 -33.8984,-4.633 -28.3498,-4.9862" fill="#1C83D4" fill-opacity="0.032" />
+        <polygon data-wing-face="near:3:a" points="-22.2899,-5.4129 -26.5421,-4.0435 -33.8984,-4.633" fill="#1C83D4" fill-opacity="0.038" />
+        <polygon data-wing-face="near:3:b" points="-26.5421,-4.0435 -35.7794,-4.0221 -33.8984,-4.633" fill="#20C9C4" fill-opacity="0.032" />
+        <polygon data-wing-face="near:4:a" points="-26.5421,-4.0435 -22.155,-2.1749 -35.7794,-4.0221" fill="#20C9C4" fill-opacity="0.038" />
+        <polygon data-wing-face="near:4:b" points="-22.155,-2.1749 -27.3253,-2.3718 -35.7794,-4.0221" fill="#1C83D4" fill-opacity="0.032" />
+        <polygon data-wing-face="near:5:a" points="-22.155,-2.1749 -17.9998,-0.8669 -27.3253,-2.3718" fill="#1C83D4" fill-opacity="0.038" />
+        <polygon data-wing-face="near:5:b" points="-17.9998,-0.8669 -17.9998,-0.8669 -27.3253,-2.3718" fill="#20C9C4" fill-opacity="0.032" />
       </g>
-      <g id="wing-near-upper-edges" data-layer="edges" fill="none" stroke-linecap="round" stroke-linejoin="round">
-        <line id="wing-near-upper-edge-01" x1="0" y1="0" x2="-17" y2="-13" stroke="#082C4C" stroke-width="1.55" stroke-opacity="0.94" data-phase="3" data-anim="edge" data-kind="outline" vector-effect="non-scaling-stroke" />
-        <line id="wing-near-upper-edge-02" x1="-17" y1="-13" x2="-35" y2="-16" stroke="#082C4C" stroke-width="1.55" stroke-opacity="0.94" data-phase="3" data-anim="edge" data-kind="outline" vector-effect="non-scaling-stroke" />
-        <line id="wing-near-upper-edge-03" x1="-35" y1="-16" x2="-29" y2="7" stroke="#082C4C" stroke-width="1.55" stroke-opacity="0.94" data-phase="3" data-anim="edge" data-kind="outline" vector-effect="non-scaling-stroke" />
-        <line id="wing-near-upper-edge-04" x1="-29" y1="7" x2="-8" y2="10" stroke="#082C4C" stroke-width="1.55" stroke-opacity="0.94" data-phase="3" data-anim="edge" data-kind="outline" vector-effect="non-scaling-stroke" />
-        <line id="wing-near-upper-edge-05" x1="-8" y1="10" x2="0" y2="0" stroke="#082C4C" stroke-width="1.55" stroke-opacity="0.94" data-phase="3" data-anim="edge" data-kind="outline" vector-effect="non-scaling-stroke" />
-        <line id="wing-near-upper-edge-06" x1="0" y1="0" x2="-16" y2="-1" stroke="#1C83D4" stroke-width="1.85" stroke-opacity="1" data-phase="3" data-anim="edge" data-kind="critical" vector-effect="non-scaling-stroke" />
-        <line id="wing-near-upper-edge-07" x1="-17" y1="-13" x2="-16" y2="-1" stroke="#082C4C" stroke-width="1.05" stroke-opacity="0.8" data-phase="3" data-anim="edge" data-kind="mesh" vector-effect="non-scaling-stroke" />
-        <line id="wing-near-upper-edge-08" x1="-35" y1="-16" x2="-16" y2="-1" stroke="#082C4C" stroke-width="1.05" stroke-opacity="0.8" data-phase="3" data-anim="edge" data-kind="mesh" vector-effect="non-scaling-stroke" />
-        <line id="wing-near-upper-edge-09" x1="-29" y1="7" x2="-16" y2="-1" stroke="#082C4C" stroke-width="1.05" stroke-opacity="0.8" data-phase="3" data-anim="edge" data-kind="mesh" vector-effect="non-scaling-stroke" />
-        <line id="wing-near-upper-edge-10" x1="-8" y1="10" x2="-16" y2="-1" stroke="#082C4C" stroke-width="1.05" stroke-opacity="0.8" data-phase="3" data-anim="edge" data-kind="mesh" vector-effect="non-scaling-stroke" />
+      <g id="wing-near-mesh" data-wing-mesh="near" fill="none" stroke="#082C4C" stroke-width="0.9" stroke-opacity="0.48" stroke-linecap="round" vector-effect="non-scaling-stroke">
+        <line data-wing-spar="near:0" x1="-4.2707" y1="-4.6113" x2="-16.5789" y2="-3.7906" />
+        <line data-wing-spar="near:1" x1="-8.8258" y1="-5.3654" x2="-22.3783" y2="-4.5387" />
+        <line data-wing-spar="near:2" x1="-15.3866" y1="-6.0165" x2="-28.3498" y2="-4.9862" />
+        <line data-wing-spar="near:3" x1="-22.2899" y1="-5.4129" x2="-33.8984" y2="-4.633" />
+        <line data-wing-spar="near:4" x1="-26.5421" y1="-4.0435" x2="-35.7794" y2="-4.0221" />
+        <line data-wing-spar="near:5" x1="-22.155" y1="-2.1749" x2="-27.3253" y2="-2.3718" />
+        <line data-wing-spar="near:6" x1="-17.9998" y1="-0.8669" x2="-17.9998" y2="-0.8669" />
+        <line data-wing-diagonal="near:0" x1="-16.5789" y1="-3.7906" x2="-8.8258" y2="-5.3654" />
+        <line data-wing-diagonal="near:1" x1="-8.8258" y1="-5.3654" x2="-28.3498" y2="-4.9862" />
+        <line data-wing-diagonal="near:2" x1="-28.3498" y1="-4.9862" x2="-22.2899" y2="-5.4129" />
+        <line data-wing-diagonal="near:3" x1="-22.2899" y1="-5.4129" x2="-35.7794" y2="-4.0221" />
+        <line data-wing-diagonal="near:4" x1="-35.7794" y1="-4.0221" x2="-22.155" y2="-2.1749" />
+        <line data-wing-diagonal="near:5" x1="-22.155" y1="-2.1749" x2="-17.9998" y2="-0.8669" />
       </g>
-      <g id="wing-near-upper-nodes" data-layer="nodes">
-        <circle id="wing-near-upper-node-s" cx="0" cy="0" r="2.2" fill="#20C9C4" fill-opacity="1" stroke="#FFFFFF" stroke-opacity="1" stroke-width="0.65" data-phase="3" data-anim="node" data-kind="critical" vector-effect="non-scaling-stroke" />
-        <circle id="wing-near-upper-node-u1" cx="-17" cy="-13" r="1.7" fill="#082C4C" fill-opacity="1" stroke="#FFFFFF" stroke-opacity="1" stroke-width="0.65" data-phase="3" data-anim="node" data-kind="node" vector-effect="non-scaling-stroke" />
-        <circle id="wing-near-upper-node-e" cx="-35" cy="-16" r="2.2" fill="#1C83D4" fill-opacity="1" stroke="#FFFFFF" stroke-opacity="1" stroke-width="0.65" data-phase="3" data-anim="node" data-kind="joint" vector-effect="non-scaling-stroke" />
-        <circle id="wing-near-upper-node-u2" cx="-29" cy="7" r="1.7" fill="#082C4C" fill-opacity="1" stroke="#FFFFFF" stroke-opacity="1" stroke-width="0.65" data-phase="3" data-anim="node" data-kind="node" vector-effect="non-scaling-stroke" />
-        <circle id="wing-near-upper-node-u3" cx="-8" cy="10" r="1.7" fill="#082C4C" fill-opacity="1" stroke="#FFFFFF" stroke-opacity="1" stroke-width="0.65" data-phase="3" data-anim="node" data-kind="node" vector-effect="non-scaling-stroke" />
-        <circle id="wing-near-upper-node-uc" cx="-16" cy="-1" r="2.1" fill="#20C9C4" fill-opacity="1" stroke="#FFFFFF" stroke-opacity="1" stroke-width="0.65" data-phase="3" data-anim="node" data-kind="critical" vector-effect="non-scaling-stroke" />
-      </g>
-        <g id="wing-near-forearm" data-bone="wing-near-forearm" transform="translate(-35 -16) rotate(188)">
-      <g id="wing-near-forearm-faces" data-layer="faces">
-        <polygon id="wing-near-forearm-forearm-f01" points="0,0 -17,-8 -16,4" fill="#1C83D4" fill-opacity="0.07" data-phase="4" data-anim="face" />
-        <polygon id="wing-near-forearm-forearm-f02" points="-17,-8 -34,7 -16,4" fill="#20C9C4" fill-opacity="0.09" data-phase="4" data-anim="face" />
-        <polygon id="wing-near-forearm-forearm-f03" points="-34,7 -24,17 -16,4" fill="#1C83D4" fill-opacity="0.08" data-phase="4" data-anim="face" />
-        <polygon id="wing-near-forearm-forearm-f04" points="-24,17 -5,13 -16,4" fill="#082C4C" fill-opacity="0.04" data-phase="4" data-anim="face" />
-        <polygon id="wing-near-forearm-forearm-f05" points="-5,13 0,0 -16,4" fill="#20C9C4" fill-opacity="0.05" data-phase="4" data-anim="face" />
-      </g>
-      <g id="wing-near-forearm-edges" data-layer="edges" fill="none" stroke-linecap="round" stroke-linejoin="round">
-        <line id="wing-near-forearm-edge-01" x1="0" y1="0" x2="-17" y2="-8" stroke="#082C4C" stroke-width="1.55" stroke-opacity="0.94" data-phase="4" data-anim="edge" data-kind="outline" vector-effect="non-scaling-stroke" />
-        <line id="wing-near-forearm-edge-02" x1="-17" y1="-8" x2="-34" y2="7" stroke="#082C4C" stroke-width="1.55" stroke-opacity="0.94" data-phase="4" data-anim="edge" data-kind="outline" vector-effect="non-scaling-stroke" />
-        <line id="wing-near-forearm-edge-03" x1="-34" y1="7" x2="-24" y2="17" stroke="#082C4C" stroke-width="1.55" stroke-opacity="0.94" data-phase="4" data-anim="edge" data-kind="outline" vector-effect="non-scaling-stroke" />
-        <line id="wing-near-forearm-edge-04" x1="-24" y1="17" x2="-5" y2="13" stroke="#082C4C" stroke-width="1.55" stroke-opacity="0.94" data-phase="4" data-anim="edge" data-kind="outline" vector-effect="non-scaling-stroke" />
-        <line id="wing-near-forearm-edge-05" x1="-5" y1="13" x2="0" y2="0" stroke="#082C4C" stroke-width="1.55" stroke-opacity="0.94" data-phase="4" data-anim="edge" data-kind="outline" vector-effect="non-scaling-stroke" />
-        <line id="wing-near-forearm-edge-06" x1="0" y1="0" x2="-16" y2="4" stroke="#082C4C" stroke-width="1.05" stroke-opacity="0.8" data-phase="4" data-anim="edge" data-kind="mesh" vector-effect="non-scaling-stroke" />
-        <line id="wing-near-forearm-edge-07" x1="-17" y1="-8" x2="-16" y2="4" stroke="#082C4C" stroke-width="1.05" stroke-opacity="0.8" data-phase="4" data-anim="edge" data-kind="mesh" vector-effect="non-scaling-stroke" />
-        <line id="wing-near-forearm-edge-08" x1="-34" y1="7" x2="-16" y2="4" stroke="#1C83D4" stroke-width="1.85" stroke-opacity="1" data-phase="4" data-anim="edge" data-kind="critical" vector-effect="non-scaling-stroke" />
-        <line id="wing-near-forearm-edge-09" x1="-24" y1="17" x2="-16" y2="4" stroke="#082C4C" stroke-width="1.05" stroke-opacity="0.8" data-phase="4" data-anim="edge" data-kind="mesh" vector-effect="non-scaling-stroke" />
-        <line id="wing-near-forearm-edge-10" x1="-5" y1="13" x2="-16" y2="4" stroke="#082C4C" stroke-width="1.05" stroke-opacity="0.8" data-phase="4" data-anim="edge" data-kind="mesh" vector-effect="non-scaling-stroke" />
-      </g>
-      <g id="wing-near-forearm-nodes" data-layer="nodes">
-        <circle id="wing-near-forearm-node-e" cx="0" cy="0" r="2.1" fill="#1C83D4" fill-opacity="1" stroke="#FFFFFF" stroke-opacity="1" stroke-width="0.65" data-phase="4" data-anim="node" data-kind="joint" vector-effect="non-scaling-stroke" />
-        <circle id="wing-near-forearm-node-f1" cx="-17" cy="-8" r="1.6" fill="#082C4C" fill-opacity="1" stroke="#FFFFFF" stroke-opacity="1" stroke-width="0.65" data-phase="4" data-anim="node" data-kind="node" vector-effect="non-scaling-stroke" />
-        <circle id="wing-near-forearm-node-w" cx="-34" cy="7" r="2.2" fill="#20C9C4" fill-opacity="1" stroke="#FFFFFF" stroke-opacity="1" stroke-width="0.65" data-phase="4" data-anim="node" data-kind="joint" vector-effect="non-scaling-stroke" />
-        <circle id="wing-near-forearm-node-f2" cx="-24" cy="17" r="1.6" fill="#082C4C" fill-opacity="1" stroke="#FFFFFF" stroke-opacity="1" stroke-width="0.65" data-phase="4" data-anim="node" data-kind="node" vector-effect="non-scaling-stroke" />
-        <circle id="wing-near-forearm-node-f3" cx="-5" cy="13" r="1.6" fill="#082C4C" fill-opacity="1" stroke="#FFFFFF" stroke-opacity="1" stroke-width="0.65" data-phase="4" data-anim="node" data-kind="node" vector-effect="non-scaling-stroke" />
-        <circle id="wing-near-forearm-node-fc" cx="-16" cy="4" r="2" fill="#1C83D4" fill-opacity="1" stroke="#FFFFFF" stroke-opacity="1" stroke-width="0.65" data-phase="4" data-anim="node" data-kind="node" vector-effect="non-scaling-stroke" />
-      </g>
-          <g id="wing-near-hand" data-bone="wing-near-hand" transform="translate(-34 7) rotate(-144)">
-      <g id="wing-near-hand-faces" data-layer="faces">
-        <polygon id="wing-near-hand-hand-f01" points="0,0 -12,-8 -24,4" fill="#20C9C4" fill-opacity="0.06" data-phase="5" data-anim="face" />
-        <polygon id="wing-near-hand-hand-f02" points="-12,-8 -46,-12 -24,4" fill="#1C83D4" fill-opacity="0.08" data-phase="5" data-anim="face" />
-        <polygon id="wing-near-hand-hand-f03" points="-46,-12 -61,-4 -24,4" fill="#20C9C4" fill-opacity="0.09" data-phase="5" data-anim="face" />
-        <polygon id="wing-near-hand-hand-f04" points="-61,-4 -62,5 -24,4" fill="#1C83D4" fill-opacity="0.08" data-phase="5" data-anim="face" />
-        <polygon id="wing-near-hand-hand-f05" points="-62,5 -54,13 -24,4" fill="#082C4C" fill-opacity="0.04" data-phase="5" data-anim="face" />
-        <polygon id="wing-near-hand-hand-f06" points="-54,13 -42,19 -24,4" fill="#20C9C4" fill-opacity="0.06" data-phase="5" data-anim="face" />
-        <polygon id="wing-near-hand-hand-f07" points="-42,19 -8,16 -24,4" fill="#1C83D4" fill-opacity="0.06" data-phase="5" data-anim="face" />
-        <polygon id="wing-near-hand-hand-f08" points="-8,16 0,0 -24,4" fill="#20C9C4" fill-opacity="0.05" data-phase="5" data-anim="face" />
-      </g>
-      <g id="wing-near-hand-edges" data-layer="edges" fill="none" stroke-linecap="round" stroke-linejoin="round">
-        <line id="wing-near-hand-edge-01" x1="0" y1="0" x2="-12" y2="-8" stroke="#082C4C" stroke-width="1.55" stroke-opacity="0.94" data-phase="5" data-anim="edge" data-kind="outline" vector-effect="non-scaling-stroke" />
-        <line id="wing-near-hand-edge-02" x1="-12" y1="-8" x2="-46" y2="-12" stroke="#082C4C" stroke-width="1.55" stroke-opacity="0.94" data-phase="5" data-anim="edge" data-kind="outline" vector-effect="non-scaling-stroke" />
-        <line id="wing-near-hand-edge-03" x1="-46" y1="-12" x2="-61" y2="-4" stroke="#082C4C" stroke-width="1.55" stroke-opacity="0.94" data-phase="5" data-anim="edge" data-kind="outline" vector-effect="non-scaling-stroke" />
-        <line id="wing-near-hand-edge-04" x1="-61" y1="-4" x2="-62" y2="5" stroke="#082C4C" stroke-width="1.55" stroke-opacity="0.94" data-phase="5" data-anim="edge" data-kind="outline" vector-effect="non-scaling-stroke" />
-        <line id="wing-near-hand-edge-05" x1="-62" y1="5" x2="-54" y2="13" stroke="#082C4C" stroke-width="1.55" stroke-opacity="0.94" data-phase="5" data-anim="edge" data-kind="outline" vector-effect="non-scaling-stroke" />
-        <line id="wing-near-hand-edge-06" x1="-54" y1="13" x2="-42" y2="19" stroke="#082C4C" stroke-width="1.55" stroke-opacity="0.94" data-phase="5" data-anim="edge" data-kind="outline" vector-effect="non-scaling-stroke" />
-        <line id="wing-near-hand-edge-07" x1="-42" y1="19" x2="-8" y2="16" stroke="#082C4C" stroke-width="1.55" stroke-opacity="0.94" data-phase="5" data-anim="edge" data-kind="outline" vector-effect="non-scaling-stroke" />
-        <line id="wing-near-hand-edge-08" x1="-8" y1="16" x2="0" y2="0" stroke="#082C4C" stroke-width="1.55" stroke-opacity="0.94" data-phase="5" data-anim="edge" data-kind="outline" vector-effect="non-scaling-stroke" />
-        <line id="wing-near-hand-edge-09" x1="0" y1="0" x2="-24" y2="4" stroke="#1C83D4" stroke-width="1.85" stroke-opacity="1" data-phase="5" data-anim="edge" data-kind="critical" vector-effect="non-scaling-stroke" />
-        <line id="wing-near-hand-edge-10" x1="-12" y1="-8" x2="-24" y2="4" stroke="#082C4C" stroke-width="1.05" stroke-opacity="0.8" data-phase="5" data-anim="edge" data-kind="mesh" vector-effect="non-scaling-stroke" />
-        <line id="wing-near-hand-edge-11" x1="-46" y1="-12" x2="-24" y2="4" stroke="#082C4C" stroke-width="1.05" stroke-opacity="0.8" data-phase="5" data-anim="edge" data-kind="mesh" vector-effect="non-scaling-stroke" />
-        <line id="wing-near-hand-edge-12" x1="-61" y1="-4" x2="-24" y2="4" stroke="#082C4C" stroke-width="1.05" stroke-opacity="0.8" data-phase="5" data-anim="edge" data-kind="mesh" vector-effect="non-scaling-stroke" />
-        <line id="wing-near-hand-edge-13" x1="-62" y1="5" x2="-24" y2="4" stroke="#082C4C" stroke-width="1.05" stroke-opacity="0.8" data-phase="5" data-anim="edge" data-kind="mesh" vector-effect="non-scaling-stroke" />
-        <line id="wing-near-hand-edge-14" x1="-54" y1="13" x2="-24" y2="4" stroke="#082C4C" stroke-width="1.05" stroke-opacity="0.8" data-phase="5" data-anim="edge" data-kind="mesh" vector-effect="non-scaling-stroke" />
-        <line id="wing-near-hand-edge-15" x1="-42" y1="19" x2="-24" y2="4" stroke="#082C4C" stroke-width="1.05" stroke-opacity="0.8" data-phase="5" data-anim="edge" data-kind="mesh" vector-effect="non-scaling-stroke" />
-        <line id="wing-near-hand-edge-16" x1="-8" y1="16" x2="-24" y2="4" stroke="#082C4C" stroke-width="1.05" stroke-opacity="0.8" data-phase="5" data-anim="edge" data-kind="mesh" vector-effect="non-scaling-stroke" />
-      </g>
-      <g id="wing-near-hand-nodes" data-layer="nodes">
-        <circle id="wing-near-hand-node-w" cx="0" cy="0" r="2.1" fill="#20C9C4" fill-opacity="1" stroke="#FFFFFF" stroke-opacity="1" stroke-width="0.65" data-phase="5" data-anim="node" data-kind="joint" vector-effect="non-scaling-stroke" />
-        <circle id="wing-near-hand-node-h1" cx="-12" cy="-8" r="1.5" fill="#082C4C" fill-opacity="1" stroke="#FFFFFF" stroke-opacity="1" stroke-width="0.65" data-phase="5" data-anim="node" data-kind="node" vector-effect="non-scaling-stroke" />
-        <circle id="wing-near-hand-node-p0" cx="-46" cy="-12" r="1.5" fill="#1C83D4" fill-opacity="1" stroke="#FFFFFF" stroke-opacity="1" stroke-width="0.65" data-phase="5" data-anim="node" data-kind="feather" vector-effect="non-scaling-stroke" />
-        <circle id="wing-near-hand-node-p1" cx="-61" cy="-4" r="1.6" fill="#20C9C4" fill-opacity="1" stroke="#FFFFFF" stroke-opacity="1" stroke-width="0.65" data-phase="5" data-anim="node" data-kind="feather" vector-effect="non-scaling-stroke" />
-        <circle id="wing-near-hand-node-p2" cx="-62" cy="5" r="1.5" fill="#1C83D4" fill-opacity="1" stroke="#FFFFFF" stroke-opacity="1" stroke-width="0.65" data-phase="5" data-anim="node" data-kind="feather" vector-effect="non-scaling-stroke" />
-        <circle id="wing-near-hand-node-p3" cx="-54" cy="13" r="1.5" fill="#082C4C" fill-opacity="1" stroke="#FFFFFF" stroke-opacity="1" stroke-width="0.65" data-phase="5" data-anim="node" data-kind="feather" vector-effect="non-scaling-stroke" />
-        <circle id="wing-near-hand-node-p4" cx="-42" cy="19" r="1.5" fill="#1C83D4" fill-opacity="1" stroke="#FFFFFF" stroke-opacity="1" stroke-width="0.65" data-phase="5" data-anim="node" data-kind="feather" vector-effect="non-scaling-stroke" />
-        <circle id="wing-near-hand-node-h2" cx="-8" cy="16" r="1.6" fill="#082C4C" fill-opacity="1" stroke="#FFFFFF" stroke-opacity="1" stroke-width="0.65" data-phase="5" data-anim="node" data-kind="node" vector-effect="non-scaling-stroke" />
-        <circle id="wing-near-hand-node-hc" cx="-24" cy="4" r="2" fill="#20C9C4" fill-opacity="1" stroke="#FFFFFF" stroke-opacity="1" stroke-width="0.65" data-phase="5" data-anim="node" data-kind="critical" vector-effect="non-scaling-stroke" />
-      </g>
-          </g>
-        </g>
+      <g id="wing-near-joints" data-wing-joints="near">
+        <circle data-wing-joint="near:shoulder" cx="-6.24" cy="-4.48" r="2" fill="#20C9C4" />
+        <circle data-wing-joint="near:elbow" cx="-17.5704" cy="-5.8504" r="1.7" fill="#1C83D4" />
+        <circle data-wing-joint="near:wrist" cx="-28.0514" cy="-4.1447" r="1.7" fill="#20C9C4" />
+        <circle data-wing-joint="near:tip" cx="-17.9998" cy="-0.8669" r="1.45" fill="#1C83D4" />
       </g>
     </g>
-    <g id="bird-head" data-bone="head">
-      <g id="head-faces" data-layer="faces">
-        <polygon id="head-head-f01" points="32,-13 43,-29 53,-17" fill="#20C9C4" fill-opacity="0.07" data-phase="6" data-anim="face" />
-        <polygon id="head-head-f02" points="43,-29 60,-30 53,-17" fill="#1C83D4" fill-opacity="0.09" data-phase="6" data-anim="face" />
-        <polygon id="head-head-f03" points="60,-30 69,-21 53,-17" fill="#20C9C4" fill-opacity="0.1" data-phase="6" data-anim="face" />
-        <polygon id="head-head-f04" points="69,-21 103,-15 68,-10" fill="#1C83D4" fill-opacity="0.09" data-phase="6" data-anim="face" />
-        <polygon id="head-head-f05" points="69,-21 68,-10 53,-17" fill="#20C9C4" fill-opacity="0.07" data-phase="6" data-anim="face" />
-        <polygon id="head-head-f06" points="68,-10 51,-6 53,-17" fill="#082C4C" fill-opacity="0.04" data-phase="6" data-anim="face" />
-        <polygon id="head-head-f07" points="51,-6 36,1 53,-17" fill="#1C83D4" fill-opacity="0.06" data-phase="6" data-anim="face" />
-        <polygon id="head-head-f08" points="36,1 32,-13 53,-17" fill="#20C9C4" fill-opacity="0.06" data-phase="6" data-anim="face" />
+    <g id="lidar-scan" data-layer="lidar" transform="translate(94 4)" opacity="0" pointer-events="none">
+      <g id="lidar-sweep" data-lidar-sweep="true">
+        <path d="M 0 0 L 62 -10 A 63 63 0 0 1 62 10 Z" fill="#20C9C4" fill-opacity="0.11" />
+        <line x1="0" y1="0" x2="66" y2="0" stroke="#1C83D4" stroke-width="1.1" stroke-linecap="round" vector-effect="non-scaling-stroke" />
       </g>
-      <g id="head-edges" data-layer="edges" fill="none" stroke-linecap="round" stroke-linejoin="round">
-        <line id="head-edge-01" x1="32" y1="-13" x2="43" y2="-29" stroke="#082C4C" stroke-width="1.55" stroke-opacity="0.94" data-phase="6" data-anim="edge" data-kind="outline" vector-effect="non-scaling-stroke" />
-        <line id="head-edge-02" x1="43" y1="-29" x2="60" y2="-30" stroke="#082C4C" stroke-width="1.55" stroke-opacity="0.94" data-phase="6" data-anim="edge" data-kind="outline" vector-effect="non-scaling-stroke" />
-        <line id="head-edge-03" x1="60" y1="-30" x2="69" y2="-21" stroke="#082C4C" stroke-width="1.55" stroke-opacity="0.94" data-phase="6" data-anim="edge" data-kind="outline" vector-effect="non-scaling-stroke" />
-        <line id="head-edge-04" x1="69" y1="-21" x2="103" y2="-15" stroke="#1C83D4" stroke-width="1.85" stroke-opacity="1" data-phase="6" data-anim="edge" data-kind="critical" vector-effect="non-scaling-stroke" />
-        <line id="head-edge-05" x1="103" y1="-15" x2="68" y2="-10" stroke="#082C4C" stroke-width="1.55" stroke-opacity="0.94" data-phase="6" data-anim="edge" data-kind="outline" vector-effect="non-scaling-stroke" />
-        <line id="head-edge-06" x1="68" y1="-10" x2="51" y2="-6" stroke="#082C4C" stroke-width="1.55" stroke-opacity="0.94" data-phase="6" data-anim="edge" data-kind="outline" vector-effect="non-scaling-stroke" />
-        <line id="head-edge-07" x1="51" y1="-6" x2="36" y2="1" stroke="#082C4C" stroke-width="1.55" stroke-opacity="0.94" data-phase="6" data-anim="edge" data-kind="outline" vector-effect="non-scaling-stroke" />
-        <line id="head-edge-08" x1="36" y1="1" x2="32" y2="-13" stroke="#082C4C" stroke-width="1.55" stroke-opacity="0.94" data-phase="6" data-anim="edge" data-kind="outline" vector-effect="non-scaling-stroke" />
-        <line id="head-edge-09" x1="32" y1="-13" x2="53" y2="-17" stroke="#082C4C" stroke-width="1.05" stroke-opacity="0.8" data-phase="6" data-anim="edge" data-kind="mesh" vector-effect="non-scaling-stroke" />
-        <line id="head-edge-10" x1="43" y1="-29" x2="53" y2="-17" stroke="#082C4C" stroke-width="1.05" stroke-opacity="0.8" data-phase="6" data-anim="edge" data-kind="mesh" vector-effect="non-scaling-stroke" />
-        <line id="head-edge-11" x1="60" y1="-30" x2="53" y2="-17" stroke="#082C4C" stroke-width="1.05" stroke-opacity="0.8" data-phase="6" data-anim="edge" data-kind="mesh" vector-effect="non-scaling-stroke" />
-        <line id="head-edge-12" x1="69" y1="-21" x2="53" y2="-17" stroke="#1C83D4" stroke-width="1.85" stroke-opacity="1" data-phase="6" data-anim="edge" data-kind="critical" vector-effect="non-scaling-stroke" />
-        <line id="head-edge-13" x1="68" y1="-10" x2="53" y2="-17" stroke="#082C4C" stroke-width="1.05" stroke-opacity="0.8" data-phase="6" data-anim="edge" data-kind="mesh" vector-effect="non-scaling-stroke" />
-        <line id="head-edge-14" x1="51" y1="-6" x2="53" y2="-17" stroke="#082C4C" stroke-width="1.05" stroke-opacity="0.8" data-phase="6" data-anim="edge" data-kind="mesh" vector-effect="non-scaling-stroke" />
-        <line id="head-edge-15" x1="36" y1="1" x2="53" y2="-17" stroke="#082C4C" stroke-width="1.05" stroke-opacity="0.8" data-phase="6" data-anim="edge" data-kind="mesh" vector-effect="non-scaling-stroke" />
-      </g>
-      <g id="head-nodes" data-layer="nodes">
-        <circle id="head-node-n0" cx="32" cy="-13" r="1.8" fill="#082C4C" fill-opacity="1" stroke="#FFFFFF" stroke-opacity="1" stroke-width="0.65" data-phase="6" data-anim="node" data-kind="outline" vector-effect="non-scaling-stroke" />
-        <circle id="head-node-h0" cx="43" cy="-29" r="1.9" fill="#1C83D4" fill-opacity="1" stroke="#FFFFFF" stroke-opacity="1" stroke-width="0.65" data-phase="6" data-anim="node" data-kind="node" vector-effect="non-scaling-stroke" />
-        <circle id="head-node-h1" cx="60" cy="-30" r="1.9" fill="#082C4C" fill-opacity="1" stroke="#FFFFFF" stroke-opacity="1" stroke-width="0.65" data-phase="6" data-anim="node" data-kind="node" vector-effect="non-scaling-stroke" />
-        <circle id="head-node-h2" cx="69" cy="-21" r="2" fill="#1C83D4" fill-opacity="1" stroke="#FFFFFF" stroke-opacity="1" stroke-width="0.65" data-phase="6" data-anim="node" data-kind="node" vector-effect="non-scaling-stroke" />
-        <circle id="head-node-bk" cx="103" cy="-15" r="1.8" fill="#20C9C4" fill-opacity="1" stroke="#FFFFFF" stroke-opacity="1" stroke-width="0.65" data-phase="6" data-anim="node" data-kind="critical" vector-effect="non-scaling-stroke" />
-        <circle id="head-node-bb" cx="68" cy="-10" r="1.7" fill="#082C4C" fill-opacity="1" stroke="#FFFFFF" stroke-opacity="1" stroke-width="0.65" data-phase="6" data-anim="node" data-kind="outline" vector-effect="non-scaling-stroke" />
-        <circle id="head-node-h3" cx="51" cy="-6" r="1.8" fill="#082C4C" fill-opacity="1" stroke="#FFFFFF" stroke-opacity="1" stroke-width="0.65" data-phase="6" data-anim="node" data-kind="node" vector-effect="non-scaling-stroke" />
-        <circle id="head-node-n1" cx="36" cy="1" r="1.8" fill="#082C4C" fill-opacity="1" stroke="#FFFFFF" stroke-opacity="1" stroke-width="0.65" data-phase="6" data-anim="node" data-kind="outline" vector-effect="non-scaling-stroke" />
-        <circle id="head-node-hc" cx="53" cy="-17" r="2.5" fill="#20C9C4" fill-opacity="1" stroke="#FFFFFF" stroke-opacity="1" stroke-width="0.65" data-phase="6" data-anim="node" data-kind="critical" vector-effect="non-scaling-stroke" />
-        <circle id="head-node-eye" cx="59" cy="-22" r="1.35" fill="#082C4C" fill-opacity="1" stroke="#FFFFFF" stroke-opacity="1" stroke-width="0.65" data-phase="6" data-anim="node" data-kind="decorative" vector-effect="non-scaling-stroke" />
-      </g>
-      <circle id="scan-origin" data-scan-origin="true" cx="68" cy="-18" r="0.1" fill="none" />
+      <circle id="lidar-return" cx="69" cy="0" r="2.2" fill="#20C9C4" opacity="0" />
+      <circle id="lidar-ring" cx="69" cy="0" r="2.5" fill="none" stroke="#20C9C4" stroke-width="0.9" opacity="0" vector-effect="non-scaling-stroke" />
     </g>
-    <g id="lidar-scan" data-layer="lidar" transform="translate(68 -18)" opacity="0" pointer-events="none">
-      <g id="lidar-sweep" data-bone="lidar-sweep">
-        <path d="M 0 0 L 68 -12 A 69 69 0 0 1 68 12 Z" fill="#20C9C4" fill-opacity="0.13" />
-        <line x1="0" y1="0" x2="72" y2="0" stroke="#1C83D4" stroke-width="1.35" stroke-linecap="round" vector-effect="non-scaling-stroke" />
-      </g>
-      <circle id="lidar-return" cx="75" cy="0" r="2.7" fill="#20C9C4" opacity="0" />
-      <circle id="lidar-ring" cx="75" cy="0" r="3" fill="none" stroke="#20C9C4" stroke-width="1.1" opacity="0" vector-effect="non-scaling-stroke" />
-    </g>
-    <g id="bird-legs" data-layer="legs" fill="none" stroke-linecap="round" stroke-linejoin="round">
-      <g id="leg-near" data-bone="leg-near" transform="rotate(0 -13 18)" opacity="0.88">
-        <polyline points="-13,18 -14,30 -8,42" stroke="#082C4C" stroke-width="1.45" vector-effect="non-scaling-stroke" />
-        <circle cx="-14" cy="30" r="1.35" fill="#1C83D4" stroke="none" />
-        <line x1="-8" y1="42" x2="-18" y2="45" stroke="#082C4C" stroke-width="1.05" vector-effect="non-scaling-stroke" />
-        <line x1="-8" y1="42" x2="-7" y2="45" stroke="#082C4C" stroke-width="1.05" vector-effect="non-scaling-stroke" />
-        <line x1="-8" y1="42" x2="4" y2="44" stroke="#082C4C" stroke-width="1.05" vector-effect="non-scaling-stroke" />
-      </g>
-      <g id="leg-far" data-bone="leg-far" transform="rotate(0 -1 18)" opacity="0.46">
-        <polyline points="-1,18 0,30 5,42" stroke="#082C4C" stroke-width="1.45" vector-effect="non-scaling-stroke" />
-        <circle cx="0" cy="30" r="1.35" fill="#1C83D4" stroke="none" />
-        <line x1="5" y1="42" x2="-5" y2="45" stroke="#082C4C" stroke-width="1.05" vector-effect="non-scaling-stroke" />
-        <line x1="5" y1="42" x2="6" y2="46" stroke="#082C4C" stroke-width="1.05" vector-effect="non-scaling-stroke" />
-        <line x1="5" y1="42" x2="15" y2="44" stroke="#082C4C" stroke-width="1.05" vector-effect="non-scaling-stroke" />
-      </g>
     </g>
   </g>
 </g>
-  </g>
+</g>
 </svg>

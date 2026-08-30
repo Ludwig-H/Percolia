@@ -1,64 +1,46 @@
-# Identité visuelle Percolia — direction 02
-
-<p align="center">
-  <img src="brand-board.svg" alt="Planche de marque Percolia" width="960">
-</p>
+# Identité visuelle Percolia — direction 03
 
 ## Principe
 
 **La structure fiable qui émerge du bruit.**
 
-La direction 02 conserve le `P` à seuil interrompu, transforme `ERCOLIA` en petites capitales et remplace le premier oiseau polygonal par un **martinet-réseau articulé**.
+La marque associe :
 
-Le petit oiseau est perché sur le `P` dans la signature statique. Sur le web, il déploie réellement ses ailes, décolle, suit une trajectoire courbe, effectue un scan LiDAR et revient se poser.
+- un `P` distinctif, conservé dans sa forme initiale ;
+- `ERCOLIA` en petites capitales géométriques ;
+- un petit oiseau-réseau perché sur le `P` ;
+- une version animée dont les ailes sont calculées par un modèle paramétrique continu.
 
-## Arborescence
+## Sources canoniques
 
 ```text
 Logo/
-├── README.md
 ├── CHARTE_GRAPHIQUE.md
-├── tokens.css
-├── tokens.json
 ├── build_lockups.py
-├── brand-board.svg
-├── percolia-lockup-horizontal*.svg
-├── percolia-lockup-stacked.svg
 ├── Police/
-│   ├── README.md
 │   ├── build_wordmark.py
-│   ├── source/geometry.json
-│   └── *.svg
+│   └── source/geometry.json
 └── Oiseau/
-    ├── README.md
     ├── build_bird.py
     ├── build_demo.py
-    ├── bird-animation.css
-    ├── bird-animation.js
-    ├── demo.html
-    ├── source/bird_model.json
-    └── *.svg
+    ├── test_wing_model.py
+    └── source/bird_model.json
 ```
 
-## Régénération
+Les SVG, la planche de marque et `Oiseau/demo.html` sont des fichiers générés. Ils sont néanmoins versionnés pour être consultables directement sur GitHub.
+
+## Construction
 
 ```bash
 python Logo/Police/build_wordmark.py
 python Logo/Oiseau/build_bird.py
 python Logo/build_lockups.py
 python Logo/Oiseau/build_demo.py
+python Logo/Oiseau/test_wing_model.py
 ```
 
-Les SVG et la page autonome sont reproductibles à partir des sources JSON et des générateurs Python.
-
-## Actifs principaux
-
-- `percolia-lockup-horizontal.svg` : signature par défaut ;
-- `Police/percolia-p-monogram-primary.svg` : favicon et icône ;
-- `Oiseau/percolia-bird-compact.svg` : oiseau perché statique ;
-- `Oiseau/percolia-bird-primary.svg` : rig complet ;
-- `Oiseau/demo.html` : démonstration autonome du vol.
+La démonstration autonome est disponible dans [`Oiseau/demo.html`](Oiseau/demo.html).
 
 ## Statut
 
-Direction créative éditable. Une recherche d’antériorités et des tests de reconnaissance à petite taille restent nécessaires avant dépôt définitif.
+Cette direction est un prototype de marque éditable. Une recherche d’antériorités graphique et typographique reste nécessaire avant dépôt définitif.

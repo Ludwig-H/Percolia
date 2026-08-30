@@ -1,92 +1,65 @@
-# Charte graphique Percolia — v0.2
+# Charte graphique Percolia — v0.3
 
 ## 1. Positionnement
 
-Percolia transforme des données complexes et bruitées en structures fiables. Le premier marché est le LiDAR 3D, mais l’identité doit rester valable pour les graphes, les logs et les données scientifiques.
+Percolia transforme des données complexes et bruitées en structures fiables. L’identité doit exprimer la géométrie, le contrôle de la connectivité, la robustesse et la confiance industrielle, sans adopter les codes visuels interchangeables de « l’IA magique ».
 
-| Idée | Traduction visuelle |
-|---|---|
-| Contrôle de la connectivité | coupure et deux nœuds du `P` |
-| Hiérarchie de marque | `P` plein format, `ERCOLIA` en petites capitales |
-| Structure issue du bruit | maillage géométrique de l’oiseau |
-| Modèle réellement opérant | oiseau articulé, vol et scan cohérents |
-| Confiance industrielle | bleu encre dominant, peu d’effets |
+## 2. Mot-symbole
 
-## 2. Signature
+- Le `P` conserve sa forme et ses deux nœuds distinctifs.
+- `ERCOLIA` est composé en petites capitales à 78 % de la hauteur du `P`.
+- Le mot-symbole doit rester un SVG ; il ne doit pas être reconstitué avec une police approchante.
 
-La signature principale place un **petit oiseau-réseau perché sur la partie supérieure du P**. Il doit rester un accent : sa largeur ne dépasse pas environ 18 % de celle du mot-symbole.
+## 3. Oiseau
 
-Le mot-symbole se compose de :
+### Signature statique
 
-- `P` à 100 % de la hauteur de capitale ;
-- `ERCOLIA` à 78 %, aligné sur la même ligne de base.
+Le petit oiseau est perché sur le haut du `P`. Il reste un accent et ne doit pas rivaliser avec le nom.
 
-Ne pas reconstituer le nom avec une police approchante.
+### Version animée
 
-## 3. Oiseau articulé
+Le vol suit quatre principes :
 
-Le modèle animé sépare :
+1. battement lent, période nominale de 5,2 secondes ;
+2. déformation continue de l’aile, sans rotation rigide de polygones ;
+3. repli du coude et du poignet pendant la remontée ;
+4. scan LiDAR bref et discret, une fois par boucle.
 
-- les deux épaules ;
-- les bras ;
-- les avant-bras ;
-- les mains et rémiges ;
-- la tête ;
-- la queue ;
-- les deux pattes.
-
-La descente d’aile est rapide et ample. La remontée replie coude et poignet. L’oiseau décolle du P, suit une boucle, scanne, puis revient se poser. Il ne doit pas voler en permanence dans une interface de travail.
-
-### Règles d’animation
-
-- un cycle complet doit durer entre 8 et 12 secondes ;
-- prévoir au moins 1,5 seconde de repos sur le P ;
-- le scan reste bref et discret ;
-- la tête compense partiellement l’inclinaison du corps ;
-- les pattes se rétractent après le décollage et s’étendent avant l’atterrissage ;
-- respecter `prefers-reduced-motion`.
+L’oiseau ne doit pas battre des ailes en permanence dans une interface de travail. L’animation complète est réservée à la page d’accueil, à une transition ou à une démonstration.
 
 ## 4. Couleurs
 
-| Nom | Hex | Rôle |
+| Nom | Hex | Usage |
 |---|---:|---|
-| Encre | `#082C4C` | texte, contours, fonds inversés |
-| Signal | `#1C83D4` | propagation, articulations |
-| Seuil | `#20C9C4` | nœuds critiques, scan |
-| Brume | `#EAF5F7` | surfaces secondaires |
+| Encre | `#082C4C` | contours, texte, couleur principale |
+| Signal | `#1C83D4` | arêtes actives, articulation secondaire |
+| Seuil | `#20C9C4` | nœuds critiques, retour LiDAR |
+| Brume | `#EAF5F7` | surfaces et arrière-plans techniques |
 | Ardoise | `#5D7385` | texte secondaire |
-| Blanc | `#FFFFFF` | fond principal |
+| Blanc | `#FFFFFF` | fond principal et version inversée |
 
-Le cyan n’est pas une couleur de petit texte sur fond blanc. Il reste un accent graphique.
+## 5. Densité graphique
 
-## 5. Tailles minimales
+- Les facettes sont translucides.
+- Les nœuds sont rares et petits.
+- Les contours dominent sur le remplissage.
+- Le réseau doit rester lisible à 96 px ; sous cette taille, utiliser l’oiseau compact.
 
-| Actif | Écran | Impression |
-|---|---:|---:|
-| Monogramme P | 20 px | 6 mm |
-| Mot-symbole seul | 150 px | 38 mm |
-| Signature avec oiseau | 280 px | 70 mm |
-| Oiseau compact seul | 64 px | 18 mm |
-| Oiseau articulé détaillé | 120 px | 32 mm |
+## 6. Animation
 
-Sous 280 px, supprimer l’oiseau et conserver le mot-symbole ou le P seul.
+- Période nominale : `5200 ms`.
+- Trajectoire complète : environ `24,5 s`.
+- Pas d’accélération brutale aux extrêmes du battement.
+- Aucun clignotement répété du scan.
+- Respect obligatoire de `prefers-reduced-motion`.
 
-## 6. Usages interdits
+## 7. Interdits
 
 Ne pas :
 
-- fermer la coupure du P ;
-- remettre toutes les lettres à la même hauteur ;
-- agrandir l’oiseau jusqu’à concurrencer le nom ;
-- faire battre l’aile entière comme une planche rigide ;
-- ajouter des effets néon, des traînées permanentes ou un scan agressif ;
-- lancer le vol en boucle rapide ;
-- utiliser l’oiseau comme mascotte humoristique.
-
-## 7. Fichiers de référence
-
-- signature : `Logo/percolia-lockup-horizontal.svg` ;
-- mot-symbole : `Logo/Police/percolia-wordmark-primary.svg` ;
-- oiseau statique : `Logo/Oiseau/percolia-bird-compact.svg` ;
-- démonstration : `Logo/Oiseau/demo.html` ;
-- modèle : `Logo/Oiseau/source/bird_model.json`.
+- transformer l’oiseau en mascotte cartoon ;
+- épaissir les facettes jusqu’à masquer la silhouette ;
+- accélérer le battement pour produire un effet de vibration ;
+- ajouter des dégradés arc-en-ciel, effets néon ou ombres lourdes ;
+- dissocier le petit oiseau du `P` dans la signature statique ;
+- modifier uniquement les SVG générés sans mettre à jour les sources JSON et Python.

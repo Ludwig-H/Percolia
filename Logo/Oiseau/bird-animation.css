@@ -1,39 +1,33 @@
-.percolia-flight-stage {
-  position: relative;
-  overflow: hidden;
+.percolia-bird-shell {
+  display: grid;
+  place-items: center;
+  overflow: visible;
   isolation: isolate;
 }
 
-.percolia-flight-bird {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: clamp(112px, 14vw, 178px);
-  z-index: 4;
-  transform-origin: 43% 52%;
-  will-change: transform;
-  filter: drop-shadow(0 8px 16px rgb(8 44 76 / 12%));
-}
-
-.percolia-flight-bird > svg {
+.percolia-bird-shell > svg {
   display: block;
   width: 100%;
   height: auto;
   overflow: visible;
 }
 
-.percolia-flight-bird [data-bone],
-.percolia-flight-bird [data-layer="lidar"] {
-  will-change: transform, opacity;
+[data-flight-bird] {
+  transform-origin: 50% 100%;
+  will-change: transform;
 }
 
-.percolia-flight-bird [data-layer="scatter"] {
-  transition: opacity 240ms ease-out;
+.percolia-bird [data-wing-outline],
+.percolia-bird [data-wing-face],
+.percolia-bird [data-wing-spar],
+.percolia-bird [data-wing-diagonal],
+.percolia-bird [data-wing-joint] {
+  will-change: d, points, x1, y1, x2, y2, cx, cy;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .percolia-flight-bird,
-  .percolia-flight-bird * {
+  [data-flight-bird],
+  .percolia-bird * {
     animation-duration: 0.001ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;

@@ -1,37 +1,79 @@
-# Oiseau-réseau Percolia
+# Oiseau-réseau Percolia — modèle paramétrique v0.6
 
-## Direction retenue
+L’oiseau n’est plus animé par rotation de morceaux de SVG. Le contour de chaque aile, sa triangulation et ses nœuds sont **recalculés à chaque image** à partir d’un modèle cinématique continu.
 
-L’oiseau est désormais un **martinet géométrique articulé**. Il reste construit par des nœuds, des arêtes et quelques facettes, mais sa silhouette n’est plus un amas de triangles approximativement remué.
+## Intention graphique
 
-Dans la signature statique, il est petit et perché sur le `P`. Dans la démonstration animée, il :
+L’oiseau reste un accent discret de la marque :
 
-1. reste brièvement au repos sur le `P` ;
-2. déploie ses deux ailes ;
-3. décolle en rétractant les pattes ;
-4. suit une trajectoire fermée composée de quatre arcs de Bézier ;
-5. scanne l’environnement avec un faisceau et un bref retour lumineux ;
-6. gouverne avec la queue, étend les pattes et revient se poser.
+- petit et perché sur le `P` dans la signature statique ;
+- silhouette calme, profilée et lisible ;
+- ailes longues et légères plutôt qu’un assemblage de losanges ;
+- maillage intérieur peu contrasté ;
+- scan LiDAR bref, secondaire et non décoratif.
 
-## Pourquoi le battement est désormais crédible
+La version animée décolle du `P`, suit une trajectoire fermée, effectue un scan, puis revient se poser.
 
-Chaque aile est un rig emboîté à trois segments :
+## Modèle mathématique des ailes
 
-```text
-épaule → bras → coude → avant-bras → poignet → main/rémiges
-```
+On note
 
-La descente est plus courte et plus énergique. Pendant la remontée, le coude et le poignet replient partiellement l’aile. Les deux ailes sont visibles avec une légère perspective ; la tête compense l’inclinaison du corps et la queue accompagne les virages.
+\[
+\theta(t)=\frac{2\pi t}{T}, \qquad T=5{,}2\ \mathrm{s}.
+\]
+
+L’angle de battement est une série de Fourier à deux harmoniques :
+
+\[
+\phi(t)=\phi_0+A_1\cos\theta(t)+A_2\cos\bigl(2\theta(t)-\delta\bigr).
+\]
+
+Le repli pendant la remontée est commandé par
+
+\[
+f(t)=\left(\frac{1+\sin(\theta(t)-\eta)}{2}\right)^p,
+\]
+
+puis
+
+\[
+\beta(t)=\beta_0+\Delta\beta f(t),
+\qquad
+\gamma(t)=\gamma_0+\Delta\gamma f(t),
+\]
+
+où `β` est la flexion du coude et `γ` celle du poignet.
+
+Les quatre points du squelette sont obtenus par cinématique directe :
+
+\[
+E=S+L_1u(\chi),
+\quad
+W=E+L_2u(\chi+\beta),
+\quad
+T=W+L_3u(\chi+\beta+\gamma),
+\]
+
+avec `u(a)=(cos a,sin a)`.
+
+Une spline de Catmull–Rom passant par `S,E,W,T` définit le bord d’attaque. La corde locale est
+
+\[
+c(s)=c_0(1-s)^q\bigl(1+b\sin(\pi s)\bigr), \qquad s\in[0,1].
+\]
+
+Le bord de fuite, les facettes et les diagonales du réseau sont construits à partir de sept stations le long de l’envergure. L’aile est ensuite plongée en 3D, tournée autour de l’axe du corps et projetée dans le plan du SVG par une projection orthographique oblique.
 
 ## Fichiers
 
 ```text
-Oiseau/
+Logo/Oiseau/
 ├── README.md
 ├── build_bird.py
 ├── build_demo.py
-├── bird-animation.css
+├── test_wing_model.py
 ├── bird-animation.js
+├── bird-animation.css
 ├── demo.html
 ├── percolia-bird-primary.svg
 ├── percolia-bird-inverse.svg
@@ -42,47 +84,48 @@ Oiseau/
     └── bird_model.json
 ```
 
-- `bird_model.json` est la source de vérité géométrique et anatomique.
-- `build_bird.py` génère les quatre SVG.
-- `bird-animation.js` pilote le squelette et le trajet de vol.
-- `demo.html` est **entièrement autonome** : il peut être téléchargé seul et ouvert hors ligne.
-- `percolia-bird-compact.svg` utilise l’aile pliée et sert à la signature perchée.
+`source/bird_model.json` est la source de vérité. Les SVG et la page autonome sont générés.
 
-## Régénération
+## Régénération et validation
 
 ```bash
-python Logo/Police/build_wordmark.py
 python Logo/Oiseau/build_bird.py
 python Logo/build_lockups.py
 python Logo/Oiseau/build_demo.py
+python Logo/Oiseau/test_wing_model.py
+node --check Logo/Oiseau/bird-animation.js
 ```
 
-Aucune dépendance Python externe n’est requise pour la génération.
+Le test numérique vérifie notamment :
+
+- la fermeture exacte du cycle ;
+- la continuité image par image ;
+- l’absence de coordonnées non finies ;
+- la positivité de la corde ;
+- une période de battement réellement lente.
 
 ## Intégration web
 
-Le SVG doit être inline pour que le script puisse articuler ses groupes.
+La page `demo.html` est autonome. Elle ne charge aucune ressource externe et peut être téléchargée puis ouverte directement dans un navigateur.
+
+Pour une intégration dans le site, le SVG doit être inline :
 
 ```html
-<link rel="stylesheet" href="bird-animation.css">
-<div class="percolia-flight-stage" data-flight-stage>
-  <span id="perch"></span>
-  <div id="bird" class="percolia-flight-bird" data-flight-bird>
-    <!-- contenu inline de percolia-bird-primary.svg -->
-  </div>
+<div id="bird" data-flight-bird>
+  <!-- percolia-bird-compact.svg inline -->
 </div>
 <script src="bird-animation.js"></script>
 <script>
-  const controller = PercoliaBird.init(document.querySelector('#bird svg'), {
+  const controller = initPercoliaBird(document.querySelector('#bird svg'), {
     birdElement: document.querySelector('#bird'),
     stageElement: document.querySelector('[data-flight-stage]'),
-    perchElement: document.querySelector('#perch')
+    perchElement: document.querySelector('[data-perch]')
   });
 </script>
 ```
 
-L’API expose `play()`, `pause()`, `replay()`, `scan()`, `pulse()`, `reveal()` et `destroy()`.
+L’API expose `play()`, `pause()`, `restart()`, `scan()`, `pulse()` et `destroy()`.
 
 ## Accessibilité
 
-Avec `prefers-reduced-motion: reduce`, l’oiseau reste perché. Le logo statique ne dépend jamais de l’animation pour être compris.
+`prefers-reduced-motion` désactive le vol continu. Le SVG reste visible dans une pose statique et le contenu de marque demeure lisible.

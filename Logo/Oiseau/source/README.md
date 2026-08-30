@@ -1,12 +1,13 @@
-# Modèle source de l’oiseau
+# Modèle paramétrique de l’oiseau
 
-`bird_model.json` décrit :
+`bird_model.json` est la source de vérité. Les ailes ne sont plus des groupes rigides tournés autour de trois pivots.
 
-- la palette ;
-- les nœuds, arêtes et facettes du corps, de la tête, de la queue et de l’aile pliée ;
-- trois maillages locaux pour chaque aile articulée : bras, avant-bras et main ;
-- les pivots d’épaule, de coude et de poignet ;
-- les pattes et le point d’émission du scan ;
-- les poses statiques `perched` et `glide`.
+Chaque aile est construite à chaque image à partir de :
 
-Les coordonnées des avant-bras et des mains sont locales au segment parent. Cette hiérarchie doit être conservée : c’est elle qui permet un vrai battement plutôt qu’une rotation globale de la silhouette.
+- trois longueurs osseuses : humérus, avant-bras et main ;
+- trois angles articulaires : balayage, flexion du coude et flexion du poignet ;
+- un angle de battement hors du plan ;
+- une loi de corde continue pour la membrane et les rémiges ;
+- une projection orthographique oblique d’un modèle 3D vers le SVG 2D.
+
+Le contour et le maillage intérieur sont recalculés à chaque image. Les paramètres de vitesse, d’amplitude, de repli et de projection restent éditables dans le JSON.

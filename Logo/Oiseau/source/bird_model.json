@@ -1,1 +1,604 @@
-{"name":"Percolia Articulated Network Swift","version":"0.4.0","viewBox":[-170,-135,330,245],"palette":{"ink":"#082C4C","blue":"#1C83D4","cyan":"#20C9C4","mist":"#EAF5F7","slate":"#5D7385","white":"#FFFFFF"},"rig":{"shoulder_near":[-6,-16],"shoulder_far":[-3,-11],"elbow":[-35,-16],"wrist":[-34,7],"hip_near":[-13,18],"hip_far":[-1,18],"scan_origin":[68,-18],"perch":[-6,45]},"poses":{"perched":{"near":[-54,188,-144],"far":[-50,182,-138],"tail":0,"body":0},"glide":{"near":[-34,9,-4],"far":[-32,7,-3],"tail":-2,"body":1}},"body":{"nodes":{"bt":[-50,3,1.8,"ink","outline"],"b1":[-30,-14,1.9,"blue","node"],"b2":[-5,-21,2.0,"ink","node"],"b3":[23,-15,1.9,"blue","node"],"b4":[42,-4,2.2,"cyan","critical"],"b5":[28,17,1.9,"ink","node"],"b6":[3,25,2.0,"blue","node"],"b7":[-26,20,1.9,"ink","node"],"bc":[-6,2,2.6,"cyan","critical"]},"edges":[["bt","b1","outline"],["b1","b2","outline"],["b2","b3","outline"],["b3","b4","outline"],["b4","b5","outline"],["b5","b6","outline"],["b6","b7","outline"],["b7","bt","outline"],["bt","bc","mesh"],["b1","bc","mesh"],["b2","bc","mesh"],["b3","bc","mesh"],["b4","bc","critical"],["b5","bc","mesh"],["b6","bc","mesh"],["b7","bc","mesh"]],"faces":[["body-f01",["bt","b1","bc"],"cyan",0.07],["body-f02",["b1","b2","bc"],"blue",0.09],["body-f03",["b2","b3","bc"],"ink",0.04],["body-f04",["b3","b4","bc"],"cyan",0.11],["body-f05",["b4","b5","bc"],"blue",0.1],["body-f06",["b5","b6","bc"],"cyan",0.07],["body-f07",["b6","b7","bc"],"ink",0.04],["body-f08",["b7","bt","bc"],"blue",0.06]]},"head":{"nodes":{"n0":[32,-13,1.8,"ink","outline"],"h0":[43,-29,1.9,"blue","node"],"h1":[60,-30,1.9,"ink","node"],"h2":[69,-21,2.0,"blue","node"],"bk":[103,-15,1.8,"cyan","critical"],"bb":[68,-10,1.7,"ink","outline"],"h3":[51,-6,1.8,"ink","node"],"n1":[36,1,1.8,"ink","outline"],"hc":[53,-17,2.5,"cyan","critical"],"eye":[59,-22,1.35,"ink","decorative"]},"edges":[["n0","h0","outline"],["h0","h1","outline"],["h1","h2","outline"],["h2","bk","critical"],["bk","bb","outline"],["bb","h3","outline"],["h3","n1","outline"],["n1","n0","outline"],["n0","hc","mesh"],["h0","hc","mesh"],["h1","hc","mesh"],["h2","hc","critical"],["bb","hc","mesh"],["h3","hc","mesh"],["n1","hc","mesh"]],"faces":[["head-f01",["n0","h0","hc"],"cyan",0.07],["head-f02",["h0","h1","hc"],"blue",0.09],["head-f03",["h1","h2","hc"],"cyan",0.1],["head-f04",["h2","bk","bb"],"blue",0.09],["head-f05",["h2","bb","hc"],"cyan",0.07],["head-f06",["bb","h3","hc"],"ink",0.04],["head-f07",["h3","n1","hc"],"blue",0.06],["head-f08",["n1","n0","hc"],"cyan",0.06]]},"tail":{"nodes":{"tb0":[-46,-3,1.7,"ink","outline"],"tb1":[-41,14,1.7,"ink","outline"],"tt0":[-105,-15,1.7,"blue","node"],"tt1":[-91,4,1.9,"cyan","critical"],"tt2":[-104,25,1.7,"blue","node"],"tc":[-68,7,2.3,"cyan","critical"]},"edges":[["tb0","tt0","outline"],["tt0","tt1","outline"],["tt1","tt2","outline"],["tt2","tb1","outline"],["tb1","tb0","outline"],["tb0","tc","mesh"],["tt0","tc","mesh"],["tt1","tc","critical"],["tt2","tc","mesh"],["tb1","tc","mesh"]],"faces":[["tail-f01",["tb0","tt0","tc"],"blue",0.07],["tail-f02",["tt0","tt1","tc"],"cyan",0.09],["tail-f03",["tt1","tt2","tc"],"blue",0.08],["tail-f04",["tt2","tb1","tc"],"cyan",0.06],["tail-f05",["tb1","tb0","tc"],"ink",0.04]]},"wing":{"upper":{"nodes":{"s":[0,0,2.2,"cyan","critical"],"u1":[-17,-13,1.7,"ink","node"],"e":[-35,-16,2.2,"blue","joint"],"u2":[-29,7,1.7,"ink","node"],"u3":[-8,10,1.7,"ink","node"],"uc":[-16,-1,2.1,"cyan","critical"]},"edges":[["s","u1","outline"],["u1","e","outline"],["e","u2","outline"],["u2","u3","outline"],["u3","s","outline"],["s","uc","critical"],["u1","uc","mesh"],["e","uc","mesh"],["u2","uc","mesh"],["u3","uc","mesh"]],"faces":[["upper-f01",["s","u1","uc"],"cyan",0.07],["upper-f02",["u1","e","uc"],"blue",0.09],["upper-f03",["e","u2","uc"],"cyan",0.08],["upper-f04",["u2","u3","uc"],"ink",0.04],["upper-f05",["u3","s","uc"],"blue",0.05]]},"forearm":{"nodes":{"e":[0,0,2.1,"blue","joint"],"f1":[-17,-8,1.6,"ink","node"],"w":[-34,7,2.2,"cyan","joint"],"f2":[-24,17,1.6,"ink","node"],"f3":[-5,13,1.6,"ink","node"],"fc":[-16,4,2.0,"blue","node"]},"edges":[["e","f1","outline"],["f1","w","outline"],["w","f2","outline"],["f2","f3","outline"],["f3","e","outline"],["e","fc","mesh"],["f1","fc","mesh"],["w","fc","critical"],["f2","fc","mesh"],["f3","fc","mesh"]],"faces":[["forearm-f01",["e","f1","fc"],"blue",0.07],["forearm-f02",["f1","w","fc"],"cyan",0.09],["forearm-f03",["w","f2","fc"],"blue",0.08],["forearm-f04",["f2","f3","fc"],"ink",0.04],["forearm-f05",["f3","e","fc"],"cyan",0.05]]},"hand":{"nodes":{"w":[0,0,2.1,"cyan","joint"],"h1":[-12,-8,1.5,"ink","node"],"p0":[-46,-12,1.5,"blue","feather"],"p1":[-61,-4,1.6,"cyan","feather"],"p2":[-62,5,1.5,"blue","feather"],"p3":[-54,13,1.5,"ink","feather"],"p4":[-42,19,1.5,"blue","feather"],"h2":[-8,16,1.6,"ink","node"],"hc":[-24,4,2.0,"cyan","critical"]},"edges":[["w","h1","outline"],["h1","p0","outline"],["p0","p1","outline"],["p1","p2","outline"],["p2","p3","outline"],["p3","p4","outline"],["p4","h2","outline"],["h2","w","outline"],["w","hc","critical"],["h1","hc","mesh"],["p0","hc","mesh"],["p1","hc","mesh"],["p2","hc","mesh"],["p3","hc","mesh"],["p4","hc","mesh"],["h2","hc","mesh"]],"faces":[["hand-f01",["w","h1","hc"],"cyan",0.06],["hand-f02",["h1","p0","hc"],"blue",0.08],["hand-f03",["p0","p1","hc"],"cyan",0.09],["hand-f04",["p1","p2","hc"],"blue",0.08],["hand-f05",["p2","p3","hc"],"ink",0.04],["hand-f06",["p3","p4","hc"],"cyan",0.06],["hand-f07",["p4","h2","hc"],"blue",0.06],["hand-f08",["h2","w","hc"],"cyan",0.05]]}},"legs":{"near":{"hip":[-13,18],"knee":[-14,30],"ankle":[-8,42],"toes":[[-18,45],[-7,45],[4,44]]},"far":{"hip":[-1,18],"knee":[0,30],"ankle":[5,42],"toes":[[-5,45],[6,46],[15,44]]}},"folded_wing":{"nodes":{"r":[-6,-15,2.0,"cyan","critical"],"f1":[-24,-14,1.7,"blue","node"],"f2":[-47,-2,1.8,"ink","node"],"f3":[-42,12,1.7,"blue","node"],"f4":[-16,18,1.7,"ink","node"],"fc":[-25,1,2.2,"cyan","critical"]},"edges":[["r","f1","outline"],["f1","f2","outline"],["f2","f3","outline"],["f3","f4","outline"],["f4","r","outline"],["r","fc","critical"],["f1","fc","mesh"],["f2","fc","mesh"],["f3","fc","mesh"],["f4","fc","mesh"]],"faces":[["fold-f01",["r","f1","fc"],"cyan",0.08],["fold-f02",["f1","f2","fc"],"blue",0.1],["fold-f03",["f2","f3","fc"],"cyan",0.08],["fold-f04",["f3","f4","fc"],"blue",0.07],["fold-f05",["f4","r","fc"],"ink",0.04]]}}
+{
+  "name": "Percolia Parametric Network Bird",
+  "version": "0.6.0",
+  "viewBox": [
+    -126,
+    -96,
+    264,
+    188
+  ],
+  "palette": {
+    "ink": "#082C4C",
+    "blue": "#1C83D4",
+    "cyan": "#20C9C4",
+    "mist": "#EAF5F7",
+    "slate": "#5D7385",
+    "white": "#FFFFFF"
+  },
+  "body": {
+    "outline": "M -52 -6 C -35 -24 -5 -29 24 -19 C 37 -15 43 -9 47 -3 C 54 -9 63 -13 73 -12 C 85 -11 94 -4 96 5 C 94 15 85 21 73 20 C 62 19 54 14 48 8 C 40 20 24 31 4 33 C -18 35 -40 25 -52 12 C -61 8 -65 3 -64 -1 C -63 -4 -59 -6 -52 -6 Z",
+    "outline_width": 1.7,
+    "nodes": {
+      "tail_root": [
+        -52,
+        3,
+        1.5,
+        "blue",
+        "node"
+      ],
+      "back_1": [
+        -29,
+        -17,
+        1.4,
+        "ink",
+        "node"
+      ],
+      "back_2": [
+        3,
+        -21,
+        1.6,
+        "blue",
+        "node"
+      ],
+      "shoulder_near": [
+        -4,
+        -14,
+        2.1,
+        "cyan",
+        "joint"
+      ],
+      "shoulder_far": [
+        0,
+        -9,
+        1.8,
+        "blue",
+        "joint"
+      ],
+      "neck": [
+        47,
+        -3,
+        1.6,
+        "ink",
+        "node"
+      ],
+      "crown": [
+        68,
+        -12,
+        1.7,
+        "blue",
+        "node"
+      ],
+      "head": [
+        88,
+        -4,
+        1.8,
+        "ink",
+        "node"
+      ],
+      "beak": [
+        120,
+        4,
+        1.7,
+        "cyan",
+        "critical"
+      ],
+      "throat": [
+        84,
+        13,
+        1.5,
+        "ink",
+        "node"
+      ],
+      "chest": [
+        48,
+        8,
+        1.6,
+        "blue",
+        "node"
+      ],
+      "belly": [
+        6,
+        27,
+        1.7,
+        "cyan",
+        "node"
+      ],
+      "core": [
+        6,
+        3,
+        2.5,
+        "cyan",
+        "critical"
+      ],
+      "eye": [
+        80,
+        -4,
+        1.15,
+        "ink",
+        "decorative"
+      ],
+      "tail_tip_up": [
+        -92,
+        -12,
+        1.1,
+        "blue",
+        "node"
+      ],
+      "tail_tip_down": [
+        -92,
+        14,
+        1.1,
+        "cyan",
+        "node"
+      ]
+    },
+    "edges": [
+      [
+        "tail_root",
+        "back_1",
+        "outline"
+      ],
+      [
+        "back_1",
+        "back_2",
+        "outline"
+      ],
+      [
+        "back_2",
+        "neck",
+        "outline"
+      ],
+      [
+        "neck",
+        "crown",
+        "outline"
+      ],
+      [
+        "crown",
+        "head",
+        "outline"
+      ],
+      [
+        "head",
+        "beak",
+        "critical"
+      ],
+      [
+        "beak",
+        "throat",
+        "outline"
+      ],
+      [
+        "throat",
+        "chest",
+        "outline"
+      ],
+      [
+        "chest",
+        "belly",
+        "outline"
+      ],
+      [
+        "belly",
+        "tail_root",
+        "outline"
+      ],
+      [
+        "tail_root",
+        "tail_tip_up",
+        "outline"
+      ],
+      [
+        "tail_root",
+        "tail_tip_down",
+        "outline"
+      ],
+      [
+        "tail_root",
+        "core",
+        "mesh"
+      ],
+      [
+        "back_1",
+        "core",
+        "mesh"
+      ],
+      [
+        "back_2",
+        "core",
+        "mesh"
+      ],
+      [
+        "neck",
+        "core",
+        "mesh"
+      ],
+      [
+        "crown",
+        "core",
+        "mesh"
+      ],
+      [
+        "head",
+        "core",
+        "mesh"
+      ],
+      [
+        "throat",
+        "core",
+        "mesh"
+      ],
+      [
+        "chest",
+        "core",
+        "mesh"
+      ],
+      [
+        "belly",
+        "core",
+        "mesh"
+      ]
+    ],
+    "faces": [
+      [
+        "body_f01",
+        [
+          "tail_root",
+          "back_1",
+          "core"
+        ],
+        "blue",
+        0.04
+      ],
+      [
+        "body_f02",
+        [
+          "back_1",
+          "back_2",
+          "core"
+        ],
+        "cyan",
+        0.055
+      ],
+      [
+        "body_f03",
+        [
+          "back_2",
+          "neck",
+          "core"
+        ],
+        "blue",
+        0.06
+      ],
+      [
+        "body_f04",
+        [
+          "neck",
+          "crown",
+          "core"
+        ],
+        "cyan",
+        0.055
+      ],
+      [
+        "body_f05",
+        [
+          "crown",
+          "head",
+          "core"
+        ],
+        "blue",
+        0.05
+      ],
+      [
+        "body_f06",
+        [
+          "head",
+          "throat",
+          "core"
+        ],
+        "cyan",
+        0.05
+      ],
+      [
+        "body_f07",
+        [
+          "throat",
+          "chest",
+          "core"
+        ],
+        "blue",
+        0.045
+      ],
+      [
+        "body_f08",
+        [
+          "chest",
+          "belly",
+          "core"
+        ],
+        "cyan",
+        0.045
+      ],
+      [
+        "body_f09",
+        [
+          "belly",
+          "tail_root",
+          "core"
+        ],
+        "blue",
+        0.035
+      ]
+    ],
+    "scan_origin": [
+      94,
+      4
+    ],
+    "perch_point": [
+      0,
+      34
+    ],
+    "tail_paths": [
+      "M -52 0 C -65 -4 -78 -8 -92 -12 C -81 -3 -68 4 -52 7 Z",
+      "M -52 6 C -65 8 -79 11 -92 14 C -80 7 -67 1 -52 0 Z"
+    ]
+  },
+  "wing": {
+    "segment_lengths": [
+      39,
+      46,
+      55
+    ],
+    "stations": [
+      0.0,
+      0.16,
+      0.33,
+      0.5,
+      0.68,
+      0.85,
+      1.0
+    ],
+    "root_chord": 18.5,
+    "chord_exponent": 0.6,
+    "chord_bulge": 0.46,
+    "tip_chord": 0.8,
+    "shoulders": {
+      "near": [
+        -4,
+        -14,
+        0
+      ],
+      "far": [
+        0,
+        -9,
+        -1.0
+      ]
+    },
+    "camera": {
+      "x_from_y": 0.16,
+      "x_from_z": 0.07,
+      "y_from_y": 0.32,
+      "y_from_z": -0.74
+    },
+    "flight": {
+      "period_ms": 5200,
+      "stroke_center_deg": -3,
+      "stroke_h1_deg": 30,
+      "stroke_h2_deg": 3.8,
+      "stroke_h2_phase_deg": -24,
+      "sweep_center_deg": 7,
+      "sweep_amp_deg": 8,
+      "sweep_phase_deg": 18,
+      "elbow_base_deg": 13,
+      "elbow_fold_deg": 18,
+      "wrist_base_deg": 8,
+      "wrist_fold_deg": 28,
+      "fold_phase_deg": -20,
+      "fold_exponent": 1.35,
+      "pronation_deg": 10,
+      "pronation_phase_deg": 34,
+      "heave": 1.8,
+      "pitch_deg": 2.2
+    },
+    "perched": {
+      "span_scale": 0.31,
+      "chord_scale": 0.7,
+      "stroke_deg": -8,
+      "sweep_deg": 58,
+      "elbow_deg": 66,
+      "wrist_deg": 82,
+      "pronation_deg": 0
+    }
+  },
+  "legs": {
+    "near": {
+      "hip": [
+        1,
+        28
+      ],
+      "knee": [
+        0,
+        39
+      ],
+      "ankle": [
+        7,
+        49
+      ],
+      "toes": [
+        [
+          -4,
+          52
+        ],
+        [
+          7,
+          52
+        ],
+        [
+          18,
+          50
+        ]
+      ]
+    },
+    "far": {
+      "hip": [
+        13,
+        27
+      ],
+      "knee": [
+        15,
+        38
+      ],
+      "ankle": [
+        20,
+        48
+      ],
+      "toes": [
+        [
+          9,
+          51
+        ],
+        [
+          20,
+          52
+        ],
+        [
+          31,
+          49
+        ]
+      ]
+    }
+  },
+  "flight_path": {
+    "cycle_ms": 24500,
+    "perch_ms": 2200,
+    "takeoff_ms": 1900,
+    "flight_ms": 18200,
+    "landing_ms": 2200,
+    "scan_progress": 0.48
+  },
+  "folded_wing": {
+    "outline": "M -30 -10 C -8 -17 22 -12 44 1 C 27 9 5 15 -20 12 C -35 9 -40 1 -30 -10 Z",
+    "nodes": {
+      "root": [
+        -30,
+        -8,
+        1.5,
+        "cyan",
+        "joint"
+      ],
+      "top": [
+        0,
+        -12,
+        1.4,
+        "blue",
+        "node"
+      ],
+      "tip": [
+        44,
+        1,
+        1.5,
+        "cyan",
+        "critical"
+      ],
+      "bottom": [
+        -20,
+        12,
+        1.3,
+        "ink",
+        "node"
+      ],
+      "core": [
+        4,
+        2,
+        2.0,
+        "blue",
+        "node"
+      ]
+    },
+    "edges": [
+      [
+        "root",
+        "top",
+        "outline"
+      ],
+      [
+        "top",
+        "tip",
+        "outline"
+      ],
+      [
+        "tip",
+        "bottom",
+        "outline"
+      ],
+      [
+        "bottom",
+        "root",
+        "outline"
+      ],
+      [
+        "root",
+        "core",
+        "critical"
+      ],
+      [
+        "top",
+        "core",
+        "mesh"
+      ],
+      [
+        "tip",
+        "core",
+        "mesh"
+      ],
+      [
+        "bottom",
+        "core",
+        "mesh"
+      ]
+    ],
+    "faces": [
+      [
+        "fold_f01",
+        [
+          "root",
+          "top",
+          "core"
+        ],
+        "cyan",
+        0.055
+      ],
+      [
+        "fold_f02",
+        [
+          "top",
+          "tip",
+          "core"
+        ],
+        "blue",
+        0.065
+      ],
+      [
+        "fold_f03",
+        [
+          "tip",
+          "bottom",
+          "core"
+        ],
+        "cyan",
+        0.05
+      ],
+      [
+        "fold_f04",
+        [
+          "bottom",
+          "root",
+          "core"
+        ],
+        "blue",
+        0.04
+      ]
+    ]
+  }
+}

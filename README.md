@@ -2,19 +2,20 @@
 
 Percolia développe une technologie de **structuration automatique de données complexes et bruitées**, d’abord appliquée aux nuages de points LiDAR 3D.
 
-Le produit initial, issu des travaux de recherche de Louis Hauseux et développé avec Alban Hauseux, vise un clustering de haute précision, robuste au bruit de mesure, sans dépendre d’un réentraînement pour chaque capteur. La marque doit donc exprimer à la fois :
-
-- la rigueur scientifique et géométrique ;
-- le passage du bruit à une structure exploitable ;
-- la confiance nécessaire à un logiciel industriel ;
-- une technologie générique, au-delà du seul LiDAR.
+<p align="center">
+  <img src="Logo/percolia-lockup-horizontal.svg" alt="Signature Percolia" width="820">
+</p>
 
 ## Identité visuelle
 
-La première direction de marque éditable est dans [`Logo/`](Logo/README.md).
+La direction de marque éditable se trouve dans [`Logo/`](Logo/README.md).
 
-<p align="center">
-  <img src="Logo/percolia-lockup-horizontal.svg" alt="Signature horizontale Percolia" width="820">
-</p>
+Elle comprend :
 
-Cette proposition comprend un mot-symbole vectoriel sur mesure, un monogramme `P`, un oiseau-réseau animé, les variantes monochromes/inversées et les sources de génération.
+- un `P` distinctif fondé sur un seuil de connectivité ;
+- `ERCOLIA` en petites capitales ;
+- un petit oiseau-réseau perché sur le P ;
+- un rig articulé capable de décoller, voler, scanner et revenir se poser ;
+- les variantes monochromes, inversées et les sources de génération.
+
+La démonstration autonome peut être ouverte directement depuis [`Logo/Oiseau/demo.html`](Logo/Oiseau/demo.html).

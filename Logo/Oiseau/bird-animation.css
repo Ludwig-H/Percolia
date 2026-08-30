@@ -1,37 +1,39 @@
-/* Optional host-page helpers for the inline Percolia bird. */
-.percolia-bird-shell {
-  --percolia-ink: #082c4c;
-  --percolia-blue: #1c83d4;
-  --percolia-cyan: #20c9c4;
-  display: grid;
-  place-items: center;
+.percolia-flight-stage {
+  position: relative;
   overflow: hidden;
   isolation: isolate;
 }
 
-.percolia-bird-shell > svg {
+.percolia-flight-bird {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: clamp(112px, 14vw, 178px);
+  z-index: 4;
+  transform-origin: 43% 52%;
+  will-change: transform;
+  filter: drop-shadow(0 8px 16px rgb(8 44 76 / 12%));
+}
+
+.percolia-flight-bird > svg {
   display: block;
-  width: min(100%, 52rem);
+  width: 100%;
   height: auto;
   overflow: visible;
 }
 
-.percolia-bird--enhanced [data-layer="scatter"] {
-  transition: transform 280ms cubic-bezier(.2, .75, .25, 1);
-  transform-origin: center;
-  will-change: transform;
+.percolia-flight-bird [data-bone],
+.percolia-flight-bird [data-layer="lidar"] {
+  will-change: transform, opacity;
 }
 
-.percolia-bird--enhanced [data-anim="edge"],
-.percolia-bird--enhanced [data-anim="node"],
-.percolia-bird--enhanced [data-anim="face"] {
-  will-change: transform, opacity, stroke-dashoffset;
+.percolia-flight-bird [data-layer="scatter"] {
+  transition: opacity 240ms ease-out;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .percolia-bird--enhanced *,
-  .percolia-bird--enhanced *::before,
-  .percolia-bird--enhanced *::after {
+  .percolia-flight-bird,
+  .percolia-flight-bird * {
     animation-duration: 0.001ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;

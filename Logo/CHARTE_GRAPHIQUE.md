@@ -1,152 +1,92 @@
-# Charte graphique Percolia — v0.1
+# Charte graphique Percolia — v0.2
 
-## 1. Positionnement traduit en image
+## 1. Positionnement
 
-Percolia transforme des ensembles de données massifs, complexes et bruités en structures fiables. Son premier marché est le traitement de nuages de points LiDAR 3D pour les jumeaux numériques, l’inspection, la robotique et les environnements industriels. L’identité doit cependant rester valable pour de futures applications aux logs, graphes et données scientifiques.
-
-La marque repose sur quatre idées :
+Percolia transforme des données complexes et bruitées en structures fiables. Le premier marché est le LiDAR 3D, mais l’identité doit rester valable pour les graphes, les logs et les données scientifiques.
 
 | Idée | Traduction visuelle |
 |---|---|
-| Rigueur scientifique | géométrie nette, rythme régulier, peu d’effets décoratifs |
-| Structure issue du bruit | particules dispersées à gauche, réseau organisé au centre |
-| Percolation contrôlée | chemin bleu/cyan, seuil visible dans le `P` |
-| Confiance industrielle | bleu encre dominant, forte lisibilité, variantes monochromes |
+| Contrôle de la connectivité | coupure et deux nœuds du `P` |
+| Hiérarchie de marque | `P` plein format, `ERCOLIA` en petites capitales |
+| Structure issue du bruit | maillage géométrique de l’oiseau |
+| Modèle réellement opérant | oiseau articulé, vol et scan cohérents |
+| Confiance industrielle | bleu encre dominant, peu d’effets |
 
-Le ton recherché est **scientifique, calme, précis et ambitieux**. Il faut éviter les codes trop ludiques, ésotériques ou « crypto ».
+## 2. Signature
 
-## 2. Architecture de marque
+La signature principale place un **petit oiseau-réseau perché sur la partie supérieure du P**. Il doit rester un accent : sa largeur ne dépasse pas environ 18 % de celle du mot-symbole.
 
-### Signature principale
+Le mot-symbole se compose de :
 
-`percolia-lockup-horizontal.svg` est la version par défaut sur le site, les présentations et les documents commerciaux.
+- `P` à 100 % de la hauteur de capitale ;
+- `ERCOLIA` à 78 %, aligné sur la même ligne de base.
 
-### Signature verticale
+Ne pas reconstituer le nom avec une police approchante.
 
-`percolia-lockup-stacked.svg` convient aux couvertures, affiches et formats presque carrés.
+## 3. Oiseau articulé
 
-### Mot-symbole seul
+Le modèle animé sépare :
 
-Le mot `PERCOLIA` peut être utilisé seul lorsque le contexte rend la marque explicite : barre de navigation, pied de page, produit logiciel.
+- les deux épaules ;
+- les bras ;
+- les avant-bras ;
+- les mains et rémiges ;
+- la tête ;
+- la queue ;
+- les deux pattes.
 
-### Monogramme P
+La descente d’aile est rapide et ample. La remontée replie coude et poignet. L’oiseau décolle du P, suit une boucle, scanne, puis revient se poser. Il ne doit pas voler en permanence dans une interface de travail.
 
-Le `P` est l’actif prioritaire pour construire la reconnaissance à long terme : favicon, avatar, icône d’application, filigrane et animation de chargement. Sa coupure et ses deux nœuds ne doivent pas être supprimés dans les versions en couleur.
+### Règles d’animation
 
-### Oiseau-réseau
+- un cycle complet doit durer entre 8 et 12 secondes ;
+- prévoir au moins 1,5 seconde de repos sur le P ;
+- le scan reste bref et discret ;
+- la tête compense partiellement l’inclinaison du corps ;
+- les pattes se rétractent après le décollage et s’étendent avant l’atterrissage ;
+- respecter `prefers-reduced-motion`.
 
-L’oiseau est un symbole narratif et cinétique. Il peut apparaître seul sur une page d’accueil, dans une démonstration, au début d’une vidéo ou comme illustration de section. À petite taille, utiliser la version `compact`.
-
-## 3. Couleurs
+## 4. Couleurs
 
 | Nom | Hex | Rôle |
 |---|---:|---|
-| Encre | `#082C4C` | couleur principale, texte, contours, fonds inversés |
-| Signal | `#1C83D4` | propagation, interaction, accent actif |
-| Seuil | `#20C9C4` | seuil critique, nœud terminal, accent rare |
-| Brume | `#EAF5F7` | fond secondaire, panneaux, surfaces techniques |
-| Ardoise | `#5D7385` | texte secondaire sur fond clair |
-| Blanc | `#FFFFFF` | fond principal et version inversée |
+| Encre | `#082C4C` | texte, contours, fonds inversés |
+| Signal | `#1C83D4` | propagation, articulations |
+| Seuil | `#20C9C4` | nœuds critiques, scan |
+| Brume | `#EAF5F7` | surfaces secondaires |
+| Ardoise | `#5D7385` | texte secondaire |
+| Blanc | `#FFFFFF` | fond principal |
 
-### Contraste
+Le cyan n’est pas une couleur de petit texte sur fond blanc. Il reste un accent graphique.
 
-- Encre sur blanc : environ `14.2:1`.
-- Ardoise sur blanc : environ `4.9:1`.
-- Signal sur blanc : environ `4.0:1` ; ne pas l’utiliser pour du petit texte normal.
-- Seuil sur blanc : environ `2.1:1` ; réserver aux formes graphiques, grands éléments ou fonds sombres.
-- Seuil sur Encre : environ `6.9:1`.
-
-## 4. Typographie
-
-### Typographie de marque
-
-`PERCOLIA Display` désigne ici une **construction vectorielle propriétaire**, pas encore une fonte de texte installable. Les huit lettres du nom sont décrites dans `Police/source/geometry.json` et visualisées dans `percolia-glyph-sheet.svg`.
-
-Caractéristiques :
-
-- capitales géométriques monolinéaires ;
-- terminaisons rondes ;
-- largeur généreuse ;
-- détails distinctifs concentrés sur le `P` ;
-- `I` muni de traverses afin d’éviter l’effet de simple barre.
-
-Ne pas reconstituer le mot-symbole avec une police approchante.
-
-### Typographie d’accompagnement
-
-Pour l’interface et les documents, utiliser une sans-sérif sobre :
-
-```css
-font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
-```
-
-Le mot-symbole doit rester un SVG ; la police d’accompagnement n’a pas vocation à l’imiter.
-
-## 5. Espace de protection et tailles minimales
-
-Prendre comme unité `x` le diamètre d’un grand nœud cyan du `P`.
-
-- autour du mot-symbole : au moins `2x` ;
-- autour du monogramme : au moins `1.5x` ;
-- autour de la signature complète : au moins `2x`.
-
-Tailles minimales recommandées :
+## 5. Tailles minimales
 
 | Actif | Écran | Impression |
 |---|---:|---:|
 | Monogramme P | 20 px | 6 mm |
-| Mot-symbole | 140 px | 35 mm |
-| Oiseau compact | 48 px | 15 mm |
-| Oiseau détaillé | 96 px | 28 mm |
-| Signature horizontale | 240 px | 60 mm |
+| Mot-symbole seul | 150 px | 38 mm |
+| Signature avec oiseau | 280 px | 70 mm |
+| Oiseau compact seul | 64 px | 18 mm |
+| Oiseau articulé détaillé | 120 px | 32 mm |
 
-Sous ces tailles, privilégier le `P` seul.
+Sous 280 px, supprimer l’oiseau et conserver le mot-symbole ou le P seul.
 
-## 6. Fonds et variantes
-
-- Sur fond blanc ou Brume : version `primary`.
-- Sur fond Encre : version `inverse`.
-- Pour gravure, tampon, fax, découpe ou contrainte stricte : version `mono`.
-- Sur photographie : placer le logo dans une zone calme ou sur un aplat ; ne pas ajouter d’ombre portée.
-
-## 7. Animation
-
-L’animation doit expliquer la promesse plutôt que simplement décorer.
-
-Séquence recommandée :
-
-1. apparition discrète des points dispersés ;
-2. construction progressive des arêtes, de la queue vers la tête ;
-3. apparition des facettes ;
-4. bref passage lumineux sur le chemin critique ;
-5. état final immobile.
-
-Règles :
-
-- durée de révélation inférieure à deux secondes ;
-- pas de battement d’ailes cartoon ;
-- pulsation secondaire espacée d’au moins trois secondes ;
-- parallaxe limitée aux particules libres ;
-- respect obligatoire de `prefers-reduced-motion` ;
-- ne pas animer en boucle continue dans une interface de travail.
-
-Le fichier `Oiseau/bird-animation.js` fournit une implémentation de référence sans dépendance.
-
-## 8. Usages interdits
+## 6. Usages interdits
 
 Ne pas :
 
-- étirer ou incliner le logo ;
-- recolorer arbitrairement les nœuds ;
-- fermer la coupure du `P` ;
-- épaissir les traits sans recalculer les espacements ;
-- utiliser un dégradé arc-en-ciel ou des effets néon ;
-- isoler une facette aléatoire comme symbole de marque ;
-- placer la version détaillée de l’oiseau à une taille où les arêtes deviennent illisibles ;
-- employer l’oiseau comme mascotte humoristique.
+- fermer la coupure du P ;
+- remettre toutes les lettres à la même hauteur ;
+- agrandir l’oiseau jusqu’à concurrencer le nom ;
+- faire battre l’aile entière comme une planche rigide ;
+- ajouter des effets néon, des traînées permanentes ou un scan agressif ;
+- lancer le vol en boucle rapide ;
+- utiliser l’oiseau comme mascotte humoristique.
 
-## 9. Validation avant identité définitive
+## 7. Fichiers de référence
 
-Cette piste a une logique de marque forte, mais son caractère distinctif doit être objectivé. Le protocole minimal conseillé est un test non assisté : montrer pendant deux secondes le `P`, puis demander à des participants de le redessiner et de l’associer au nom Percolia. Comparer ensuite trois variantes de densité de l’oiseau sur les cibles industrielles.
-
-Une recherche d’antériorités reste nécessaire avant dépôt ou adoption définitive ; aucun contrôle juridique exhaustif n’est revendiqué dans cette version.
+- signature : `Logo/percolia-lockup-horizontal.svg` ;
+- mot-symbole : `Logo/Police/percolia-wordmark-primary.svg` ;
+- oiseau statique : `Logo/Oiseau/percolia-bird-compact.svg` ;
+- démonstration : `Logo/Oiseau/demo.html` ;
+- modèle : `Logo/Oiseau/source/bird_model.json`.

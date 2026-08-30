@@ -7,6 +7,9 @@ on:
       - "Logo/Police/build_wordmark.py"
       - "Logo/Police/source/**"
       - "Logo/Oiseau/build_bird.py"
+      - "Logo/Oiseau/build_demo.py"
+      - "Logo/Oiseau/bird-animation.js"
+      - "Logo/Oiseau/bird-animation.css"
       - "Logo/Oiseau/source/**"
       - "Logo/build_lockups.py"
       - ".github/workflows/build-brand.yml"
@@ -24,32 +27,47 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Generate SVG assets
+      - name: Generate brand assets
         run: |
           python Logo/Police/build_wordmark.py
           python Logo/Oiseau/build_bird.py
           python Logo/build_lockups.py
+          python Logo/Oiseau/build_demo.py
       - name: Validate generated assets
         run: |
-          python -m py_compile Logo/Police/build_wordmark.py Logo/Oiseau/build_bird.py Logo/build_lockups.py
+          python -m py_compile \
+            Logo/Police/build_wordmark.py \
+            Logo/Oiseau/build_bird.py \
+            Logo/Oiseau/build_demo.py \
+            Logo/build_lockups.py
           python - <<'PY'
           from pathlib import Path
           import json
           import xml.etree.ElementTree as ET
+
           for path in Path('Logo').rglob('*.json'):
               json.loads(path.read_text(encoding='utf-8'))
           for path in Path('Logo').rglob('*.svg'):
               ET.parse(path)
+
+          demo = Path('Logo/Oiseau/demo.html').read_text(encoding='utf-8')
+          assert '<script src=' not in demo
+          assert 'fetch(' not in demo
+          assert 'data-flight-bird' in demo
           PY
           node --check Logo/Oiseau/bird-animation.js
       - name: Commit generated assets
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add Logo/*.svg Logo/Police/*.svg Logo/Oiseau/*.svg
+          git add \
+            Logo/*.svg \
+            Logo/Police/*.svg \
+            Logo/Oiseau/*.svg \
+            Logo/Oiseau/demo.html
           if git diff --cached --quiet; then
             echo "Assets already up to date."
           else
-            git commit -m "Génère les actifs SVG de la marque"
+            git commit -m "Génère les actifs de la marque"
             git push
           fi

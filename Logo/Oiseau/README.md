@@ -1,61 +1,88 @@
 # Oiseau-réseau Percolia
 
-## Rôle du symbole
+## Direction retenue
 
-L’oiseau ne représente pas directement un secteur ou un capteur. Il fournit une image plus large de la promesse Percolia : **percevoir, organiser et faire émerger une structure fiable à partir d’observations dispersées**.
+L’oiseau est désormais un **martinet géométrique articulé**. Il reste construit par des nœuds, des arêtes et quelques facettes, mais sa silhouette n’est plus un amas de triangles approximativement remué.
 
-Sa construction reprend trois niveaux :
+Dans la signature statique, il est petit et perché sur le `P`. Dans la démonstration animée, il :
 
-1. des points libres à gauche, assimilables au bruit ou aux observations non structurées ;
-2. un maillage géométrique qui forme progressivement le corps ;
-3. un chemin bleu/cyan continu qui traverse le réseau jusqu’au bec, image d’une propagation maîtrisée.
+1. reste brièvement au repos sur le `P` ;
+2. déploie ses deux ailes ;
+3. décolle en rétractant les pattes ;
+4. suit une trajectoire fermée composée de quatre arcs de Bézier ;
+5. scanne l’environnement avec un faisceau et un bref retour lumineux ;
+6. gouverne avec la queue, étend les pattes et revient se poser.
 
-Les triangles évoquent les interactions d’ordre supérieur et les objets géométriques employés par la technologie, sans faire du logo un diagramme scientifique littéral.
+## Pourquoi le battement est désormais crédible
+
+Chaque aile est un rig emboîté à trois segments :
+
+```text
+épaule → bras → coude → avant-bras → poignet → main/rémiges
+```
+
+La descente est plus courte et plus énergique. Pendant la remontée, le coude et le poignet replient partiellement l’aile. Les deux ailes sont visibles avec une légère perspective ; la tête compense l’inclinaison du corps et la queue accompagne les virages.
 
 ## Fichiers
 
-- `percolia-bird-primary.svg` : dessin complet sur fond clair.
-- `percolia-bird-inverse.svg` : version pour fond Encre.
-- `percolia-bird-mono.svg` : version une couleur.
-- `percolia-bird-compact.svg` : réseau simplifié pour les petites tailles.
-- `source/topology.json` : nœuds, arêtes, facettes, phases et rôles.
-- `build_bird.py` : générateur SVG sans dépendance.
-- `bird-animation.js` et `bird-animation.css` : animation web de référence.
-- `demo.html` : démonstrateur local.
-
-## Structure sémantique du SVG
-
-Les éléments exposent les attributs suivants :
-
-- `data-layer="faces|edges|nodes|scatter"` ;
-- `data-anim="face|edge|node|scatter"` ;
-- `data-kind="critical|outline|mesh"` ;
-- `data-phase="0…5"`.
-
-Cette structure permet d’animer la construction du réseau sans dépendre des numéros de nœuds.
-
-## Intégration web
-
-Le SVG doit être **inline** pour que le script puisse accéder à ses groupes.
-
-```html
-<link rel="stylesheet" href="bird-animation.css">
-<div id="hero-bird" class="percolia-bird-shell">
-  <!-- contenu de percolia-bird-primary.svg -->
-</div>
-<script type="module">
-  import { initPercoliaBird } from "./bird-animation.js";
-  initPercoliaBird(document.querySelector("#hero-bird svg"));
-</script>
+```text
+Oiseau/
+├── README.md
+├── build_bird.py
+├── build_demo.py
+├── bird-animation.css
+├── bird-animation.js
+├── demo.html
+├── percolia-bird-primary.svg
+├── percolia-bird-inverse.svg
+├── percolia-bird-mono.svg
+├── percolia-bird-compact.svg
+└── source/
+    ├── README.md
+    └── bird_model.json
 ```
 
-L’API renvoie `reveal()`, `pulse()` et `destroy()`. Les mouvements sont automatiquement neutralisés lorsque l’utilisateur demande une réduction des animations.
+- `bird_model.json` est la source de vérité géométrique et anatomique.
+- `build_bird.py` génère les quatre SVG.
+- `bird-animation.js` pilote le squelette et le trajet de vol.
+- `demo.html` est **entièrement autonome** : il peut être téléchargé seul et ouvert hors ligne.
+- `percolia-bird-compact.svg` utilise l’aile pliée et sert à la signature perchée.
 
 ## Régénération
 
 ```bash
+python Logo/Police/build_wordmark.py
 python Logo/Oiseau/build_bird.py
 python Logo/build_lockups.py
+python Logo/Oiseau/build_demo.py
 ```
 
-Pour changer la silhouette, modifier d’abord `source/topology.json` : c’est la source de vérité. Éviter de modifier seulement les SVG générés, faute de quoi les changements seraient perdus à la prochaine génération.
+Aucune dépendance Python externe n’est requise pour la génération.
+
+## Intégration web
+
+Le SVG doit être inline pour que le script puisse articuler ses groupes.
+
+```html
+<link rel="stylesheet" href="bird-animation.css">
+<div class="percolia-flight-stage" data-flight-stage>
+  <span id="perch"></span>
+  <div id="bird" class="percolia-flight-bird" data-flight-bird>
+    <!-- contenu inline de percolia-bird-primary.svg -->
+  </div>
+</div>
+<script src="bird-animation.js"></script>
+<script>
+  const controller = PercoliaBird.init(document.querySelector('#bird svg'), {
+    birdElement: document.querySelector('#bird'),
+    stageElement: document.querySelector('[data-flight-stage]'),
+    perchElement: document.querySelector('#perch')
+  });
+</script>
+```
+
+L’API expose `play()`, `pause()`, `replay()`, `scan()`, `pulse()`, `reveal()` et `destroy()`.
+
+## Accessibilité
+
+Avec `prefers-reduced-motion: reduce`, l’oiseau reste perché. Le logo statique ne dépend jamais de l’animation pour être compris.

@@ -1,10 +1,31 @@
 {
   "name": "Percolia Display",
-  "version": "0.1.0",
-  "units": {"cap_top": 38, "baseline": 172, "stroke_width": 14, "tracking": 28, "canvas_height": 210},
-  "palette": {"ink": "#082C4C", "blue": "#1C83D4", "cyan": "#20C9C4", "mist": "#EAF5F7", "slate": "#5D7385", "white": "#FFFFFF"},
+  "version": "0.2.0",
+  "units": {
+    "cap_top": 38,
+    "baseline": 172,
+    "stroke_width": 14,
+    "tracking": 28,
+    "canvas_height": 210,
+    "small_caps_scale": 0.78
+  },
+  "palette": {
+    "ink": "#082C4C",
+    "blue": "#1C83D4",
+    "cyan": "#20C9C4",
+    "mist": "#EAF5F7",
+    "slate": "#5D7385",
+    "white": "#FFFFFF"
+  },
   "glyphs": {
-    "P": {"advance": 128, "paths": ["M 22 172 V 38 H 76 Q 112 38 112 72 V 82 Q 112 116 78 116 H 62"], "nodes": [{"cx": 22, "cy": 116, "r": 6.2, "tone": "blue", "role": "threshold-origin"}, {"cx": 62, "cy": 116, "r": 6.2, "tone": "cyan", "role": "threshold-terminal"}]},
+    "P": {
+      "advance": 128,
+      "paths": ["M 22 172 V 38 H 76 Q 112 38 112 72 V 82 Q 112 116 78 116 H 62"],
+      "nodes": [
+        {"cx": 22, "cy": 116, "r": 6.2, "tone": "blue", "role": "threshold-origin"},
+        {"cx": 62, "cy": 116, "r": 6.2, "tone": "cyan", "role": "threshold-terminal"}
+      ]
+    },
     "E": {"advance": 112, "paths": ["M 22 38 V 172", "M 22 38 H 104", "M 22 104 H 88", "M 22 172 H 104"]},
     "R": {"advance": 132, "paths": ["M 22 172 V 38 H 76 Q 112 38 112 72 V 82 Q 112 116 78 116 H 22", "M 70 116 L 120 172"]},
     "C": {"advance": 126, "paths": ["M 112 58 Q 96 38 72 38 H 54 Q 22 38 22 70 V 140 Q 22 172 54 172 H 72 Q 96 172 112 152"]},

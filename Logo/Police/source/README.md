@@ -1,9 +1,5 @@
-# Source géométrique
+# Source géométrique du mot-symbole
 
-`geometry.json` est la source de vérité du mot-symbole. Chaque glyphe contient :
+`geometry.json` contient les huit glyphes utilisés, leurs avances, la ligne de base et `small_caps_scale`.
 
-- `advance` : largeur utilisée pour le placement ;
-- `paths` : tracés SVG éditables ;
-- `nodes` : nœuds colorés éventuels et leur rôle sémantique.
-
-Le générateur conserve des identifiants stables (`letter-1-P`, `threshold-origin`, etc.) pour permettre des interactions ou animations ciblées côté web.
+Le premier glyphe (`P`) est rendu à l’échelle 1. Les suivants sont rendus à `small_caps_scale`, puis décalés verticalement afin de partager exactement la même ligne de base.

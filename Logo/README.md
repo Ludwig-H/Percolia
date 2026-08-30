@@ -1,67 +1,64 @@
-# Identité visuelle Percolia — direction 01
+# Identité visuelle Percolia — direction 02
 
 <p align="center">
   <img src="brand-board.svg" alt="Planche de marque Percolia" width="960">
 </p>
 
-## Idée directrice
+## Principe
 
 **La structure fiable qui émerge du bruit.**
 
-Percolia ne doit pas ressembler à une marque d’« IA magique » ou à un fournisseur générique de données. Son avantage vient d’une construction scientifique précise : géométrie, interactions d’ordre supérieur, percolation, robustesse et passage à l’échelle. La direction retenue traduit ce positionnement sans enfermer la marque dans une seule application LiDAR.
+La direction 02 conserve le `P` à seuil interrompu, transforme `ERCOLIA` en petites capitales et remplace le premier oiseau polygonal par un **martinet-réseau articulé**.
 
-- Le **mot-symbole** est une construction géométrique monolinéaire, stable et industrielle.
-- Le **P** contient une coupure volontaire : deux nœuds séparés représentent un seuil critique, la maîtrise de la connectivité et la capacité à éviter les fusions parasites.
-- L’**oiseau-réseau** montre des points dispersés qui deviennent une forme structurée. L’oiseau suggère la vision, la hauteur de vue et le mouvement, mais reste un objet géométrique plutôt qu’une mascotte.
-- Le chemin bleu/cyan qui traverse l’oiseau matérialise une propagation contrôlée au sein du réseau.
+Le petit oiseau est perché sur le `P` dans la signature statique. Sur le web, il déploie réellement ses ailes, décolle, suit une trajectoire courbe, effectue un scan LiDAR et revient se poser.
 
-## Contenu
+## Arborescence
 
 ```text
 Logo/
+├── README.md
 ├── CHARTE_GRAPHIQUE.md
 ├── tokens.css
 ├── tokens.json
 ├── build_lockups.py
 ├── brand-board.svg
-├── percolia-lockup-horizontal.svg
-├── percolia-lockup-horizontal-mono.svg
-├── percolia-lockup-horizontal-inverse.svg
+├── percolia-lockup-horizontal*.svg
 ├── percolia-lockup-stacked.svg
 ├── Police/
 │   ├── README.md
 │   ├── build_wordmark.py
 │   ├── source/geometry.json
-│   ├── percolia-wordmark-*.svg
-│   ├── percolia-p-monogram-*.svg
-│   └── percolia-glyph-sheet.svg
+│   └── *.svg
 └── Oiseau/
     ├── README.md
     ├── build_bird.py
-    ├── source/topology.json
-    ├── percolia-bird-*.svg
-    ├── bird-animation.js
+    ├── build_demo.py
     ├── bird-animation.css
-    └── demo.html
+    ├── bird-animation.js
+    ├── demo.html
+    ├── source/bird_model.json
+    └── *.svg
 ```
 
 ## Régénération
-
-Aucune dépendance Python externe n’est requise.
 
 ```bash
 python Logo/Police/build_wordmark.py
 python Logo/Oiseau/build_bird.py
 python Logo/build_lockups.py
+python Logo/Oiseau/build_demo.py
 ```
 
-Les fichiers SVG produits restent lisibles et modifiables à la main dans Inkscape, Illustrator, Figma ou un éditeur de texte. Les groupes, nœuds et arêtes portent des identifiants sémantiques pour l’animation web.
+Les SVG et la page autonome sont reproductibles à partir des sources JSON et des générateurs Python.
+
+## Actifs principaux
+
+- `percolia-lockup-horizontal.svg` : signature par défaut ;
+- `Police/percolia-p-monogram-primary.svg` : favicon et icône ;
+- `Oiseau/percolia-bird-compact.svg` : oiseau perché statique ;
+- `Oiseau/percolia-bird-primary.svg` : rig complet ;
+- `Oiseau/demo.html` : démonstration autonome du vol.
 
 ## Statut
 
-Cette livraison est une **direction créative v0.1**, suffisamment cohérente pour être testée sur le site, une présentation commerciale et un favicon. Avant dépôt de marque et diffusion définitive, il faudra encore mener :
-
-1. une recherche d’antériorités graphique et typographique ;
-2. des tests de reconnaissance du `P` à petite taille ;
-3. un test de perception auprès de cibles LiDAR/robotique et d’acheteurs logiciels industriels ;
-4. la finalisation éventuelle d’une vraie fonte OpenType si le besoin dépasse le seul mot `PERCOLIA`.
+Direction créative éditable. Une recherche d’antériorités et des tests de reconnaissance à petite taille restent nécessaires avant dépôt définitif.

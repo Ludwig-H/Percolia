@@ -21,6 +21,12 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Apply pending v0.9 kinematics update
+        run: |
+          if [ -f Logo/Oiseau/apply_v09_update.py ]; then
+            python Logo/Oiseau/apply_v09_update.py
+          fi
+
       - name: Generate assets
         run: |
           python Logo/Police/build_wordmark.py
@@ -53,6 +59,10 @@ jobs:
           assert 'fetch(' not in demo
           assert 'data-flight-bird="outbound"' in demo
           assert 'data-flight-bird="inbound"' in demo
+          assert 'PRÉPARATION' in demo
+          assert 'ARRONDI' in demo
+          assert 'CONTACT' in demo
+          assert 'STABILISATION' in demo
           PY
 
       - name: Commit generated assets
@@ -63,6 +73,6 @@ jobs:
           if git diff --cached --quiet; then
             echo "Generated assets are already up to date."
           else
-            git commit -m "Génère les actifs de l’oiseau-réseau directionnel"
+            git commit -m "Améliore l’envol et l’atterrissage de l’oiseau-réseau"
             git push
           fi

@@ -12,7 +12,7 @@ from pathlib import Path
 REPO = Path(__file__).resolve().parents[2]
 PACKAGE_DIR = Path(__file__).resolve().parent / ".game_update"
 PACKAGE = PACKAGE_DIR / "payload.zlib"
-EXPECTED_SHA256 = "33706a194f496b573eb8fe0f26cffd66245b74a93ecac080b8f6f32938b399d4"
+EXPECTED_SHA256 = "f9c646b728665b4381ff2bdbff5c99771e26b5e58d34722f8ae09e95078fc43b"
 EXPECTED_FILES = 12
 
 raw = PACKAGE.read_bytes()

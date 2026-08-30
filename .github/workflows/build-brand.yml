@@ -4,7 +4,6 @@ on:
   push:
     branches: [main]
     paths:
-      - "Logo/Oiseau/apply_parametric_redesign.py"
       - ".github/workflows/build-brand.yml"
   workflow_dispatch:
 
@@ -58,6 +57,11 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # The workflow file is installed in its final form by the payload,
+          # but GitHub's job token cannot update workflow files. Keep the
+          # bootstrap workflow for this commit; it is replaced afterwards
+          # through the authenticated contents API.
+          git restore --source=HEAD -- .github/workflows/build-brand.yml
           git add -A
           if git diff --cached --quiet; then
             echo "Repository already up to date."

@@ -11,11 +11,14 @@ from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[2]
 PACKAGE_DIR = Path(__file__).resolve().parent / ".game_update"
-PACKAGE = PACKAGE_DIR / "payload.zlib"
-EXPECTED_SHA256 = "f9c646b728665b4381ff2bdbff5c99771e26b5e58d34722f8ae09e95078fc43b"
+EXPECTED_SHA256 = "33706a194f496b573eb8fe0f26cffd66245b74a93ecac080b8f6f32938b399d4"
 EXPECTED_FILES = 12
 
-raw = PACKAGE.read_bytes()
+parts = sorted(PACKAGE_DIR.glob("part*.txt"))
+if not parts:
+    raise RuntimeError("missing game-animation payload parts")
+encoded = "".join(path.read_text(encoding="ascii") for path in parts)
+raw = base64.b64decode(encoded, validate=True)
 actual = hashlib.sha256(raw).hexdigest()
 if actual != EXPECTED_SHA256:
     raise RuntimeError(f"invalid game-animation payload: {actual}")
@@ -24,10 +27,10 @@ payload = json.loads(zlib.decompress(raw).decode("utf-8"))
 if len(payload) != EXPECTED_FILES:
     raise RuntimeError(f"unexpected payload size: {len(payload)}")
 
-for relative, encoded in payload.items():
+for relative, encoded_file in payload.items():
     destination = REPO / relative
     destination.parent.mkdir(parents=True, exist_ok=True)
-    destination.write_bytes(base64.b64decode(encoded))
+    destination.write_bytes(base64.b64decode(encoded_file))
 
 # Remove transient deployment material and bytecode before the workflow commits.
 shutil.rmtree(PACKAGE_DIR)

@@ -1,4 +1,4 @@
-# Identité visuelle Percolia — direction 03
+# Identité visuelle Percolia — direction 04
 
 ## Principe
 
@@ -9,7 +9,8 @@ La marque associe :
 - le `P` distinctif conservé dans sa forme initiale ;
 - `ERCOLIA` en petites capitales géométriques ;
 - le premier oiseau-réseau, restauré et perché sur le `P` ;
-- une animation directionnelle utilisant deux oiseaux distincts.
+- une animation directionnelle utilisant deux oiseaux distincts ;
+- une cinématique inspirée des moteurs de jeu, fondée sur des clips, du root motion, des événements et des contacts IK.
 
 ## Sources canoniques
 
@@ -25,7 +26,9 @@ Logo/
     ├── build_demo.py
     ├── bird-animation.js
     ├── test_wing_model.py
-    └── source/bird_model.json
+    └── source/
+        ├── bird_model.json
+        └── animation_clips.json
 ```
 
 Les SVG, la planche de marque et `Oiseau/demo.html` sont générés mais versionnés pour rester visibles immédiatement.
@@ -43,9 +46,11 @@ node --check Logo/Oiseau/bird-animation.js
 
 La démonstration autonome se trouve dans [`Oiseau/demo.html`](Oiseau/demo.html).
 
-## Choix abandonné
+## Animation
 
-Le modèle d’oiseau paramétrique lisse des essais précédents n’est plus utilisé. Il a été remplacé par la topologie triangulée du premier jet, jugée plus reconnaissable et plus cohérente avec Percolia.
+Le dessin en réseau et la palette restent inchangés. Le mouvement est organisé en clips keyframés : anticipation, poussée, décollage, croisière, approche, arrondi, contact et stabilisation. Les événements `toe_off` et `touchdown` commandent les appuis, tandis qu’une IK à deux segments verrouille les pattes sur le `P`.
+
+Le scan LiDAR part du nœud de capteur de la tête et reste graphiquement distinct du bec.
 
 ## Statut
 

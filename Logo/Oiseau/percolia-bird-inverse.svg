@@ -1,238 +1,238 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-labelledby="title desc" class="percolia-bird">
   <title id="title">Oiseau-réseau Percolia</title>
-  <desc id="desc">Le modèle d’oiseau en réseau initial, doté d’ailes cinématiques déformables.</desc>
+  <desc id="desc">Oiseau triangulé Percolia avec rig, clips keyframés et scan depuis la tête.</desc>
   <rect x="0" y="0" width="640" height="360" fill="#082C4C"/>
-  <metadata id="percolia-network-model" data-network-model="true"><![CDATA[{"name":"Percolia Initial Network Bird","version":"0.9.0","viewBox":[0,0,640,360],"palette":{"ink":"#082C4C","blue":"#1C83D4","cyan":"#20C9C4","mist":"#EAF5F7","white":"#FFFFFF","slate":"#5D7385"},"body":{"nodes":{"t0":[78,210,3.4,"ink","node"],"t1":[126,184,3.0,"ink","node"],"t2":[184,178,3.5,"blue","node"],"t3":[140,216,3.0,"ink","node"],"t4":[88,252,3.4,"ink","node"],"t5":[192,226,3.5,"ink","node"],"t6":[150,202,4.6,"cyan","critical"],"b0":[190,178,3.1,"ink","node"],"b1":[220,144,3.8,"blue","node"],"b2":[262,158,3.2,"ink","node"],"b3":[306,184,4.5,"cyan","critical"],"b4":[350,202,3.5,"ink","node"],"b5":[330,244,3.8,"blue","node"],"b6":[276,270,3.7,"ink","node"],"b7":[220,244,3.2,"ink","node"],"b8":[248,204,4.6,"cyan","critical"],"b9":[292,224,3.0,"ink","node"],"n0":[342,158,4.6,"cyan","critical"],"n1":[368,116,3.4,"ink","node"],"c0":[380,208,3.4,"ink","node"],"h0":[404,96,3.7,"blue","node"],"h1":[444,106,3.1,"ink","node"],"h2":[466,130,4.0,"blue","node"],"h3":[450,158,3.5,"ink","node"],"h4":[408,166,3.3,"ink","node"],"h5":[407,132,4.8,"cyan","critical"],"eye":[438,124,2.3,"ink","decorative"],"q1":[532,144,3.0,"cyan","critical"],"q2":[469,151,2.8,"ink","node"]},"edges":[["t0","t1","mesh"],["t1","t2","mesh"],["t0","t6","critical"],["t6","t2","mesh"],["t0","t4","outline"],["t4","t3","mesh"],["t3","t5","mesh"],["t4","t5","outline"],["t3","t6","mesh"],["t6","t5","mesh"],["t2","t6","mesh"],["t2","b0","outline"],["t2","b1","outline"],["t5","b7","outline"],["b0","b1","mesh"],["b0","b8","mesh"],["b1","b2","mesh"],["b1","b8","mesh"],["b2","b3","mesh"],["b2","b8","mesh"],["b3","b8","critical"],["t6","b8","critical"],["b3","b9","mesh"],["b8","b9","mesh"],["b8","b7","mesh"],["b7","b9","mesh"],["b7","b6","outline"],["b6","b9","mesh"],["b6","b5","outline"],["b5","b9","mesh"],["b5","b4","outline"],["b4","b9","mesh"],["b3","b4","mesh"],["b4","c0","outline"],["b5","c0","mesh"],["b3","n0","critical"],["n0","n1","outline"],["n1","h0","outline"],["h0","h1","outline"],["h1","h2","outline"],["h2","h3","mesh"],["h3","h4","outline"],["h4","c0","outline"],["c0","b4","mesh"],["n0","h5","critical"],["n1","h5","mesh"],["h0","h5","mesh"],["h1","h5","mesh"],["h2","h5","critical"],["h3","h5","mesh"],["h4","h5","mesh"],["n0","h4","mesh"],["n0","c0","mesh"],["h2","q1","critical"],["q1","q2","outline"],["q2","h3","outline"],["q2","h2","mesh"]],"faces":[["f01",["t0","t1","t6"],"cyan",0.1],["f02",["t1","t2","t6"],"blue",0.1],["f03",["t0","t6","t4"],"cyan",0.08],["f04",["t4","t6","t3"],"blue",0.08],["f05",["t3","t6","t5"],"ink",0.07],["f10",["b0","b1","b8"],"cyan",0.1],["f11",["b1","b2","b8"],"blue",0.12],["f12",["b2","b3","b8"],"cyan",0.16],["f13",["b3","b9","b8"],"blue",0.15],["f14",["b3","b4","b9"],"ink",0.08],["f15",["b4","b5","b9"],"blue",0.11],["f16",["b5","b6","b9"],"cyan",0.1],["f17",["b6","b7","b9"],"ink",0.07],["f18",["b7","b8","b9"],"blue",0.09],["f30",["n0","n1","h5"],"cyan",0.1],["f31",["n1","h0","h5"],"blue",0.11],["f32",["h0","h1","h5"],"cyan",0.08],["f33",["h1","h2","h5"],"blue",0.14],["f34",["h2","h3","h5"],"cyan",0.12],["f35",["h3","h4","h5"],"ink",0.08],["f36",["h4","n0","h5"],"blue",0.09],["f37",["b3","n0","b4"],"cyan",0.1],["f38",["n0","h4","c0"],"blue",0.08],["f39",["n0","c0","b4"],"ink",0.07],["f40",["h4","h3","c0"],"cyan",0.08],["f41",["h2","q1","q2"],"blue",0.12],["f42",["h2","q2","h3"],"cyan",0.08]]},"scatter":{"s08":[116,207,2.0,"blue","scatter"],"s07":[147,55,1.4,"ink","scatter"],"s04":[95,112,1.8,"ink","scatter"],"s02":[60,138,1.8,"blue","scatter"],"s01":[42,178,2.2,"ink","scatter"],"s03":[68,246,2.3,"cyan","scatter"],"s06":[126,80,1.7,"cyan","scatter"],"s09":[147,263,1.4,"ink","scatter"],"s05":[106,285,1.6,"blue","scatter"],"s10":[158,126,1.5,"cyan","scatter"]},"wing":{"shoulders":{"near":[238,157],"far":[253,166]},"segment_lengths":[54,58,64],"chords":[23,29,20,1.6],"phase_stations":[0,1,2,3,4,5,6],"period_ms":3200,"stroke_center_deg":180,"stroke_amplitude_deg":52,"stroke_harmonic_deg":5,"stroke_harmonic_phase_deg":-28,"elbow_base_deg":9,"elbow_fold_deg":35,"wrist_base_deg":6,"wrist_fold_deg":48,"fold_phase_deg":0,"fold_exponent":1.45,"near_phase_offset":0,"far_phase_offset":0.065,"near_scale":1,"far_scale":0.92,"far_opacity":0.34,"leading_fraction":0.34,"folded_pose":{"stroke_deg":165,"elbow_deg":28,"wrist_deg":34,"span_scale":0.64,"chord_scale":0.78},"glide_phase":0.18,"launch_phase":0.43,"flare_phase":0.44,"touchdown_phase":0.46},"legs":{"near":{"hip":[306,247],"knee":[307,263],"ankle":[302,279],"toes":[[290,284],[303,285],[315,282]]},"far":{"hip":[326,238],"knee":[329,255],"ankle":[323,274],"toes":[[312,279],[324,280],[336,277]]}},"flight":{"stage_viewBox":[0,0,1360,760],"perch":[260,538],"perched_anchor":[306,285],"flight_anchor":[306,245],"timeline_ms":{"initial_perch":1500,"preload":650,"takeoff":1450,"outbound":4800,"empty":850,"inbound":4700,"flare":1100,"touchdown":650,"settle":900,"final_hold":1700},"takeoff_curve":[[257.921,527.019],[285,500],[356,380],[415,355]],"outbound_curve":[[415,355],[650,255],[1005,165],[1460,128]],"inbound_curve":[[1460,198],[1110,218],[560,365],[360,430]],"flare_curve":[[360,430],[300,449],[278,470],[270,492]],"touchdown_curve":[[270,492],[266,503],[260,516],[260,528]],"bird_scale":0.29,"perched_scale":0.25,"preload_sink":3.2,"preload_pitch_deg":-5.0,"takeoff_contact_fraction":0.22,"takeoff_pitch_deg":-12.0,"flare_pitch_deg":10.0,"settle_amplitude":3.2,"settle_oscillations":1.25,"scan_progress":0.52,"scan_duration_fraction":0.08,"one_shot":true,"takeoff_release_lift":1.2}}]]></metadata>
+  <metadata id="percolia-network-model" data-network-model="true"><![CDATA[{"name":"Percolia Initial Network Bird","version":"1.0.0","viewBox":[0,0,640,360],"palette":{"ink":"#082C4C","blue":"#1C83D4","cyan":"#20C9C4","mist":"#EAF5F7","white":"#FFFFFF","slate":"#5D7385"},"body":{"nodes":{"t0":[78,210,3.4,"ink","node"],"t1":[126,184,3.0,"ink","node"],"t2":[184,178,3.5,"blue","node"],"t3":[140,216,3.0,"ink","node"],"t4":[88,252,3.4,"ink","node"],"t5":[192,226,3.5,"ink","node"],"t6":[150,202,4.6,"cyan","critical"],"b0":[190,178,3.1,"ink","node"],"b1":[220,144,3.8,"blue","node"],"b2":[262,158,3.2,"ink","node"],"b3":[306,184,4.5,"cyan","critical"],"b4":[350,202,3.5,"ink","node"],"b5":[330,244,3.8,"blue","node"],"b6":[276,270,3.7,"ink","node"],"b7":[220,244,3.2,"ink","node"],"b8":[248,204,4.6,"cyan","critical"],"b9":[292,224,3.0,"ink","node"],"n0":[342,158,4.6,"cyan","critical"],"n1":[368,116,3.4,"ink","node"],"c0":[380,208,3.4,"ink","node"],"h0":[404,96,3.7,"blue","node"],"h1":[444,106,3.1,"ink","node"],"h2":[466,130,4.0,"blue","node"],"h3":[450,158,3.5,"ink","node"],"h4":[408,166,3.3,"ink","node"],"h5":[407,132,4.8,"cyan","critical"],"eye":[438,124,2.3,"ink","decorative"],"q1":[532,144,3.0,"cyan","critical"],"q2":[469,151,2.8,"ink","node"]},"edges":[["t0","t1","mesh"],["t1","t2","mesh"],["t0","t6","critical"],["t6","t2","mesh"],["t0","t4","outline"],["t4","t3","mesh"],["t3","t5","mesh"],["t4","t5","outline"],["t3","t6","mesh"],["t6","t5","mesh"],["t2","t6","mesh"],["t2","b0","outline"],["t2","b1","outline"],["t5","b7","outline"],["b0","b1","mesh"],["b0","b8","mesh"],["b1","b2","mesh"],["b1","b8","mesh"],["b2","b3","mesh"],["b2","b8","mesh"],["b3","b8","critical"],["t6","b8","critical"],["b3","b9","mesh"],["b8","b9","mesh"],["b8","b7","mesh"],["b7","b9","mesh"],["b7","b6","outline"],["b6","b9","mesh"],["b6","b5","outline"],["b5","b9","mesh"],["b5","b4","outline"],["b4","b9","mesh"],["b3","b4","mesh"],["b4","c0","outline"],["b5","c0","mesh"],["b3","n0","critical"],["n0","n1","outline"],["n1","h0","outline"],["h0","h1","outline"],["h1","h2","outline"],["h2","h3","mesh"],["h3","h4","outline"],["h4","c0","outline"],["c0","b4","mesh"],["n0","h5","critical"],["n1","h5","mesh"],["h0","h5","mesh"],["h1","h5","mesh"],["h2","h5","critical"],["h3","h5","mesh"],["h4","h5","mesh"],["n0","h4","mesh"],["n0","c0","mesh"],["h2","q1","critical"],["q1","q2","outline"],["q2","h3","outline"],["q2","h2","mesh"]],"faces":[["f01",["t0","t1","t6"],"cyan",0.1],["f02",["t1","t2","t6"],"blue",0.1],["f03",["t0","t6","t4"],"cyan",0.08],["f04",["t4","t6","t3"],"blue",0.08],["f05",["t3","t6","t5"],"ink",0.07],["f10",["b0","b1","b8"],"cyan",0.1],["f11",["b1","b2","b8"],"blue",0.12],["f12",["b2","b3","b8"],"cyan",0.16],["f13",["b3","b9","b8"],"blue",0.15],["f14",["b3","b4","b9"],"ink",0.08],["f15",["b4","b5","b9"],"blue",0.11],["f16",["b5","b6","b9"],"cyan",0.1],["f17",["b6","b7","b9"],"ink",0.07],["f18",["b7","b8","b9"],"blue",0.09],["f30",["n0","n1","h5"],"cyan",0.1],["f31",["n1","h0","h5"],"blue",0.11],["f32",["h0","h1","h5"],"cyan",0.08],["f33",["h1","h2","h5"],"blue",0.14],["f34",["h2","h3","h5"],"cyan",0.12],["f35",["h3","h4","h5"],"ink",0.08],["f36",["h4","n0","h5"],"blue",0.09],["f37",["b3","n0","b4"],"cyan",0.1],["f38",["n0","h4","c0"],"blue",0.08],["f39",["n0","c0","b4"],"ink",0.07],["f40",["h4","h3","c0"],"cyan",0.08],["f41",["h2","q1","q2"],"blue",0.12],["f42",["h2","q2","h3"],"cyan",0.08]]},"scatter":{"s08":[116,207,2.0,"blue","scatter"],"s07":[147,55,1.4,"ink","scatter"],"s04":[95,112,1.8,"ink","scatter"],"s02":[60,138,1.8,"blue","scatter"],"s01":[42,178,2.2,"ink","scatter"],"s03":[68,246,2.3,"cyan","scatter"],"s06":[126,80,1.7,"cyan","scatter"],"s09":[147,263,1.4,"ink","scatter"],"s05":[106,285,1.6,"blue","scatter"],"s10":[158,126,1.5,"cyan","scatter"]},"wing":{"shoulders":{"near":[238,157],"far":[253,166]},"segment_lengths":[54,58,64],"chords":[23,29,20,1.6],"phase_stations":[0,1,2,3,4,5,6],"period_ms":3200,"stroke_center_deg":180,"stroke_amplitude_deg":52,"stroke_harmonic_deg":5,"stroke_harmonic_phase_deg":-28,"elbow_base_deg":9,"elbow_fold_deg":35,"wrist_base_deg":6,"wrist_fold_deg":48,"fold_phase_deg":0,"fold_exponent":1.45,"near_phase_offset":0,"far_phase_offset":0.055,"near_scale":1.0,"far_scale":0.92,"far_opacity":0.34,"leading_fraction":0.34,"folded_pose":{"stroke_deg":165,"elbow_deg":28,"wrist_deg":34,"span_scale":0.64,"chord_scale":0.78},"glide_phase":0.18},"legs":{"near":{"hip":[306,247],"knee":[307,263],"ankle":[302,279],"toes":[[290,284],[303,285],[315,282]]},"far":{"hip":[326,238],"knee":[329,255],"ankle":[323,274],"toes":[[312,279],[324,280],[336,277]]}},"flight":{"stage_viewBox":[0,0,1360,760],"perch":[260,538],"perched_anchor":[306,285],"flight_anchor":[306,245],"bird_scale":0.29,"perched_scale":0.25,"foot_targets":{"near":{"ankle_offset":[-3,-9],"toe_offsets":[[-13,0],[-2,1],[10,-1]]},"far":{"ankle_offset":[7,-10],"toe_offsets":[[-5,-1],[6,0],[17,-2]]}},"outbound_curve":[[423,349],[670,244],[1030,158],[1460,124]],"inbound_curve":[[1460,198],[1110,220],[640,330],[388,415]],"scan_progress":0.54,"scan_duration_fraction":0.075,"one_shot":true},"scan":{"origin_node":"h5","direction_deg":0,"beam_length":92,"beam_half_angle_deg":11,"return_distance":101,"pulse_ms":520},"art_direction":{"preserve_palette":true,"preserve_network_silhouette":true,"scan_origin":"head_node_h5","beak_emission":false}}]]></metadata>
   <defs><filter id="scan-glow" x="-300%" y="-300%" width="600%" height="600%"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
-  <g id="percolia-bird" data-percolia-bird="true" data-model-version="0.9.0">
+  <g id="percolia-bird" data-percolia-bird="true" data-model-version="1.0.0">
     <g id="bird-scatter" data-layer="scatter" opacity="0.50">
-      <circle id="scatter-s08" cx="116" cy="207" r="2" fill="#1C83D4" data-anim="scatter"/>
-      <circle id="scatter-s07" cx="147" cy="55" r="1.4" fill="#FFFFFF" data-anim="scatter"/>
-      <circle id="scatter-s04" cx="95" cy="112" r="1.8" fill="#FFFFFF" data-anim="scatter"/>
-      <circle id="scatter-s02" cx="60" cy="138" r="1.8" fill="#1C83D4" data-anim="scatter"/>
-      <circle id="scatter-s01" cx="42" cy="178" r="2.2" fill="#FFFFFF" data-anim="scatter"/>
-      <circle id="scatter-s03" cx="68" cy="246" r="2.3" fill="#20C9C4" data-anim="scatter"/>
-      <circle id="scatter-s06" cx="126" cy="80" r="1.7" fill="#20C9C4" data-anim="scatter"/>
-      <circle id="scatter-s09" cx="147" cy="263" r="1.4" fill="#FFFFFF" data-anim="scatter"/>
-      <circle id="scatter-s05" cx="106" cy="285" r="1.6" fill="#1C83D4" data-anim="scatter"/>
-      <circle id="scatter-s10" cx="158" cy="126" r="1.5" fill="#20C9C4" data-anim="scatter"/>
+      <circle id="scatter-s08" cx="116" cy="207" r="2" fill="#1C83D4"/>
+      <circle id="scatter-s07" cx="147" cy="55" r="1.4" fill="#FFFFFF"/>
+      <circle id="scatter-s04" cx="95" cy="112" r="1.8" fill="#FFFFFF"/>
+      <circle id="scatter-s02" cx="60" cy="138" r="1.8" fill="#1C83D4"/>
+      <circle id="scatter-s01" cx="42" cy="178" r="2.2" fill="#FFFFFF"/>
+      <circle id="scatter-s03" cx="68" cy="246" r="2.3" fill="#20C9C4"/>
+      <circle id="scatter-s06" cx="126" cy="80" r="1.7" fill="#20C9C4"/>
+      <circle id="scatter-s09" cx="147" cy="263" r="1.4" fill="#FFFFFF"/>
+      <circle id="scatter-s05" cx="106" cy="285" r="1.6" fill="#1C83D4"/>
+      <circle id="scatter-s10" cx="158" cy="126" r="1.5" fill="#20C9C4"/>
     </g>
     <g id="wing-far" data-wing-side="far" opacity="0.34">
-      <polygon id="wing-far-outline" data-wing-outline="true" points="253.344,173.493 203.063,177.728 149.28,168.786 92.83,149.732 152.405,149.859 203.973,149.927 252.333,151.455" fill="#EAF5F7" fill-opacity="0.16" stroke="#FFFFFF" stroke-width="1.55" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
-      <g id="wing-far-faces" data-layer="faces">
-        <polygon id="wing-far-face-00" data-wing-face="0" points="253.344,173.493 203.063,177.728 177.694,163.07" fill="#20C9C4" fill-opacity="0.055"/>
-        <polygon id="wing-far-face-01" data-wing-face="1" points="203.063,177.728 149.28,168.786 177.694,163.07" fill="#1C83D4" fill-opacity="0.055"/>
-        <polygon id="wing-far-face-02" data-wing-face="2" points="149.28,168.786 92.83,149.732 177.694,163.07" fill="#082C4C" fill-opacity="0.055"/>
-        <polygon id="wing-far-face-03" data-wing-face="3" points="92.83,149.732 152.405,149.859 177.694,163.07" fill="#20C9C4" fill-opacity="0.055"/>
-        <polygon id="wing-far-face-04" data-wing-face="4" points="152.405,149.859 203.973,149.927 177.694,163.07" fill="#1C83D4" fill-opacity="0.055"/>
-        <polygon id="wing-far-face-05" data-wing-face="5" points="203.973,149.927 252.333,151.455 177.694,163.07" fill="#20C9C4" fill-opacity="0.055"/>
-        <polygon id="wing-far-face-06" data-wing-face="6" points="252.333,151.455 253.344,173.493 177.694,163.07" fill="#1C83D4" fill-opacity="0.055"/>
+      <polygon data-wing-outline="true" points="252.869,173.5 202.421,174.549 149.311,162.223 94.182,139.63 153.628,143.532 205.087,146.862 253.253,151.442" fill="#EAF5F7" fill-opacity="0.16" stroke="#FFFFFF" stroke-width="1.55" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+      <g data-layer="faces">
+        <polygon data-wing-face="0" points="252.869,173.5 202.421,174.549 178.03,158.314" fill="#20C9C4" fill-opacity="0.055"/>
+        <polygon data-wing-face="1" points="202.421,174.549 149.311,162.223 178.03,158.314" fill="#1C83D4" fill-opacity="0.055"/>
+        <polygon data-wing-face="2" points="149.311,162.223 94.182,139.63 178.03,158.314" fill="#082C4C" fill-opacity="0.055"/>
+        <polygon data-wing-face="3" points="94.182,139.63 153.628,143.532 178.03,158.314" fill="#20C9C4" fill-opacity="0.055"/>
+        <polygon data-wing-face="4" points="153.628,143.532 205.087,146.862 178.03,158.314" fill="#1C83D4" fill-opacity="0.055"/>
+        <polygon data-wing-face="5" points="205.087,146.862 253.253,151.442 178.03,158.314" fill="#20C9C4" fill-opacity="0.055"/>
+        <polygon data-wing-face="6" points="253.253,151.442 252.869,173.5 178.03,158.314" fill="#1C83D4" fill-opacity="0.055"/>
       </g>
-      <g id="wing-far-edges" fill="none" stroke-linecap="round" stroke-linejoin="round">
-        <line id="wing-far-boundary-00" data-wing-boundary="0" x1="253.344" y1="173.493" x2="203.063" y2="177.728" stroke="#FFFFFF" stroke-width="1.45" vector-effect="non-scaling-stroke"/>
-        <line id="wing-far-spoke-00" data-wing-spoke="0" x1="253.344" y1="173.493" x2="177.694" y2="163.07" stroke="#FFFFFF" stroke-width="0.85" vector-effect="non-scaling-stroke"/>
-        <line id="wing-far-boundary-01" data-wing-boundary="1" x1="203.063" y1="177.728" x2="149.28" y2="168.786" stroke="#FFFFFF" stroke-width="1.45" vector-effect="non-scaling-stroke"/>
-        <line id="wing-far-spoke-01" data-wing-spoke="1" x1="203.063" y1="177.728" x2="177.694" y2="163.07" stroke="#1C83D4" stroke-width="0.85" vector-effect="non-scaling-stroke"/>
-        <line id="wing-far-boundary-02" data-wing-boundary="2" x1="149.28" y1="168.786" x2="92.83" y2="149.732" stroke="#FFFFFF" stroke-width="1.45" vector-effect="non-scaling-stroke"/>
-        <line id="wing-far-spoke-02" data-wing-spoke="2" x1="149.28" y1="168.786" x2="177.694" y2="163.07" stroke="#FFFFFF" stroke-width="0.85" vector-effect="non-scaling-stroke"/>
-        <line id="wing-far-boundary-03" data-wing-boundary="3" x1="92.83" y1="149.732" x2="152.405" y2="149.859" stroke="#FFFFFF" stroke-width="1.45" vector-effect="non-scaling-stroke"/>
-        <line id="wing-far-spoke-03" data-wing-spoke="3" x1="92.83" y1="149.732" x2="177.694" y2="163.07" stroke="#1C83D4" stroke-width="0.85" vector-effect="non-scaling-stroke"/>
-        <line id="wing-far-boundary-04" data-wing-boundary="4" x1="152.405" y1="149.859" x2="203.973" y2="149.927" stroke="#FFFFFF" stroke-width="1.45" vector-effect="non-scaling-stroke"/>
-        <line id="wing-far-spoke-04" data-wing-spoke="4" x1="152.405" y1="149.859" x2="177.694" y2="163.07" stroke="#FFFFFF" stroke-width="0.85" vector-effect="non-scaling-stroke"/>
-        <line id="wing-far-boundary-05" data-wing-boundary="5" x1="203.973" y1="149.927" x2="252.333" y2="151.455" stroke="#FFFFFF" stroke-width="1.45" vector-effect="non-scaling-stroke"/>
-        <line id="wing-far-spoke-05" data-wing-spoke="5" x1="203.973" y1="149.927" x2="177.694" y2="163.07" stroke="#1C83D4" stroke-width="0.85" vector-effect="non-scaling-stroke"/>
-        <line id="wing-far-boundary-06" data-wing-boundary="6" x1="252.333" y1="151.455" x2="253.344" y2="173.493" stroke="#FFFFFF" stroke-width="1.45" vector-effect="non-scaling-stroke"/>
-        <line id="wing-far-spoke-06" data-wing-spoke="6" x1="252.333" y1="151.455" x2="177.694" y2="163.07" stroke="#FFFFFF" stroke-width="0.85" vector-effect="non-scaling-stroke"/>
+      <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <line data-wing-boundary="0" x1="252.869" y1="173.5" x2="202.421" y2="174.549" stroke="#FFFFFF" stroke-width="1.45" vector-effect="non-scaling-stroke"/>
+        <line data-wing-spoke="0" x1="252.869" y1="173.5" x2="178.03" y2="158.314" stroke="#FFFFFF" stroke-width="0.85" vector-effect="non-scaling-stroke"/>
+        <line data-wing-boundary="1" x1="202.421" y1="174.549" x2="149.311" y2="162.223" stroke="#FFFFFF" stroke-width="1.45" vector-effect="non-scaling-stroke"/>
+        <line data-wing-spoke="1" x1="202.421" y1="174.549" x2="178.03" y2="158.314" stroke="#1C83D4" stroke-width="0.85" vector-effect="non-scaling-stroke"/>
+        <line data-wing-boundary="2" x1="149.311" y1="162.223" x2="94.182" y2="139.63" stroke="#FFFFFF" stroke-width="1.45" vector-effect="non-scaling-stroke"/>
+        <line data-wing-spoke="2" x1="149.311" y1="162.223" x2="178.03" y2="158.314" stroke="#FFFFFF" stroke-width="0.85" vector-effect="non-scaling-stroke"/>
+        <line data-wing-boundary="3" x1="94.182" y1="139.63" x2="153.628" y2="143.532" stroke="#FFFFFF" stroke-width="1.45" vector-effect="non-scaling-stroke"/>
+        <line data-wing-spoke="3" x1="94.182" y1="139.63" x2="178.03" y2="158.314" stroke="#1C83D4" stroke-width="0.85" vector-effect="non-scaling-stroke"/>
+        <line data-wing-boundary="4" x1="153.628" y1="143.532" x2="205.087" y2="146.862" stroke="#FFFFFF" stroke-width="1.45" vector-effect="non-scaling-stroke"/>
+        <line data-wing-spoke="4" x1="153.628" y1="143.532" x2="178.03" y2="158.314" stroke="#FFFFFF" stroke-width="0.85" vector-effect="non-scaling-stroke"/>
+        <line data-wing-boundary="5" x1="205.087" y1="146.862" x2="253.253" y2="151.442" stroke="#FFFFFF" stroke-width="1.45" vector-effect="non-scaling-stroke"/>
+        <line data-wing-spoke="5" x1="205.087" y1="146.862" x2="178.03" y2="158.314" stroke="#1C83D4" stroke-width="0.85" vector-effect="non-scaling-stroke"/>
+        <line data-wing-boundary="6" x1="253.253" y1="151.442" x2="252.869" y2="173.5" stroke="#FFFFFF" stroke-width="1.45" vector-effect="non-scaling-stroke"/>
+        <line data-wing-spoke="6" x1="253.253" y1="151.442" x2="178.03" y2="158.314" stroke="#FFFFFF" stroke-width="0.85" vector-effect="non-scaling-stroke"/>
       </g>
-      <g id="wing-far-nodes" data-layer="nodes">
-        <circle id="wing-far-node-00" data-wing-node="0" cx="253.344" cy="173.493" r="2.25" fill="#20C9C4" stroke="#FFFFFF" stroke-width="0.65" vector-effect="non-scaling-stroke"/>
-        <circle id="wing-far-node-01" data-wing-node="1" cx="203.063" cy="177.728" r="2.25" fill="#1C83D4" stroke="#FFFFFF" stroke-width="0.65" vector-effect="non-scaling-stroke"/>
-        <circle id="wing-far-node-02" data-wing-node="2" cx="149.28" cy="168.786" r="2.25" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="0.65" vector-effect="non-scaling-stroke"/>
-        <circle id="wing-far-node-03" data-wing-node="3" cx="92.83" cy="149.732" r="2.7" fill="#20C9C4" stroke="#FFFFFF" stroke-width="0.65" vector-effect="non-scaling-stroke"/>
-        <circle id="wing-far-node-04" data-wing-node="4" cx="152.405" cy="149.859" r="2.25" fill="#1C83D4" stroke="#FFFFFF" stroke-width="0.65" vector-effect="non-scaling-stroke"/>
-        <circle id="wing-far-node-05" data-wing-node="5" cx="203.973" cy="149.927" r="2.25" fill="#20C9C4" stroke="#FFFFFF" stroke-width="0.65" vector-effect="non-scaling-stroke"/>
-        <circle id="wing-far-node-06" data-wing-node="6" cx="252.333" cy="151.455" r="2.25" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="0.65" vector-effect="non-scaling-stroke"/>
-        <circle id="wing-far-core" data-wing-core="true" cx="177.694" cy="163.07" r="3.4" fill="#20C9C4" stroke="#FFFFFF" stroke-width="0.75" vector-effect="non-scaling-stroke"/>
+      <g data-layer="nodes">
+        <circle data-wing-node="0" cx="252.869" cy="173.5" r="2.25" fill="#20C9C4" stroke="#FFFFFF" stroke-width="0.65" vector-effect="non-scaling-stroke"/>
+        <circle data-wing-node="1" cx="202.421" cy="174.549" r="2.25" fill="#1C83D4" stroke="#FFFFFF" stroke-width="0.65" vector-effect="non-scaling-stroke"/>
+        <circle data-wing-node="2" cx="149.311" cy="162.223" r="2.25" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="0.65" vector-effect="non-scaling-stroke"/>
+        <circle data-wing-node="3" cx="94.182" cy="139.63" r="2.7" fill="#20C9C4" stroke="#FFFFFF" stroke-width="0.65" vector-effect="non-scaling-stroke"/>
+        <circle data-wing-node="4" cx="153.628" cy="143.532" r="2.25" fill="#1C83D4" stroke="#FFFFFF" stroke-width="0.65" vector-effect="non-scaling-stroke"/>
+        <circle data-wing-node="5" cx="205.087" cy="146.862" r="2.25" fill="#20C9C4" stroke="#FFFFFF" stroke-width="0.65" vector-effect="non-scaling-stroke"/>
+        <circle data-wing-node="6" cx="253.253" cy="151.442" r="2.25" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="0.65" vector-effect="non-scaling-stroke"/>
+        <circle data-wing-core="true" cx="178.03" cy="158.314" r="3.4" fill="#20C9C4" stroke="#FFFFFF" stroke-width="0.7" vector-effect="non-scaling-stroke"/>
       </g>
     </g>
     <g id="bird-body-network" data-layer="body">
       <g id="body-faces" data-layer="faces">
-        <polygon id="f01" points="78,210 126,184 150,202" fill="#20C9C4" fill-opacity="0.1" data-anim="face"/>
-        <polygon id="f02" points="126,184 184,178 150,202" fill="#1C83D4" fill-opacity="0.1" data-anim="face"/>
-        <polygon id="f03" points="78,210 150,202 88,252" fill="#20C9C4" fill-opacity="0.08" data-anim="face"/>
-        <polygon id="f04" points="88,252 150,202 140,216" fill="#1C83D4" fill-opacity="0.08" data-anim="face"/>
-        <polygon id="f05" points="140,216 150,202 192,226" fill="#FFFFFF" fill-opacity="0.07" data-anim="face"/>
-        <polygon id="f10" points="190,178 220,144 248,204" fill="#20C9C4" fill-opacity="0.1" data-anim="face"/>
-        <polygon id="f11" points="220,144 262,158 248,204" fill="#1C83D4" fill-opacity="0.12" data-anim="face"/>
-        <polygon id="f12" points="262,158 306,184 248,204" fill="#20C9C4" fill-opacity="0.16" data-anim="face"/>
-        <polygon id="f13" points="306,184 292,224 248,204" fill="#1C83D4" fill-opacity="0.15" data-anim="face"/>
-        <polygon id="f14" points="306,184 350,202 292,224" fill="#FFFFFF" fill-opacity="0.08" data-anim="face"/>
-        <polygon id="f15" points="350,202 330,244 292,224" fill="#1C83D4" fill-opacity="0.11" data-anim="face"/>
-        <polygon id="f16" points="330,244 276,270 292,224" fill="#20C9C4" fill-opacity="0.1" data-anim="face"/>
-        <polygon id="f17" points="276,270 220,244 292,224" fill="#FFFFFF" fill-opacity="0.07" data-anim="face"/>
-        <polygon id="f18" points="220,244 248,204 292,224" fill="#1C83D4" fill-opacity="0.09" data-anim="face"/>
-        <polygon id="f30" points="342,158 368,116 407,132" fill="#20C9C4" fill-opacity="0.1" data-anim="face"/>
-        <polygon id="f31" points="368,116 404,96 407,132" fill="#1C83D4" fill-opacity="0.11" data-anim="face"/>
-        <polygon id="f32" points="404,96 444,106 407,132" fill="#20C9C4" fill-opacity="0.08" data-anim="face"/>
-        <polygon id="f33" points="444,106 466,130 407,132" fill="#1C83D4" fill-opacity="0.14" data-anim="face"/>
-        <polygon id="f34" points="466,130 450,158 407,132" fill="#20C9C4" fill-opacity="0.12" data-anim="face"/>
-        <polygon id="f35" points="450,158 408,166 407,132" fill="#FFFFFF" fill-opacity="0.08" data-anim="face"/>
-        <polygon id="f36" points="408,166 342,158 407,132" fill="#1C83D4" fill-opacity="0.09" data-anim="face"/>
-        <polygon id="f37" points="306,184 342,158 350,202" fill="#20C9C4" fill-opacity="0.1" data-anim="face"/>
-        <polygon id="f38" points="342,158 408,166 380,208" fill="#1C83D4" fill-opacity="0.08" data-anim="face"/>
-        <polygon id="f39" points="342,158 380,208 350,202" fill="#FFFFFF" fill-opacity="0.07" data-anim="face"/>
-        <polygon id="f40" points="408,166 450,158 380,208" fill="#20C9C4" fill-opacity="0.08" data-anim="face"/>
-        <polygon id="f41" points="466,130 532,144 469,151" fill="#1C83D4" fill-opacity="0.12" data-anim="face"/>
-        <polygon id="f42" points="466,130 469,151 450,158" fill="#20C9C4" fill-opacity="0.08" data-anim="face"/>
+        <polygon id="f01" points="78,210 126,184 150,202" fill="#20C9C4" fill-opacity="0.1"/>
+        <polygon id="f02" points="126,184 184,178 150,202" fill="#1C83D4" fill-opacity="0.1"/>
+        <polygon id="f03" points="78,210 150,202 88,252" fill="#20C9C4" fill-opacity="0.08"/>
+        <polygon id="f04" points="88,252 150,202 140,216" fill="#1C83D4" fill-opacity="0.08"/>
+        <polygon id="f05" points="140,216 150,202 192,226" fill="#FFFFFF" fill-opacity="0.07"/>
+        <polygon id="f10" points="190,178 220,144 248,204" fill="#20C9C4" fill-opacity="0.1"/>
+        <polygon id="f11" points="220,144 262,158 248,204" fill="#1C83D4" fill-opacity="0.12"/>
+        <polygon id="f12" points="262,158 306,184 248,204" fill="#20C9C4" fill-opacity="0.16"/>
+        <polygon id="f13" points="306,184 292,224 248,204" fill="#1C83D4" fill-opacity="0.15"/>
+        <polygon id="f14" points="306,184 350,202 292,224" fill="#FFFFFF" fill-opacity="0.08"/>
+        <polygon id="f15" points="350,202 330,244 292,224" fill="#1C83D4" fill-opacity="0.11"/>
+        <polygon id="f16" points="330,244 276,270 292,224" fill="#20C9C4" fill-opacity="0.1"/>
+        <polygon id="f17" points="276,270 220,244 292,224" fill="#FFFFFF" fill-opacity="0.07"/>
+        <polygon id="f18" points="220,244 248,204 292,224" fill="#1C83D4" fill-opacity="0.09"/>
+        <polygon id="f30" points="342,158 368,116 407,132" fill="#20C9C4" fill-opacity="0.1"/>
+        <polygon id="f31" points="368,116 404,96 407,132" fill="#1C83D4" fill-opacity="0.11"/>
+        <polygon id="f32" points="404,96 444,106 407,132" fill="#20C9C4" fill-opacity="0.08"/>
+        <polygon id="f33" points="444,106 466,130 407,132" fill="#1C83D4" fill-opacity="0.14"/>
+        <polygon id="f34" points="466,130 450,158 407,132" fill="#20C9C4" fill-opacity="0.12"/>
+        <polygon id="f35" points="450,158 408,166 407,132" fill="#FFFFFF" fill-opacity="0.08"/>
+        <polygon id="f36" points="408,166 342,158 407,132" fill="#1C83D4" fill-opacity="0.09"/>
+        <polygon id="f37" points="306,184 342,158 350,202" fill="#20C9C4" fill-opacity="0.1"/>
+        <polygon id="f38" points="342,158 408,166 380,208" fill="#1C83D4" fill-opacity="0.08"/>
+        <polygon id="f39" points="342,158 380,208 350,202" fill="#FFFFFF" fill-opacity="0.07"/>
+        <polygon id="f40" points="408,166 450,158 380,208" fill="#20C9C4" fill-opacity="0.08"/>
+        <polygon id="f41" points="466,130 532,144 469,151" fill="#1C83D4" fill-opacity="0.12"/>
+        <polygon id="f42" points="466,130 469,151 450,158" fill="#20C9C4" fill-opacity="0.08"/>
       </g>
       <g id="body-edges" data-layer="edges" fill="none" stroke-linecap="round" stroke-linejoin="round">
-        <line id="body-edge-01" x1="78" y1="210" x2="126" y2="184" stroke="#FFFFFF" stroke-opacity="0.78" stroke-width="1.25" data-anim="edge" data-kind="mesh" vector-effect="non-scaling-stroke"/>
-        <line id="body-edge-02" x1="126" y1="184" x2="184" y2="178" stroke="#FFFFFF" stroke-opacity="0.78" stroke-width="1.25" data-anim="edge" data-kind="mesh" vector-effect="non-scaling-stroke"/>
-        <line id="body-edge-03" x1="78" y1="210" x2="150" y2="202" stroke="#1C83D4" stroke-opacity="1" stroke-width="2.15" data-anim="edge" data-kind="critical" vector-effect="non-scaling-stroke"/>
-        <line id="body-edge-04" x1="150" y1="202" x2="184" y2="178" stroke="#FFFFFF" stroke-opacity="0.78" stroke-width="1.25" data-anim="edge" data-kind="mesh" vector-effect="non-scaling-stroke"/>
-        <line id="body-edge-05" x1="78" y1="210" x2="88" y2="252" stroke="#FFFFFF" stroke-opacity="0.98" stroke-width="1.85" data-anim="edge" data-kind="outline" vector-effect="non-scaling-stroke"/>
-        <line id="body-edge-06" x1="88" y1="252" x2="140" y2="216" stroke="#FFFFFF" stroke-opacity="0.78" stroke-width="1.25" data-anim="edge" data-kind="mesh" vector-effect="non-scaling-stroke"/>
-        <line id="body-edge-07" x1="140" y1="216" x2="192" y2="226" stroke="#FFFFFF" stroke-opacity="0.78" stroke-width="1.25" data-anim="edge" data-kind="mesh" vector-effect="non-scaling-stroke"/>
-        <line id="body-edge-08" x1="88" y1="252" x2="192" y2="226" stroke="#FFFFFF" stroke-opacity="0.98" stroke-width="1.85" data-anim="edge" data-kind="outline" vector-effect="non-scaling-stroke"/>
-        <line id="body-edge-09" x1="140" y1="216" x2="150" y2="202" stroke="#FFFFFF" stroke-opacity="0.78" stroke-width="1.25" data-anim="edge" data-kind="mesh" vector-effect="non-scaling-stroke"/>
-        <line id="body-edge-10" x1="150" y1="202" x2="192" y2="226" stroke="#FFFFFF" stroke-opacity="0.78" stroke-width="1.25" data-anim="edge" data-kind="mesh" vector-effect="non-scaling-stroke"/>
-        <line id="body-edge-11" x1="184" y1="178" x2="150" y2="202" stroke="#FFFFFF" stroke-opacity="0.78" stroke-width="1.25" data-anim="edge" data-kind="mesh" vector-effect="non-scaling-stroke"/>
-        <line id="body-edge-12" x1="184" y1="178" x2="190" y2="178" stroke="#FFFFFF" stroke-opacity="0.98" stroke-width="1.85" data-anim="edge" data-kind="outline" vector-effect="non-scaling-stroke"/>
-        <line id="body-edge-13" x1="184" y1="178" x2="220" y2="144" stroke="#FFFFFF" stroke-opacity="0.98" stroke-width="1.85" data-anim="edge" data-kind="outline" vector-effect="non-scaling-stroke"/>
-        <line id="body-edge-14" x1="192" y1="226" x2="220" y2="244" stroke="#FFFFFF" stroke-opacity="0.98" stroke-width="1.85" data-anim="edge" data-kind="outline" vector-effect="non-scaling-stroke"/>
-        <line id="body-edge-15" x1="190" y1="178" x2="220" y2="144" stroke="#FFFFFF" stroke-opacity="0.78" stroke-width="1.25" data-anim="edge" data-kind="mesh" vector-effect="non-scaling-stroke"/>
-        <line id="body-edge-16" x1="190" y1="178" x2="248" y2="204" stroke="#FFFFFF" stroke-opacity="0.78" stroke-width="1.25" data-anim="edge" data-kind="mesh" vector-effect="non-scaling-stroke"/>
-        <line id="body-edge-17" x1="220" y1="144" x2="262" y2="158" stroke="#FFFFFF" stroke-opacity="0.78" stroke-width="1.25" data-anim="edge" data-kind="mesh" vector-effect="non-scaling-stroke"/>
-        <line id="body-edge-18" x1="220" y1="144" x2="248" y2="204" stroke="#FFFFFF" stroke-opacity="0.78" stroke-width="1.25" data-anim="edge" data-kind="mesh" vector-effect="non-scaling-stroke"/>
-        <line id="body-edge-19" x1="262" y1="158" x2="306" y2="184" stroke="#FFFFFF" stroke-opacity="0.78" stroke-width="1.25" data-anim="edge" data-kind="mesh" vector-effect="non-scaling-stroke"/>
-        <line id="body-edge-20" x1="262" y1="158" x2="248" y2="204" stroke="#FFFFFF" stroke-opacity="0.78" stroke-width="1.25" data-anim="edge" data-kind="mesh" vector-effect="non-scaling-stroke"/>
-        <line id="body-edge-21" x1="306" y1="184" x2="248" y2="204" stroke="#1C83D4" stroke-opacity="1" stroke-width="2.15" data-anim="edge" data-kind="critical" vector-effect="non-scaling-stroke"/>
-        <line id="body-edge-22" x1="150" y1="202" x2="248" y2="204" stroke="#1C83D4" stroke-opacity="1" stroke-width="2.15" data-anim="edge" data-kind="critical" vector-effect="non-scaling-stroke"/>
-        <line id="body-edge-23" x1="306" y1="184" x2="292" y2="224" stroke="#FFFFFF" stroke-opacity="0.78" stroke-width="1.25" data-anim="edge" data-kind="mesh" vector-effect="non-scaling-stroke"/>
-        <line id="body-edge-24" x1="248" y1="204" x2="292" y2="224" stroke="#FFFFFF" stroke-opacity="0.78" stroke-width="1.25" data-anim="edge" data-kind="mesh" vector-effect="non-scaling-stroke"/>
-        <line id="body-edge-25" x1="248" y1="204" x2="220" y2="244" stroke="#FFFFFF" stroke-opacity="0.78" stroke-width="1.25" data-anim="edge" data-kind="mesh" vector-effect="non-scaling-stroke"/>
-        <line id="body-edge-26" x1="220" y1="244" x2="292" y2="224" stroke="#FFFFFF" stroke-opacity="0.78" stroke-width="1.25" data-anim="edge" data-kind="mesh" vector-effect="non-scaling-stroke"/>
-        <line id="body-edge-27" x1="220" y1="244" x2="276" y2="270" stroke="#FFFFFF" stroke-opacity="0.98" stroke-width="1.85" data-anim="edge" data-kind="outline" vector-effect="non-scaling-stroke"/>
-        <line id="body-edge-28" x1="276" y1="270" x2="292" y2="224" stroke="#FFFFFF" stroke-opacity="0.78" stroke-width="1.25" data-anim="edge" data-kind="mesh" vector-effect="non-scaling-stroke"/>
-        <line id="body-edge-29" x1="276" y1="270" x2="330" y2="244" stroke="#FFFFFF" stroke-opacity="0.98" stroke-width="1.85" data-anim="edge" data-kind="outline" vector-effect="non-scaling-stroke"/>
-        <line id="body-edge-30" x1="330" y1="244" x2="292" y2="224" stroke="#FFFFFF" stroke-opacity="0.78" stroke-width="1.25" data-anim="edge" data-kind="mesh" vector-effect="non-scaling-stroke"/>
-        <line id="body-edge-31" x1="330" y1="244" x2="350" y2="202" stroke="#FFFFFF" stroke-opacity="0.98" stroke-width="1.85" data-anim="edge" data-kind="outline" vector-effect="non-scaling-stroke"/>
-        <line id="body-edge-32" x1="350" y1="202" x2="292" y2="224" stroke="#FFFFFF" stroke-opacity="0.78" stroke-width="1.25" data-anim="edge" data-kind="mesh" vector-effect="non-scaling-stroke"/>
-        <line id="body-edge-33" x1="306" y1="184" x2="350" y2="202" stroke="#FFFFFF" stroke-opacity="0.78" stroke-width="1.25" data-anim="edge" data-kind="mesh" vector-effect="non-scaling-stroke"/>
-        <line id="body-edge-34" x1="350" y1="202" x2="380" y2="208" stroke="#FFFFFF" stroke-opacity="0.98" stroke-width="1.85" data-anim="edge" data-kind="outline" vector-effect="non-scaling-stroke"/>
-        <line id="body-edge-35" x1="330" y1="244" x2="380" y2="208" stroke="#FFFFFF" stroke-opacity="0.78" stroke-width="1.25" data-anim="edge" data-kind="mesh" vector-effect="non-scaling-stroke"/>
-        <line id="body-edge-36" x1="306" y1="184" x2="342" y2="158" stroke="#1C83D4" stroke-opacity="1" stroke-width="2.15" data-anim="edge" data-kind="critical" vector-effect="non-scaling-stroke"/>
-        <line id="body-edge-37" x1="342" y1="158" x2="368" y2="116" stroke="#FFFFFF" stroke-opacity="0.98" stroke-width="1.85" data-anim="edge" data-kind="outline" vector-effect="non-scaling-stroke"/>
-        <line id="body-edge-38" x1="368" y1="116" x2="404" y2="96" stroke="#FFFFFF" stroke-opacity="0.98" stroke-width="1.85" data-anim="edge" data-kind="outline" vector-effect="non-scaling-stroke"/>
-        <line id="body-edge-39" x1="404" y1="96" x2="444" y2="106" stroke="#FFFFFF" stroke-opacity="0.98" stroke-width="1.85" data-anim="edge" data-kind="outline" vector-effect="non-scaling-stroke"/>
-        <line id="body-edge-40" x1="444" y1="106" x2="466" y2="130" stroke="#FFFFFF" stroke-opacity="0.98" stroke-width="1.85" data-anim="edge" data-kind="outline" vector-effect="non-scaling-stroke"/>
-        <line id="body-edge-41" x1="466" y1="130" x2="450" y2="158" stroke="#FFFFFF" stroke-opacity="0.78" stroke-width="1.25" data-anim="edge" data-kind="mesh" vector-effect="non-scaling-stroke"/>
-        <line id="body-edge-42" x1="450" y1="158" x2="408" y2="166" stroke="#FFFFFF" stroke-opacity="0.98" stroke-width="1.85" data-anim="edge" data-kind="outline" vector-effect="non-scaling-stroke"/>
-        <line id="body-edge-43" x1="408" y1="166" x2="380" y2="208" stroke="#FFFFFF" stroke-opacity="0.98" stroke-width="1.85" data-anim="edge" data-kind="outline" vector-effect="non-scaling-stroke"/>
-        <line id="body-edge-44" x1="380" y1="208" x2="350" y2="202" stroke="#FFFFFF" stroke-opacity="0.78" stroke-width="1.25" data-anim="edge" data-kind="mesh" vector-effect="non-scaling-stroke"/>
-        <line id="body-edge-45" x1="342" y1="158" x2="407" y2="132" stroke="#1C83D4" stroke-opacity="1" stroke-width="2.15" data-anim="edge" data-kind="critical" vector-effect="non-scaling-stroke"/>
-        <line id="body-edge-46" x1="368" y1="116" x2="407" y2="132" stroke="#FFFFFF" stroke-opacity="0.78" stroke-width="1.25" data-anim="edge" data-kind="mesh" vector-effect="non-scaling-stroke"/>
-        <line id="body-edge-47" x1="404" y1="96" x2="407" y2="132" stroke="#FFFFFF" stroke-opacity="0.78" stroke-width="1.25" data-anim="edge" data-kind="mesh" vector-effect="non-scaling-stroke"/>
-        <line id="body-edge-48" x1="444" y1="106" x2="407" y2="132" stroke="#FFFFFF" stroke-opacity="0.78" stroke-width="1.25" data-anim="edge" data-kind="mesh" vector-effect="non-scaling-stroke"/>
-        <line id="body-edge-49" x1="466" y1="130" x2="407" y2="132" stroke="#1C83D4" stroke-opacity="1" stroke-width="2.15" data-anim="edge" data-kind="critical" vector-effect="non-scaling-stroke"/>
-        <line id="body-edge-50" x1="450" y1="158" x2="407" y2="132" stroke="#FFFFFF" stroke-opacity="0.78" stroke-width="1.25" data-anim="edge" data-kind="mesh" vector-effect="non-scaling-stroke"/>
-        <line id="body-edge-51" x1="408" y1="166" x2="407" y2="132" stroke="#FFFFFF" stroke-opacity="0.78" stroke-width="1.25" data-anim="edge" data-kind="mesh" vector-effect="non-scaling-stroke"/>
-        <line id="body-edge-52" x1="342" y1="158" x2="408" y2="166" stroke="#FFFFFF" stroke-opacity="0.78" stroke-width="1.25" data-anim="edge" data-kind="mesh" vector-effect="non-scaling-stroke"/>
-        <line id="body-edge-53" x1="342" y1="158" x2="380" y2="208" stroke="#FFFFFF" stroke-opacity="0.78" stroke-width="1.25" data-anim="edge" data-kind="mesh" vector-effect="non-scaling-stroke"/>
-        <line id="body-edge-54" x1="466" y1="130" x2="532" y2="144" stroke="#1C83D4" stroke-opacity="1" stroke-width="2.15" data-anim="edge" data-kind="critical" vector-effect="non-scaling-stroke"/>
-        <line id="body-edge-55" x1="532" y1="144" x2="469" y2="151" stroke="#FFFFFF" stroke-opacity="0.98" stroke-width="1.85" data-anim="edge" data-kind="outline" vector-effect="non-scaling-stroke"/>
-        <line id="body-edge-56" x1="469" y1="151" x2="450" y2="158" stroke="#FFFFFF" stroke-opacity="0.98" stroke-width="1.85" data-anim="edge" data-kind="outline" vector-effect="non-scaling-stroke"/>
-        <line id="body-edge-57" x1="469" y1="151" x2="466" y2="130" stroke="#FFFFFF" stroke-opacity="0.78" stroke-width="1.25" data-anim="edge" data-kind="mesh" vector-effect="non-scaling-stroke"/>
+        <line id="body-edge-01" x1="78" y1="210" x2="126" y2="184" stroke="#FFFFFF" stroke-opacity="0.78" stroke-width="1.25" data-kind="mesh" vector-effect="non-scaling-stroke"/>
+        <line id="body-edge-02" x1="126" y1="184" x2="184" y2="178" stroke="#FFFFFF" stroke-opacity="0.78" stroke-width="1.25" data-kind="mesh" vector-effect="non-scaling-stroke"/>
+        <line id="body-edge-03" x1="78" y1="210" x2="150" y2="202" stroke="#1C83D4" stroke-opacity="1" stroke-width="2.15" data-kind="critical" vector-effect="non-scaling-stroke"/>
+        <line id="body-edge-04" x1="150" y1="202" x2="184" y2="178" stroke="#FFFFFF" stroke-opacity="0.78" stroke-width="1.25" data-kind="mesh" vector-effect="non-scaling-stroke"/>
+        <line id="body-edge-05" x1="78" y1="210" x2="88" y2="252" stroke="#FFFFFF" stroke-opacity="0.98" stroke-width="1.85" data-kind="outline" vector-effect="non-scaling-stroke"/>
+        <line id="body-edge-06" x1="88" y1="252" x2="140" y2="216" stroke="#FFFFFF" stroke-opacity="0.78" stroke-width="1.25" data-kind="mesh" vector-effect="non-scaling-stroke"/>
+        <line id="body-edge-07" x1="140" y1="216" x2="192" y2="226" stroke="#FFFFFF" stroke-opacity="0.78" stroke-width="1.25" data-kind="mesh" vector-effect="non-scaling-stroke"/>
+        <line id="body-edge-08" x1="88" y1="252" x2="192" y2="226" stroke="#FFFFFF" stroke-opacity="0.98" stroke-width="1.85" data-kind="outline" vector-effect="non-scaling-stroke"/>
+        <line id="body-edge-09" x1="140" y1="216" x2="150" y2="202" stroke="#FFFFFF" stroke-opacity="0.78" stroke-width="1.25" data-kind="mesh" vector-effect="non-scaling-stroke"/>
+        <line id="body-edge-10" x1="150" y1="202" x2="192" y2="226" stroke="#FFFFFF" stroke-opacity="0.78" stroke-width="1.25" data-kind="mesh" vector-effect="non-scaling-stroke"/>
+        <line id="body-edge-11" x1="184" y1="178" x2="150" y2="202" stroke="#FFFFFF" stroke-opacity="0.78" stroke-width="1.25" data-kind="mesh" vector-effect="non-scaling-stroke"/>
+        <line id="body-edge-12" x1="184" y1="178" x2="190" y2="178" stroke="#FFFFFF" stroke-opacity="0.98" stroke-width="1.85" data-kind="outline" vector-effect="non-scaling-stroke"/>
+        <line id="body-edge-13" x1="184" y1="178" x2="220" y2="144" stroke="#FFFFFF" stroke-opacity="0.98" stroke-width="1.85" data-kind="outline" vector-effect="non-scaling-stroke"/>
+        <line id="body-edge-14" x1="192" y1="226" x2="220" y2="244" stroke="#FFFFFF" stroke-opacity="0.98" stroke-width="1.85" data-kind="outline" vector-effect="non-scaling-stroke"/>
+        <line id="body-edge-15" x1="190" y1="178" x2="220" y2="144" stroke="#FFFFFF" stroke-opacity="0.78" stroke-width="1.25" data-kind="mesh" vector-effect="non-scaling-stroke"/>
+        <line id="body-edge-16" x1="190" y1="178" x2="248" y2="204" stroke="#FFFFFF" stroke-opacity="0.78" stroke-width="1.25" data-kind="mesh" vector-effect="non-scaling-stroke"/>
+        <line id="body-edge-17" x1="220" y1="144" x2="262" y2="158" stroke="#FFFFFF" stroke-opacity="0.78" stroke-width="1.25" data-kind="mesh" vector-effect="non-scaling-stroke"/>
+        <line id="body-edge-18" x1="220" y1="144" x2="248" y2="204" stroke="#FFFFFF" stroke-opacity="0.78" stroke-width="1.25" data-kind="mesh" vector-effect="non-scaling-stroke"/>
+        <line id="body-edge-19" x1="262" y1="158" x2="306" y2="184" stroke="#FFFFFF" stroke-opacity="0.78" stroke-width="1.25" data-kind="mesh" vector-effect="non-scaling-stroke"/>
+        <line id="body-edge-20" x1="262" y1="158" x2="248" y2="204" stroke="#FFFFFF" stroke-opacity="0.78" stroke-width="1.25" data-kind="mesh" vector-effect="non-scaling-stroke"/>
+        <line id="body-edge-21" x1="306" y1="184" x2="248" y2="204" stroke="#1C83D4" stroke-opacity="1" stroke-width="2.15" data-kind="critical" vector-effect="non-scaling-stroke"/>
+        <line id="body-edge-22" x1="150" y1="202" x2="248" y2="204" stroke="#1C83D4" stroke-opacity="1" stroke-width="2.15" data-kind="critical" vector-effect="non-scaling-stroke"/>
+        <line id="body-edge-23" x1="306" y1="184" x2="292" y2="224" stroke="#FFFFFF" stroke-opacity="0.78" stroke-width="1.25" data-kind="mesh" vector-effect="non-scaling-stroke"/>
+        <line id="body-edge-24" x1="248" y1="204" x2="292" y2="224" stroke="#FFFFFF" stroke-opacity="0.78" stroke-width="1.25" data-kind="mesh" vector-effect="non-scaling-stroke"/>
+        <line id="body-edge-25" x1="248" y1="204" x2="220" y2="244" stroke="#FFFFFF" stroke-opacity="0.78" stroke-width="1.25" data-kind="mesh" vector-effect="non-scaling-stroke"/>
+        <line id="body-edge-26" x1="220" y1="244" x2="292" y2="224" stroke="#FFFFFF" stroke-opacity="0.78" stroke-width="1.25" data-kind="mesh" vector-effect="non-scaling-stroke"/>
+        <line id="body-edge-27" x1="220" y1="244" x2="276" y2="270" stroke="#FFFFFF" stroke-opacity="0.98" stroke-width="1.85" data-kind="outline" vector-effect="non-scaling-stroke"/>
+        <line id="body-edge-28" x1="276" y1="270" x2="292" y2="224" stroke="#FFFFFF" stroke-opacity="0.78" stroke-width="1.25" data-kind="mesh" vector-effect="non-scaling-stroke"/>
+        <line id="body-edge-29" x1="276" y1="270" x2="330" y2="244" stroke="#FFFFFF" stroke-opacity="0.98" stroke-width="1.85" data-kind="outline" vector-effect="non-scaling-stroke"/>
+        <line id="body-edge-30" x1="330" y1="244" x2="292" y2="224" stroke="#FFFFFF" stroke-opacity="0.78" stroke-width="1.25" data-kind="mesh" vector-effect="non-scaling-stroke"/>
+        <line id="body-edge-31" x1="330" y1="244" x2="350" y2="202" stroke="#FFFFFF" stroke-opacity="0.98" stroke-width="1.85" data-kind="outline" vector-effect="non-scaling-stroke"/>
+        <line id="body-edge-32" x1="350" y1="202" x2="292" y2="224" stroke="#FFFFFF" stroke-opacity="0.78" stroke-width="1.25" data-kind="mesh" vector-effect="non-scaling-stroke"/>
+        <line id="body-edge-33" x1="306" y1="184" x2="350" y2="202" stroke="#FFFFFF" stroke-opacity="0.78" stroke-width="1.25" data-kind="mesh" vector-effect="non-scaling-stroke"/>
+        <line id="body-edge-34" x1="350" y1="202" x2="380" y2="208" stroke="#FFFFFF" stroke-opacity="0.98" stroke-width="1.85" data-kind="outline" vector-effect="non-scaling-stroke"/>
+        <line id="body-edge-35" x1="330" y1="244" x2="380" y2="208" stroke="#FFFFFF" stroke-opacity="0.78" stroke-width="1.25" data-kind="mesh" vector-effect="non-scaling-stroke"/>
+        <line id="body-edge-36" x1="306" y1="184" x2="342" y2="158" stroke="#1C83D4" stroke-opacity="1" stroke-width="2.15" data-kind="critical" vector-effect="non-scaling-stroke"/>
+        <line id="body-edge-37" x1="342" y1="158" x2="368" y2="116" stroke="#FFFFFF" stroke-opacity="0.98" stroke-width="1.85" data-kind="outline" vector-effect="non-scaling-stroke"/>
+        <line id="body-edge-38" x1="368" y1="116" x2="404" y2="96" stroke="#FFFFFF" stroke-opacity="0.98" stroke-width="1.85" data-kind="outline" vector-effect="non-scaling-stroke"/>
+        <line id="body-edge-39" x1="404" y1="96" x2="444" y2="106" stroke="#FFFFFF" stroke-opacity="0.98" stroke-width="1.85" data-kind="outline" vector-effect="non-scaling-stroke"/>
+        <line id="body-edge-40" x1="444" y1="106" x2="466" y2="130" stroke="#FFFFFF" stroke-opacity="0.98" stroke-width="1.85" data-kind="outline" vector-effect="non-scaling-stroke"/>
+        <line id="body-edge-41" x1="466" y1="130" x2="450" y2="158" stroke="#FFFFFF" stroke-opacity="0.78" stroke-width="1.25" data-kind="mesh" vector-effect="non-scaling-stroke"/>
+        <line id="body-edge-42" x1="450" y1="158" x2="408" y2="166" stroke="#FFFFFF" stroke-opacity="0.98" stroke-width="1.85" data-kind="outline" vector-effect="non-scaling-stroke"/>
+        <line id="body-edge-43" x1="408" y1="166" x2="380" y2="208" stroke="#FFFFFF" stroke-opacity="0.98" stroke-width="1.85" data-kind="outline" vector-effect="non-scaling-stroke"/>
+        <line id="body-edge-44" x1="380" y1="208" x2="350" y2="202" stroke="#FFFFFF" stroke-opacity="0.78" stroke-width="1.25" data-kind="mesh" vector-effect="non-scaling-stroke"/>
+        <line id="body-edge-45" x1="342" y1="158" x2="407" y2="132" stroke="#1C83D4" stroke-opacity="1" stroke-width="2.15" data-kind="critical" vector-effect="non-scaling-stroke"/>
+        <line id="body-edge-46" x1="368" y1="116" x2="407" y2="132" stroke="#FFFFFF" stroke-opacity="0.78" stroke-width="1.25" data-kind="mesh" vector-effect="non-scaling-stroke"/>
+        <line id="body-edge-47" x1="404" y1="96" x2="407" y2="132" stroke="#FFFFFF" stroke-opacity="0.78" stroke-width="1.25" data-kind="mesh" vector-effect="non-scaling-stroke"/>
+        <line id="body-edge-48" x1="444" y1="106" x2="407" y2="132" stroke="#FFFFFF" stroke-opacity="0.78" stroke-width="1.25" data-kind="mesh" vector-effect="non-scaling-stroke"/>
+        <line id="body-edge-49" x1="466" y1="130" x2="407" y2="132" stroke="#1C83D4" stroke-opacity="1" stroke-width="2.15" data-kind="critical" vector-effect="non-scaling-stroke"/>
+        <line id="body-edge-50" x1="450" y1="158" x2="407" y2="132" stroke="#FFFFFF" stroke-opacity="0.78" stroke-width="1.25" data-kind="mesh" vector-effect="non-scaling-stroke"/>
+        <line id="body-edge-51" x1="408" y1="166" x2="407" y2="132" stroke="#FFFFFF" stroke-opacity="0.78" stroke-width="1.25" data-kind="mesh" vector-effect="non-scaling-stroke"/>
+        <line id="body-edge-52" x1="342" y1="158" x2="408" y2="166" stroke="#FFFFFF" stroke-opacity="0.78" stroke-width="1.25" data-kind="mesh" vector-effect="non-scaling-stroke"/>
+        <line id="body-edge-53" x1="342" y1="158" x2="380" y2="208" stroke="#FFFFFF" stroke-opacity="0.78" stroke-width="1.25" data-kind="mesh" vector-effect="non-scaling-stroke"/>
+        <line id="body-edge-54" x1="466" y1="130" x2="532" y2="144" stroke="#1C83D4" stroke-opacity="1" stroke-width="2.15" data-kind="critical" vector-effect="non-scaling-stroke"/>
+        <line id="body-edge-55" x1="532" y1="144" x2="469" y2="151" stroke="#FFFFFF" stroke-opacity="0.98" stroke-width="1.85" data-kind="outline" vector-effect="non-scaling-stroke"/>
+        <line id="body-edge-56" x1="469" y1="151" x2="450" y2="158" stroke="#FFFFFF" stroke-opacity="0.98" stroke-width="1.85" data-kind="outline" vector-effect="non-scaling-stroke"/>
+        <line id="body-edge-57" x1="469" y1="151" x2="466" y2="130" stroke="#FFFFFF" stroke-opacity="0.78" stroke-width="1.25" data-kind="mesh" vector-effect="non-scaling-stroke"/>
       </g>
       <g id="body-nodes" data-layer="nodes">
-        <circle id="body-node-t0" cx="78" cy="210" r="3.4" fill="#FFFFFF" stroke="#082C4C" stroke-width="0.75" data-anim="node" data-kind="node" vector-effect="non-scaling-stroke"/>
-        <circle id="body-node-t1" cx="126" cy="184" r="3" fill="#FFFFFF" stroke="#082C4C" stroke-width="0.75" data-anim="node" data-kind="node" vector-effect="non-scaling-stroke"/>
-        <circle id="body-node-t2" cx="184" cy="178" r="3.5" fill="#1C83D4" stroke="#082C4C" stroke-width="0.75" data-anim="node" data-kind="node" vector-effect="non-scaling-stroke"/>
-        <circle id="body-node-t3" cx="140" cy="216" r="3" fill="#FFFFFF" stroke="#082C4C" stroke-width="0.75" data-anim="node" data-kind="node" vector-effect="non-scaling-stroke"/>
-        <circle id="body-node-t4" cx="88" cy="252" r="3.4" fill="#FFFFFF" stroke="#082C4C" stroke-width="0.75" data-anim="node" data-kind="node" vector-effect="non-scaling-stroke"/>
-        <circle id="body-node-t5" cx="192" cy="226" r="3.5" fill="#FFFFFF" stroke="#082C4C" stroke-width="0.75" data-anim="node" data-kind="node" vector-effect="non-scaling-stroke"/>
-        <circle id="body-node-t6" cx="150" cy="202" r="4.6" fill="#20C9C4" stroke="#082C4C" stroke-width="0.75" data-anim="node" data-kind="critical" vector-effect="non-scaling-stroke"/>
-        <circle id="body-node-b0" cx="190" cy="178" r="3.1" fill="#FFFFFF" stroke="#082C4C" stroke-width="0.75" data-anim="node" data-kind="node" vector-effect="non-scaling-stroke"/>
-        <circle id="body-node-b1" cx="220" cy="144" r="3.8" fill="#1C83D4" stroke="#082C4C" stroke-width="0.75" data-anim="node" data-kind="node" vector-effect="non-scaling-stroke"/>
-        <circle id="body-node-b2" cx="262" cy="158" r="3.2" fill="#FFFFFF" stroke="#082C4C" stroke-width="0.75" data-anim="node" data-kind="node" vector-effect="non-scaling-stroke"/>
-        <circle id="body-node-b3" cx="306" cy="184" r="4.5" fill="#20C9C4" stroke="#082C4C" stroke-width="0.75" data-anim="node" data-kind="critical" vector-effect="non-scaling-stroke"/>
-        <circle id="body-node-b4" cx="350" cy="202" r="3.5" fill="#FFFFFF" stroke="#082C4C" stroke-width="0.75" data-anim="node" data-kind="node" vector-effect="non-scaling-stroke"/>
-        <circle id="body-node-b5" cx="330" cy="244" r="3.8" fill="#1C83D4" stroke="#082C4C" stroke-width="0.75" data-anim="node" data-kind="node" vector-effect="non-scaling-stroke"/>
-        <circle id="body-node-b6" cx="276" cy="270" r="3.7" fill="#FFFFFF" stroke="#082C4C" stroke-width="0.75" data-anim="node" data-kind="node" vector-effect="non-scaling-stroke"/>
-        <circle id="body-node-b7" cx="220" cy="244" r="3.2" fill="#FFFFFF" stroke="#082C4C" stroke-width="0.75" data-anim="node" data-kind="node" vector-effect="non-scaling-stroke"/>
-        <circle id="body-node-b8" cx="248" cy="204" r="4.6" fill="#20C9C4" stroke="#082C4C" stroke-width="0.75" data-anim="node" data-kind="critical" vector-effect="non-scaling-stroke"/>
-        <circle id="body-node-b9" cx="292" cy="224" r="3" fill="#FFFFFF" stroke="#082C4C" stroke-width="0.75" data-anim="node" data-kind="node" vector-effect="non-scaling-stroke"/>
-        <circle id="body-node-n0" cx="342" cy="158" r="4.6" fill="#20C9C4" stroke="#082C4C" stroke-width="0.75" data-anim="node" data-kind="critical" vector-effect="non-scaling-stroke"/>
-        <circle id="body-node-n1" cx="368" cy="116" r="3.4" fill="#FFFFFF" stroke="#082C4C" stroke-width="0.75" data-anim="node" data-kind="node" vector-effect="non-scaling-stroke"/>
-        <circle id="body-node-c0" cx="380" cy="208" r="3.4" fill="#FFFFFF" stroke="#082C4C" stroke-width="0.75" data-anim="node" data-kind="node" vector-effect="non-scaling-stroke"/>
-        <circle id="body-node-h0" cx="404" cy="96" r="3.7" fill="#1C83D4" stroke="#082C4C" stroke-width="0.75" data-anim="node" data-kind="node" vector-effect="non-scaling-stroke"/>
-        <circle id="body-node-h1" cx="444" cy="106" r="3.1" fill="#FFFFFF" stroke="#082C4C" stroke-width="0.75" data-anim="node" data-kind="node" vector-effect="non-scaling-stroke"/>
-        <circle id="body-node-h2" cx="466" cy="130" r="4" fill="#1C83D4" stroke="#082C4C" stroke-width="0.75" data-anim="node" data-kind="node" vector-effect="non-scaling-stroke"/>
-        <circle id="body-node-h3" cx="450" cy="158" r="3.5" fill="#FFFFFF" stroke="#082C4C" stroke-width="0.75" data-anim="node" data-kind="node" vector-effect="non-scaling-stroke"/>
-        <circle id="body-node-h4" cx="408" cy="166" r="3.3" fill="#FFFFFF" stroke="#082C4C" stroke-width="0.75" data-anim="node" data-kind="node" vector-effect="non-scaling-stroke"/>
-        <circle id="body-node-h5" cx="407" cy="132" r="4.8" fill="#20C9C4" stroke="#082C4C" stroke-width="0.75" data-anim="node" data-kind="critical" vector-effect="non-scaling-stroke"/>
-        <circle id="body-node-eye" cx="438" cy="124" r="2.3" fill="#FFFFFF" stroke="#082C4C" stroke-width="0.75" data-anim="node" data-kind="decorative" vector-effect="non-scaling-stroke"/>
-        <circle id="body-node-q1" cx="532" cy="144" r="3" fill="#20C9C4" stroke="#082C4C" stroke-width="0.75" data-anim="node" data-kind="critical" vector-effect="non-scaling-stroke"/>
-        <circle id="body-node-q2" cx="469" cy="151" r="2.8" fill="#FFFFFF" stroke="#082C4C" stroke-width="0.75" data-anim="node" data-kind="node" vector-effect="non-scaling-stroke"/>
+        <circle id="body-node-t0" cx="78" cy="210" r="3.4" fill="#FFFFFF" stroke="#082C4C" stroke-width="0.75" data-kind="node" vector-effect="non-scaling-stroke"/>
+        <circle id="body-node-t1" cx="126" cy="184" r="3" fill="#FFFFFF" stroke="#082C4C" stroke-width="0.75" data-kind="node" vector-effect="non-scaling-stroke"/>
+        <circle id="body-node-t2" cx="184" cy="178" r="3.5" fill="#1C83D4" stroke="#082C4C" stroke-width="0.75" data-kind="node" vector-effect="non-scaling-stroke"/>
+        <circle id="body-node-t3" cx="140" cy="216" r="3" fill="#FFFFFF" stroke="#082C4C" stroke-width="0.75" data-kind="node" vector-effect="non-scaling-stroke"/>
+        <circle id="body-node-t4" cx="88" cy="252" r="3.4" fill="#FFFFFF" stroke="#082C4C" stroke-width="0.75" data-kind="node" vector-effect="non-scaling-stroke"/>
+        <circle id="body-node-t5" cx="192" cy="226" r="3.5" fill="#FFFFFF" stroke="#082C4C" stroke-width="0.75" data-kind="node" vector-effect="non-scaling-stroke"/>
+        <circle id="body-node-t6" cx="150" cy="202" r="4.6" fill="#20C9C4" stroke="#082C4C" stroke-width="0.75" data-kind="critical" vector-effect="non-scaling-stroke"/>
+        <circle id="body-node-b0" cx="190" cy="178" r="3.1" fill="#FFFFFF" stroke="#082C4C" stroke-width="0.75" data-kind="node" vector-effect="non-scaling-stroke"/>
+        <circle id="body-node-b1" cx="220" cy="144" r="3.8" fill="#1C83D4" stroke="#082C4C" stroke-width="0.75" data-kind="node" vector-effect="non-scaling-stroke"/>
+        <circle id="body-node-b2" cx="262" cy="158" r="3.2" fill="#FFFFFF" stroke="#082C4C" stroke-width="0.75" data-kind="node" vector-effect="non-scaling-stroke"/>
+        <circle id="body-node-b3" cx="306" cy="184" r="4.5" fill="#20C9C4" stroke="#082C4C" stroke-width="0.75" data-kind="critical" vector-effect="non-scaling-stroke"/>
+        <circle id="body-node-b4" cx="350" cy="202" r="3.5" fill="#FFFFFF" stroke="#082C4C" stroke-width="0.75" data-kind="node" vector-effect="non-scaling-stroke"/>
+        <circle id="body-node-b5" cx="330" cy="244" r="3.8" fill="#1C83D4" stroke="#082C4C" stroke-width="0.75" data-kind="node" vector-effect="non-scaling-stroke"/>
+        <circle id="body-node-b6" cx="276" cy="270" r="3.7" fill="#FFFFFF" stroke="#082C4C" stroke-width="0.75" data-kind="node" vector-effect="non-scaling-stroke"/>
+        <circle id="body-node-b7" cx="220" cy="244" r="3.2" fill="#FFFFFF" stroke="#082C4C" stroke-width="0.75" data-kind="node" vector-effect="non-scaling-stroke"/>
+        <circle id="body-node-b8" cx="248" cy="204" r="4.6" fill="#20C9C4" stroke="#082C4C" stroke-width="0.75" data-kind="critical" vector-effect="non-scaling-stroke"/>
+        <circle id="body-node-b9" cx="292" cy="224" r="3" fill="#FFFFFF" stroke="#082C4C" stroke-width="0.75" data-kind="node" vector-effect="non-scaling-stroke"/>
+        <circle id="body-node-n0" cx="342" cy="158" r="4.6" fill="#20C9C4" stroke="#082C4C" stroke-width="0.75" data-kind="critical" vector-effect="non-scaling-stroke"/>
+        <circle id="body-node-n1" cx="368" cy="116" r="3.4" fill="#FFFFFF" stroke="#082C4C" stroke-width="0.75" data-kind="node" vector-effect="non-scaling-stroke"/>
+        <circle id="body-node-c0" cx="380" cy="208" r="3.4" fill="#FFFFFF" stroke="#082C4C" stroke-width="0.75" data-kind="node" vector-effect="non-scaling-stroke"/>
+        <circle id="body-node-h0" cx="404" cy="96" r="3.7" fill="#1C83D4" stroke="#082C4C" stroke-width="0.75" data-kind="node" vector-effect="non-scaling-stroke"/>
+        <circle id="body-node-h1" cx="444" cy="106" r="3.1" fill="#FFFFFF" stroke="#082C4C" stroke-width="0.75" data-kind="node" vector-effect="non-scaling-stroke"/>
+        <circle id="body-node-h2" cx="466" cy="130" r="4" fill="#1C83D4" stroke="#082C4C" stroke-width="0.75" data-kind="node" vector-effect="non-scaling-stroke"/>
+        <circle id="body-node-h3" cx="450" cy="158" r="3.5" fill="#FFFFFF" stroke="#082C4C" stroke-width="0.75" data-kind="node" vector-effect="non-scaling-stroke"/>
+        <circle id="body-node-h4" cx="408" cy="166" r="3.3" fill="#FFFFFF" stroke="#082C4C" stroke-width="0.75" data-kind="node" vector-effect="non-scaling-stroke"/>
+        <circle id="body-node-h5" cx="407" cy="132" r="4.8" fill="#20C9C4" stroke="#082C4C" stroke-width="0.75" data-kind="critical" vector-effect="non-scaling-stroke"/>
+        <circle id="body-node-eye" cx="438" cy="124" r="2.3" fill="#FFFFFF" stroke="#082C4C" stroke-width="0.75" data-kind="decorative" vector-effect="non-scaling-stroke"/>
+        <circle id="body-node-q1" cx="532" cy="144" r="3" fill="#20C9C4" stroke="#082C4C" stroke-width="0.75" data-kind="critical" vector-effect="non-scaling-stroke"/>
+        <circle id="body-node-q2" cx="469" cy="151" r="2.8" fill="#FFFFFF" stroke="#082C4C" stroke-width="0.75" data-kind="node" vector-effect="non-scaling-stroke"/>
       </g>
     </g>
     <g id="wing-near" data-wing-side="near" opacity="0.98">
-      <polygon id="wing-near-outline" data-wing-outline="true" points="235.18,164.294 183.334,146.403 133.9,113.689 86.668,69.402 145.04,97.079 195.977,120.304 243.473,142.841" fill="#EAF5F7" fill-opacity="0.25" stroke="#FFFFFF" stroke-width="1.55" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
-      <g id="wing-near-faces" data-layer="faces">
-        <polygon id="wing-near-face-00" data-wing-face="0" points="235.18,164.294 183.334,146.403 164.573,120.789" fill="#20C9C4" fill-opacity="0.1"/>
-        <polygon id="wing-near-face-01" data-wing-face="1" points="183.334,146.403 133.9,113.689 164.573,120.789" fill="#1C83D4" fill-opacity="0.1"/>
-        <polygon id="wing-near-face-02" data-wing-face="2" points="133.9,113.689 86.668,69.402 164.573,120.789" fill="#082C4C" fill-opacity="0.1"/>
-        <polygon id="wing-near-face-03" data-wing-face="3" points="86.668,69.402 145.04,97.079 164.573,120.789" fill="#20C9C4" fill-opacity="0.1"/>
-        <polygon id="wing-near-face-04" data-wing-face="4" points="145.04,97.079 195.977,120.304 164.573,120.789" fill="#1C83D4" fill-opacity="0.1"/>
-        <polygon id="wing-near-face-05" data-wing-face="5" points="195.977,120.304 243.473,142.841 164.573,120.789" fill="#20C9C4" fill-opacity="0.1"/>
-        <polygon id="wing-near-face-06" data-wing-face="6" points="243.473,142.841 235.18,164.294 164.573,120.789" fill="#1C83D4" fill-opacity="0.1"/>
+      <polygon data-wing-outline="true" points="235.18,164.294 183.334,146.403 133.9,113.689 86.668,69.402 145.04,97.079 195.977,120.304 243.473,142.841" fill="#EAF5F7" fill-opacity="0.25" stroke="#FFFFFF" stroke-width="1.55" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+      <g data-layer="faces">
+        <polygon data-wing-face="0" points="235.18,164.294 183.334,146.403 164.573,120.789" fill="#20C9C4" fill-opacity="0.1"/>
+        <polygon data-wing-face="1" points="183.334,146.403 133.9,113.689 164.573,120.789" fill="#1C83D4" fill-opacity="0.1"/>
+        <polygon data-wing-face="2" points="133.9,113.689 86.668,69.402 164.573,120.789" fill="#082C4C" fill-opacity="0.1"/>
+        <polygon data-wing-face="3" points="86.668,69.402 145.04,97.079 164.573,120.789" fill="#20C9C4" fill-opacity="0.1"/>
+        <polygon data-wing-face="4" points="145.04,97.079 195.977,120.304 164.573,120.789" fill="#1C83D4" fill-opacity="0.1"/>
+        <polygon data-wing-face="5" points="195.977,120.304 243.473,142.841 164.573,120.789" fill="#20C9C4" fill-opacity="0.1"/>
+        <polygon data-wing-face="6" points="243.473,142.841 235.18,164.294 164.573,120.789" fill="#1C83D4" fill-opacity="0.1"/>
       </g>
-      <g id="wing-near-edges" fill="none" stroke-linecap="round" stroke-linejoin="round">
-        <line id="wing-near-boundary-00" data-wing-boundary="0" x1="235.18" y1="164.294" x2="183.334" y2="146.403" stroke="#FFFFFF" stroke-width="1.45" vector-effect="non-scaling-stroke"/>
-        <line id="wing-near-spoke-00" data-wing-spoke="0" x1="235.18" y1="164.294" x2="164.573" y2="120.789" stroke="#FFFFFF" stroke-width="0.85" vector-effect="non-scaling-stroke"/>
-        <line id="wing-near-boundary-01" data-wing-boundary="1" x1="183.334" y1="146.403" x2="133.9" y2="113.689" stroke="#FFFFFF" stroke-width="1.45" vector-effect="non-scaling-stroke"/>
-        <line id="wing-near-spoke-01" data-wing-spoke="1" x1="183.334" y1="146.403" x2="164.573" y2="120.789" stroke="#1C83D4" stroke-width="0.85" vector-effect="non-scaling-stroke"/>
-        <line id="wing-near-boundary-02" data-wing-boundary="2" x1="133.9" y1="113.689" x2="86.668" y2="69.402" stroke="#FFFFFF" stroke-width="1.45" vector-effect="non-scaling-stroke"/>
-        <line id="wing-near-spoke-02" data-wing-spoke="2" x1="133.9" y1="113.689" x2="164.573" y2="120.789" stroke="#FFFFFF" stroke-width="0.85" vector-effect="non-scaling-stroke"/>
-        <line id="wing-near-boundary-03" data-wing-boundary="3" x1="86.668" y1="69.402" x2="145.04" y2="97.079" stroke="#FFFFFF" stroke-width="1.45" vector-effect="non-scaling-stroke"/>
-        <line id="wing-near-spoke-03" data-wing-spoke="3" x1="86.668" y1="69.402" x2="164.573" y2="120.789" stroke="#1C83D4" stroke-width="0.85" vector-effect="non-scaling-stroke"/>
-        <line id="wing-near-boundary-04" data-wing-boundary="4" x1="145.04" y1="97.079" x2="195.977" y2="120.304" stroke="#FFFFFF" stroke-width="1.45" vector-effect="non-scaling-stroke"/>
-        <line id="wing-near-spoke-04" data-wing-spoke="4" x1="145.04" y1="97.079" x2="164.573" y2="120.789" stroke="#FFFFFF" stroke-width="0.85" vector-effect="non-scaling-stroke"/>
-        <line id="wing-near-boundary-05" data-wing-boundary="5" x1="195.977" y1="120.304" x2="243.473" y2="142.841" stroke="#FFFFFF" stroke-width="1.45" vector-effect="non-scaling-stroke"/>
-        <line id="wing-near-spoke-05" data-wing-spoke="5" x1="195.977" y1="120.304" x2="164.573" y2="120.789" stroke="#1C83D4" stroke-width="0.85" vector-effect="non-scaling-stroke"/>
-        <line id="wing-near-boundary-06" data-wing-boundary="6" x1="243.473" y1="142.841" x2="235.18" y2="164.294" stroke="#FFFFFF" stroke-width="1.45" vector-effect="non-scaling-stroke"/>
-        <line id="wing-near-spoke-06" data-wing-spoke="6" x1="243.473" y1="142.841" x2="164.573" y2="120.789" stroke="#FFFFFF" stroke-width="0.85" vector-effect="non-scaling-stroke"/>
+      <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <line data-wing-boundary="0" x1="235.18" y1="164.294" x2="183.334" y2="146.403" stroke="#FFFFFF" stroke-width="1.45" vector-effect="non-scaling-stroke"/>
+        <line data-wing-spoke="0" x1="235.18" y1="164.294" x2="164.573" y2="120.789" stroke="#FFFFFF" stroke-width="0.85" vector-effect="non-scaling-stroke"/>
+        <line data-wing-boundary="1" x1="183.334" y1="146.403" x2="133.9" y2="113.689" stroke="#FFFFFF" stroke-width="1.45" vector-effect="non-scaling-stroke"/>
+        <line data-wing-spoke="1" x1="183.334" y1="146.403" x2="164.573" y2="120.789" stroke="#1C83D4" stroke-width="0.85" vector-effect="non-scaling-stroke"/>
+        <line data-wing-boundary="2" x1="133.9" y1="113.689" x2="86.668" y2="69.402" stroke="#FFFFFF" stroke-width="1.45" vector-effect="non-scaling-stroke"/>
+        <line data-wing-spoke="2" x1="133.9" y1="113.689" x2="164.573" y2="120.789" stroke="#FFFFFF" stroke-width="0.85" vector-effect="non-scaling-stroke"/>
+        <line data-wing-boundary="3" x1="86.668" y1="69.402" x2="145.04" y2="97.079" stroke="#FFFFFF" stroke-width="1.45" vector-effect="non-scaling-stroke"/>
+        <line data-wing-spoke="3" x1="86.668" y1="69.402" x2="164.573" y2="120.789" stroke="#1C83D4" stroke-width="0.85" vector-effect="non-scaling-stroke"/>
+        <line data-wing-boundary="4" x1="145.04" y1="97.079" x2="195.977" y2="120.304" stroke="#FFFFFF" stroke-width="1.45" vector-effect="non-scaling-stroke"/>
+        <line data-wing-spoke="4" x1="145.04" y1="97.079" x2="164.573" y2="120.789" stroke="#FFFFFF" stroke-width="0.85" vector-effect="non-scaling-stroke"/>
+        <line data-wing-boundary="5" x1="195.977" y1="120.304" x2="243.473" y2="142.841" stroke="#FFFFFF" stroke-width="1.45" vector-effect="non-scaling-stroke"/>
+        <line data-wing-spoke="5" x1="195.977" y1="120.304" x2="164.573" y2="120.789" stroke="#1C83D4" stroke-width="0.85" vector-effect="non-scaling-stroke"/>
+        <line data-wing-boundary="6" x1="243.473" y1="142.841" x2="235.18" y2="164.294" stroke="#FFFFFF" stroke-width="1.45" vector-effect="non-scaling-stroke"/>
+        <line data-wing-spoke="6" x1="243.473" y1="142.841" x2="164.573" y2="120.789" stroke="#FFFFFF" stroke-width="0.85" vector-effect="non-scaling-stroke"/>
       </g>
-      <g id="wing-near-nodes" data-layer="nodes">
-        <circle id="wing-near-node-00" data-wing-node="0" cx="235.18" cy="164.294" r="2.25" fill="#20C9C4" stroke="#FFFFFF" stroke-width="0.65" vector-effect="non-scaling-stroke"/>
-        <circle id="wing-near-node-01" data-wing-node="1" cx="183.334" cy="146.403" r="2.25" fill="#1C83D4" stroke="#FFFFFF" stroke-width="0.65" vector-effect="non-scaling-stroke"/>
-        <circle id="wing-near-node-02" data-wing-node="2" cx="133.9" cy="113.689" r="2.25" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="0.65" vector-effect="non-scaling-stroke"/>
-        <circle id="wing-near-node-03" data-wing-node="3" cx="86.668" cy="69.402" r="2.7" fill="#20C9C4" stroke="#FFFFFF" stroke-width="0.65" vector-effect="non-scaling-stroke"/>
-        <circle id="wing-near-node-04" data-wing-node="4" cx="145.04" cy="97.079" r="2.25" fill="#1C83D4" stroke="#FFFFFF" stroke-width="0.65" vector-effect="non-scaling-stroke"/>
-        <circle id="wing-near-node-05" data-wing-node="5" cx="195.977" cy="120.304" r="2.25" fill="#20C9C4" stroke="#FFFFFF" stroke-width="0.65" vector-effect="non-scaling-stroke"/>
-        <circle id="wing-near-node-06" data-wing-node="6" cx="243.473" cy="142.841" r="2.25" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="0.65" vector-effect="non-scaling-stroke"/>
-        <circle id="wing-near-core" data-wing-core="true" cx="164.573" cy="120.789" r="3.4" fill="#20C9C4" stroke="#FFFFFF" stroke-width="0.75" vector-effect="non-scaling-stroke"/>
+      <g data-layer="nodes">
+        <circle data-wing-node="0" cx="235.18" cy="164.294" r="2.25" fill="#20C9C4" stroke="#FFFFFF" stroke-width="0.65" vector-effect="non-scaling-stroke"/>
+        <circle data-wing-node="1" cx="183.334" cy="146.403" r="2.25" fill="#1C83D4" stroke="#FFFFFF" stroke-width="0.65" vector-effect="non-scaling-stroke"/>
+        <circle data-wing-node="2" cx="133.9" cy="113.689" r="2.25" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="0.65" vector-effect="non-scaling-stroke"/>
+        <circle data-wing-node="3" cx="86.668" cy="69.402" r="2.7" fill="#20C9C4" stroke="#FFFFFF" stroke-width="0.65" vector-effect="non-scaling-stroke"/>
+        <circle data-wing-node="4" cx="145.04" cy="97.079" r="2.25" fill="#1C83D4" stroke="#FFFFFF" stroke-width="0.65" vector-effect="non-scaling-stroke"/>
+        <circle data-wing-node="5" cx="195.977" cy="120.304" r="2.25" fill="#20C9C4" stroke="#FFFFFF" stroke-width="0.65" vector-effect="non-scaling-stroke"/>
+        <circle data-wing-node="6" cx="243.473" cy="142.841" r="2.25" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="0.65" vector-effect="non-scaling-stroke"/>
+        <circle data-wing-core="true" cx="164.573" cy="120.789" r="3.4" fill="#20C9C4" stroke="#FFFFFF" stroke-width="0.7" vector-effect="non-scaling-stroke"/>
       </g>
     </g>
     <g id="bird-legs" data-layer="legs" fill="none" stroke-linecap="round" stroke-linejoin="round">
-      <g id="leg-near" data-leg="near" opacity="0.92">
+      <g data-leg="near" opacity="0.92">
         <polyline data-leg-main="true" points="306,247 306.45,254.2 304.6,258.2" stroke="#FFFFFF" stroke-width="1.55" vector-effect="non-scaling-stroke"/>
         <line data-leg-toe="0" x1="304.6" y1="258.2" x2="304.6" y2="258.2" stroke="#FFFFFF" stroke-width="1.05" vector-effect="non-scaling-stroke"/>
         <line data-leg-toe="1" x1="304.6" y1="258.2" x2="304.6" y2="258.2" stroke="#FFFFFF" stroke-width="1.05" vector-effect="non-scaling-stroke"/>
         <line data-leg-toe="2" x1="304.6" y1="258.2" x2="304.6" y2="258.2" stroke="#FFFFFF" stroke-width="1.05" vector-effect="non-scaling-stroke"/>
       </g>
-      <g id="leg-far" data-leg="far" opacity="0.42">
+      <g data-leg="far" opacity="0.42">
         <polyline data-leg-main="true" points="326,238 327.35,245.65 324.95,250.6" stroke="#FFFFFF" stroke-width="1.55" vector-effect="non-scaling-stroke"/>
         <line data-leg-toe="0" x1="324.95" y1="250.6" x2="324.95" y2="250.6" stroke="#FFFFFF" stroke-width="1.05" vector-effect="non-scaling-stroke"/>
         <line data-leg-toe="1" x1="324.95" y1="250.6" x2="324.95" y2="250.6" stroke="#FFFFFF" stroke-width="1.05" vector-effect="non-scaling-stroke"/>
         <line data-leg-toe="2" x1="324.95" y1="250.6" x2="324.95" y2="250.6" stroke="#FFFFFF" stroke-width="1.05" vector-effect="non-scaling-stroke"/>
       </g>
     </g>
-    <g id="lidar-scan" data-lidar="true" transform="translate(532 144)" opacity="0" pointer-events="none">
-      <path data-lidar-beam="true" d="M 0 0 L 88 -17 A 90 90 0 0 1 88 17 Z" fill="#20C9C4" fill-opacity="0.14"/>
-      <line data-lidar-ray="true" x1="0" y1="0" x2="94" y2="0" stroke="#1C83D4" stroke-width="1.55" stroke-linecap="round" vector-effect="non-scaling-stroke"/>
-      <circle data-lidar-return="true" cx="98" cy="0" r="3" fill="#20C9C4" opacity="0" filter="url(#scan-glow)"/>
+    <g id="lidar-scan" data-lidar="true" transform="translate(407 132)" opacity="0" pointer-events="none">
+      <path data-lidar-pulse="true" d="M 0 -4 A 4 4 0 1 1 0 4 A 4 4 0 1 1 0 -4" fill="none" stroke="#20C9C4" stroke-width="1.45" vector-effect="non-scaling-stroke"/>
+      <line data-lidar-rays="true" x1="0" y1="-4" x2="0" y2="-18" stroke="#1C83D4" stroke-width="1.35" stroke-linecap="round" vector-effect="non-scaling-stroke"/>
+      <circle data-lidar-return="true" cx="0" cy="0" r="2.4" fill="#20C9C4" opacity="0" filter="url(#scan-glow)"/>
     </g>
   </g>
 </svg>

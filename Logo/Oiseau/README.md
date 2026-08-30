@@ -1,76 +1,63 @@
-# Oiseau-réseau Percolia — direction 03, cinématique v0.9
+# Oiseau-réseau Percolia — direction 04
 
-Cette direction conserve le **premier oiseau triangulé** de Percolia. Le corps, la tête, le bec et la queue gardent leur topologie en réseau. Seules les ailes sont déformées image par image à partir d’une chaîne articulée.
+Cette direction conserve le **premier oiseau triangulé** de Percolia et remplace la cinématique globale par une architecture inspirée des moteurs de jeu : clips keyframés, machine à états, root motion, événements d’animation, motion warping et IK de contact.
 
-## Séquence retenue
+## Séquence
 
-La démonstration `demo.html` met en scène deux oiseaux distincts :
+1. Le premier oiseau reste perché sur le `P`.
+2. **Anticipation** : le corps se tasse, les ailes s’ouvrent et les pieds restent verrouillés.
+3. **Poussée** : l’événement `toe_off` libère les pieds à une image précise.
+4. **Décollage** : deux battements propres à l’envol remplacent le cycle de croisière.
+5. L’oiseau traverse la scène de gauche à droite puis sort du cadre.
+6. Après un court intervalle vide, un second oiseau arrive de droite à gauche.
+7. **Approche** puis **arrondi** : il ralentit, relève le corps, ouvre les ailes et sort les pattes.
+8. **Contact** : le root motion est légèrement adapté au point exact du `P` ; l’événement `touchdown` active l’IK.
+9. **Stabilisation** : les pieds restent verrouillés tandis que le corps amortit son énergie et que les ailes se replient.
 
-1. un petit oiseau est perché sur le `P` ;
-2. il se tasse légèrement, incline le corps et ouvre ses ailes ;
-3. il pousse sur ses pattes, décolle et traverse la scène de gauche à droite ;
-4. il quitte complètement le cadre ;
-5. après un court silence, un second oiseau entre par la droite ;
-6. il approche de droite à gauche, effectue un arrondi, sort ses pattes et touche le `P` ;
-7. il amortit le contact, replie ses ailes et demeure perché, orienté dans le sens de son arrivée.
+Le premier oiseau ne fait jamais demi-tour. Le retour est assuré par un second objet SVG distinct.
 
-Le premier oiseau ne fait jamais demi-tour. L’arrivée est assurée par un second objet SVG venant de la direction opposée.
+## Architecture
 
-## Envol
+### Clips keyframés
 
-L’envol est divisé en trois étapes :
-
-- **préparation** : tassement léger, inclinaison vers l’avant et ouverture progressive des ailes ;
-- **poussée** : les pattes conservent brièvement le contact avec le perchoir pendant le début du premier battement ;
-- **transition** : la position et la tangente rejoignent sans cassure la courbe de vol sortante.
-
-Le point d’ancrage de l’oiseau volant est distinct du point d’appui des pattes. Le contrôleur calcule donc la position du corps qui maintient les pieds sur le `P` avant la libération du contact. Cela supprime le saut qui existait entre l’oiseau statique et l’oiseau animé.
-
-## Approche et atterrissage
-
-L’atterrissage est séparé en trois phases :
-
-- **arrondi** : ralentissement visuel, relèvement du bec, ouverture des ailes et sortie des pattes avant le contact ;
-- **contact** : descente courte jusqu’au point d’appui, réduction de l’échelle vers la pose perchée et repli progressif des ailes ;
-- **stabilisation** : petite oscillation amortie après le posé, sans fondu vers un autre dessin.
-
-Le second oiseau reste visible après l’atterrissage. Il n’est plus remplacé brutalement par la silhouette statique orientée dans l’autre sens.
-
-## Mouvement des ailes
-
-Chaque aile est recalculée à partir d’une chaîne à trois segments :
+Les clips sont stockés dans `source/animation_clips.json` :
 
 ```text
-épaule → coude → poignet → extrémité
+perched_idle
+anticipation_push
+push_off
+takeoff
+cruise
+approach
+flare
+touchdown
+settle
 ```
 
-Pour une phase `θ = 2πt/T`, l’angle principal est :
+Chaque keyframe définit :
 
-```text
-φ(t) = φ₀ + A cos(θ) + A₂ cos(2θ + δ)
-```
+- la translation, l’orientation et l’échelle de la racine ;
+- les angles épaule–coude–poignet des ailes ;
+- l’échelle d’envergure et de corde ;
+- le repli et la compression des pattes ;
+- le poids de contact des pieds.
 
-Le repli de la remontée est commandé par :
+### Événements
 
-```text
-u(t) = ((1 - sin(θ + η)) / 2)^p
-β(t) = β₀ + Δβ u(t)
-γ(t) = γ₀ + Δγ u(t)
-```
+Les événements jouent le rôle d’Animation Notifies :
 
-`β` et `γ` contrôlent le coude et le poignet. L’aile reste plus déployée pendant la descente et se replie pendant la remontée. La période nominale reste de `3,2 s`, afin que le battement demeure lisible et calme à la taille du logo.
+- `toe_off` : fin exacte de l’appui au décollage ;
+- `touchdown` : début exact du verrouillage des pieds ;
+- `weight_transfer` : transfert du poids sur le perchoir ;
+- `feet_locked` : maintien des appuis pendant la stabilisation.
 
-## Continuité des trajectoires
+### IK et motion warping
 
-Les courbes de Bézier sont raccordées en position et avec des tangentes presque colinéaires :
+Pendant l’anticipation et le début de la poussée, les pieds sont verrouillés sur le `P` par une IK à deux segments. À l’atterrissage, le motion warping ne corrige que l’écart final entre le clip et le point de contact. Après `touchdown`, l’IK maintient les doigts sur le perchoir pendant l’amortissement du corps.
 
-```text
-poussée → sortie
-retour → arrondi
-arrondi → contact
-```
+## Scan LiDAR
 
-Le contrôleur ne déduit pas aveuglément l’inclinaison du corps de la tangente lorsque l’oiseau est près du perchoir. L’envol et l’arrondi utilisent une orientation bornée et explicitement interpolée, ce qui évite les rotations verticales absurdes du prototype précédent.
+Le scan provient du nœud de capteur situé dans la tête (`h5`). Il prend la forme d’une onde circulaire brève, d’un trait de balayage court et d’un retour lumineux. Aucun élément graphique n’est émis depuis le bec.
 
 ## Fichiers canoniques
 
@@ -79,25 +66,20 @@ Logo/Oiseau/
 ├── README.md
 ├── build_bird.py
 ├── build_demo.py
-├── test_wing_model.py
-├── bird-animation.js
 ├── bird-animation.css
-├── demo.html
-├── percolia-bird-primary.svg
-├── percolia-bird-inverse.svg
-├── percolia-bird-mono.svg
-├── percolia-bird-compact.svg
+├── bird-animation.js
+├── test_wing_model.py
 └── source/
     ├── README.md
-    └── bird_model.json
+    ├── bird_model.json
+    └── animation_clips.json
 ```
 
-`source/bird_model.json` est la source de vérité. Les SVG et la page autonome sont générés et versionnés afin d’être consultables directement sur GitHub.
+Les SVG et `demo.html` sont générés mais versionnés pour être consultables directement.
 
 ## Régénération et validation
 
 ```bash
-python Logo/Police/build_wordmark.py
 python Logo/Oiseau/build_bird.py
 python Logo/build_lockups.py
 python Logo/Oiseau/build_demo.py
@@ -105,26 +87,4 @@ python Logo/Oiseau/test_wing_model.py
 node --check Logo/Oiseau/bird-animation.js
 ```
 
-Les tests vérifient notamment :
-
-- la fermeture et la continuité du cycle des ailes ;
-- la conservation des longueurs des trois segments ;
-- une aire d’aile toujours positive ;
-- le déplacement strictement croissant en `x` pour l’oiseau sortant ;
-- le déplacement strictement décroissant en `x` pour l’oiseau entrant ;
-- les raccords de position et de tangente entre les phases ;
-- la coïncidence du contact final avec le point du `P` ;
-- l’absence de dépendance externe dans `demo.html`.
-
-## Intégration
-
-`demo.html` est autonome : aucun `fetch`, aucune police distante et aucune bibliothèque JavaScript externe. Le contrôleur expose :
-
-```text
-play()
-pause()
-restart()
-seek(milliseconds)
-```
-
-`prefers-reduced-motion` désactive le vol et laisse simplement l’oiseau initial perché sur le `P`.
+Les tests vérifient les clips, les événements, la continuité des ailes, les directions de vol, l’amplitude du motion warping, les contacts IK, l’origine crânienne du scan, la palette et l’autonomie de la page HTML.

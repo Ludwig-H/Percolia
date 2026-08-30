@@ -1,10 +1,16 @@
 /**
- * Percolia directional network-bird animation.
+ * Percolia network-bird animation controller.
  *
- * The visible bird is the original triangulated network silhouette. Only the
- * wings are recomputed frame by frame from a three-link chain. The outbound
- * bird always travels left-to-right and leaves the stage. A distinct inbound
- * bird then travels right-to-left, flares, touches down and settles on the P.
+ * The controller follows a game-animation pipeline rather than deriving the
+ * whole performance from one periodic formula:
+ *   - authored animation clips with explicit keyframes;
+ *   - a deterministic state machine;
+ *   - root motion for take-off, approach and landing;
+ *   - motion warping at the P;
+ *   - two-bone leg IK and explicit toe-off / touchdown events;
+ *   - a separate looping cruise clip for each flying actor.
+ *
+ * The graphic language remains the original Percolia triangulated network.
  */
 (function (global) {
   'use strict';
@@ -13,30 +19,15 @@
   const RAD = Math.PI / 180;
   const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
   const lerp = (a, b, t) => a + (b - a) * t;
-  const smoothstep = (a, b, x) => {
-    const t = clamp((x - a) / (b - a), 0, 1);
-    return t * t * (3 - 2 * t);
-  };
-  const easeInOutCubic = (t) => t < 0.5
-    ? 4 * t * t * t
-    : 1 - Math.pow(-2 * t + 2, 3) / 2;
   const add = (a, b) => [a[0] + b[0], a[1] + b[1]];
   const sub = (a, b) => [a[0] - b[0], a[1] - b[1]];
   const mul = (a, scalar) => [a[0] * scalar, a[1] * scalar];
   const length = (a) => Math.hypot(a[0], a[1]);
-  const unit = (a) => {
-    const value = length(a);
-    if (value < 1e-9) throw new Error('Percolia wing: null vector');
-    return [a[0] / value, a[1] / value];
-  };
-  const normal = (a) => {
-    const [x, y] = unit(a);
-    return [-y, x];
-  };
   const mixPoint = (a, b, t) => [lerp(a[0], b[0], t), lerp(a[1], b[1], t)];
-  const lerpPhase = (a, b, t) => {
-    const delta = ((b - a + 1.5) % 1) - 0.5;
-    return (a + delta * t + 1) % 1;
+  const smoothstep = (a, b, x) => {
+    if (Math.abs(b - a) < 1e-9) return x >= b ? 1 : 0;
+    const t = clamp((x - a) / (b - a), 0, 1);
+    return t * t * (3 - 2 * t);
   };
   const fmt = (value) => (Math.abs(value) < 5e-7 ? 0 : value)
     .toFixed(3)
@@ -68,33 +59,105 @@
     return JSON.parse(metadata.textContent);
   }
 
-  function periodicPose(model, phase, side) {
-    const wing = model.wing;
-    phase = (phase + wing[`${side}_phase_offset`]) % 1;
-    const theta = TAU * phase;
-    const stroke = wing.stroke_center_deg
-      + wing.stroke_amplitude_deg * Math.cos(theta)
-      + wing.stroke_harmonic_deg * Math.cos(2 * theta + wing.stroke_harmonic_phase_deg * RAD);
-    // Extended on the downstroke, folded on the recovery stroke. Unlike the
-    // old prototype, the elbow and wrist do not just copy the shoulder angle.
-    const upstroke = Math.pow(
-      (1 - Math.sin(theta + wing.fold_phase_deg * RAD)) / 2,
-      wing.fold_exponent
-    );
+  function readClipLibrary(options, stage) {
+    if (options.clips && options.clips.clips && options.clips.timeline) return options.clips;
+    const node = stage.querySelector('[data-animation-clips="true"]');
+    if (!node) throw new Error('Percolia animation clip library not found');
+    return JSON.parse(node.textContent);
+  }
+
+  function unit(vector) {
+    const value = length(vector);
+    if (value < 1e-9) return [1, 0];
+    return [vector[0] / value, vector[1] / value];
+  }
+
+  function normal(vector) {
+    const [x, y] = unit(vector);
+    return [-y, x];
+  }
+
+  function hermiteValue(p0, p1, p2, p3, t0, t1, t2, t3, t) {
+    const duration = Math.max(1e-9, t2 - t1);
+    const u = clamp((t - t1) / duration, 0, 1);
+    const u2 = u * u;
+    const u3 = u2 * u;
+    const h00 = 2 * u3 - 3 * u2 + 1;
+    const h10 = u3 - 2 * u2 + u;
+    const h01 = -2 * u3 + 3 * u2;
+    const h11 = u3 - u2;
+    const m1 = (p2 - p0) / Math.max(1e-9, t2 - t0);
+    const m2 = (p3 - p1) / Math.max(1e-9, t3 - t1);
+    return h00 * p1 + h10 * duration * m1 + h01 * p2 + h11 * duration * m2;
+  }
+
+  function sampleTrack(frames, key, progress) {
+    if (frames.length === 1) return frames[0][key].slice();
+    const t = clamp(progress, 0, 1);
+    let index = frames.length - 2;
+    for (let i = 0; i < frames.length - 1; i += 1) {
+      if (t <= frames[i + 1].t) {
+        index = i;
+        break;
+      }
+    }
+    const f0 = frames[Math.max(0, index - 1)];
+    const f1 = frames[index];
+    const f2 = frames[index + 1];
+    const f3 = frames[Math.min(frames.length - 1, index + 2)];
+    const output = [];
+    for (let component = 0; component < f1[key].length; component += 1) {
+      let value = hermiteValue(
+        f0[key][component],
+        f1[key][component],
+        f2[key][component],
+        f3[key][component],
+        f0.t,
+        f1.t,
+        f2.t,
+        f3.t,
+        t
+      );
+      // Root x/y and all scalar rig controls are clamped to the neighbouring
+      // authored values. This keeps Hermite continuity without overshoot.
+      const low = Math.min(f1[key][component], f2[key][component]);
+      const high = Math.max(f1[key][component], f2[key][component]);
+      value = clamp(value, low, high);
+      output.push(value);
+    }
+    return output;
+  }
+
+  function sampleClip(library, name, progress) {
+    const clip = library.clips[name];
+    if (!clip) throw new Error(`Percolia clip not found: ${name}`);
+    let t = progress;
+    if (clip.loop) t = ((t % 1) + 1) % 1;
+    else t = clamp(t, 0, 1);
     return {
-      stroke_deg: stroke,
-      elbow_deg: wing.elbow_base_deg + wing.elbow_fold_deg * upstroke,
-      wrist_deg: wing.wrist_base_deg + wing.wrist_fold_deg * upstroke,
-      span_scale: wing[`${side}_scale`],
-      chord_scale: Math.sqrt(wing[`${side}_scale`]),
+      root: sampleTrack(clip.keyframes, 'root', t),
+      wing: sampleTrack(clip.keyframes, 'wing', t),
+      legs: sampleTrack(clip.keyframes, 'legs', t),
     };
   }
 
-  function foldedPose(model, side) {
-    const pose = Object.assign({}, model.wing.folded_pose);
-    pose.span_scale *= model.wing[`${side}_scale`];
-    pose.chord_scale *= Math.sqrt(model.wing[`${side}_scale`]);
-    return pose;
+  function eventTime(library, clipName, eventName) {
+    const clip = library.clips[clipName];
+    const event = (clip.events || []).find((item) => item.name === eventName);
+    if (!event) throw new Error(`Percolia event ${eventName} missing in ${clipName}`);
+    return event.t;
+  }
+
+  function poseForSide(model, wingTrack, side) {
+    const [stroke, elbow, wrist, span, chord] = wingTrack;
+    const sideScale = model.wing[`${side}_scale`];
+    return {
+      stroke_deg: stroke + (side === 'far' ? -5.5 : 0),
+      elbow_deg: elbow + (side === 'far' ? 2 : 0),
+      wrist_deg: wrist + (side === 'far' ? 3 : 0),
+      span_scale: span * sideScale,
+      chord_scale: chord * Math.sqrt(sideScale),
+    };
   }
 
   function wingGeometry(model, pose, side) {
@@ -125,14 +188,6 @@
       0.18 * s[1] + 0.33 * e[1] + 0.34 * w[1] + 0.15 * tip[1],
     ];
     return { boundary, core, joints };
-  }
-
-  function blendGeometry(a, b, t) {
-    return {
-      boundary: a.boundary.map((point, index) => mixPoint(point, b.boundary[index], t)),
-      core: mixPoint(a.core, b.core, t),
-      joints: a.joints.map((point, index) => mixPoint(point, b.joints[index], t)),
-    };
   }
 
   function collectWing(root, side) {
@@ -172,16 +227,34 @@
     elements.core.setAttribute('cy', fmt(core[1]));
   }
 
+  function solveTwoBone(hip, originalKnee, originalAnkle, target) {
+    const upperLength = length(sub(originalKnee, hip));
+    const lowerLength = length(sub(originalAnkle, originalKnee));
+    const delta = sub(target, hip);
+    const direction = unit(delta);
+    const distance = clamp(length(delta), Math.abs(upperLength - lowerLength) + 1e-4, upperLength + lowerLength - 1e-4);
+    const base = Math.atan2(direction[1], direction[0]);
+    const cosine = clamp(
+      (upperLength * upperLength + distance * distance - lowerLength * lowerLength) / (2 * upperLength * distance),
+      -1,
+      1
+    );
+    const bend = Math.acos(cosine);
+    const originalA = sub(originalKnee, hip);
+    const originalB = sub(originalAnkle, originalKnee);
+    const cross = originalA[0] * originalB[1] - originalA[1] * originalB[0];
+    const sign = cross >= 0 ? 1 : -1;
+    const angle = base + sign * bend;
+    const knee = add(hip, [upperLength * Math.cos(angle), upperLength * Math.sin(angle)]);
+    return { knee, ankle: target };
+  }
+
   function createBirdController(svg, flightGroup) {
     const model = readModel(svg);
     const root = svg.querySelector('[data-percolia-bird]');
     const wings = {
       near: collectWing(root, 'near'),
       far: collectWing(root, 'far'),
-    };
-    const folded = {
-      near: wingGeometry(model, foldedPose(model, 'near'), 'near'),
-      far: wingGeometry(model, foldedPose(model, 'far'), 'far'),
     };
     const legRefs = {};
     ['near', 'far'].forEach((side) => {
@@ -193,64 +266,110 @@
       };
     });
     const lidar = root.querySelector('[data-lidar="true"]');
+    const lidarPulse = root.querySelector('[data-lidar-pulse="true"]');
+    const lidarRays = root.querySelector('[data-lidar-rays="true"]');
     const lidarReturn = root.querySelector('[data-lidar-return="true"]');
-    const beak = model.body.nodes.q1.slice(0, 2);
+    // The scan is mounted on the central head node.
+    const sensor = model.body.nodes.h5.slice(0, 2);
     const anchor = model.flight.flight_anchor || model.flight.bird_anchor;
-    const perchedAnchor = model.flight.perched_anchor || [306, 285];
+    const defaultContact = model.flight.perched_anchor || [306, 285];
 
-    function setWingCycle(phase, openness) {
+    // Compact head-mounted pulse and short rotating scan tick.
+    if (lidarPulse) {
+      lidarPulse.setAttribute('fill', 'none');
+      lidarPulse.setAttribute('stroke', model.palette.cyan);
+      lidarPulse.setAttribute('stroke-width', '1.45');
+      lidarPulse.setAttribute('vector-effect', 'non-scaling-stroke');
+    }
+    if (lidarRays) {
+      lidarRays.setAttribute('x1', '0');
+      lidarRays.setAttribute('y1', '-4');
+      lidarRays.setAttribute('x2', '0');
+      lidarRays.setAttribute('y2', '-18');
+      lidarRays.setAttribute('stroke', model.palette.blue);
+      lidarRays.setAttribute('stroke-width', '1.35');
+    }
+    if (lidarReturn) {
+      lidarReturn.setAttribute('cx', '0');
+      lidarReturn.setAttribute('cy', '0');
+    }
+
+    function setWingPose(wingTrack) {
       ['far', 'near'].forEach((side) => {
-        const flightGeometry = wingGeometry(model, periodicPose(model, phase, side), side);
-        renderWing(wings[side], blendGeometry(folded[side], flightGeometry, openness));
+        renderWing(wings[side], wingGeometry(model, poseForSide(model, wingTrack, side), side));
       });
     }
 
-    function setLegTuck(amount) {
+    function setLegPose(legTrack) {
+      const tuck = clamp(legTrack[0], 0, 1);
+      const compression = clamp(legTrack[1], 0, 1);
+      const contact = clamp(legTrack[2], 0, 1);
+      let nearTarget = null;
+
       ['near', 'far'].forEach((side) => {
         const refs = legRefs[side];
         if (!refs.group) return;
         const leg = model.legs[side];
         const hip = leg.hip;
-        const knee = mixPoint(leg.knee, hip, amount * 0.55);
-        const ankle = mixPoint(leg.ankle, hip, amount * 0.72);
-        refs.main.setAttribute('points', pointsString([hip, knee, ankle]));
+        const originalKnee = leg.knee;
+        const originalAnkle = leg.ankle;
+        const compressed = mixPoint(originalAnkle, hip, compression * 0.18);
+        const tucked = [hip[0] + (side === 'near' ? -4 : 5), hip[1] + 11];
+        const target = mixPoint(compressed, tucked, tuck);
+        const solved = solveTwoBone(hip, originalKnee, originalAnkle, target);
+        refs.main.setAttribute('points', pointsString([hip, solved.knee, solved.ankle]));
+
+        const toeSpread = clamp((1 - tuck) * lerp(0.68, 1, contact), 0, 1);
         refs.toes.forEach((line, index) => {
-          const toe = mixPoint(leg.toes[index], ankle, amount);
-          line.setAttribute('x1', fmt(ankle[0]));
-          line.setAttribute('y1', fmt(ankle[1]));
+          const toeVector = sub(leg.toes[index], originalAnkle);
+          const toe = add(solved.ankle, mul(toeVector, toeSpread));
+          line.setAttribute('x1', fmt(solved.ankle[0]));
+          line.setAttribute('y1', fmt(solved.ankle[1]));
           line.setAttribute('x2', fmt(toe[0]));
           line.setAttribute('y2', fmt(toe[1]));
         });
-        refs.group.style.opacity = String(lerp(side === 'far' ? 0.42 : 0.92, side === 'far' ? 0.16 : 0.34, amount));
+        refs.group.style.opacity = String(lerp(side === 'far' ? 0.18 : 0.38, side === 'far' ? 0.42 : 0.92, 1 - tuck));
+        if (side === 'near') nearTarget = target;
       });
+
+      const baseNearAnkle = model.legs.near.ankle;
+      const anchorShift = nearTarget ? sub(nearTarget, baseNearAnkle) : [0, 0];
+      return { contactLocal: add(defaultContact, anchorShift) };
     }
 
     function setLidar(strength, sweep) {
       if (!lidar) return;
-      const alpha = smoothstep(0.02, 0.38, strength);
+      const alpha = smoothstep(0.02, 0.32, strength);
       lidar.style.opacity = String(alpha);
-      lidar.setAttribute('transform', `translate(${beak[0]} ${beak[1]}) rotate(${lerp(-14, 16, sweep).toFixed(2)})`);
+      lidar.setAttribute('transform', `translate(${fmt(sensor[0])} ${fmt(sensor[1])})`);
+      if (lidarPulse) {
+        const radius = lerp(3.5, 27, sweep);
+        lidarPulse.setAttribute('d', `M 0 ${fmt(-radius)} A ${fmt(radius)} ${fmt(radius)} 0 1 1 0 ${fmt(radius)} A ${fmt(radius)} ${fmt(radius)} 0 1 1 0 ${fmt(-radius)}`);
+        lidarPulse.style.opacity = String(alpha * (1 - 0.72 * sweep));
+      }
+      if (lidarRays) {
+        lidarRays.setAttribute('transform', `rotate(${fmt(lerp(-35, 55, sweep))})`);
+        lidarRays.style.opacity = String(alpha * 0.82);
+      }
       if (lidarReturn) {
-        const flash = Math.exp(-Math.pow((sweep - 0.72) / 0.09, 2));
+        const flash = Math.exp(-Math.pow((sweep - 0.72) / 0.085, 2));
         lidarReturn.style.opacity = String(flash);
-        lidarReturn.setAttribute('r', String(lerp(2.2, 5.2, flash)));
+        lidarReturn.setAttribute('r', fmt(lerp(2.0, 5.0, flash)));
       }
     }
 
-    function contactPosition(perch, scale, mirror, rotationDeg, offset = [0, 0]) {
+    function contactPosition(perch, scale, mirror, rotationDeg, localContact, offset = [0, 0]) {
+      const sx = mirror ? -scale : scale;
       const local = [
-        (perchedAnchor[0] - anchor[0]) * (mirror ? -scale : scale),
-        (perchedAnchor[1] - anchor[1]) * scale,
+        (localContact[0] - anchor[0]) * sx,
+        (localContact[1] - anchor[1]) * scale,
       ];
       const angle = rotationDeg * RAD;
       const rotated = [
         local[0] * Math.cos(angle) - local[1] * Math.sin(angle),
         local[0] * Math.sin(angle) + local[1] * Math.cos(angle),
       ];
-      return [
-        perch[0] + offset[0] - rotated[0],
-        perch[1] + offset[1] - rotated[1],
-      ];
+      return [perch[0] + offset[0] - rotated[0], perch[1] + offset[1] - rotated[1]];
     }
 
     function place(position, tangent, scale, mirror, opacity, rotationOverride = null) {
@@ -265,7 +384,7 @@
       flightGroup.style.opacity = String(opacity);
     }
 
-    return { model, setWingCycle, setLegTuck, setLidar, contactPosition, place };
+    return { model, setWingPose, setLegPose, setLidar, contactPosition, place };
   }
 
   function initPercoliaDirectionalScene(options) {
@@ -273,24 +392,28 @@
     const perched = options.perched;
     const outboundGroup = options.outboundGroup;
     const inboundGroup = options.inboundGroup;
-    const outboundSvg = outboundGroup.querySelector('svg');
-    const inboundSvg = inboundGroup.querySelector('svg');
-    const outbound = createBirdController(outboundSvg, outboundGroup);
-    const inbound = createBirdController(inboundSvg, inboundGroup);
+    const library = readClipLibrary(options, stage);
+    const outbound = createBirdController(outboundGroup.querySelector('svg'), outboundGroup);
+    const inbound = createBirdController(inboundGroup.querySelector('svg'), inboundGroup);
     const model = outbound.model;
     const flight = model.flight;
-    const timeline = flight.timeline_ms;
-    const total = Object.values(timeline).reduce((sum, value) => sum + value, 0);
-    const reducedMotion = global.matchMedia && global.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const perch = flight.perch;
-    const perchedAnchor = flight.perched_anchor || [306, 285];
-    const perchedScale = flight.perched_scale;
+    const reducedMotion = global.matchMedia && global.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const timeline = library.timeline;
+    const boundaries = [];
+    let total = 0;
+    timeline.forEach((entry) => {
+      boundaries.push(Object.assign({}, entry, { start: total, end: total + entry.duration_ms }));
+      total += entry.duration_ms;
+    });
+
     let start = performance.now();
     let elapsedBeforePause = 0;
     let running = false;
     let raf = 0;
     let finished = false;
     let lastState = '';
+    let previousTime = 0;
 
     function setState(name) {
       if (name === lastState) return;
@@ -298,32 +421,37 @@
       if (typeof options.onState === 'function') options.onState(name);
     }
 
-    const boundaries = {};
-    let cursor = 0;
-    Object.entries(timeline).forEach(([name, duration]) => {
-      boundaries[name] = { start: cursor, end: cursor + duration, duration };
-      cursor += duration;
-    });
-
-    const phaseEpoch = boundaries.preload ? boundaries.preload.start : 0;
-
-    function phaseFor(time) {
-      const origin = Number.isFinite(model.wing.launch_phase) ? model.wing.launch_phase : 0;
-      const phase = origin + (time - phaseEpoch) / model.wing.period_ms;
-      return ((phase % 1) + 1) % 1;
+    function segmentAt(time) {
+      return boundaries.find((entry) => time < entry.end) || boundaries[boundaries.length - 1];
     }
 
-    function section(name, time) {
-      const part = boundaries[name];
-      return clamp((time - part.start) / part.duration, 0, 1);
+    function progressIn(entry, time) {
+      return clamp((time - entry.start) / entry.duration_ms, 0, 1);
     }
 
-    function setPerchedPose(opacity, offsetY = 0, rotation = 0, scale = perchedScale) {
-      perched.setAttribute(
-        'transform',
-        `translate(${fmt(perch[0])} ${fmt(perch[1] + offsetY)}) rotate(${fmt(rotation)}) scale(${fmt(scale)}) translate(${-perchedAnchor[0]} ${-perchedAnchor[1]})`
-      );
-      perched.style.opacity = String(opacity);
+    function clipProgress(entry, time) {
+      if (!entry.clip) return 0;
+      if (entry.loop) {
+        const clipPeriod = entry.state === 'perched' || entry.state === 'perched_final'
+          ? entry.duration_ms
+          : model.wing.period_ms;
+        return ((time - entry.start) / clipPeriod) % 1;
+      }
+      return progressIn(entry, time);
+    }
+
+    function emitEvents(from, to) {
+      if (to < from) return;
+      boundaries.forEach((entry) => {
+        if (!entry.clip) return;
+        const clip = library.clips[entry.clip];
+        (clip.events || []).forEach((event) => {
+          const eventTimeMs = entry.start + event.t * entry.duration_ms;
+          if (eventTimeMs > from && eventTimeMs <= to && typeof options.onEvent === 'function') {
+            options.onEvent(event.name, entry.state);
+          }
+        });
+      });
     }
 
     function visualRotation(tangent, mirror, minimum, maximum) {
@@ -332,169 +460,185 @@
       return clamp(rotation, minimum, maximum);
     }
 
+    function applyContactPose(controller, sample, baseScale, mirror, opacity = 1, rotationOverride = null) {
+      controller.setWingPose(sample.wing);
+      const legState = controller.setLegPose(sample.legs);
+      const scale = baseScale * sample.root[3];
+      const rotation = Number.isFinite(rotationOverride) ? rotationOverride : sample.root[2];
+      const position = controller.contactPosition(perch, scale, mirror, rotation, legState.contactLocal);
+      controller.place(position, mirror ? [-1, 0] : [1, 0], scale, mirror, opacity, rotation);
+      return { position, scale, rotation, legState };
+    }
+
+    function pushReleasePose() {
+      const toe = eventTime(library, 'push_off', 'toe_off');
+      const sample = sampleClip(library, 'push_off', toe);
+      outbound.setWingPose(sample.wing);
+      const legState = outbound.setLegPose(sample.legs);
+      const scale = flight.perched_scale * sample.root[3];
+      const rotation = sample.root[2];
+      const position = outbound.contactPosition(perch, scale, false, rotation, legState.contactLocal);
+      return { sample, position, scale, rotation };
+    }
+
+    function pushEndPose() {
+      const release = pushReleasePose();
+      const end = sampleClip(library, 'push_off', 1);
+      return {
+        position: add(release.position, [end.root[0] - release.sample.root[0], end.root[1] - release.sample.root[1]]),
+        rotation: end.root[2],
+        scale: flight.perched_scale * end.root[3],
+      };
+    }
+
+    function renderPerchedActor(controller, sample, mirror) {
+      applyContactPose(controller, sample, flight.perched_scale, mirror, 1);
+    }
+
     function update(time) {
-      const flapPhase = phaseFor(time);
+      const boundedTime = clamp(time, 0, total);
+      const entry = segmentAt(boundedTime);
+      const p = progressIn(entry, boundedTime);
+      const cp = clipProgress(entry, boundedTime);
+      const sample = entry.clip ? sampleClip(library, entry.clip, cp) : null;
+
       outboundGroup.style.opacity = '0';
       inboundGroup.style.opacity = '0';
+      perched.style.opacity = reducedMotion ? '1' : '0';
       outbound.setLidar(0, 0);
       inbound.setLidar(0, 0);
+      setState(entry.state);
 
-      if (time < boundaries.initial_perch.end) {
-        setState('perched');
-        setPerchedPose(1);
+      if (reducedMotion) {
+        perched.style.opacity = '1';
         return;
       }
 
-      if (time < boundaries.preload.end) {
-        setState('preload');
-        const u = easeInOutCubic(section('preload', time));
-        const sink = flight.preload_sink * Math.sin(Math.PI * u);
-        const pitch = lerp(0, flight.preload_pitch_deg, smoothstep(0.16, 0.92, u));
-        const staticOpacity = 1 - smoothstep(0.36, 0.76, u);
-        setPerchedPose(staticOpacity, sink, pitch);
-        const position = outbound.contactPosition(perch, perchedScale, false, pitch, [0, sink]);
-        const opening = 0.72 * smoothstep(0.20, 0.96, u);
-        outbound.setWingCycle(flapPhase, opening);
-        outbound.setLegTuck(0);
-        outbound.place(position, [1, -0.12], perchedScale, false, smoothstep(0.34, 0.74, u), pitch);
-        return;
-      }
+      switch (entry.state) {
+        case 'perched':
+          renderPerchedActor(outbound, sample, false);
+          break;
 
-      if (time < boundaries.takeoff.end) {
-        setState('takeoff');
-        const raw = section('takeoff', time);
-        const contactFraction = flight.takeoff_contact_fraction;
-        let scale = perchedScale;
-        const contactPitch = lerp(flight.preload_pitch_deg, flight.takeoff_pitch_deg, smoothstep(0, contactFraction, raw));
-        const opening = lerp(0.72, 1, smoothstep(0, 0.36, raw));
-        let position;
-        let tangent;
-        let rotation;
+        case 'anticipation':
+          applyContactPose(outbound, sample, flight.perched_scale, false, 1);
+          break;
 
-        if (raw <= contactFraction) {
-          const push = raw / contactFraction;
-          const lift = -flight.takeoff_release_lift * smoothstep(0.20, 1, push);
-          position = outbound.contactPosition(perch, scale, false, contactPitch, [0, lift]);
-          tangent = [1, -0.35];
-          rotation = contactPitch;
-        } else {
-          const motion = smoothstep(contactFraction, 1, raw);
-          scale = lerp(perchedScale, flight.bird_scale, smoothstep(0, 0.50, motion));
-          position = cubic(flight.takeoff_curve, motion);
-          tangent = cubicDerivative(flight.takeoff_curve, Math.min(0.999, motion));
-          const pathPitch = visualRotation(tangent, false, -24, 7);
-          rotation = lerp(flight.takeoff_pitch_deg, pathPitch, smoothstep(0.16, 1, motion));
+        case 'push_off': {
+          outbound.setWingPose(sample.wing);
+          const legState = outbound.setLegPose(sample.legs);
+          const scale = flight.perched_scale * sample.root[3];
+          const rotation = sample.root[2];
+          const toe = eventTime(library, 'push_off', 'toe_off');
+          let position;
+          if (p <= toe) {
+            position = outbound.contactPosition(perch, scale, false, rotation, legState.contactLocal);
+          } else {
+            const release = pushReleasePose();
+            position = add(release.position, [sample.root[0] - release.sample.root[0], sample.root[1] - release.sample.root[1]]);
+          }
+          outbound.place(position, [1, -0.25], scale, false, 1, rotation);
+          break;
         }
 
-        setPerchedPose(0);
-        outbound.setWingCycle(flapPhase, opening);
-        outbound.setLegTuck(smoothstep(contactFraction, 0.72, raw));
-        outbound.place(position, tangent, scale, false, 1, rotation);
-        return;
+        case 'takeoff': {
+          const origin = pushEndPose();
+          const first = library.clips.takeoff.keyframes[0].root;
+          let position = add(origin.position, [sample.root[0] - first[0], sample.root[1] - first[1]]);
+          const target = library.world.outbound_curve[0];
+          const endSample = sampleClip(library, 'takeoff', 1);
+          const authoredEnd = add(origin.position, [endSample.root[0] - first[0], endSample.root[1] - first[1]]);
+          const warp = sub(target, authoredEnd);
+          position = add(position, mul(warp, smoothstep(0.55, 1, p)));
+          outbound.setWingPose(sample.wing);
+          outbound.setLegPose(sample.legs);
+          const scale = lerp(flight.perched_scale, flight.bird_scale, smoothstep(0, 0.55, p)) * sample.root[3];
+          outbound.place(position, [1, -0.35], scale, false, 1, sample.root[2]);
+          break;
+        }
+
+        case 'outbound': {
+          const positionBase = cubic(library.world.outbound_curve, p);
+          const tangent = cubicDerivative(library.world.outbound_curve, Math.min(0.999, p));
+          const position = add(positionBase, [sample.root[0], sample.root[1]]);
+          outbound.setWingPose(sample.wing);
+          outbound.setLegPose(sample.legs);
+          const fade = 1 - smoothstep(0.93, 1, p);
+          const rotation = visualRotation(tangent, false, -22, 7) + sample.root[2] * 0.28;
+          outbound.place(position, tangent, flight.bird_scale * sample.root[3], false, fade, rotation);
+          const scanHalf = library.world.scan_duration_fraction / 2;
+          const scanDistance = Math.abs(p - library.world.scan_progress);
+          const scanStrength = 1 - clamp(scanDistance / scanHalf, 0, 1);
+          const scanSweep = clamp((p - (library.world.scan_progress - scanHalf)) / (2 * scanHalf), 0, 1);
+          outbound.setLidar(scanStrength, scanSweep);
+          break;
+        }
+
+        case 'empty':
+          break;
+
+        case 'inbound': {
+          const positionBase = cubic(library.world.inbound_curve, p);
+          const tangent = cubicDerivative(library.world.inbound_curve, Math.min(0.999, p));
+          const position = add(positionBase, [-sample.root[0], sample.root[1]]);
+          inbound.setWingPose(sample.wing);
+          inbound.setLegPose(sample.legs);
+          const rotation = visualRotation(tangent, true, -12, 5) - sample.root[2] * 0.22;
+          inbound.place(position, tangent, flight.bird_scale * sample.root[3], true, smoothstep(0, 0.08, p), rotation);
+          break;
+        }
+
+        case 'approach':
+        case 'flare': {
+          const world = add(perch, [sample.root[0], sample.root[1]]);
+          inbound.setWingPose(sample.wing);
+          inbound.setLegPose(sample.legs);
+          inbound.place(world, [-1, 0.22], flight.bird_scale * sample.root[3], true, 1, sample.root[2]);
+          break;
+        }
+
+        case 'touchdown': {
+          inbound.setWingPose(sample.wing);
+          const legState = inbound.setLegPose(sample.legs);
+          const scale = flight.bird_scale * sample.root[3];
+          const rotation = sample.root[2];
+          const touchdown = eventTime(library, 'touchdown', 'touchdown');
+          const authored = add(perch, [sample.root[0], sample.root[1]]);
+
+          if (p < touchdown) {
+            const eventSample = sampleClip(library, 'touchdown', touchdown);
+            inbound.setWingPose(eventSample.wing);
+            const eventLeg = inbound.setLegPose(eventSample.legs);
+            const eventScale = flight.bird_scale * eventSample.root[3];
+            const target = inbound.contactPosition(perch, eventScale, true, eventSample.root[2], eventLeg.contactLocal);
+            const authoredAtEvent = add(perch, [eventSample.root[0], eventSample.root[1]]);
+            const warp = sub(target, authoredAtEvent);
+            const position = add(authored, mul(warp, smoothstep(0.10, touchdown, p)));
+            // Restore the actual frame after computing the target pose.
+            inbound.setWingPose(sample.wing);
+            inbound.setLegPose(sample.legs);
+            inbound.place(position, [-1, 0.30], scale, true, 1, rotation);
+          } else {
+            const position = inbound.contactPosition(perch, scale, true, rotation, legState.contactLocal);
+            inbound.place(position, [-1, 0], scale, true, 1, rotation);
+          }
+          break;
+        }
+
+        case 'settle':
+          applyContactPose(inbound, sample, flight.bird_scale, true, 1);
+          break;
+
+        case 'perched_final':
+          applyContactPose(inbound, sample, flight.perched_scale, true, 1);
+          break;
+
+        default:
+          throw new Error(`Unknown Percolia animation state: ${entry.state}`);
       }
 
-      if (time < boundaries.outbound.end) {
-        setState('outbound');
-        const u = section('outbound', time);
-        const position = cubic(flight.outbound_curve, u);
-        const tangent = cubicDerivative(flight.outbound_curve, Math.min(0.999, u));
-        const rotation = visualRotation(tangent, false, -24, 7);
-        setPerchedPose(0);
-        outbound.setWingCycle(flapPhase, 1);
-        outbound.setLegTuck(1);
-        const fade = 1 - smoothstep(0.90, 1, u);
-        outbound.place(position, tangent, flight.bird_scale, false, fade, rotation);
-        const scanHalf = flight.scan_duration_fraction / 2;
-        const scanDistance = Math.abs(u - flight.scan_progress);
-        const scanStrength = 1 - clamp(scanDistance / scanHalf, 0, 1);
-        const scanSweep = clamp((u - (flight.scan_progress - scanHalf)) / (2 * scanHalf), 0, 1);
-        outbound.setLidar(scanStrength, scanSweep);
-        return;
-      }
-
-      if (time < boundaries.empty.end) {
-        setState('empty');
-        setPerchedPose(0);
-        return;
-      }
-
-      if (time < boundaries.inbound.end) {
-        setState('inbound');
-        const u = section('inbound', time);
-        const position = cubic(flight.inbound_curve, u);
-        const tangent = cubicDerivative(flight.inbound_curve, Math.min(0.999, u));
-        const rotation = visualRotation(tangent, true, -14, 4);
-        setPerchedPose(0);
-        inbound.setWingCycle((flapPhase + 0.17) % 1, 1);
-        inbound.setLegTuck(1 - smoothstep(0.76, 0.98, u));
-        inbound.place(position, tangent, flight.bird_scale, true, smoothstep(0, 0.08, u), rotation);
-        return;
-      }
-
-      if (time < boundaries.flare.end) {
-        setState('flare');
-        const raw = section('flare', time);
-        const u = easeInOutCubic(raw);
-        const position = cubic(flight.flare_curve, u);
-        const tangent = cubicDerivative(flight.flare_curve, Math.min(0.999, u));
-        const pathPitch = visualRotation(tangent, true, -15, 4);
-        const rotation = lerp(pathPitch, flight.flare_pitch_deg, smoothstep(0.12, 0.88, raw));
-        const wingPhase = lerpPhase(
-          (flapPhase + 0.17) % 1,
-          model.wing.flare_phase,
-          smoothstep(0.16, 0.82, raw)
-        );
-        setPerchedPose(0);
-        inbound.setWingCycle(wingPhase, 1);
-        inbound.setLegTuck(1 - smoothstep(0.04, 0.70, raw));
-        inbound.place(position, tangent, flight.bird_scale, true, 1, rotation);
-        return;
-      }
-
-      if (time < boundaries.touchdown.end) {
-        setState('touchdown');
-        const raw = section('touchdown', time);
-        const u = easeInOutCubic(raw);
-        const position = cubic(flight.touchdown_curve, u);
-        const tangent = cubicDerivative(flight.touchdown_curve, Math.min(0.999, u));
-        const rotation = lerp(flight.flare_pitch_deg, 0, smoothstep(0.18, 1, raw));
-        const scale = lerp(flight.bird_scale, perchedScale, smoothstep(0.28, 1, raw));
-        const wingPhase = lerpPhase(
-          model.wing.flare_phase,
-          model.wing.touchdown_phase,
-          smoothstep(0, 0.35, raw)
-        );
-        const openness = 1 - smoothstep(0.28, 0.96, raw);
-        setPerchedPose(0);
-        inbound.setWingCycle(wingPhase, openness);
-        inbound.setLegTuck(0);
-        inbound.place(position, tangent, scale, true, 1, rotation);
-        return;
-      }
-
-      if (time < boundaries.settle.end) {
-        setState('settle');
-        const u = section('settle', time);
-        const decay = Math.exp(-3.4 * u);
-        const wave = Math.sin(TAU * flight.settle_oscillations * u);
-        const offsetY = -flight.settle_amplitude * decay * wave;
-        const rotation = 2.1 * decay * wave;
-        const position = inbound.contactPosition(perch, perchedScale, true, rotation, [0, offsetY]);
-        setPerchedPose(0);
-        inbound.setWingCycle(model.wing.touchdown_phase, 0);
-        inbound.setLegTuck(0);
-        inbound.place(position, [ -1, 0 ], perchedScale, true, 1, rotation);
-        return;
-      }
-
-      const finalPosition = inbound.contactPosition(perch, perchedScale, true, 0);
-      setState('perched');
-      setPerchedPose(0);
-      inbound.setWingCycle(model.wing.touchdown_phase, 0);
-      inbound.setLegTuck(0);
-      inbound.place(finalPosition, [-1, 0], perchedScale, true, 1, 0);
-
-      if (time >= total && !finished) {
+      emitEvents(previousTime, boundedTime);
+      previousTime = boundedTime;
+      if (boundedTime >= total && !finished) {
         finished = true;
         running = false;
         if (typeof options.onFinish === 'function') options.onFinish();
@@ -525,6 +669,7 @@
     function restart() {
       cancelAnimationFrame(raf);
       elapsedBeforePause = 0;
+      previousTime = 0;
       finished = false;
       start = performance.now();
       update(0);
@@ -537,13 +682,22 @@
     function seek(milliseconds) {
       pause();
       elapsedBeforePause = clamp(milliseconds, 0, total);
+      previousTime = elapsedBeforePause;
       update(elapsedBeforePause);
     }
 
     update(0);
     if (!reducedMotion && options.autoplay !== false) play();
 
-    return { play, pause, restart, seek, duration: total, isRunning: () => running };
+    return {
+      play,
+      pause,
+      restart,
+      seek,
+      duration: total,
+      isRunning: () => running,
+      state: () => lastState,
+    };
   }
 
   global.initPercoliaDirectionalScene = initPercoliaDirectionalScene;

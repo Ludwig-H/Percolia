@@ -1,6 +1,6 @@
 {
   "name": "Percolia Initial Network Bird",
-  "version": "0.9.0",
+  "version": "1.0.0",
   "viewBox": [
     0,
     0,
@@ -896,8 +896,8 @@
     "fold_phase_deg": 0,
     "fold_exponent": 1.45,
     "near_phase_offset": 0,
-    "far_phase_offset": 0.065,
-    "near_scale": 1,
+    "far_phase_offset": 0.055,
+    "near_scale": 1.0,
     "far_scale": 0.92,
     "far_opacity": 0.34,
     "leading_fraction": 0.34,
@@ -908,10 +908,7 @@
       "span_scale": 0.64,
       "chord_scale": 0.78
     },
-    "glide_phase": 0.18,
-    "launch_phase": 0.43,
-    "flare_phase": 0.44,
-    "touchdown_phase": 0.46
+    "glide_phase": 0.18
   },
   "legs": {
     "near": {
@@ -990,52 +987,66 @@
       306,
       245
     ],
-    "timeline_ms": {
-      "initial_perch": 1500,
-      "preload": 650,
-      "takeoff": 1450,
-      "outbound": 4800,
-      "empty": 850,
-      "inbound": 4700,
-      "flare": 1100,
-      "touchdown": 650,
-      "settle": 900,
-      "final_hold": 1700
+    "bird_scale": 0.29,
+    "perched_scale": 0.25,
+    "foot_targets": {
+      "near": {
+        "ankle_offset": [
+          -3,
+          -9
+        ],
+        "toe_offsets": [
+          [
+            -13,
+            0
+          ],
+          [
+            -2,
+            1
+          ],
+          [
+            10,
+            -1
+          ]
+        ]
+      },
+      "far": {
+        "ankle_offset": [
+          7,
+          -10
+        ],
+        "toe_offsets": [
+          [
+            -5,
+            -1
+          ],
+          [
+            6,
+            0
+          ],
+          [
+            17,
+            -2
+          ]
+        ]
+      }
     },
-    "takeoff_curve": [
-      [
-        257.921,
-        527.019
-      ],
-      [
-        285,
-        500
-      ],
-      [
-        356,
-        380
-      ],
-      [
-        415,
-        355
-      ]
-    ],
     "outbound_curve": [
       [
-        415,
-        355
+        423,
+        349
       ],
       [
-        650,
-        255
+        670,
+        244
       ],
       [
-        1005,
-        165
+        1030,
+        158
       ],
       [
         1460,
-        128
+        124
       ]
     ],
     "inbound_curve": [
@@ -1045,65 +1056,33 @@
       ],
       [
         1110,
-        218
+        220
       ],
       [
-        560,
-        365
+        640,
+        330
       ],
       [
-        360,
-        430
+        388,
+        415
       ]
     ],
-    "flare_curve": [
-      [
-        360,
-        430
-      ],
-      [
-        300,
-        449
-      ],
-      [
-        278,
-        470
-      ],
-      [
-        270,
-        492
-      ]
-    ],
-    "touchdown_curve": [
-      [
-        270,
-        492
-      ],
-      [
-        266,
-        503
-      ],
-      [
-        260,
-        516
-      ],
-      [
-        260,
-        528
-      ]
-    ],
-    "bird_scale": 0.29,
-    "perched_scale": 0.25,
-    "preload_sink": 3.2,
-    "preload_pitch_deg": -5.0,
-    "takeoff_contact_fraction": 0.22,
-    "takeoff_pitch_deg": -12.0,
-    "flare_pitch_deg": 10.0,
-    "settle_amplitude": 3.2,
-    "settle_oscillations": 1.25,
-    "scan_progress": 0.52,
-    "scan_duration_fraction": 0.08,
-    "one_shot": true,
-    "takeoff_release_lift": 1.2
+    "scan_progress": 0.54,
+    "scan_duration_fraction": 0.075,
+    "one_shot": true
+  },
+  "scan": {
+    "origin_node": "h5",
+    "direction_deg": 0,
+    "beam_length": 92,
+    "beam_half_angle_deg": 11,
+    "return_distance": 101,
+    "pulse_ms": 520
+  },
+  "art_direction": {
+    "preserve_palette": true,
+    "preserve_network_silhouette": true,
+    "scan_origin": "head_node_h5",
+    "beak_emission": false
   }
 }

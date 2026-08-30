@@ -14,9 +14,9 @@ Elle comprend :
 
 - un `P` distinctif fondé sur un seuil de connectivité ;
 - `ERCOLIA` en petites capitales ;
-- le modèle d’oiseau-réseau du premier jet, restauré et perché sur le `P` ;
-- des ailes déformables calculées à partir d’une chaîne épaule–coude–poignet ;
-- une séquence directionnelle : un oiseau sort vers la droite, un autre revient depuis la droite et se pose ;
-- les variantes monochromes et inversées ainsi que toutes les sources de génération.
+- un petit oiseau-réseau perché sur le `P` ;
+- une animation directionnelle fondée sur des clips keyframés, du root motion, des événements et des contacts IK ;
+- un scan LiDAR bref provenant d’un nœud de la tête ;
+- les variantes monochromes, inversées et les sources de génération.
 
 La démonstration autonome peut être ouverte directement depuis [`Logo/Oiseau/demo.html`](Logo/Oiseau/demo.html).

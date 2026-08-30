@@ -1,13 +1,15 @@
-# Source de l’oiseau-réseau
+# Source du modèle d’oiseau
 
-`bird_model.json` contient :
+`bird_model.json` est la source de vérité de l’oiseau-réseau Percolia.
 
-- la topologie restaurée du premier oiseau Percolia ;
-- les facettes, arêtes, nœuds et points dispersés ;
-- les paramètres cinématiques des deux ailes ;
-- la pose repliée utilisée sur le `P` ;
-- les pattes ;
-- les quatre courbes de Bézier de la séquence directionnelle ;
-- les durées de décollage, sortie, silence, retour et atterrissage.
+Le fichier décrit :
 
-Les SVG générés ne doivent pas être modifiés isolément. Toute évolution de la forme ou du mouvement doit partir de ce JSON et des générateurs Python.
+- la topologie triangulée du corps initial ;
+- les points dispersés autour de la silhouette ;
+- la chaîne cinématique des deux ailes ;
+- les pattes et leurs points d’appui ;
+- les ancres distinctes du corps en vol et des pieds au repos ;
+- les durées des phases `preload`, `takeoff`, `flare`, `touchdown` et `settle` ;
+- les courbes de Bézier raccordées du vol directionnel.
+
+Les fichiers SVG et `demo.html` sont générés. Ils ne doivent pas être modifiés comme sources primaires.

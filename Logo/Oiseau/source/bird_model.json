@@ -1,6 +1,6 @@
 {
   "name": "Percolia Initial Network Bird",
-  "version": "0.8.0",
+  "version": "0.9.0",
   "viewBox": [
     0,
     0,
@@ -908,7 +908,10 @@
       "span_scale": 0.64,
       "chord_scale": 0.78
     },
-    "glide_phase": 0.18
+    "glide_phase": 0.18,
+    "launch_phase": 0.43,
+    "flare_phase": 0.44,
+    "touchdown_phase": 0.46
   },
   "legs": {
     "near": {
@@ -979,27 +982,52 @@
       260,
       538
     ],
-    "bird_anchor": [
+    "perched_anchor": [
+      306,
+      285
+    ],
+    "flight_anchor": [
       306,
       245
     ],
     "timeline_ms": {
-      "initial_perch": 1900,
-      "takeoff": 1250,
-      "outbound": 5100,
-      "empty": 900,
-      "inbound": 5050,
-      "landing": 1550,
-      "final_hold": 1800
+      "initial_perch": 1500,
+      "preload": 650,
+      "takeoff": 1450,
+      "outbound": 4800,
+      "empty": 850,
+      "inbound": 4700,
+      "flare": 1100,
+      "touchdown": 650,
+      "settle": 900,
+      "final_hold": 1700
     },
-    "outbound_curve": [
+    "takeoff_curve": [
       [
-        395,
-        350
+        257.921,
+        527.019
       ],
       [
-        655,
-        250
+        285,
+        500
+      ],
+      [
+        356,
+        380
+      ],
+      [
+        415,
+        355
+      ]
+    ],
+    "outbound_curve": [
+      [
+        415,
+        355
+      ],
+      [
+        650,
+        255
       ],
       [
         1005,
@@ -1020,54 +1048,62 @@
         218
       ],
       [
-        620,
-        330
+        560,
+        365
       ],
       [
-        315,
-        444
+        360,
+        430
       ]
     ],
-    "landing_curve": [
+    "flare_curve": [
       [
-        315,
-        444
+        360,
+        430
       ],
       [
-        287,
+        300,
+        449
+      ],
+      [
+        278,
         470
       ],
       [
-        268,
-        514
+        270,
+        492
+      ]
+    ],
+    "touchdown_curve": [
+      [
+        270,
+        492
+      ],
+      [
+        266,
+        503
       ],
       [
         260,
-        538
+        516
+      ],
+      [
+        260,
+        528
       ]
     ],
     "bird_scale": 0.29,
     "perched_scale": 0.25,
+    "preload_sink": 3.2,
+    "preload_pitch_deg": -5.0,
+    "takeoff_contact_fraction": 0.22,
+    "takeoff_pitch_deg": -12.0,
+    "flare_pitch_deg": 10.0,
+    "settle_amplitude": 3.2,
+    "settle_oscillations": 1.25,
     "scan_progress": 0.52,
     "scan_duration_fraction": 0.08,
     "one_shot": true,
-    "takeoff_curve": [
-      [
-        260,
-        538
-      ],
-      [
-        266,
-        495
-      ],
-      [
-        315,
-        405
-      ],
-      [
-        395,
-        350
-      ]
-    ]
+    "takeoff_release_lift": 1.2
   }
 }

@@ -42,7 +42,7 @@
   </g>
   </g>
 </g>
-    <g transform="translate(148 106) scale(.22) translate(-306 -285)"><g xmlns="http://www.w3.org/2000/svg" id="percolia-bird" data-percolia-bird="true" data-model-version="0.8.0">
+    <g transform="translate(148 106) scale(.22) translate(-306 -285)"><g xmlns="http://www.w3.org/2000/svg" id="percolia-bird" data-percolia-bird="true" data-model-version="0.9.0">
     <g id="bird-body-network" data-layer="body">
       <g id="body-faces" data-layer="faces">
         <polygon id="f01" points="78,210 126,184 150,202" fill="#20C9C4" fill-opacity="0.1" data-anim="face" />

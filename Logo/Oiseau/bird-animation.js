@@ -4,7 +4,7 @@
  * The visible bird is the original triangulated network silhouette. Only the
  * wings are recomputed frame by frame from a three-link chain. The outbound
  * bird always travels left-to-right and leaves the stage. A distinct inbound
- * bird then travels right-to-left and lands on the P.
+ * bird then travels right-to-left, flares, touches down and settles on the P.
  */
 (function (global) {
   'use strict';
@@ -34,6 +34,10 @@
     return [-y, x];
   };
   const mixPoint = (a, b, t) => [lerp(a[0], b[0], t), lerp(a[1], b[1], t)];
+  const lerpPhase = (a, b, t) => {
+    const delta = ((b - a + 1.5) % 1) - 0.5;
+    return (a + delta * t + 1) % 1;
+  };
   const fmt = (value) => (Math.abs(value) < 5e-7 ? 0 : value)
     .toFixed(3)
     .replace(/\.0+$/, '')
@@ -191,7 +195,8 @@
     const lidar = root.querySelector('[data-lidar="true"]');
     const lidarReturn = root.querySelector('[data-lidar-return="true"]');
     const beak = model.body.nodes.q1.slice(0, 2);
-    const anchor = model.flight.bird_anchor;
+    const anchor = model.flight.flight_anchor || model.flight.bird_anchor;
+    const perchedAnchor = model.flight.perched_anchor || [306, 285];
 
     function setWingCycle(phase, openness) {
       ['far', 'near'].forEach((side) => {
@@ -232,9 +237,26 @@
       }
     }
 
-    function place(position, tangent, scale, mirror, opacity) {
+    function contactPosition(perch, scale, mirror, rotationDeg, offset = [0, 0]) {
+      const local = [
+        (perchedAnchor[0] - anchor[0]) * (mirror ? -scale : scale),
+        (perchedAnchor[1] - anchor[1]) * scale,
+      ];
+      const angle = rotationDeg * RAD;
+      const rotated = [
+        local[0] * Math.cos(angle) - local[1] * Math.sin(angle),
+        local[0] * Math.sin(angle) + local[1] * Math.cos(angle),
+      ];
+      return [
+        perch[0] + offset[0] - rotated[0],
+        perch[1] + offset[1] - rotated[1],
+      ];
+    }
+
+    function place(position, tangent, scale, mirror, opacity, rotationOverride = null) {
       const angle = Math.atan2(tangent[1], tangent[0]) / RAD;
-      const rotation = mirror ? angle - 180 : angle;
+      const pathRotation = mirror ? angle - 180 : angle;
+      const rotation = Number.isFinite(rotationOverride) ? rotationOverride : pathRotation;
       const sx = mirror ? -scale : scale;
       flightGroup.setAttribute(
         'transform',
@@ -243,7 +265,7 @@
       flightGroup.style.opacity = String(opacity);
     }
 
-    return { model, setWingCycle, setLegTuck, setLidar, place };
+    return { model, setWingCycle, setLegTuck, setLidar, contactPosition, place };
   }
 
   function initPercoliaDirectionalScene(options) {
@@ -256,9 +278,13 @@
     const outbound = createBirdController(outboundSvg, outboundGroup);
     const inbound = createBirdController(inboundSvg, inboundGroup);
     const model = outbound.model;
-    const timeline = model.flight.timeline_ms;
+    const flight = model.flight;
+    const timeline = flight.timeline_ms;
     const total = Object.values(timeline).reduce((sum, value) => sum + value, 0);
     const reducedMotion = global.matchMedia && global.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const perch = flight.perch;
+    const perchedAnchor = flight.perched_anchor || [306, 285];
+    const perchedScale = flight.perched_scale;
     let start = performance.now();
     let elapsedBeforePause = 0;
     let running = false;
@@ -279,8 +305,12 @@
       cursor += duration;
     });
 
+    const phaseEpoch = boundaries.preload ? boundaries.preload.start : 0;
+
     function phaseFor(time) {
-      return (time % model.wing.period_ms) / model.wing.period_ms;
+      const origin = Number.isFinite(model.wing.launch_phase) ? model.wing.launch_phase : 0;
+      const phase = origin + (time - phaseEpoch) / model.wing.period_ms;
+      return ((phase % 1) + 1) % 1;
     }
 
     function section(name, time) {
@@ -288,8 +318,18 @@
       return clamp((time - part.start) / part.duration, 0, 1);
     }
 
-    function showPerched(opacity) {
+    function setPerchedPose(opacity, offsetY = 0, rotation = 0, scale = perchedScale) {
+      perched.setAttribute(
+        'transform',
+        `translate(${fmt(perch[0])} ${fmt(perch[1] + offsetY)}) rotate(${fmt(rotation)}) scale(${fmt(scale)}) translate(${-perchedAnchor[0]} ${-perchedAnchor[1]})`
+      );
       perched.style.opacity = String(opacity);
+    }
+
+    function visualRotation(tangent, mirror, minimum, maximum) {
+      const angle = Math.atan2(tangent[1], tangent[0]) / RAD;
+      const rotation = mirror ? angle - 180 : angle;
+      return clamp(rotation, minimum, maximum);
     }
 
     function update(time) {
@@ -301,74 +341,160 @@
 
       if (time < boundaries.initial_perch.end) {
         setState('perched');
-        showPerched(1);
+        setPerchedPose(1);
+        return;
+      }
+
+      if (time < boundaries.preload.end) {
+        setState('preload');
+        const u = easeInOutCubic(section('preload', time));
+        const sink = flight.preload_sink * Math.sin(Math.PI * u);
+        const pitch = lerp(0, flight.preload_pitch_deg, smoothstep(0.16, 0.92, u));
+        const staticOpacity = 1 - smoothstep(0.36, 0.76, u);
+        setPerchedPose(staticOpacity, sink, pitch);
+        const position = outbound.contactPosition(perch, perchedScale, false, pitch, [0, sink]);
+        const opening = 0.72 * smoothstep(0.20, 0.96, u);
+        outbound.setWingCycle(flapPhase, opening);
+        outbound.setLegTuck(0);
+        outbound.place(position, [1, -0.12], perchedScale, false, smoothstep(0.34, 0.74, u), pitch);
         return;
       }
 
       if (time < boundaries.takeoff.end) {
         setState('takeoff');
-        const u = easeInOutCubic(section('takeoff', time));
-        const position = cubic(model.flight.takeoff_curve, u);
-        const tangent = cubicDerivative(model.flight.takeoff_curve, Math.min(0.999, u));
-        showPerched(1 - smoothstep(0.08, 0.60, u));
-        outbound.setWingCycle(flapPhase, smoothstep(0.02, 0.55, u));
-        outbound.setLegTuck(smoothstep(0.08, 0.70, u));
-        outbound.place(position, tangent, model.flight.bird_scale, false, smoothstep(0, 0.12, u));
+        const raw = section('takeoff', time);
+        const contactFraction = flight.takeoff_contact_fraction;
+        let scale = perchedScale;
+        const contactPitch = lerp(flight.preload_pitch_deg, flight.takeoff_pitch_deg, smoothstep(0, contactFraction, raw));
+        const opening = lerp(0.72, 1, smoothstep(0, 0.36, raw));
+        let position;
+        let tangent;
+        let rotation;
+
+        if (raw <= contactFraction) {
+          const push = raw / contactFraction;
+          const lift = -flight.takeoff_release_lift * smoothstep(0.20, 1, push);
+          position = outbound.contactPosition(perch, scale, false, contactPitch, [0, lift]);
+          tangent = [1, -0.35];
+          rotation = contactPitch;
+        } else {
+          const motion = smoothstep(contactFraction, 1, raw);
+          scale = lerp(perchedScale, flight.bird_scale, smoothstep(0, 0.50, motion));
+          position = cubic(flight.takeoff_curve, motion);
+          tangent = cubicDerivative(flight.takeoff_curve, Math.min(0.999, motion));
+          const pathPitch = visualRotation(tangent, false, -24, 7);
+          rotation = lerp(flight.takeoff_pitch_deg, pathPitch, smoothstep(0.16, 1, motion));
+        }
+
+        setPerchedPose(0);
+        outbound.setWingCycle(flapPhase, opening);
+        outbound.setLegTuck(smoothstep(contactFraction, 0.72, raw));
+        outbound.place(position, tangent, scale, false, 1, rotation);
         return;
       }
 
       if (time < boundaries.outbound.end) {
         setState('outbound');
         const u = section('outbound', time);
-        const position = cubic(model.flight.outbound_curve, u);
-        const tangent = cubicDerivative(model.flight.outbound_curve, Math.min(0.999, u));
-        showPerched(0);
+        const position = cubic(flight.outbound_curve, u);
+        const tangent = cubicDerivative(flight.outbound_curve, Math.min(0.999, u));
+        const rotation = visualRotation(tangent, false, -24, 7);
+        setPerchedPose(0);
         outbound.setWingCycle(flapPhase, 1);
         outbound.setLegTuck(1);
         const fade = 1 - smoothstep(0.90, 1, u);
-        outbound.place(position, tangent, model.flight.bird_scale, false, fade);
-        const scanHalf = model.flight.scan_duration_fraction / 2;
-        const scanDistance = Math.abs(u - model.flight.scan_progress);
+        outbound.place(position, tangent, flight.bird_scale, false, fade, rotation);
+        const scanHalf = flight.scan_duration_fraction / 2;
+        const scanDistance = Math.abs(u - flight.scan_progress);
         const scanStrength = 1 - clamp(scanDistance / scanHalf, 0, 1);
-        const scanSweep = clamp((u - (model.flight.scan_progress - scanHalf)) / (2 * scanHalf), 0, 1);
+        const scanSweep = clamp((u - (flight.scan_progress - scanHalf)) / (2 * scanHalf), 0, 1);
         outbound.setLidar(scanStrength, scanSweep);
         return;
       }
 
       if (time < boundaries.empty.end) {
         setState('empty');
-        showPerched(0);
+        setPerchedPose(0);
         return;
       }
 
       if (time < boundaries.inbound.end) {
         setState('inbound');
         const u = section('inbound', time);
-        const position = cubic(model.flight.inbound_curve, u);
-        const tangent = cubicDerivative(model.flight.inbound_curve, Math.min(0.999, u));
-        showPerched(0);
+        const position = cubic(flight.inbound_curve, u);
+        const tangent = cubicDerivative(flight.inbound_curve, Math.min(0.999, u));
+        const rotation = visualRotation(tangent, true, -14, 4);
+        setPerchedPose(0);
         inbound.setWingCycle((flapPhase + 0.17) % 1, 1);
-        inbound.setLegTuck(1 - smoothstep(0.72, 0.98, u));
-        inbound.place(position, tangent, model.flight.bird_scale, true, smoothstep(0, 0.08, u));
+        inbound.setLegTuck(1 - smoothstep(0.76, 0.98, u));
+        inbound.place(position, tangent, flight.bird_scale, true, smoothstep(0, 0.08, u), rotation);
         return;
       }
 
-      if (time < boundaries.landing.end) {
-        setState('landing');
-        const u = easeInOutCubic(section('landing', time));
-        const position = cubic(model.flight.landing_curve, u);
-        const tangent = cubicDerivative(model.flight.landing_curve, Math.min(0.999, u));
-        const openness = 1 - smoothstep(0.45, 0.96, u);
-        inbound.setWingCycle((flapPhase + 0.17) % 1, openness);
-        inbound.setLegTuck(1 - smoothstep(0.02, 0.72, u));
-        inbound.place(position, tangent, lerp(model.flight.bird_scale, model.flight.perched_scale, u), true, 1 - smoothstep(0.78, 1, u));
-        showPerched(smoothstep(0.76, 1, u));
+      if (time < boundaries.flare.end) {
+        setState('flare');
+        const raw = section('flare', time);
+        const u = easeInOutCubic(raw);
+        const position = cubic(flight.flare_curve, u);
+        const tangent = cubicDerivative(flight.flare_curve, Math.min(0.999, u));
+        const pathPitch = visualRotation(tangent, true, -15, 4);
+        const rotation = lerp(pathPitch, flight.flare_pitch_deg, smoothstep(0.12, 0.88, raw));
+        const wingPhase = lerpPhase(
+          (flapPhase + 0.17) % 1,
+          model.wing.flare_phase,
+          smoothstep(0.16, 0.82, raw)
+        );
+        setPerchedPose(0);
+        inbound.setWingCycle(wingPhase, 1);
+        inbound.setLegTuck(1 - smoothstep(0.04, 0.70, raw));
+        inbound.place(position, tangent, flight.bird_scale, true, 1, rotation);
         return;
       }
 
+      if (time < boundaries.touchdown.end) {
+        setState('touchdown');
+        const raw = section('touchdown', time);
+        const u = easeInOutCubic(raw);
+        const position = cubic(flight.touchdown_curve, u);
+        const tangent = cubicDerivative(flight.touchdown_curve, Math.min(0.999, u));
+        const rotation = lerp(flight.flare_pitch_deg, 0, smoothstep(0.18, 1, raw));
+        const scale = lerp(flight.bird_scale, perchedScale, smoothstep(0.28, 1, raw));
+        const wingPhase = lerpPhase(
+          model.wing.flare_phase,
+          model.wing.touchdown_phase,
+          smoothstep(0, 0.35, raw)
+        );
+        const openness = 1 - smoothstep(0.28, 0.96, raw);
+        setPerchedPose(0);
+        inbound.setWingCycle(wingPhase, openness);
+        inbound.setLegTuck(0);
+        inbound.place(position, tangent, scale, true, 1, rotation);
+        return;
+      }
+
+      if (time < boundaries.settle.end) {
+        setState('settle');
+        const u = section('settle', time);
+        const decay = Math.exp(-3.4 * u);
+        const wave = Math.sin(TAU * flight.settle_oscillations * u);
+        const offsetY = -flight.settle_amplitude * decay * wave;
+        const rotation = 2.1 * decay * wave;
+        const position = inbound.contactPosition(perch, perchedScale, true, rotation, [0, offsetY]);
+        setPerchedPose(0);
+        inbound.setWingCycle(model.wing.touchdown_phase, 0);
+        inbound.setLegTuck(0);
+        inbound.place(position, [ -1, 0 ], perchedScale, true, 1, rotation);
+        return;
+      }
+
+      const finalPosition = inbound.contactPosition(perch, perchedScale, true, 0);
       setState('perched');
-      showPerched(1);
-      if (!finished) {
+      setPerchedPose(0);
+      inbound.setWingCycle(model.wing.touchdown_phase, 0);
+      inbound.setLegTuck(0);
+      inbound.place(finalPosition, [-1, 0], perchedScale, true, 1, 0);
+
+      if (time >= total && !finished) {
         finished = true;
         running = false;
         if (typeof options.onFinish === 'function') options.onFinish();

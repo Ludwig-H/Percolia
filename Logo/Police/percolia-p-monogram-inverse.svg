@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+  <title id="title">Percolia P monogram — inverse</title>
+  <desc id="desc">Standalone custom P with two separated threshold nodes.</desc>
+
+  <style>
+    .glyph-path{fill:none;stroke:#FFFFFF;stroke-width:18;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+    .glyph-node{vector-effect:non-scaling-stroke}.tone-ink{fill:#FFFFFF}.tone-blue{fill:#1C83D4}.tone-cyan{fill:#20C9C4}
+  </style>
+
+  <g id="percolia-p-monogram" transform="translate(38 0) scale(1.35)">
+  <g id="percolia-p" data-glyph="P" transform="translate(0 0)">
+    <path id="percolia-p-stroke-1" class="glyph-path" d="M 22 172 V 38 H 76 Q 112 38 112 72 V 82 Q 112 116 78 116 H 62"/>
+    <circle id="percolia-p-node-1" class="glyph-node tone-blue" data-role="threshold-origin" cx="22" cy="116" r="6.2"/>
+    <circle id="percolia-p-node-2" class="glyph-node tone-cyan" data-role="threshold-terminal" cx="62" cy="116" r="6.2"/>
+  </g>
+  </g>
+</svg>

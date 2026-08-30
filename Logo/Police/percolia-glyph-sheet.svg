@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 690" role="img" aria-labelledby="title desc">
+  <title id="title">Percolia Display glyph sheet</title>
+  <desc id="desc">Editable construction sheet for the eight custom glyphs used in PERCOLIA.</desc>
+
+  <style>
+    .glyph-path{fill:none;stroke:#082C4C;stroke-width:14;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+    .glyph-node{vector-effect:non-scaling-stroke}.tone-ink{fill:#082C4C}.tone-blue{fill:#1C83D4}.tone-cyan{fill:#20C9C4}
+  </style>
+
+  <style>.sheet-bg{fill:#fff}.cell{fill:none;stroke:#DDE9EE}.guide{stroke:#D4E4EA;stroke-dasharray:4 5}.sheet-label{fill:#5D7385;font:600 18px system-ui,sans-serif}.sheet-title{fill:#082C4C;font:700 28px system-ui,sans-serif}</style>
+  <rect class="sheet-bg" width="1120" height="690"/>
+  <text class="sheet-title" x="40" y="48">PERCOLIA DISPLAY — VECTOR CONSTRUCTION v0.1</text>
+  <g id="cell-1-P" transform="translate(0 90)">
+    <rect class="cell" x="12" y="12" width="256" height="276" rx="16"/>
+    <line class="guide" x1="22" y1="70" x2="250" y2="70"/>
+    <line class="guide" x1="22" y1="204" x2="250" y2="204"/>
+  <g id="sheet-1-P" data-glyph="P" transform="translate(65 32)">
+    <path id="sheet-1-P-stroke-1" class="glyph-path" d="M 22 172 V 38 H 76 Q 112 38 112 72 V 82 Q 112 116 78 116 H 62"/>
+    <circle id="sheet-1-P-node-1" class="glyph-node tone-blue" data-role="threshold-origin" cx="22" cy="116" r="6.2"/>
+    <circle id="sheet-1-P-node-2" class="glyph-node tone-cyan" data-role="threshold-terminal" cx="62" cy="116" r="6.2"/>
+  </g>
+    <text class="sheet-label" x="28" y="268">P · advance 128</text>
+  </g>
+  <g id="cell-2-E" transform="translate(280 90)">
+    <rect class="cell" x="12" y="12" width="256" height="276" rx="16"/>
+    <line class="guide" x1="22" y1="70" x2="250" y2="70"/>
+    <line class="guide" x1="22" y1="204" x2="250" y2="204"/>
+  <g id="sheet-2-E" data-glyph="E" transform="translate(65 32)">
+    <path id="sheet-2-E-stroke-1" class="glyph-path" d="M 22 38 V 172"/>
+    <path id="sheet-2-E-stroke-2" class="glyph-path" d="M 22 38 H 104"/>
+    <path id="sheet-2-E-stroke-3" class="glyph-path" d="M 22 104 H 88"/>
+    <path id="sheet-2-E-stroke-4" class="glyph-path" d="M 22 172 H 104"/>
+  </g>
+    <text class="sheet-label" x="28" y="268">E · advance 112</text>
+  </g>
+  <g id="cell-3-R" transform="translate(560 90)">
+    <rect class="cell" x="12" y="12" width="256" height="276" rx="16"/>
+    <line class="guide" x1="22" y1="70" x2="250" y2="70"/>
+    <line class="guide" x1="22" y1="204" x2="250" y2="204"/>
+  <g id="sheet-3-R" data-glyph="R" transform="translate(65 32)">
+    <path id="sheet-3-R-stroke-1" class="glyph-path" d="M 22 172 V 38 H 76 Q 112 38 112 72 V 82 Q 112 116 78 116 H 22"/>
+    <path id="sheet-3-R-stroke-2" class="glyph-path" d="M 70 116 L 120 172"/>
+  </g>
+    <text class="sheet-label" x="28" y="268">R · advance 132</text>
+  </g>
+  <g id="cell-4-C" transform="translate(840 90)">
+    <rect class="cell" x="12" y="12" width="256" height="276" rx="16"/>
+    <line class="guide" x1="22" y1="70" x2="250" y2="70"/>
+    <line class="guide" x1="22" y1="204" x2="250" y2="204"/>
+  <g id="sheet-4-C" data-glyph="C" transform="translate(65 32)">
+    <path id="sheet-4-C-stroke-1" class="glyph-path" d="M 112 58 Q 96 38 72 38 H 54 Q 22 38 22 70 V 140 Q 22 172 54 172 H 72 Q 96 172 112 152"/>
+  </g>
+    <text class="sheet-label" x="28" y="268">C · advance 126</text>
+  </g>
+  <g id="cell-5-O" transform="translate(0 390)">
+    <rect class="cell" x="12" y="12" width="256" height="276" rx="16"/>
+    <line class="guide" x1="22" y1="70" x2="250" y2="70"/>
+    <line class="guide" x1="22" y1="204" x2="250" y2="204"/>
+  <g id="sheet-5-O" data-glyph="O" transform="translate(65 32)">
+    <path id="sheet-5-O-stroke-1" class="glyph-path" d="M 54 38 H 80 Q 112 38 112 70 V 140 Q 112 172 80 172 H 54 Q 22 172 22 140 V 70 Q 22 38 54 38 Z"/>
+  </g>
+    <text class="sheet-label" x="28" y="268">O · advance 132</text>
+  </g>
+  <g id="cell-6-L" transform="translate(280 390)">
+    <rect class="cell" x="12" y="12" width="256" height="276" rx="16"/>
+    <line class="guide" x1="22" y1="70" x2="250" y2="70"/>
+    <line class="guide" x1="22" y1="204" x2="250" y2="204"/>
+  <g id="sheet-6-L" data-glyph="L" transform="translate(65 32)">
+    <path id="sheet-6-L-stroke-1" class="glyph-path" d="M 22 38 V 172 H 100"/>
+  </g>
+    <text class="sheet-label" x="28" y="268">L · advance 106</text>
+  </g>
+  <g id="cell-7-I" transform="translate(560 390)">
+    <rect class="cell" x="12" y="12" width="256" height="276" rx="16"/>
+    <line class="guide" x1="22" y1="70" x2="250" y2="70"/>
+    <line class="guide" x1="22" y1="204" x2="250" y2="204"/>
+  <g id="sheet-7-I" data-glyph="I" transform="translate(65 32)">
+    <path id="sheet-7-I-stroke-1" class="glyph-path" d="M 18 38 H 72"/>
+    <path id="sheet-7-I-stroke-2" class="glyph-path" d="M 45 38 V 172"/>
+    <path id="sheet-7-I-stroke-3" class="glyph-path" d="M 18 172 H 72"/>
+  </g>
+    <text class="sheet-label" x="28" y="268">I · advance 88</text>
+  </g>
+  <g id="cell-8-A" transform="translate(840 390)">
+    <rect class="cell" x="12" y="12" width="256" height="276" rx="16"/>
+    <line class="guide" x1="22" y1="70" x2="250" y2="70"/>
+    <line class="guide" x1="22" y1="204" x2="250" y2="204"/>
+  <g id="sheet-8-A" data-glyph="A" transform="translate(65 32)">
+    <path id="sheet-8-A-stroke-1" class="glyph-path" d="M 16 172 L 56 38 H 80 L 120 172"/>
+    <path id="sheet-8-A-stroke-2" class="glyph-path" d="M 35 112 H 101"/>
+  </g>
+    <text class="sheet-label" x="28" y="268">A · advance 132</text>
+  </g>
+</svg>

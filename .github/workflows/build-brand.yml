@@ -4,6 +4,15 @@ on:
   push:
     branches: [main]
     paths:
+      - "Logo/Police/build_wordmark.py"
+      - "Logo/Police/source/**"
+      - "Logo/Oiseau/build_bird.py"
+      - "Logo/Oiseau/build_demo.py"
+      - "Logo/Oiseau/test_wing_model.py"
+      - "Logo/Oiseau/bird-animation.js"
+      - "Logo/Oiseau/bird-animation.css"
+      - "Logo/Oiseau/source/**"
+      - "Logo/build_lockups.py"
       - ".github/workflows/build-brand.yml"
   workflow_dispatch:
 
@@ -19,15 +28,13 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Install clean parametric sources
-        run: python Logo/Oiseau/apply_parametric_redesign.py
       - name: Generate brand assets
         run: |
           python Logo/Police/build_wordmark.py
           python Logo/Oiseau/build_bird.py
           python Logo/build_lockups.py
           python Logo/Oiseau/build_demo.py
-      - name: Validate model and assets
+      - name: Validate parametric model and generated assets
         run: |
           python -m py_compile \
             Logo/Police/build_wordmark.py \
@@ -53,19 +60,18 @@ jobs:
           assert 'Catmull' in demo
           PY
           node --check Logo/Oiseau/bird-animation.js
-      - name: Commit clean sources and generated assets
+      - name: Commit generated assets
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          # The workflow file is installed in its final form by the payload,
-          # but GitHub's job token cannot update workflow files. Keep the
-          # bootstrap workflow for this commit; it is replaced afterwards
-          # through the authenticated contents API.
-          git restore --source=HEAD -- .github/workflows/build-brand.yml
-          git add -A
+          git add \
+            Logo/*.svg \
+            Logo/Police/*.svg \
+            Logo/Oiseau/*.svg \
+            Logo/Oiseau/demo.html
           if git diff --cached --quiet; then
-            echo "Repository already up to date."
+            echo "Assets already up to date."
           else
-            git commit -m "Génère le modèle paramétrique de l’oiseau"
+            git commit -m "Génère les actifs de la marque"
             git push
           fi

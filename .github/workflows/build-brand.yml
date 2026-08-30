@@ -22,7 +22,9 @@ jobs:
           python-version: "3.12"
 
       - name: Apply game-animation update
-        run: python Logo/Oiseau/apply_game_update.py
+        run: |
+          python Logo/Oiseau/apply_game_update.py
+          git checkout HEAD -- .github/workflows/build-brand.yml
 
       - name: Generate assets
         run: |

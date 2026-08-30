@@ -21,12 +21,6 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Apply pending v0.9 kinematics update
-        run: |
-          if [ -f Logo/Oiseau/apply_v09_update.py ]; then
-            python Logo/Oiseau/apply_v09_update.py
-          fi
-
       - name: Generate assets
         run: |
           python Logo/Police/build_wordmark.py
@@ -73,6 +67,6 @@ jobs:
           if git diff --cached --quiet; then
             echo "Generated assets are already up to date."
           else
-            git commit -m "Améliore l’envol et l’atterrissage de l’oiseau-réseau"
+            git commit -m "Génère les actifs de la marque"
             git push
           fi

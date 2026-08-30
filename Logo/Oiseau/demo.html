@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Percolia — démonstration de l’oiseau-réseau</title>
+  <link rel="stylesheet" href="bird-animation.css">
+  <style>
+    :root { color-scheme: light; font-family: Inter, ui-sans-serif, system-ui, sans-serif; }
+    body { margin: 0; min-height: 100vh; display: grid; place-items: center; background: #f7fbfc; color: #082c4c; }
+    main { width: min(92vw, 960px); text-align: center; }
+    #bird { min-height: 360px; }
+    button { border: 1px solid #082c4c; border-radius: 999px; background: white; color: #082c4c; padding: .7rem 1rem; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <main>
+    <div id="bird" class="percolia-bird-shell" aria-live="polite"></div>
+    <button id="replay" type="button">Rejouer la structuration</button>
+  </main>
+  <script type="module">
+    import { initPercoliaBird } from "./bird-animation.js";
+
+    const host = document.querySelector("#bird");
+    const markup = await fetch("./percolia-bird-primary.svg").then((response) => {
+      if (!response.ok) throw new Error(`SVG non chargé (${response.status})`);
+      return response.text();
+    });
+    host.innerHTML = markup;
+    const svg = host.querySelector("svg");
+    let controller = initPercoliaBird(svg);
+
+    document.querySelector("#replay").addEventListener("click", () => {
+      controller.destroy();
+      host.innerHTML = markup;
+      controller = initPercoliaBird(host.querySelector("svg"));
+    });
+  </script>
+</body>
+</html>

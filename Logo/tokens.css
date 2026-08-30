@@ -1,0 +1,14 @@
+:root {
+  --percolia-ink: #082c4c;
+  --percolia-signal: #1c83d4;
+  --percolia-threshold: #20c9c4;
+  --percolia-mist: #eaf5f7;
+  --percolia-slate: #5d7385;
+  --percolia-white: #ffffff;
+
+  --percolia-font-ui: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --percolia-radius-panel: 1.5rem;
+  --percolia-stroke-logo: 14;
+  --percolia-motion-reveal: 1450ms;
+  --percolia-motion-ease: cubic-bezier(.2, .75, .25, 1);
+}

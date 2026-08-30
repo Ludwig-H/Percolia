@@ -21,6 +21,9 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Apply game-animation update
+        run: python Logo/Oiseau/apply_game_update.py
+
       - name: Generate assets
         run: |
           python Logo/Police/build_wordmark.py
@@ -53,10 +56,13 @@ jobs:
           assert 'fetch(' not in demo
           assert 'data-flight-bird="outbound"' in demo
           assert 'data-flight-bird="inbound"' in demo
-          assert 'PRÉPARATION' in demo
-          assert 'ARRONDI' in demo
-          assert 'CONTACT' in demo
-          assert 'STABILISATION' in demo
+          assert 'data-animation-clips="true"' in demo
+          assert 'TOE-OFF' in demo
+          assert 'TOUCHDOWN' in demo
+          assert 'PATTES VERROUILLÉES' in demo
+          assert 'data-lidar-beam' not in demo
+          assert 'data-lidar-ray="true"' not in demo
+          assert not any(path.name.startswith('apply_') for path in Path('Logo/Oiseau').glob('*.py'))
           PY
 
       - name: Commit generated assets
@@ -67,6 +73,6 @@ jobs:
           if git diff --cached --quiet; then
             echo "Generated assets are already up to date."
           else
-            git commit -m "Génère les actifs de la marque"
+            git commit -m "Déploie l’animation keyframée de l’oiseau-réseau"
             git push
           fi

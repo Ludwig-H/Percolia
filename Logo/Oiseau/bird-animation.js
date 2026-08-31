@@ -799,16 +799,29 @@
             library.world.outbound_curve,
             speedProfile(p, startSlope, 1.02)
           );
-          const bobWeight = smoothstep(0, 0.08, p);
+          const bobIn = smoothstep(0, 0.08, p);
+          const bobOut = 1 - smoothstep(
+            flight.outbound_bob_fade_start || 0.78,
+            flight.outbound_bob_fade_end || 0.92,
+            p
+          );
+          const bobWeight = bobIn * bobOut;
+          const exitLift = -(flight.outbound_exit_lift_px || 0) * smoothstep(
+            flight.outbound_bob_fade_start || 0.78, 1, p
+          );
           const position = add(curve.position, [
             sample.root[0] * bobWeight,
-            sample.root[1] * bobWeight,
+            sample.root[1] * bobWeight + exitLift,
           ]);
           outbound.setWingPose(sample.wing);
           outbound.setLegPose(sample.legs);
           const fade = 1 - smoothstep(0.93, 1, p);
+          const rotationWeight = 1 - smoothstep(
+            flight.outbound_rotation_fade_start || 0.82,
+            flight.outbound_rotation_fade_end || 0.95, p
+          );
           const rotation = visualRotation(curve.tangent, false, -24, 7)
-            + sample.root[2] * 0.28;
+            + sample.root[2] * 0.28 * rotationWeight;
           outbound.place(
             position,
             curve.tangent,

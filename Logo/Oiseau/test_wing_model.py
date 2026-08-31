@@ -22,9 +22,14 @@ library = json.loads(CLIPS_PATH.read_text(encoding="utf-8"))
 wing = model["wing"]
 flight = model["flight"]
 
-assert model["version"] == "1.2.0"
-assert library["version"] == "1.2.0"
+assert model["version"] == "1.3.0"
+assert library["version"] == "1.3.0"
 assert wing["period_ms"] >= 2800, "the cruise wingbeat must stay deliberately slow"
+assert wing["folded_pose"]["span_scale"] >= .70
+assert wing["folded_pose"]["chord_scale"] >= .85
+assert min(x["wing"][3] for x in library["clips"]["perched_idle"]["keyframes"]) >= .70
+assert flight["outbound_bob_fade_start"] < flight["outbound_bob_fade_end"] <= .94
+assert flight["outbound_exit_lift_px"] > 0
 assert flight["one_shot"] is True
 assert model["art_direction"]["preserve_palette"] is True
 assert model["art_direction"]["preserve_network_silhouette"] is True
@@ -191,6 +196,9 @@ assert "motion warp" in js.lower() or "warp" in js.lower()
 assert "toe_off" in js
 assert "touchdown" in js
 assert "model.body.nodes.h5" in js
+assert "outbound_bob_fade_start" in js
+assert "outbound_exit_lift_px" in js
+assert "rotationWeight" in js
 assert "model.body.nodes.q1.slice" not in js
 assert "staticOpacity" not in js
 assert "pchipEndpoint" in js

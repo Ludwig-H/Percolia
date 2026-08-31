@@ -1,7 +1,14 @@
-# Oiseau-réseau Percolia — direction 06
+# Oiseau-réseau Percolia — direction 07
 
 Cette direction conserve le **premier oiseau triangulé** de Percolia et remplace la cinématique globale par une architecture inspirée des moteurs de jeu : clips keyframés, machine à états, root motion, événements d’animation, motion warping et IK de contact.
 
+
+
+## Sortie ascendante et ailes au repos
+
+La chute juste avant la disparition venait du mouvement vertical additif de `cruise`, dont la sortie se terminait près de la pose la plus basse. Ce mouvement et la petite rotation additive s'annulent maintenant avant le bord ; un léger biais ascendant accompagne la disparition.
+
+Les ailes perchées restent pliées mais lisibles : 72 % de l'envergure et 88 % de la corde de référence.
 
 ## Stabilité de la transition et conservation de la silhouette
 

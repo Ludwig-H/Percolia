@@ -21,6 +21,9 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Apply wing-shape and takeoff stability refinement
+        run: python Logo/Oiseau/apply_stability_v12.py
+
       - name: Generate assets
         run: |
           python Logo/Police/build_wordmark.py
@@ -70,6 +73,6 @@ jobs:
           if git diff --cached --quiet; then
             echo "Generated assets are already up to date."
           else
-            git commit -m "Génère les actifs de l’animation keyframée"
+            git commit -m "Stabilise la sortie et préserve la forme des ailes"
             git push
           fi

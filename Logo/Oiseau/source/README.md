@@ -1,8 +1,6 @@
-# Sources du rig de l’oiseau-réseau
+# Sources de l’oiseau Percolia
 
-Deux fichiers constituent la source de vérité de la direction 04 :
+- `bird_model.json` décrit la topologie, la palette, le contour de référence des ailes, les points d’ancrage et les contraintes graphiques.
+- `animation_clips.json` contient les clips keyframés, les événements et les trajectoires du monde.
 
-- `bird_model.json` contient la topologie du réseau, la géométrie des ailes et des pattes, la palette, les points de contact, les trajectoires globales et le capteur LiDAR de tête ;
-- `animation_clips.json` contient les clips keyframés, la machine à états, les durées et les événements `toe_off`, `touchdown`, `weight_transfer` et `feet_locked`.
-
-Les SVG et la page HTML sont générés à partir de ces sources. Toute modification durable doit être faite dans les fichiers JSON ou dans les générateurs, puis régénérée et testée.
+La trajectoire sortante est stockée sous forme d’offsets relatifs à la fin réelle du décollage. Les fichiers SVG et `demo.html` sont générés ; ils ne doivent pas devenir des sources concurrentes.

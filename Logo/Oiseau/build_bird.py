@@ -184,24 +184,13 @@ def wing_geometry(model: dict, pose: dict, side: str) -> dict:
             joints[1],
         )
         preservation = wing.get("shape_preservation", {})
-        normalised_span = pose["span_scale"] / max(1e-9, perspective)
-        denominator = max(
-            1e-9,
-            preservation.get("extended_span", 0.94) - preservation.get("folded_span", 0.64),
-        )
-        extension = smoothstep(
-            (normalised_span - preservation.get("folded_span", 0.64)) / denominator
-        )
-        articulation = lerp(
-            preservation.get("folded_articulation_weight", 0.62),
-            preservation.get("extended_articulation_weight", 0.06),
-            extension,
-        )
+        boundary_articulation = preservation.get("boundary_articulation_weight", 0.02)
+        interior_articulation = preservation.get("interior_articulation_weight", 0.18)
         boundary = [
-            lerp_point(rigid, articulated, articulation)
+            lerp_point(rigid, articulated, boundary_articulation)
             for rigid, articulated in zip(rigid_boundary, articulated_boundary)
         ]
-        core = lerp_point(rigid_core, articulated_core, articulation)
+        core = lerp_point(rigid_core, articulated_core, interior_articulation)
         return {"boundary": boundary, "core": core, "joints": joints}
     tangents=[sub(e,s),add(unit(sub(e,s)),unit(sub(w,e))),add(unit(sub(w,e)),unit(sub(tip,w))),sub(tip,w)]
     normals=[normal(vector) for vector in tangents]; widths=[value*pose["chord_scale"] for value in wing["chords"]]

@@ -1,103 +1,60 @@
-# Oiseau-réseau Percolia — direction 07
+# Oiseau-réseau Percolia
 
-Cette direction conserve le **premier oiseau triangulé** de Percolia et remplace la cinématique globale par une architecture inspirée des moteurs de jeu : clips keyframés, machine à états, root motion, événements d’animation, motion warping et IK de contact.
-
-
-
-## Sortie ascendante et ailes au repos
-
-La chute juste avant la disparition venait du mouvement vertical additif de `cruise`, dont la sortie se terminait près de la pose la plus basse. Ce mouvement et la petite rotation additive s'annulent maintenant avant le bord ; un léger biais ascendant accompagne la disparition.
-
-Les ailes perchées restent pliées mais lisibles : 72 % de l'envergure et 88 % de la corde de référence.
-
-## Stabilité de la transition et conservation de la silhouette
-
-La fin du clip `takeoff` est maintenant raccordée au début de `outbound` par un pont d’Hermite **C1** : position et vitesse coïncident avec la trajectoire de croisière paramétrée par longueur d’arc. L’orientation et l’échelle arrivent elles aussi exactement sur la première pose de sortie. Le mélange générique ne combine plus une rotation absolue de décollage avec une oscillation additive de croisière, qui étaient deux grandeurs portant le même nom mais pas le même sens — une petite tradition logicielle particulièrement efficace pour fabriquer des secousses.
-
-En vol, le contour de référence de l’aile est préservé par un mélange entre transformation rigide et articulation locale. À pleine extension, 94 % de la géométrie provient d’une même similitude du dessin original ; l’articulation forte n’est réintroduite que pendant le pliage près du perchoir. Les clips de vol n’écrasent plus artificiellement l’envergure ou la corde.
-
-## Raffinement de la direction 05
-
-Le corps, la tête, la queue et les pattes restent ceux du premier oiseau triangulé. L’aile principale reprend désormais le contour de la référence fournie : racine centrale, bord supérieur relevé, double pointe à gauche et large surface facettée. Ce dessin est déformé par **linear blend skinning 2D** autour des segments épaule–coude–poignet–extrémité ; les battements conservent donc l’identité graphique du premier oiseau.
-
-Les à-coups sont réduits par une interpolation PCHIP périodique des clips cycliques, une progression par longueur d’arc sur les trajectoires et de courts fondus de pose aux changements d’état. La sortie du perchoir est raccordée en position et en vitesse au clip de décollage : les pattes se détendent, `toe_off` libère les appuis, puis deux battements puissants établissent le vol.
+Cette version est la source canonique de l’oiseau Percolia. Elle reprend la silhouette triangulée du premier jet et conserve strictement la charte : Encre `#082C4C`, Signal `#1C83D4`, Seuil `#20C9C4`, Brume `#EAF5F7`, Ardoise `#5D7385` et blanc.
 
 ## Séquence
 
-1. Le premier oiseau reste perché sur le `P`.
-2. **Anticipation** : le corps se tasse, les ailes s’ouvrent et les pieds restent verrouillés.
-3. **Poussée** : l’événement `toe_off` libère les pieds à une image précise.
-4. **Décollage** : deux battements propres à l’envol remplacent le cycle de croisière.
-5. L’oiseau traverse la scène de gauche à droite puis sort du cadre.
-6. Après un court intervalle vide, un second oiseau arrive de droite à gauche.
-7. **Approche** puis **arrondi** : il ralentit, relève le corps, ouvre les ailes et sort les pattes.
-8. **Contact** : le root motion est légèrement adapté au point exact du `P` ; l’événement `touchdown` active l’IK.
-9. **Stabilisation** : les pieds restent verrouillés tandis que le corps amortit son énergie et que les ailes se replient.
+1. Un premier oiseau est perché sur le `P`.
+2. Il se tasse, pousse sur ses pattes, libère le perchoir à l’événement `toe_off`, puis effectue deux battements de décollage.
+3. Il poursuit son vol de gauche à droite et sort naturellement du cadre.
+4. Un second oiseau entre depuis la droite, ralentit, sort ses pattes et se pose sur le `P`.
+5. Après `touchdown`, l’IK verrouille les pieds pendant l’amortissement final.
 
-Le premier oiseau ne fait jamais demi-tour. Le retour est assuré par un second objet SVG distinct.
+Le premier oiseau ne fait jamais demi-tour. Les deux traversées utilisent deux objets SVG distincts.
 
-## Architecture
+## Principes géométriques
 
-### Clips keyframés
+### Trajectoire cohérente
 
-Les clips sont stockés dans `source/animation_clips.json` :
+La trajectoire sortante est définie **relativement à la pose terminale réelle du décollage**. Le premier point est exactement cette pose et le premier segment possède la même direction que sa vitesse terminale. Il n’existe donc plus de raccord absolu capable de ramener l’oiseau vers le bas entre `takeoff` et `outbound`.
 
-```text
-perched_idle
-anticipation_push
-push_off
-takeoff
-cruise
-approach
-flare
-touchdown
-settle
-```
+Le SVG est transformé autour du centre visuel du réseau, proche du centre de masse du corps. Les rotations ne se font plus autour des pattes, ce qui supprimait une oscillation apparente de la tête malgré une trajectoire ascendante. La sortie se fait par le bord du viewport, sans fondu anticipé.
 
-Chaque keyframe définit :
+### Ailes stables
 
-- la translation, l’orientation et l’échelle de la racine ;
-- les angles épaule–coude–poignet des ailes ;
-- l’échelle d’envergure et de corde ;
-- le repli et la compression des pattes ;
-- le poids de contact des pieds.
+Le contour extérieur de chaque aile est toujours le même polygone de référence, à une similitude près. Le battement change son orientation ; seule la triangulation intérieure reçoit une articulation légère. L’aile ne change donc plus de dessin au cours du vol.
 
-### Événements
+Au repos, l’aile conserve 96 % de son envergure et 100 % de sa corde. Elle est rabattue le long du corps par rotation au lieu d’être réduite comme une vignette.
 
-Les événements jouent le rôle d’Animation Notifies :
+### Contact
 
-- `toe_off` : fin exacte de l’appui au décollage ;
-- `touchdown` : début exact du verrouillage des pieds ;
-- `weight_transfer` : transfert du poids sur le perchoir ;
-- `feet_locked` : maintien des appuis pendant la stabilisation.
-
-### IK et motion warping
-
-Pendant l’anticipation et le début de la poussée, les pieds sont verrouillés sur le `P` par une IK à deux segments. À l’atterrissage, le motion warping ne corrige que l’écart final entre le clip et le point de contact. Après `touchdown`, l’IK maintient les doigts sur le perchoir pendant l’amortissement du corps.
+Les clips `anticipation_push`, `push_off`, `takeoff`, `approach`, `flare`, `touchdown` et `settle` sont keyframés. Les événements `toe_off`, `touchdown`, `weight_transfer` et `feet_locked` commandent les changements de contrainte. Une IK à deux segments ne sert qu’à maintenir les pattes sur le `P` pendant les phases de contact.
 
 ## Scan LiDAR
 
-Le scan provient du nœud de capteur situé dans la tête (`h5`). Il prend la forme d’une onde circulaire brève, d’un trait de balayage court et d’un retour lumineux. Aucun élément graphique n’est émis depuis le bec.
+Le scan part du nœud cyan `h5`, situé dans la tête. Rien n’est émis par le bec.
 
-## Fichiers canoniques
+## Fichiers
 
 ```text
 Logo/Oiseau/
 ├── README.md
-├── build_bird.py
-├── build_demo.py
 ├── bird-animation.css
 ├── bird-animation.js
+├── build_bird.py
+├── build_demo.py
+├── demo.html
+├── percolia-bird-{primary,inverse,mono,compact}.svg
 ├── test_wing_model.py
 └── source/
     ├── README.md
-    ├── bird_model.json
-    └── animation_clips.json
+    ├── animation_clips.json
+    └── bird_model.json
 ```
 
-Les SVG et `demo.html` sont générés mais versionnés pour être consultables directement.
+`demo.html` est autonome : aucun chargement réseau n’est nécessaire.
 
-## Régénération et validation
+## Régénération
 
 ```bash
 python Logo/Oiseau/build_bird.py
@@ -106,5 +63,3 @@ python Logo/Oiseau/build_demo.py
 python Logo/Oiseau/test_wing_model.py
 node --check Logo/Oiseau/bird-animation.js
 ```
-
-Les tests vérifient les clips, les événements, la continuité des ailes, les directions de vol, l’amplitude du motion warping, les contacts IK, l’origine crânienne du scan, la palette et l’autonomie de la page HTML.

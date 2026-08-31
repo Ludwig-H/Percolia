@@ -348,23 +348,16 @@
         joints[1]
       );
       const preservation = wing.shape_preservation || {};
-      const normalizedSpan = pose.span_scale / Math.max(1e-9, perspective);
-      const extension = smoothstep(
-        preservation.folded_span || 0.64,
-        preservation.extended_span || 0.94,
-        normalizedSpan
-      );
-      const articulation = lerp(
-        preservation.folded_articulation_weight || 0.62,
-        preservation.extended_articulation_weight || 0.06,
-        extension
-      );
+      const boundaryArticulation = preservation.boundary_articulation_weight ?? 0.02;
+      const interiorArticulation = preservation.interior_articulation_weight ?? 0.18;
+      // The outline is the same reference polygon in every airborne frame.
+      // Only the internal triangulation receives a restrained articulation.
       const boundary = rigidBoundary.map((point, index) => mixPoint(
         point,
         articulatedBoundary[index],
-        articulation
+        boundaryArticulation
       ));
-      const core = mixPoint(rigidCore, articulatedCore, articulation);
+      const core = mixPoint(rigidCore, articulatedCore, interiorArticulation);
       return { boundary, core, joints };
     }
     const tangents=[sub(e,s),add(unit(sub(e,s)),unit(sub(w,e))),add(unit(sub(w,e)),unit(sub(tip,w))),sub(tip,w)];
@@ -457,7 +450,7 @@
     const lidarReturn = root.querySelector('[data-lidar-return="true"]');
     // The scan is mounted on the central head node.
     const sensor = model.body.nodes.h5.slice(0, 2);
-    const anchor = model.flight.flight_anchor || model.flight.bird_anchor;
+    const anchor = model.flight.visual_anchor || model.flight.flight_anchor || model.flight.bird_anchor;
     const defaultContact = model.flight.perched_anchor || [306, 285];
 
     // Compact head-mounted pulse and short rotating scan tick.
@@ -677,6 +670,51 @@
       };
     }
 
+    let takeoffEndCache = null;
+    let outboundCurveCache = null;
+
+    function takeoffEndPose() {
+      if (takeoffEndCache) return takeoffEndCache;
+      const origin = pushEndPose();
+      const first = sampleClip(library, 'takeoff', 0);
+      const end = sampleClip(library, 'takeoff', 1);
+      takeoffEndCache = {
+        position: add(origin.position, [
+          end.root[0] - first.root[0],
+          end.root[1] - first.root[1],
+        ]),
+        rotation: end.root[2],
+        scale: flight.bird_scale * end.root[3],
+      };
+      return takeoffEndCache;
+    }
+
+    function takeoffTerminalVelocity() {
+      const entry = boundaries.find((item) => item.state === 'takeoff');
+      const before = sampleClip(library, 'takeoff', 0.98).root;
+      const end = sampleClip(library, 'takeoff', 1).root;
+      const dt = Math.max(1e-9, entry.duration_ms * 0.02);
+      return [(end[0] - before[0]) / dt, (end[1] - before[1]) / dt];
+    }
+
+    function resolvedOutboundCurve() {
+      if (outboundCurveCache) return outboundCurveCache;
+      const terminal = takeoffEndPose();
+      const offsets = library.world.outbound_curve_offsets;
+      if (!Array.isArray(offsets) || offsets.length !== 4) {
+        throw new Error('Percolia outbound_curve_offsets must contain four points');
+      }
+      const firstHandleLength = length(offsets[1]);
+      const firstHandle = mul(unit(takeoffTerminalVelocity()), firstHandleLength);
+      outboundCurveCache = [
+        terminal.position.slice(),
+        add(terminal.position, firstHandle),
+        add(terminal.position, offsets[2]),
+        add(terminal.position, offsets[3]),
+      ];
+      return outboundCurveCache;
+    }
+
     function renderPerchedActor(controller, sample, mirror) {
       applyContactPose(controller, sample, flight.perched_scale, mirror, 1);
     }
@@ -732,102 +770,72 @@
 
         case 'takeoff': {
           const origin = pushEndPose();
-          const first = library.clips.takeoff.keyframes[0].root;
-          const authoredAt = (progress) => {
-            const authoredSample = sampleClip(library, 'takeoff', progress);
-            return add(origin.position, [
-              authoredSample.root[0] - first[0],
-              authoredSample.root[1] - first[1],
-            ]);
-          };
-          const bridgeStart = flight.takeoff_bridge_start || 0.68;
-          const target = library.world.outbound_curve[0];
-          const outboundTangent = unit(cubicDerivative(library.world.outbound_curve, 0));
+          const first = sampleClip(library, 'takeoff', 0).root;
+          const position = add(origin.position, [
+            sample.root[0] - first[0],
+            sample.root[1] - first[1],
+          ]);
+          const path = resolvedOutboundCurve();
+          const tangent = cubicDerivative(path, 0);
           const cruiseStart = sampleClip(library, 'cruise', 0);
-          const targetRotation = visualRotation(outboundTangent, false, -24, 7)
-            + cruiseStart.root[2] * 0.28;
-          let position = authoredAt(p);
-          let rotation = sample.root[2];
-
-          if (p > bridgeStart) {
-            const u = (p - bridgeStart) / (1 - bridgeStart);
-            const startPosition = authoredAt(bridgeStart);
-            const beforeProgress = Math.max(0, bridgeStart - 0.02);
-            const beforePosition = authoredAt(beforeProgress);
-            const startDerivative = mul(
-              sub(startPosition, beforePosition),
-              (1 - bridgeStart) / Math.max(1e-9, bridgeStart - beforeProgress)
-            );
-            const bridgeDuration = entry.duration_ms * (1 - bridgeStart);
-            const endDerivative = mul(
-              outboundTangent,
-              (flight.takeoff_exit_speed_px_per_ms || 0.145) * bridgeDuration
-            );
-            position = hermitePoint(
-              startPosition,
-              target,
-              startDerivative,
-              endDerivative,
-              u
-            );
-            const startRotation = sampleClip(library, 'takeoff', bridgeStart).root[2];
-            rotation = lerp(startRotation, targetRotation, smoothstep(0, 1, u));
-          }
-
+          const targetRotation = visualRotation(tangent, false, -28, 7)
+            + cruiseStart.root[2] * 0.20;
+          const rotation = lerp(
+            sample.root[2],
+            targetRotation,
+            smoothstep(0.80, 1, p)
+          );
           outbound.setWingPose(sample.wing);
           outbound.setLegPose(sample.legs);
           const initialRoot = sampleClip(library, 'takeoff', 0).root;
           const initialBase = origin.scale / Math.max(1e-6, initialRoot[3]);
-          const authoredBase = lerp(initialBase, flight.bird_scale, smoothstep(0, 0.62, p));
-          let scale = authoredBase * sample.root[3];
-          if (p > bridgeStart) {
-            const u = smoothstep(0, 1, (p - bridgeStart) / (1 - bridgeStart));
-            scale = lerp(scale, flight.bird_scale * cruiseStart.root[3], u);
-          }
-          outbound.place(position, outboundTangent, scale, false, 1, rotation);
+          const baseScale = lerp(initialBase, flight.bird_scale, smoothstep(0, 0.62, p));
+          outbound.place(position, tangent, baseScale * sample.root[3], false, 1, rotation);
           break;
         }
 
         case 'outbound': {
-          const exitSpeed = flight.takeoff_exit_speed_px_per_ms || 0.145;
+          const path = resolvedOutboundCurve();
+          const terminalSpeed = length(takeoffTerminalVelocity());
           const startSlope = clamp(
-            exitSpeed * entry.duration_ms / Math.max(1e-9, arcTable(library.world.outbound_curve).total),
+            terminalSpeed * entry.duration_ms / Math.max(1e-9, arcTable(path).total),
             0.25,
-            1.35
+            1.20
           );
-          const curve = cubicArcSample(
-            library.world.outbound_curve,
-            speedProfile(p, startSlope, 1.02)
-          );
+          const curve = cubicArcSample(path, speedProfile(p, startSlope, 1.02));
           const bobIn = smoothstep(0, 0.08, p);
           const bobOut = 1 - smoothstep(
-            flight.outbound_bob_fade_start || 0.78,
-            flight.outbound_bob_fade_end || 0.92,
+            flight.outbound_bob_fade_start || 0.72,
+            flight.outbound_bob_fade_end || 0.88,
             p
           );
           const bobWeight = bobIn * bobOut;
-          const exitLift = -(flight.outbound_exit_lift_px || 0) * smoothstep(
-            flight.outbound_bob_fade_start || 0.78, 1, p
-          );
           const position = add(curve.position, [
             sample.root[0] * bobWeight,
-            sample.root[1] * bobWeight + exitLift,
+            sample.root[1] * bobWeight,
           ]);
           outbound.setWingPose(sample.wing);
           outbound.setLegPose(sample.legs);
-          const fade = 1 - smoothstep(0.93, 1, p);
-          const rotationWeight = 1 - smoothstep(
-            flight.outbound_rotation_fade_start || 0.82,
-            flight.outbound_rotation_fade_end || 0.95, p
+          const pathRotation = visualRotation(curve.tangent, false, -28, 7);
+          const animatedRotation = pathRotation + sample.root[2] * 0.20 * bobWeight;
+          const orientationLock = smoothstep(
+            flight.outbound_orientation_lock_start || 0.78,
+            1,
+            p
           );
-          const rotation = visualRotation(curve.tangent, false, -24, 7)
-            + sample.root[2] * 0.28 * rotationWeight;
+          const rotation = lerp(
+            animatedRotation,
+            flight.outbound_orientation_deg ?? -4,
+            orientationLock
+          );
+          // The bird leaves by crossing the SVG viewport. No pre-emptive fade
+          // and no vertical compensation are needed.
           outbound.place(
             position,
             curve.tangent,
             flight.bird_scale * sample.root[3],
             false,
-            fade,
+            1,
             rotation
           );
           const scanHalf = library.world.scan_duration_fraction / 2;

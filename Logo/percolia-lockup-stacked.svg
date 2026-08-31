@@ -42,7 +42,7 @@
   </g>
   </g>
 </g>
-    <g transform="translate(146 198) scale(.23) translate(-306 -285)"><g xmlns="http://www.w3.org/2000/svg" id="percolia-bird" data-percolia-bird="true" data-model-version="1.3.0">
+    <g transform="translate(146 198) scale(.23) translate(-306 -285)"><g xmlns="http://www.w3.org/2000/svg" id="percolia-bird" data-percolia-bird="true" data-model-version="2.0.0">
     <g id="bird-body-network" data-layer="body">
       <g id="body-faces" data-layer="faces">
         <polygon id="f01" points="78,210 126,184 150,202" fill="#20C9C4" fill-opacity="0.1" />
@@ -165,41 +165,41 @@
       </g>
     </g>
     <g id="wing-near" data-wing-side="near" opacity="0.96">
-      <polygon data-wing-outline="true" points="306,184 310.082,151.905 275.613,136.689 201.719,126.505 193.47,158.845 237.925,182.4 269.38,180.45" fill="#EAF5F7" fill-opacity="0.25" stroke="#082C4C" stroke-width="1.55" stroke-linejoin="round" vector-effect="non-scaling-stroke" />
+      <polygon data-wing-outline="true" points="306,184 288.615,144.511 234.803,152.239 141.353,205.033 162.99,245.078 228.026,231.018 261.701,205.09" fill="#EAF5F7" fill-opacity="0.25" stroke="#082C4C" stroke-width="1.55" stroke-linejoin="round" vector-effect="non-scaling-stroke" />
       <g data-layer="faces">
-        <polygon data-wing-face="0" points="306,184 310.082,151.905 249.292,164.063" fill="#20C9C4" fill-opacity="0.1" />
-        <polygon data-wing-face="1" points="310.082,151.905 275.613,136.689 249.292,164.063" fill="#1C83D4" fill-opacity="0.1" />
-        <polygon data-wing-face="2" points="275.613,136.689 201.719,126.505 249.292,164.063" fill="#082C4C" fill-opacity="0.1" />
-        <polygon data-wing-face="3" points="201.719,126.505 193.47,158.845 249.292,164.063" fill="#20C9C4" fill-opacity="0.1" />
-        <polygon data-wing-face="4" points="193.47,158.845 237.925,182.4 249.292,164.063" fill="#1C83D4" fill-opacity="0.1" />
-        <polygon data-wing-face="5" points="237.925,182.4 269.38,180.45 249.292,164.063" fill="#20C9C4" fill-opacity="0.1" />
-        <polygon data-wing-face="6" points="269.38,180.45 306,184 249.292,164.063" fill="#1C83D4" fill-opacity="0.1" />
+        <polygon data-wing-face="0" points="306,184 288.615,144.511 226.585,202.212" fill="#20C9C4" fill-opacity="0.1" />
+        <polygon data-wing-face="1" points="288.615,144.511 234.803,152.239 226.585,202.212" fill="#1C83D4" fill-opacity="0.1" />
+        <polygon data-wing-face="2" points="234.803,152.239 141.353,205.033 226.585,202.212" fill="#082C4C" fill-opacity="0.1" />
+        <polygon data-wing-face="3" points="141.353,205.033 162.99,245.078 226.585,202.212" fill="#20C9C4" fill-opacity="0.1" />
+        <polygon data-wing-face="4" points="162.99,245.078 228.026,231.018 226.585,202.212" fill="#1C83D4" fill-opacity="0.1" />
+        <polygon data-wing-face="5" points="228.026,231.018 261.701,205.09 226.585,202.212" fill="#20C9C4" fill-opacity="0.1" />
+        <polygon data-wing-face="6" points="261.701,205.09 306,184 226.585,202.212" fill="#1C83D4" fill-opacity="0.1" />
       </g>
       <g fill="none" stroke-linecap="round" stroke-linejoin="round">
-        <line data-wing-boundary="0" x1="306" y1="184" x2="310.082" y2="151.905" stroke="#082C4C" stroke-width="1.45" vector-effect="non-scaling-stroke" />
-        <line data-wing-spoke="0" x1="306" y1="184" x2="249.292" y2="164.063" stroke="#082C4C" stroke-width="0.85" vector-effect="non-scaling-stroke" />
-        <line data-wing-boundary="1" x1="310.082" y1="151.905" x2="275.613" y2="136.689" stroke="#082C4C" stroke-width="1.45" vector-effect="non-scaling-stroke" />
-        <line data-wing-spoke="1" x1="310.082" y1="151.905" x2="249.292" y2="164.063" stroke="#1C83D4" stroke-width="0.85" vector-effect="non-scaling-stroke" />
-        <line data-wing-boundary="2" x1="275.613" y1="136.689" x2="201.719" y2="126.505" stroke="#082C4C" stroke-width="1.45" vector-effect="non-scaling-stroke" />
-        <line data-wing-spoke="2" x1="275.613" y1="136.689" x2="249.292" y2="164.063" stroke="#082C4C" stroke-width="0.85" vector-effect="non-scaling-stroke" />
-        <line data-wing-boundary="3" x1="201.719" y1="126.505" x2="193.47" y2="158.845" stroke="#082C4C" stroke-width="1.45" vector-effect="non-scaling-stroke" />
-        <line data-wing-spoke="3" x1="201.719" y1="126.505" x2="249.292" y2="164.063" stroke="#1C83D4" stroke-width="0.85" vector-effect="non-scaling-stroke" />
-        <line data-wing-boundary="4" x1="193.47" y1="158.845" x2="237.925" y2="182.4" stroke="#082C4C" stroke-width="1.45" vector-effect="non-scaling-stroke" />
-        <line data-wing-spoke="4" x1="193.47" y1="158.845" x2="249.292" y2="164.063" stroke="#082C4C" stroke-width="0.85" vector-effect="non-scaling-stroke" />
-        <line data-wing-boundary="5" x1="237.925" y1="182.4" x2="269.38" y2="180.45" stroke="#082C4C" stroke-width="1.45" vector-effect="non-scaling-stroke" />
-        <line data-wing-spoke="5" x1="237.925" y1="182.4" x2="249.292" y2="164.063" stroke="#1C83D4" stroke-width="0.85" vector-effect="non-scaling-stroke" />
-        <line data-wing-boundary="6" x1="269.38" y1="180.45" x2="306" y2="184" stroke="#082C4C" stroke-width="1.45" vector-effect="non-scaling-stroke" />
-        <line data-wing-spoke="6" x1="269.38" y1="180.45" x2="249.292" y2="164.063" stroke="#082C4C" stroke-width="0.85" vector-effect="non-scaling-stroke" />
+        <line data-wing-boundary="0" x1="306" y1="184" x2="288.615" y2="144.511" stroke="#082C4C" stroke-width="1.45" vector-effect="non-scaling-stroke" />
+        <line data-wing-spoke="0" x1="306" y1="184" x2="226.585" y2="202.212" stroke="#082C4C" stroke-width="0.85" vector-effect="non-scaling-stroke" />
+        <line data-wing-boundary="1" x1="288.615" y1="144.511" x2="234.803" y2="152.239" stroke="#082C4C" stroke-width="1.45" vector-effect="non-scaling-stroke" />
+        <line data-wing-spoke="1" x1="288.615" y1="144.511" x2="226.585" y2="202.212" stroke="#1C83D4" stroke-width="0.85" vector-effect="non-scaling-stroke" />
+        <line data-wing-boundary="2" x1="234.803" y1="152.239" x2="141.353" y2="205.033" stroke="#082C4C" stroke-width="1.45" vector-effect="non-scaling-stroke" />
+        <line data-wing-spoke="2" x1="234.803" y1="152.239" x2="226.585" y2="202.212" stroke="#082C4C" stroke-width="0.85" vector-effect="non-scaling-stroke" />
+        <line data-wing-boundary="3" x1="141.353" y1="205.033" x2="162.99" y2="245.078" stroke="#082C4C" stroke-width="1.45" vector-effect="non-scaling-stroke" />
+        <line data-wing-spoke="3" x1="141.353" y1="205.033" x2="226.585" y2="202.212" stroke="#1C83D4" stroke-width="0.85" vector-effect="non-scaling-stroke" />
+        <line data-wing-boundary="4" x1="162.99" y1="245.078" x2="228.026" y2="231.018" stroke="#082C4C" stroke-width="1.45" vector-effect="non-scaling-stroke" />
+        <line data-wing-spoke="4" x1="162.99" y1="245.078" x2="226.585" y2="202.212" stroke="#082C4C" stroke-width="0.85" vector-effect="non-scaling-stroke" />
+        <line data-wing-boundary="5" x1="228.026" y1="231.018" x2="261.701" y2="205.09" stroke="#082C4C" stroke-width="1.45" vector-effect="non-scaling-stroke" />
+        <line data-wing-spoke="5" x1="228.026" y1="231.018" x2="226.585" y2="202.212" stroke="#1C83D4" stroke-width="0.85" vector-effect="non-scaling-stroke" />
+        <line data-wing-boundary="6" x1="261.701" y1="205.09" x2="306" y2="184" stroke="#082C4C" stroke-width="1.45" vector-effect="non-scaling-stroke" />
+        <line data-wing-spoke="6" x1="261.701" y1="205.09" x2="226.585" y2="202.212" stroke="#082C4C" stroke-width="0.85" vector-effect="non-scaling-stroke" />
       </g>
       <g data-layer="nodes">
         <circle data-wing-node="0" cx="306" cy="184" r="2.25" fill="#20C9C4" stroke="#FFFFFF" stroke-width="0.65" vector-effect="non-scaling-stroke" />
-        <circle data-wing-node="1" cx="310.082" cy="151.905" r="2.25" fill="#1C83D4" stroke="#FFFFFF" stroke-width="0.65" vector-effect="non-scaling-stroke" />
-        <circle data-wing-node="2" cx="275.613" cy="136.689" r="2.25" fill="#082C4C" stroke="#FFFFFF" stroke-width="0.65" vector-effect="non-scaling-stroke" />
-        <circle data-wing-node="3" cx="201.719" cy="126.505" r="2.7" fill="#20C9C4" stroke="#FFFFFF" stroke-width="0.65" vector-effect="non-scaling-stroke" />
-        <circle data-wing-node="4" cx="193.47" cy="158.845" r="2.25" fill="#1C83D4" stroke="#FFFFFF" stroke-width="0.65" vector-effect="non-scaling-stroke" />
-        <circle data-wing-node="5" cx="237.925" cy="182.4" r="2.25" fill="#20C9C4" stroke="#FFFFFF" stroke-width="0.65" vector-effect="non-scaling-stroke" />
-        <circle data-wing-node="6" cx="269.38" cy="180.45" r="2.25" fill="#082C4C" stroke="#FFFFFF" stroke-width="0.65" vector-effect="non-scaling-stroke" />
-        <circle data-wing-core="true" cx="249.292" cy="164.063" r="3.4" fill="#20C9C4" stroke="#FFFFFF" stroke-width="0.7" vector-effect="non-scaling-stroke" />
+        <circle data-wing-node="1" cx="288.615" cy="144.511" r="2.25" fill="#1C83D4" stroke="#FFFFFF" stroke-width="0.65" vector-effect="non-scaling-stroke" />
+        <circle data-wing-node="2" cx="234.803" cy="152.239" r="2.25" fill="#082C4C" stroke="#FFFFFF" stroke-width="0.65" vector-effect="non-scaling-stroke" />
+        <circle data-wing-node="3" cx="141.353" cy="205.033" r="2.7" fill="#20C9C4" stroke="#FFFFFF" stroke-width="0.65" vector-effect="non-scaling-stroke" />
+        <circle data-wing-node="4" cx="162.99" cy="245.078" r="2.25" fill="#1C83D4" stroke="#FFFFFF" stroke-width="0.65" vector-effect="non-scaling-stroke" />
+        <circle data-wing-node="5" cx="228.026" cy="231.018" r="2.25" fill="#20C9C4" stroke="#FFFFFF" stroke-width="0.65" vector-effect="non-scaling-stroke" />
+        <circle data-wing-node="6" cx="261.701" cy="205.09" r="2.25" fill="#082C4C" stroke="#FFFFFF" stroke-width="0.65" vector-effect="non-scaling-stroke" />
+        <circle data-wing-core="true" cx="226.585" cy="202.212" r="3.4" fill="#20C9C4" stroke="#FFFFFF" stroke-width="0.7" vector-effect="non-scaling-stroke" />
       </g>
     </g>
     <g id="bird-legs" data-layer="legs" fill="none" stroke-linecap="round" stroke-linejoin="round">

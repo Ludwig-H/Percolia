@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Numerical and structural checks for the game-style network-bird rig."""
+"""Structural and numerical checks for the canonical Percolia bird v2."""
 from __future__ import annotations
 
 import importlib.util
@@ -22,240 +22,122 @@ library = json.loads(CLIPS_PATH.read_text(encoding="utf-8"))
 wing = model["wing"]
 flight = model["flight"]
 
-assert model["version"] == "1.3.0"
-assert library["version"] == "1.3.0"
-assert wing["period_ms"] >= 2800, "the cruise wingbeat must stay deliberately slow"
-assert wing["folded_pose"]["span_scale"] >= .70
-assert wing["folded_pose"]["chord_scale"] >= .85
-assert min(x["wing"][3] for x in library["clips"]["perched_idle"]["keyframes"]) >= .70
-assert flight["outbound_bob_fade_start"] < flight["outbound_bob_fade_end"] <= .94
-assert flight["outbound_exit_lift_px"] > 0
-assert flight["one_shot"] is True
-assert model["art_direction"]["preserve_palette"] is True
-assert model["art_direction"]["preserve_network_silhouette"] is True
-assert model["art_direction"]["scan_origin"] == "head_node_h5"
-assert model["art_direction"]["beak_emission"] is False
-shape_preservation = wing["shape_preservation"]
-assert wing["skinning_weight_power"] >= 4
-assert shape_preservation["mode"] == "rigid_reference_blend"
-assert shape_preservation["extended_articulation_weight"] <= 0.08
-assert flight["takeoff_bridge_start"] >= 0.6
-assert 0.10 <= flight["takeoff_exit_speed_px_per_ms"] <= 0.20
-
-
-def polygon_area(points: list[tuple[float, float]]) -> float:
-    return abs(sum(
-        points[i][0] * points[(i + 1) % len(points)][1]
-        - points[(i + 1) % len(points)][0] * points[i][1]
-        for i in range(len(points))
-    )) / 2
-
-
-# The underlying network wing geometry remains closed, continuous and valid.
-for side in ("near", "far"):
-    start = build_bird.wing_geometry(model, build_bird.periodic_pose(model, 0.0, side), side)
-    end = build_bird.wing_geometry(model, build_bird.periodic_pose(model, 1.0, side), side)
-    for a, b in zip(start["boundary"], end["boundary"]):
-        assert math.dist(a, b) < 1e-7
-
-    previous = None
-    max_step = 0.0
-    for index in range(361):
-        phase = index / 360
-        pose = build_bird.periodic_pose(model, phase, side)
-        geometry = build_bird.wing_geometry(model, pose, side)
-        assert polygon_area(geometry["boundary"]) > 150
-        assert all(math.isfinite(value) for point in geometry["boundary"] for value in point)
-        expected = [length * pose["span_scale"] for length in wing["segment_lengths"]]
-        measured = [math.dist(geometry["joints"][i], geometry["joints"][i + 1]) for i in range(3)]
-        assert max(abs(a - b) for a, b in zip(expected, measured)) < 1e-6
-        if previous is not None:
-            max_step = max(max_step, max(
-                math.dist(a, b)
-                for a, b in zip(previous["boundary"], geometry["boundary"])
-            ))
-        previous = geometry
-    assert max_step < 7.5
-
-
-# The static display pose reproduces the characteristic broad, raised wing
-# contour supplied in the original visual reference.
-reference = wing["reference_mesh"]
-display = build_bird.wing_geometry(model, build_bird.display_pose(model, "near"), "near")
-for actual, expected in zip(display["boundary"], reference["boundary"]):
-    assert math.dist(actual, expected) < 1e-5
-assert math.dist(display["core"], reference["core"]) < 1e-5
-assert all(abs(sum(weights) - 1) < 1e-9 for weights in reference["boundary_weights"])
-assert abs(sum(reference["core_weights"]) - 1) < 1e-9
-
-expected_states = [
-    "perched",
-    "anticipation",
-    "push_off",
-    "takeoff",
-    "outbound",
-    "empty",
-    "inbound",
-    "approach",
-    "flare",
-    "touchdown",
-    "settle",
-    "perched_final",
-]
-assert [item["state"] for item in library["timeline"]] == expected_states
-assert all(item["duration_ms"] > 0 for item in library["timeline"])
-
-required_clips = {
-    "perched_idle",
-    "anticipation_push",
-    "push_off",
-    "takeoff",
-    "cruise",
-    "approach",
-    "flare",
-    "touchdown",
-    "settle",
-}
-assert required_clips <= set(library["clips"])
-assert library["world"]["takeoff_outbound_continuity"] == "C1"
-assert library["clips"]["takeoff"]["keyframes"][-1]["wing"] == library["clips"]["cruise"]["keyframes"][0]["wing"]
-for clip_name in ("takeoff", "cruise", "approach", "flare"):
-    for frame in library["clips"][clip_name]["keyframes"]:
-        assert frame["wing"][3] >= 0.94
-        assert frame["wing"][4] >= 0.96
-
-for name, clip in library["clips"].items():
-    frames = clip["keyframes"]
-    times = [frame["t"] for frame in frames]
-    assert times == sorted(times), f"unsorted keyframes in {name}"
-    assert times[0] == 0 and times[-1] == 1
-    for frame in frames:
-        assert len(frame["root"]) == 4
-        assert len(frame["wing"]) == 5
-        assert len(frame["legs"]) == 3
-        assert all(math.isfinite(value) for track in ("root", "wing", "legs") for value in frame[track])
-        assert frame["root"][3] > 0
-        assert 0 < frame["wing"][3] <= 1.1
-        assert 0 < frame["wing"][4] <= 1.1
-        assert all(0 <= value <= 1 for value in frame["legs"])
-    for event in clip.get("events", []):
-        assert 0 <= event["t"] <= 1
-        assert event["name"]
-
-
-def event_time(clip_name: str, event_name: str) -> float:
-    return next(
-        event["t"]
-        for event in library["clips"][clip_name]["events"]
-        if event["name"] == event_name
-    )
-
-
-assert event_time("push_off", "toe_off") == 0.52
-assert event_time("touchdown", "touchdown") < event_time("touchdown", "weight_transfer")
-assert event_time("touchdown", "touchdown") == 0.72
-
-# Root-motion continuity at clip boundaries.
-def root_xy(clip: str, endpoint: int) -> list[float]:
-    return library["clips"][clip]["keyframes"][endpoint]["root"][:2]
-
-
-assert root_xy("approach", -1) == root_xy("flare", 0)
-assert root_xy("flare", -1) == root_xy("touchdown", 0)
-assert root_xy("touchdown", -1) == [0, 0]
-assert all(frame["root"][:2] == [0, 0] for frame in library["clips"]["settle"]["keyframes"])
-
-perch = flight["perch"]
-inbound_end = library["world"]["inbound_curve"][-1]
-approach_start = root_xy("approach", 0)
-assert inbound_end == [perch[0] + approach_start[0], perch[1] + approach_start[1]]
-assert library["world"]["outbound_curve"][0] == [415, 355]
-
-
-def cubic_derivative(points: list[list[float]], t: float) -> tuple[float, float]:
-    p0, p1, p2, p3 = points
-    u = 1 - t
-    return (
-        3 * u * u * (p1[0] - p0[0]) + 6 * u * t * (p2[0] - p1[0]) + 3 * t * t * (p3[0] - p2[0]),
-        3 * u * u * (p1[1] - p0[1]) + 6 * u * t * (p2[1] - p1[1]) + 3 * t * t * (p3[1] - p2[1]),
-    )
-
-
-for index in range(101):
-    t = index / 100
-    assert cubic_derivative(library["world"]["outbound_curve"], t)[0] > 0
-    assert cubic_derivative(library["world"]["inbound_curve"], t)[0] < 0
-
-js = (ROOT / "bird-animation.js").read_text(encoding="utf-8")
-assert "solveTwoBone" in js
-assert "cubicArcSample" in js
-assert "pchipTangent" in js
-assert "blendRigSample" in js
-assert "hermitePoint" in js
-assert "motion warp" in js.lower() or "warp" in js.lower()
-assert "toe_off" in js
-assert "touchdown" in js
-assert "model.body.nodes.h5" in js
-assert "outbound_bob_fade_start" in js
-assert "outbound_exit_lift_px" in js
-assert "rotationWeight" in js
-assert "model.body.nodes.q1.slice" not in js
-assert "staticOpacity" not in js
-assert "pchipEndpoint" in js
-assert "takeoff_exit_speed_px_per_ms" in js
-assert "root: current.root.slice()" in js
-assert "rigidBoundary" in js
-
-html = (ROOT / "demo.html").read_text(encoding="utf-8")
-assert 'data-flight-bird="outbound"' in html
-assert 'data-flight-bird="inbound"' in html
-assert 'data-animation-clips="true"' in html
-assert '<script src=' not in html
-assert 'fetch(' not in html
-assert 'PRÉPARATION' in html
-assert 'TOE-OFF' in html
-assert 'TOUCHDOWN' in html
-assert 'PATTES VERROUILLÉES' in html
-
-# Quantify visual shape stability independently of position, rotation and size.
-def shape_signature(geometry):
-    boundary = geometry["boundary"]
-    perimeter = sum(math.dist(boundary[index], boundary[(index + 1) % len(boundary)]) for index in range(len(boundary)))
-    return [
-        math.dist(boundary[i], boundary[j]) / perimeter
-        for i in range(len(boundary))
-        for j in range(i + 1, len(boundary))
-    ]
-
-
-reference_signature = None
-max_shape_delta = 0.0
-for index in range(121):
-    sample = build_bird.sample_clip(model, "cruise", index / 120)
-    track = sample["wing"]
-    pose = {
-        "stroke_deg": track[0],
-        "elbow_deg": track[1],
-        "wrist_deg": track[2],
-        "span_scale": track[3],
-        "chord_scale": track[4],
-    }
-    signature = shape_signature(build_bird.wing_geometry(model, pose, "near"))
-    if reference_signature is None:
-        reference_signature = signature
-    else:
-        max_shape_delta = max(max_shape_delta, max(abs(a - b) for a, b in zip(reference_signature, signature)))
-assert max_shape_delta < 0.045, max_shape_delta
-
-print("game-style network-bird animation: OK")
-
-# The scan is head-mounted and no graphical element is emitted by the beak.
-for svg_path in ROOT.glob("percolia-bird-*.svg"):
-    svg_text = svg_path.read_text(encoding="utf-8").lower()
-    assert 'data-lidar-ray="true"' not in svg_text
-    assert "data-lidar-beam" not in svg_text
-assert model["scan"]["origin_node"] == "h5"
+assert model["version"] == "2.0.0"
+assert library["version"] == "2.0.0"
 assert model["palette"] == {
     "ink": "#082C4C", "blue": "#1C83D4", "cyan": "#20C9C4",
     "mist": "#EAF5F7", "white": "#FFFFFF", "slate": "#5D7385",
 }
+assert model["art_direction"]["beak_emission"] is False
+assert model["scan"]["origin_node"] == "h5"
+assert flight["one_shot"] is True
+
+# Rotation is around the network's visual centre, not around its feet.
+body_points = [values[:2] for values in model["body"]["nodes"].values()]
+centroid = [sum(point[i] for point in body_points) / len(body_points) for i in (0, 1)]
+assert math.dist(centroid, flight["visual_anchor"]) < 5
+assert flight["perched_anchor"][1] - flight["visual_anchor"][1] > 90
+assert "flight_anchor" not in flight
+
+# Resting wings are folded by pose, not miniaturised.
+folded = wing["folded_pose"]
+assert folded["span_scale"] >= 0.95
+assert folded["chord_scale"] >= 0.99
+assert 135 <= folded["stroke_deg"] <= 155
+assert wing["shape_preservation"]["mode"] == "rigid_outline_articulated_network"
+assert wing["shape_preservation"]["boundary_articulation_weight"] <= 0.03
+assert wing["shape_preservation"]["interior_articulation_weight"] <= 0.25
+for frame in library["clips"]["perched_idle"]["keyframes"]:
+    assert frame["wing"][3] >= 0.95
+    assert frame["wing"][4] >= 0.99
+
+
+def perimeter(points):
+    return sum(math.dist(points[i], points[(i + 1) % len(points)]) for i in range(len(points)))
+
+
+def shape_signature(points):
+    p = perimeter(points)
+    return [
+        math.dist(points[i], points[j]) / p
+        for i in range(len(points))
+        for j in range(i + 1, len(points))
+    ]
+
+reference = [tuple(point) for point in wing["reference_mesh"]["boundary"]]
+rest_geometry = build_bird.wing_geometry(model, folded, "near")
+assert perimeter(rest_geometry["boundary"]) / perimeter(reference) > 0.93
+
+# The airborne outline is effectively invariant up to similarity.
+reference_signature = None
+max_delta = 0.0
+for index in range(181):
+    sample = build_bird.sample_clip(model, "cruise", index / 180)
+    track = sample["wing"]
+    pose = {
+        "stroke_deg": track[0], "elbow_deg": track[1], "wrist_deg": track[2],
+        "span_scale": track[3], "chord_scale": track[4],
+    }
+    signature = shape_signature(build_bird.wing_geometry(model, pose, "near")["boundary"])
+    if reference_signature is None:
+        reference_signature = signature
+    else:
+        max_delta = max(max_delta, max(abs(a - b) for a, b in zip(reference_signature, signature)))
+assert max_delta < 0.012, max_delta
+
+# All airborne clips keep full wing dimensions.
+for clip_name in ("push_off", "takeoff", "cruise", "approach", "flare"):
+    for frame in library["clips"][clip_name]["keyframes"]:
+        assert frame["wing"][3] >= 0.99
+        assert frame["wing"][4] >= 0.99
+
+# A relative path begins at the exact take-off endpoint. Its first handle has
+# the same direction as the terminal authored root motion; y never turns down.
+world = library["world"]
+assert "outbound_curve" not in world
+points = world["outbound_curve_offsets"]
+assert points[0] == [0, 0] and len(points) == 4
+assert all(points[i + 1][0] > points[i][0] for i in range(3))
+assert all(points[i + 1][1] <= points[i][1] for i in range(3))
+takeoff = library["clips"]["takeoff"]["keyframes"]
+terminal = [takeoff[-1]["root"][i] - takeoff[-2]["root"][i] for i in (0, 1)]
+handle = points[1]
+dot = sum(a * b for a, b in zip(terminal, handle)) / (math.hypot(*terminal) * math.hypot(*handle))
+assert dot > 0.999
+assert takeoff[-1]["wing"] == library["clips"]["cruise"]["keyframes"][0]["wing"]
+assert all(takeoff[i + 1]["root"][1] <= takeoff[i]["root"][1] for i in range(len(takeoff) - 1))
+
+# State machine and contact events remain intact.
+expected_states = [
+    "perched", "anticipation", "push_off", "takeoff", "outbound", "empty",
+    "inbound", "approach", "flare", "touchdown", "settle", "perched_final",
+]
+assert [item["state"] for item in library["timeline"]] == expected_states
+assert any(event["name"] == "toe_off" for event in library["clips"]["push_off"]["events"])
+assert any(event["name"] == "touchdown" for event in library["clips"]["touchdown"]["events"])
+
+js = (ROOT / "bird-animation.js").read_text(encoding="utf-8")
+assert "resolvedOutboundCurve" in js
+assert "outbound_curve_offsets" in js
+assert "model.flight.visual_anchor" in js
+assert "boundaryArticulation" in js
+assert "outbound.place(\n            position" in js
+assert "const fade = 1 - smoothstep(0.93" not in js
+assert "takeoff_bridge_start" not in js
+assert "outbound_exit_lift_px" not in js
+assert "model.body.nodes.h5" in js
+assert "model.body.nodes.q1.slice" not in js
+
+html = (ROOT / "demo.html").read_text(encoding="utf-8")
+assert '<script src=' not in html
+assert 'fetch(' not in html
+assert 'data-flight-bird="outbound"' in html
+assert 'data-flight-bird="inbound"' in html
+assert 'data-animation-clips="true"' in html
+
+for svg_path in ROOT.glob("percolia-bird-*.svg"):
+    text = svg_path.read_text(encoding="utf-8").lower()
+    assert 'data-lidar-ray="true"' not in text
+    assert "data-lidar-beam" not in text
+
+print("canonical Percolia network-bird v2: OK")

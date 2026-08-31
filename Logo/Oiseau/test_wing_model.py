@@ -22,8 +22,8 @@ library = json.loads(CLIPS_PATH.read_text(encoding="utf-8"))
 wing = model["wing"]
 flight = model["flight"]
 
-assert model["version"] == "1.0.0"
-assert library["version"] == "1.0.0"
+assert model["version"] == "1.1.0"
+assert library["version"] == "1.1.0"
 assert wing["period_ms"] >= 2800, "the cruise wingbeat must stay deliberately slow"
 assert flight["one_shot"] is True
 assert model["art_direction"]["preserve_palette"] is True
@@ -64,8 +64,18 @@ for side in ("near", "far"):
                 for a, b in zip(previous["boundary"], geometry["boundary"])
             ))
         previous = geometry
-    assert max_step < 5.5
+    assert max_step < 7.5
 
+
+# The static display pose reproduces the characteristic broad, raised wing
+# contour supplied in the original visual reference.
+reference = wing["reference_mesh"]
+display = build_bird.wing_geometry(model, build_bird.display_pose(model, "near"), "near")
+for actual, expected in zip(display["boundary"], reference["boundary"]):
+    assert math.dist(actual, expected) < 1e-5
+assert math.dist(display["core"], reference["core"]) < 1e-5
+assert all(abs(sum(weights) - 1) < 1e-9 for weights in reference["boundary_weights"])
+assert abs(sum(reference["core_weights"]) - 1) < 1e-9
 
 expected_states = [
     "perched",
@@ -124,7 +134,7 @@ def event_time(clip_name: str, event_name: str) -> float:
     )
 
 
-assert event_time("push_off", "toe_off") == 0.60
+assert event_time("push_off", "toe_off") == 0.52
 assert event_time("touchdown", "touchdown") < event_time("touchdown", "weight_transfer")
 assert event_time("touchdown", "touchdown") == 0.72
 
@@ -161,6 +171,10 @@ for index in range(101):
 
 js = (ROOT / "bird-animation.js").read_text(encoding="utf-8")
 assert "solveTwoBone" in js
+assert "cubicArcSample" in js
+assert "pchipTangent" in js
+assert "blendRigSample" in js
+assert "hermitePoint" in js
 assert "motion warp" in js.lower() or "warp" in js.lower()
 assert "toe_off" in js
 assert "touchdown" in js

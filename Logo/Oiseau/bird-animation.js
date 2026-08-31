@@ -45,12 +45,33 @@
   }
 
   function cubicDerivative(points, t) {
-    const [p0, p1, p2, p3] = points;
-    const u = 1 - t;
-    return [
-      3 * u * u * (p1[0] - p0[0]) + 6 * u * t * (p2[0] - p1[0]) + 3 * t * t * (p3[0] - p2[0]),
-      3 * u * u * (p1[1] - p0[1]) + 6 * u * t * (p2[1] - p1[1]) + 3 * t * t * (p3[1] - p2[1]),
-    ];
+    const [p0,p1,p2,p3]=points; const u=1-t;
+    return [3*u*u*(p1[0]-p0[0])+6*u*t*(p2[0]-p1[0])+3*t*t*(p3[0]-p2[0]),3*u*u*(p1[1]-p0[1])+6*u*t*(p2[1]-p1[1])+3*t*t*(p3[1]-p2[1])];
+  }
+
+  const arcTables=new WeakMap();
+  function arcTable(points) {
+    if (arcTables.has(points)) return arcTables.get(points);
+    const entries=[{t:0,length:0}]; let previous=cubic(points,0); let total=0;
+    for (let index=1; index<=160; index+=1) {
+      const t=index/160; const point=cubic(points,t); total+=length(sub(point,previous)); entries.push({t,length:total}); previous=point;
+    }
+    const table={entries,total}; arcTables.set(points,table); return table;
+  }
+  function cubicArcSample(points,fraction) {
+    const table=arcTable(points); const target=clamp(fraction,0,1)*table.total; let low=0; let high=table.entries.length-1;
+    while (high-low>1) { const middle=Math.floor((low+high)/2); if (table.entries[middle].length<target) low=middle; else high=middle; }
+    const a=table.entries[low], b=table.entries[high]; const alpha=b.length===a.length?0:(target-a.length)/(b.length-a.length); const t=lerp(a.t,b.t,alpha);
+    const before=cubic(points,Math.max(0,t-.006)); const after=cubic(points,Math.min(1,t+.006));
+    return {position:cubic(points,t),tangent:sub(after,before),parameter:t};
+  }
+  function speedProfile(progress,startSlope,endSlope) {
+    const t=clamp(progress,0,1); const a=startSlope+endSlope-2; const b=3-2*startSlope-endSlope;
+    return clamp(a*t*t*t+b*t*t+startSlope*t,0,1);
+  }
+  function hermitePoint(p0,p1,m0,m1,t) {
+    const u=clamp(t,0,1),u2=u*u,u3=u2*u; const h00=2*u3-3*u2+1,h10=u3-2*u2+u,h01=-2*u3+3*u2,h11=u3-u2;
+    return [h00*p0[0]+h10*m0[0]+h01*p1[0]+h11*m1[0],h00*p0[1]+h10*m0[1]+h01*p1[1]+h11*m1[1]];
   }
 
   function readModel(svg) {
@@ -77,53 +98,33 @@
     return [-y, x];
   }
 
-  function hermiteValue(p0, p1, p2, p3, t0, t1, t2, t3, t) {
-    const duration = Math.max(1e-9, t2 - t1);
-    const u = clamp((t - t1) / duration, 0, 1);
-    const u2 = u * u;
-    const u3 = u2 * u;
-    const h00 = 2 * u3 - 3 * u2 + 1;
-    const h10 = u3 - 2 * u2 + u;
-    const h01 = -2 * u3 + 3 * u2;
-    const h11 = u3 - u2;
-    const m1 = (p2 - p0) / Math.max(1e-9, t2 - t0);
-    const m2 = (p3 - p1) / Math.max(1e-9, t3 - t1);
-    return h00 * p1 + h10 * duration * m1 + h01 * p2 + h11 * duration * m2;
+  function hermiteWithTangents(p1,p2,m1,m2,t1,t2,t) {
+    const duration=Math.max(1e-9,t2-t1),u=clamp((t-t1)/duration,0,1),u2=u*u,u3=u2*u;
+    return (2*u3-3*u2+1)*p1+(u3-2*u2+u)*duration*m1+(-2*u3+3*u2)*p2+(u3-u2)*duration*m2;
   }
-
-  function sampleTrack(frames, key, progress) {
-    if (frames.length === 1) return frames[0][key].slice();
-    const t = clamp(progress, 0, 1);
-    let index = frames.length - 2;
-    for (let i = 0; i < frames.length - 1; i += 1) {
-      if (t <= frames[i + 1].t) {
-        index = i;
-        break;
-      }
+  function pchipTangent(h0,h1,d0,d1) {
+    if (h0<=0||h1<=0||d0*d1<=0) return 0; const w1=2*h1+h0,w2=h1+2*h0; return (w1+w2)/(w1/d0+w2/d1);
+  }
+  function sampleTrack(frames,key,progress,loop=false) {
+    if (frames.length===1) return frames[0][key].slice();
+    const source=loop&&frames.length>2&&Math.abs(frames[frames.length-1].t-1)<1e-9?frames.slice(0,-1):frames;
+    let t=loop?((progress%1)+1)%1:clamp(progress,0,1),f0,f1,f2,f3,t0,t1,t2,t3;
+    if (loop) {
+      const n=source.length; let index=n-1;
+      for (let i=0;i<n;i+=1) { const next=(i+1)%n,end=source[next].t+(next<=i?1:0),candidate=t<source[i].t?t+1:t; if (candidate<=end) {index=i;t=candidate;break;} }
+      const next=(index+1)%n,prev=(index-1+n)%n,after=(next+1)%n; f0=source[prev];f1=source[index];f2=source[next];f3=source[after];
+      t1=f1.t;t2=f2.t;while(t2<=t1)t2+=1;t0=f0.t;while(t0>=t1)t0-=1;t3=f3.t;while(t3<=t2)t3+=1;
+    } else {
+      if (t<=source[0].t) return source[0][key].slice(); if (t>=source[source.length-1].t) return source[source.length-1][key].slice();
+      let index=source.length-2; for(let i=0;i<source.length-1;i+=1){if(t<=source[i+1].t){index=i;break;}}
+      f1=source[index];f2=source[index+1];f0=source[Math.max(0,index-1)];f3=source[Math.min(source.length-1,index+2)];
+      t1=f1.t;t2=f2.t;t0=index>0?f0.t:t1-(t2-t1);t3=index+2<source.length?f3.t:t2+(t2-t1);
     }
-    const f0 = frames[Math.max(0, index - 1)];
-    const f1 = frames[index];
-    const f2 = frames[index + 1];
-    const f3 = frames[Math.min(frames.length - 1, index + 2)];
-    const output = [];
-    for (let component = 0; component < f1[key].length; component += 1) {
-      let value = hermiteValue(
-        f0[key][component],
-        f1[key][component],
-        f2[key][component],
-        f3[key][component],
-        f0.t,
-        f1.t,
-        f2.t,
-        f3.t,
-        t
-      );
-      // Root x/y and all scalar rig controls are clamped to the neighbouring
-      // authored values. This keeps Hermite continuity without overshoot.
-      const low = Math.min(f1[key][component], f2[key][component]);
-      const high = Math.max(f1[key][component], f2[key][component]);
-      value = clamp(value, low, high);
-      output.push(value);
+    const output=[];
+    for(let component=0;component<f1[key].length;component+=1){
+      const p0=f0[key][component],p1=f1[key][component],p2=f2[key][component],p3=f3[key][component];
+      const h0=t1-t0,h1=t2-t1,h2=t3-t2,d0=(p1-p0)/Math.max(1e-9,h0),d1=(p2-p1)/Math.max(1e-9,h1),d2=(p3-p2)/Math.max(1e-9,h2);
+      output.push(hermiteWithTangents(p1,p2,pchipTangent(h0,h1,d0,d1),pchipTangent(h1,h2,d1,d2),t1,t2,t));
     }
     return output;
   }
@@ -135,10 +136,16 @@
     if (clip.loop) t = ((t % 1) + 1) % 1;
     else t = clamp(t, 0, 1);
     return {
-      root: sampleTrack(clip.keyframes, 'root', t),
-      wing: sampleTrack(clip.keyframes, 'wing', t),
-      legs: sampleTrack(clip.keyframes, 'legs', t),
+      root: sampleTrack(clip.keyframes, 'root', t, clip.loop),
+      wing: sampleTrack(clip.keyframes, 'wing', t, clip.loop),
+      legs: sampleTrack(clip.keyframes, 'legs', t, clip.loop),
     };
+  }
+
+
+  function blendRigSample(previous,current,amount) {
+    const t=clamp(amount,0,1);
+    return {root:[current.root[0],current.root[1],lerp(previous.root[2],current.root[2],t),lerp(previous.root[3],current.root[3],t)],wing:current.wing.map((v,i)=>lerp(previous.wing[i],v,t)),legs:current.legs.map((v,i)=>lerp(previous.legs[i],v,t))};
   }
 
   function eventTime(library, clipName, eventName) {
@@ -152,42 +159,51 @@
     const [stroke, elbow, wrist, span, chord] = wingTrack;
     const sideScale = model.wing[`${side}_scale`];
     return {
-      stroke_deg: stroke + (side === 'far' ? -5.5 : 0),
-      elbow_deg: elbow + (side === 'far' ? 2 : 0),
-      wrist_deg: wrist + (side === 'far' ? 3 : 0),
+      stroke_deg: stroke + (side === 'far' ? -2.0 : 0),
+      elbow_deg: elbow + (side === 'far' ? 1 : 0),
+      wrist_deg: wrist + (side === 'far' ? 1.5 : 0),
       span_scale: span * sideScale,
       chord_scale: chord * Math.sqrt(sideScale),
     };
   }
 
+  function transformByBone(point, restA, restB, currentA, currentB) {
+    const restVector=sub(restB,restA); const currentVector=sub(currentB,currentA);
+    const restLength=length(restVector); const currentLength=length(currentVector);
+    if (restLength < 1e-9) throw new Error('Percolia reference wing bone is degenerate');
+    const scale=currentLength/restLength;
+    const angle=Math.atan2(currentVector[1],currentVector[0])-Math.atan2(restVector[1],restVector[0]);
+    const local=sub(point,restA); const c=Math.cos(angle); const s=Math.sin(angle);
+    return add(currentA,[scale*(local[0]*c-local[1]*s),scale*(local[0]*s+local[1]*c)]);
+  }
+
+  function skinPoint(point, weights, restJoints, currentJoints) {
+    return weights.reduce((result,weight,index)=>add(result,mul(transformByBone(point,restJoints[index],restJoints[index+1],currentJoints[index],currentJoints[index+1]),weight)),[0,0]);
+  }
+
   function wingGeometry(model, pose, side) {
-    const wing = model.wing;
-    const shoulder = wing.shoulders[side];
-    const lengths = wing.segment_lengths.map((value) => value * pose.span_scale);
-    const a1 = pose.stroke_deg * RAD;
-    const a2 = a1 + pose.elbow_deg * RAD;
-    const a3 = a2 + pose.wrist_deg * RAD;
-    const s = shoulder.slice();
-    const e = add(s, [lengths[0] * Math.cos(a1), lengths[0] * Math.sin(a1)]);
-    const w = add(e, [lengths[1] * Math.cos(a2), lengths[1] * Math.sin(a2)]);
-    const tip = add(w, [lengths[2] * Math.cos(a3), lengths[2] * Math.sin(a3)]);
-    const joints = [s, e, w, tip];
-    const tangents = [
-      sub(e, s),
-      add(unit(sub(e, s)), unit(sub(w, e))),
-      add(unit(sub(w, e)), unit(sub(tip, w))),
-      sub(tip, w),
-    ];
-    const normals = tangents.map(normal);
-    const widths = wing.chords.map((value) => value * pose.chord_scale);
-    const leading = joints.map((point, index) => sub(point, mul(normals[index], widths[index] * wing.leading_fraction)));
-    const trailing = joints.map((point, index) => add(point, mul(normals[index], widths[index] * (1 - wing.leading_fraction))));
-    const boundary = [leading[0], leading[1], leading[2], tip, trailing[2], trailing[1], trailing[0]];
-    const core = [
-      0.18 * s[0] + 0.33 * e[0] + 0.34 * w[0] + 0.15 * tip[0],
-      0.18 * s[1] + 0.33 * e[1] + 0.34 * w[1] + 0.15 * tip[1],
-    ];
-    return { boundary, core, joints };
+    const wing=model.wing; const shoulder=wing.shoulders[side];
+    const lengths=wing.segment_lengths.map((value)=>value*pose.span_scale);
+    const a1=pose.stroke_deg*RAD; const a2=a1+pose.elbow_deg*RAD; const a3=a2+pose.wrist_deg*RAD;
+    const s=shoulder.slice(); const e=add(s,[lengths[0]*Math.cos(a1),lengths[0]*Math.sin(a1)]);
+    const w=add(e,[lengths[1]*Math.cos(a2),lengths[1]*Math.sin(a2)]);
+    const tip=add(w,[lengths[2]*Math.cos(a3),lengths[2]*Math.sin(a3)]); const joints=[s,e,w,tip];
+    const reference=wing.reference_mesh;
+    if (reference) {
+      const refShoulder=reference.joints[0]; const perspective=wing[`${side}_scale`];
+      const mapRef=(point)=>add(shoulder,mul(sub(point,refShoulder),perspective));
+      const restJoints=reference.joints.map(mapRef); const restBoundary=reference.boundary.map(mapRef); const restCore=mapRef(reference.core);
+      const boundary=restBoundary.map((point,index)=>skinPoint(point,reference.boundary_weights[index],restJoints,joints));
+      const core=skinPoint(restCore,reference.core_weights,restJoints,joints);
+      return {boundary,core,joints};
+    }
+    const tangents=[sub(e,s),add(unit(sub(e,s)),unit(sub(w,e))),add(unit(sub(w,e)),unit(sub(tip,w))),sub(tip,w)];
+    const normals=tangents.map(normal); const widths=wing.chords.map((value)=>value*pose.chord_scale);
+    const leading=joints.map((point,index)=>sub(point,mul(normals[index],widths[index]*wing.leading_fraction)));
+    const trailing=joints.map((point,index)=>add(point,mul(normals[index],widths[index]*(1-wing.leading_fraction))));
+    const boundary=[leading[0],leading[1],leading[2],tip,trailing[2],trailing[1],trailing[0]];
+    const core=[.18*s[0]+.33*e[0]+.34*w[0]+.15*tip[0],.18*s[1]+.33*e[1]+.34*w[1]+.15*tip[1]];
+    return {boundary,core,joints};
   }
 
   function collectWing(root, side) {
@@ -500,7 +516,11 @@
       const entry = segmentAt(boundedTime);
       const p = progressIn(entry, boundedTime);
       const cp = clipProgress(entry, boundedTime);
-      const sample = entry.clip ? sampleClip(library, entry.clip, cp) : null;
+      let sample = entry.clip ? sampleClip(library, entry.clip, cp) : null;
+      if (sample && entry.blend_in_ms) {
+        const index=boundaries.indexOf(entry), previous=index>0?boundaries[index-1]:null, fraction=Math.min(1,entry.blend_in_ms/entry.duration_ms);
+        if (previous&&previous.clip&&p<fraction) sample=blendRigSample(sampleClip(library,previous.clip,clipProgress(previous,previous.end-.001)),sample,smoothstep(0,fraction,p));
+      }
 
       outboundGroup.style.opacity = '0';
       inboundGroup.style.opacity = '0';
@@ -524,67 +544,48 @@
           break;
 
         case 'push_off': {
-          outbound.setWingPose(sample.wing);
-          const legState = outbound.setLegPose(sample.legs);
-          const scale = flight.perched_scale * sample.root[3];
-          const rotation = sample.root[2];
-          const toe = eventTime(library, 'push_off', 'toe_off');
-          let position;
-          if (p <= toe) {
-            position = outbound.contactPosition(perch, scale, false, rotation, legState.contactLocal);
-          } else {
-            const release = pushReleasePose();
-            position = add(release.position, [sample.root[0] - release.sample.root[0], sample.root[1] - release.sample.root[1]]);
+          outbound.setWingPose(sample.wing); let legState=outbound.setLegPose(sample.legs);
+          const scale=flight.perched_scale*sample.root[3],rotation=sample.root[2],toe=eventTime(library,'push_off','toe_off'); let position;
+          if (p<=toe) position=outbound.contactPosition(perch,scale,false,rotation,legState.contactLocal);
+          else {
+            const release=pushReleasePose(), beforeProgress=Math.max(0,toe-.025), beforeSample=sampleClip(library,'push_off',beforeProgress);
+            const beforeLeg=outbound.setLegPose(beforeSample.legs);
+            const beforePosition=outbound.contactPosition(perch,flight.perched_scale*beforeSample.root[3],false,beforeSample.root[2],beforeLeg.contactLocal);
+            outbound.setWingPose(sample.wing); legState=outbound.setLegPose(sample.legs);
+            const end=pushEndPose(),u=(p-toe)/(1-toe),contactDerivative=mul(sub(release.position,beforePosition),(1-toe)/Math.max(1e-6,toe-beforeProgress));
+            const nextEntry=boundaries.find((item)=>item.state==='takeoff'),startPose=sampleClip(library,'takeoff',0),nextPose=sampleClip(library,'takeoff',.025);
+            const takeoffDerivative=mul(sub(nextPose.root.slice(0,2),startPose.root.slice(0,2)),((1-toe)*entry.duration_ms)/(.025*nextEntry.duration_ms));
+            position=hermitePoint(release.position,end.position,contactDerivative,takeoffDerivative,u);
           }
-          outbound.place(position, [1, -0.25], scale, false, 1, rotation);
-          break;
+          outbound.place(position,[1,-.25],scale,false,1,rotation); break;
         }
 
         case 'takeoff': {
-          const origin = pushEndPose();
-          const first = library.clips.takeoff.keyframes[0].root;
-          let position = add(origin.position, [sample.root[0] - first[0], sample.root[1] - first[1]]);
-          const target = library.world.outbound_curve[0];
-          const endSample = sampleClip(library, 'takeoff', 1);
-          const authoredEnd = add(origin.position, [endSample.root[0] - first[0], endSample.root[1] - first[1]]);
-          const warp = sub(target, authoredEnd);
-          position = add(position, mul(warp, smoothstep(0.55, 1, p)));
-          outbound.setWingPose(sample.wing);
-          outbound.setLegPose(sample.legs);
-          const scale = lerp(flight.perched_scale, flight.bird_scale, smoothstep(0, 0.55, p)) * sample.root[3];
-          outbound.place(position, [1, -0.35], scale, false, 1, sample.root[2]);
-          break;
+          const origin=pushEndPose(),first=library.clips.takeoff.keyframes[0].root;
+          let position=add(origin.position,[sample.root[0]-first[0],sample.root[1]-first[1]]);
+          const target=library.world.outbound_curve[0],endSample=sampleClip(library,'takeoff',1),authoredEnd=add(origin.position,[endSample.root[0]-first[0],endSample.root[1]-first[1]]);
+          position=add(position,mul(sub(target,authoredEnd),smoothstep(.62,1,p))); outbound.setWingPose(sample.wing); outbound.setLegPose(sample.legs);
+          const initialRoot=sampleClip(library,'takeoff',0).root,initialBase=origin.scale/Math.max(1e-6,initialRoot[3]),baseScale=lerp(initialBase,flight.bird_scale,smoothstep(0,.62,p));
+          outbound.place(position,[1,-.35],baseScale*sample.root[3],false,1,sample.root[2]); break;
         }
 
         case 'outbound': {
-          const positionBase = cubic(library.world.outbound_curve, p);
-          const tangent = cubicDerivative(library.world.outbound_curve, Math.min(0.999, p));
-          const position = add(positionBase, [sample.root[0], sample.root[1]]);
-          outbound.setWingPose(sample.wing);
-          outbound.setLegPose(sample.legs);
-          const fade = 1 - smoothstep(0.93, 1, p);
-          const rotation = visualRotation(tangent, false, -22, 7) + sample.root[2] * 0.28;
-          outbound.place(position, tangent, flight.bird_scale * sample.root[3], false, fade, rotation);
-          const scanHalf = library.world.scan_duration_fraction / 2;
-          const scanDistance = Math.abs(p - library.world.scan_progress);
-          const scanStrength = 1 - clamp(scanDistance / scanHalf, 0, 1);
-          const scanSweep = clamp((p - (library.world.scan_progress - scanHalf)) / (2 * scanHalf), 0, 1);
-          outbound.setLidar(scanStrength, scanSweep);
-          break;
+          const curve=cubicArcSample(library.world.outbound_curve,speedProfile(p,.58,1.02)),bobWeight=smoothstep(0,.08,p);
+          const position=add(curve.position,[sample.root[0]*bobWeight,sample.root[1]*bobWeight]); outbound.setWingPose(sample.wing); outbound.setLegPose(sample.legs);
+          const fade=1-smoothstep(.93,1,p),rotation=visualRotation(curve.tangent,false,-24,7)+sample.root[2]*.28;
+          outbound.place(position,curve.tangent,flight.bird_scale*sample.root[3],false,fade,rotation);
+          const scanHalf=library.world.scan_duration_fraction/2,scanDistance=Math.abs(p-library.world.scan_progress),scanStrength=1-clamp(scanDistance/scanHalf,0,1),scanSweep=clamp((p-(library.world.scan_progress-scanHalf))/(2*scanHalf),0,1);
+          outbound.setLidar(scanStrength,scanSweep); break;
         }
 
         case 'empty':
           break;
 
         case 'inbound': {
-          const positionBase = cubic(library.world.inbound_curve, p);
-          const tangent = cubicDerivative(library.world.inbound_curve, Math.min(0.999, p));
-          const position = add(positionBase, [-sample.root[0], sample.root[1]]);
-          inbound.setWingPose(sample.wing);
-          inbound.setLegPose(sample.legs);
-          const rotation = visualRotation(tangent, true, -12, 5) - sample.root[2] * 0.22;
-          inbound.place(position, tangent, flight.bird_scale * sample.root[3], true, smoothstep(0, 0.08, p), rotation);
-          break;
+          const curve=cubicArcSample(library.world.inbound_curve,speedProfile(p,1.02,.42)),bobWeight=smoothstep(0,.08,p)*(1-smoothstep(.86,1,p));
+          const position=add(curve.position,[-sample.root[0]*bobWeight,sample.root[1]*bobWeight]); inbound.setWingPose(sample.wing); inbound.setLegPose(sample.legs);
+          const rotation=visualRotation(curve.tangent,true,-14,5)-sample.root[2]*.22;
+          inbound.place(position,curve.tangent,flight.bird_scale*sample.root[3],true,smoothstep(0,.08,p),rotation); break;
         }
 
         case 'approach':

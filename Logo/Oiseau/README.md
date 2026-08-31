@@ -1,6 +1,12 @@
-# Oiseau-réseau Percolia — direction 04
+# Oiseau-réseau Percolia — direction 05
 
 Cette direction conserve le **premier oiseau triangulé** de Percolia et remplace la cinématique globale par une architecture inspirée des moteurs de jeu : clips keyframés, machine à états, root motion, événements d’animation, motion warping et IK de contact.
+
+## Raffinement de la direction 05
+
+Le corps, la tête, la queue et les pattes restent ceux du premier oiseau triangulé. L’aile principale reprend désormais le contour de la référence fournie : racine centrale, bord supérieur relevé, double pointe à gauche et large surface facettée. Ce dessin est déformé par **linear blend skinning 2D** autour des segments épaule–coude–poignet–extrémité ; les battements conservent donc l’identité graphique du premier oiseau.
+
+Les à-coups sont réduits par une interpolation PCHIP périodique des clips cycliques, une progression par longueur d’arc sur les trajectoires et de courts fondus de pose aux changements d’état. La sortie du perchoir est raccordée en position et en vitesse au clip de décollage : les pattes se détendent, `toe_off` libère les appuis, puis deux battements puissants établissent le vol.
 
 ## Séquence
 

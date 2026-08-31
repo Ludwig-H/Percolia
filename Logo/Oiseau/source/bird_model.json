@@ -1,6 +1,6 @@
 {
   "name": "Percolia Initial Network Bird",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "viewBox": [
     0,
     0,
@@ -856,23 +856,23 @@
   "wing": {
     "shoulders": {
       "near": [
-        238,
-        157
+        306.0,
+        184.0
       ],
       "far": [
-        253,
-        166
+        290.0,
+        179.0
       ]
     },
     "segment_lengths": [
-      54,
-      58,
-      64
+      55.71355310873648,
+      62.289646009589745,
+      67.05221845696084
     ],
     "chords": [
-      23,
-      29,
-      20,
+      30.0,
+      42.0,
+      29.0,
       1.6
     ],
     "phase_stations": [
@@ -896,19 +896,122 @@
     "fold_phase_deg": 0,
     "fold_exponent": 1.45,
     "near_phase_offset": 0,
-    "far_phase_offset": 0.055,
+    "far_phase_offset": 0.018,
     "near_scale": 1.0,
-    "far_scale": 0.92,
-    "far_opacity": 0.34,
+    "far_scale": 0.88,
+    "far_opacity": 0.27,
     "leading_fraction": 0.34,
     "folded_pose": {
-      "stroke_deg": 165,
-      "elbow_deg": 28,
-      "wrist_deg": 34,
-      "span_scale": 0.64,
-      "chord_scale": 0.78
+      "stroke_deg": 176.0,
+      "elbow_deg": 38.0,
+      "wrist_deg": 48.0,
+      "span_scale": 0.58,
+      "chord_scale": 0.72
     },
-    "glide_phase": 0.18
+    "glide_phase": 0.08,
+    "display_pose": {
+      "stroke_deg": 201.03751102542182,
+      "elbow_deg": 26.565051177077976,
+      "wrist_deg": 25.043413161238874,
+      "span_scale": 1.0,
+      "chord_scale": 1.0
+    },
+    "reference_mesh": {
+      "joints": [
+        [
+          306.0,
+          184.0
+        ],
+        [
+          254.0,
+          164.0
+        ],
+        [
+          212.0,
+          118.0
+        ],
+        [
+          192.0,
+          54.0
+        ]
+      ],
+      "boundary": [
+        [
+          306.0,
+          184.0
+        ],
+        [
+          330.0,
+          146.0
+        ],
+        [
+          292.0,
+          104.0
+        ],
+        [
+          192.0,
+          54.0
+        ],
+        [
+          170.0,
+          96.0
+        ],
+        [
+          220.0,
+          144.0
+        ],
+        [
+          262.0,
+          158.0
+        ]
+      ],
+      "core": [
+        244.0,
+        126.0
+      ],
+      "boundary_weights": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0.82,
+          0.18,
+          0
+        ],
+        [
+          0.12,
+          0.78,
+          0.1
+        ],
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0.16,
+          0.84
+        ],
+        [
+          0.1,
+          0.64,
+          0.26
+        ],
+        [
+          0.74,
+          0.26,
+          0
+        ]
+      ],
+      "core_weights": [
+        0.18,
+        0.62,
+        0.2
+      ]
+    }
   },
   "legs": {
     "near": {
@@ -1083,6 +1186,9 @@
     "preserve_palette": true,
     "preserve_network_silhouette": true,
     "scan_origin": "head_node_h5",
-    "beak_emission": false
+    "beak_emission": false,
+    "reference_profile": "original_upright_network_bird",
+    "wing_deformation": "linear_blend_skinning",
+    "preserve_reference_wing_mesh": true
   }
 }

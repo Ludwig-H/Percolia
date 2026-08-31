@@ -21,9 +21,6 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Apply final static-pose migration
-        run: python Logo/Oiseau/apply_static_final_pose_v21.py
-
       - name: Generate assets
         run: |
           python Logo/Police/build_wordmark.py
@@ -57,11 +54,10 @@ jobs:
           assert 'data-flight-bird="outbound"' in demo
           assert 'data-flight-bird="inbound"' in demo
           assert 'data-animation-clips="true"' in demo
-          assert 'translate(612 0) scale(-1 1)' in demo
           assert not any(path.name.startswith('apply_') for path in Path('Logo/Oiseau').glob('*.py'))
           PY
 
-      - name: Commit final static-pose assets
+      - name: Commit generated assets
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -69,6 +65,6 @@ jobs:
           if git diff --cached --quiet; then
             echo "Generated assets are already up to date."
           else
-            git commit -m "Aligne le logo statique sur la pose finale"
+            git commit -m "Génère les actifs de la marque"
             git push
           fi

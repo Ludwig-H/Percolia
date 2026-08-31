@@ -21,9 +21,6 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Apply canonical bird v2 migration
-        run: python Logo/Oiseau/apply_final_bird_v20.py
-
       - name: Generate assets
         run: |
           python Logo/Police/build_wordmark.py
@@ -60,7 +57,7 @@ jobs:
           assert not any(path.name.startswith('apply_') for path in Path('Logo/Oiseau').glob('*.py'))
           PY
 
-      - name: Commit canonical v2 assets
+      - name: Commit generated assets
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -68,6 +65,6 @@ jobs:
           if git diff --cached --quiet; then
             echo "Generated assets are already up to date."
           else
-            git commit -m "Recalibre le décollage et restaure des ailes pleines"
+            git commit -m "Génère les actifs de la marque"
             git push
           fi

@@ -21,6 +21,13 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Apply Percolia bird refinement v1.1
+        run: |
+          python Logo/Oiseau/apply_model_v11.py
+          python Logo/Oiseau/apply_wing_v11.py
+          python Logo/Oiseau/apply_motion_v11.py
+          python Logo/Oiseau/apply_docs_v11.py
+
       - name: Generate assets
         run: |
           python Logo/Police/build_wordmark.py
@@ -70,6 +77,6 @@ jobs:
           if git diff --cached --quiet; then
             echo "Generated assets are already up to date."
           else
-            git commit -m "Génère les actifs de l’animation keyframée"
+            git commit -m "Affûte le dessin et fluidifie le vol de l’oiseau-réseau"
             git push
           fi

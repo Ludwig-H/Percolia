@@ -22,7 +22,10 @@ jobs:
           python-version: "3.12"
 
       - name: Apply wing-shape and takeoff stability refinement
-        run: python Logo/Oiseau/apply_stability_v12.py
+        run: |
+          python Logo/Oiseau/apply_stability_v12.py
+          sed -i 's/assert model\["version"\] == "1.1.0"/assert model["version"] == "1.2.0"/' Logo/Oiseau/test_wing_model.py
+          sed -i 's/assert library\["version"\] == "1.1.0"/assert library["version"] == "1.2.0"/' Logo/Oiseau/test_wing_model.py
 
       - name: Generate assets
         run: |

@@ -62,7 +62,7 @@ footer { margin-top:16px; color:var(--slate); font-size:.83rem; text-align:right
 <svg id="flight-stage" class="percolia-flight-stage" data-flight-stage="true" viewBox="0 0 1360 760" role="img" aria-labelledby="scene-title scene-desc">
   <title id="scene-title">Vol directionnel de deux oiseaux-réseaux Percolia animé par clips</title>
   <desc id="scene-desc">Un oiseau se prépare, pousse sur le P, décolle et sort à droite. Un autre arrive de droite, ralentit, verrouille ses pattes et se pose sur le P.</desc>
-  <metadata id="percolia-animation-clips" data-animation-clips="true"><![CDATA[{"name":"Percolia Network Bird Animation Clips","version":"1.1.0","fps_reference":60,"coordinate_system":"SVG: x right, y down; root motion is relative to the P perch","timeline":[{"state":"perched","clip":"perched_idle","actor":"outbound","duration_ms":1500,"loop":true},{"state":"anticipation","clip":"anticipation_push","actor":"outbound","duration_ms":760,"blend_in_ms":140},{"state":"push_off","clip":"push_off","actor":"outbound","duration_ms":600,"blend_in_ms":110},{"state":"takeoff","clip":"takeoff","actor":"outbound","duration_ms":1450,"blend_in_ms":170},{"state":"outbound","clip":"cruise","actor":"outbound","duration_ms":4700,"loop":true,"blend_in_ms":260},{"state":"empty","actor":"none","duration_ms":850},{"state":"inbound","clip":"cruise","actor":"inbound","duration_ms":4400,"loop":true,"mirror":true},{"state":"approach","clip":"approach","actor":"inbound","duration_ms":1250,"mirror":true,"blend_in_ms":260},{"state":"flare","clip":"flare","actor":"inbound","duration_ms":950,"mirror":true,"blend_in_ms":150},{"state":"touchdown","clip":"touchdown","actor":"inbound","duration_ms":760,"mirror":true,"blend_in_ms":120},{"state":"settle","clip":"settle","actor":"inbound","duration_ms":1150,"mirror":true,"blend_in_ms":160},{"state":"perched_final","clip":"perched_idle","actor":"inbound","duration_ms":1500,"loop":true,"mirror":true,"blend_in_ms":180}],"clips":{"perched_idle":{"loop":true,"keyframes":[{"t":0.0,"root":[0,0,0,1],"wing":[176,38,48,0.58,0.72],"legs":[0,0.05,1]},{"t":0.5,"root":[0,0,0.45,1],"wing":[174,39,49,0.58,0.72],"legs":[0,0.08,1]},{"t":1.0,"root":[0,0,0,1],"wing":[176,38,48,0.58,0.72],"legs":[0,0.05,1]}],"events":[]},"anticipation_push":{"loop":false,"keyframes":[{"t":0.0,"root":[0,0,0,1],"wing":[176,38,48,0.58,0.72],"legs":[0,0.08,1]},{"t":0.3,"root":[0,0,-1.5,0.995],"wing":[184,31,36,0.68,0.79],"legs":[0,0.24,1]},{"t":0.68,"root":[0,0,-6.5,1.0],"wing":[218,18,16,0.88,0.94],"legs":[0,1.0,1]},{"t":1.0,"root":[0,0,-11,1.015],"wing":[238,12,10,1,1],"legs":[0,0.72,1]}],"events":[{"t":0.68,"name":"maximum_crouch"}]},"push_off":{"loop":false,"keyframes":[{"t":0.0,"root":[0,0,-11,1.015],"wing":[238,12,10,1,1],"legs":[0,0.72,1]},{"t":0.28,"root":[0,0,-15,1.02],"wing":[230,9,7,1,1],"legs":[0,0.34,1]},{"t":0.5,"root":[0,0,-19,1.03],"wing":[196,8,6,1,1],"legs":[0,0,1]},{"t":0.58,"root":[8,-12,-20,1.035],"wing":[174,9,7,1,1],"legs":[0.18,0,0]},{"t":1.0,"root":[40,-62,-18,1.03],"wing":[138,11,9,1,1],"legs":[0.75,0,0]}],"events":[{"t":0.52,"name":"toe_off"}]},"takeoff":{"loop":false,"keyframes":[{"t":0.0,"root":[0,0,-18,1.03],"wing":[138,11,9,1,1],"legs":[0.75,0,0]},{"t":0.18,"root":[23,-50,-20,1.04],"wing":[188,25,30,0.8,0.86],"legs":[0.9,0,0]},{"t":0.4,"root":[55,-108,-22,1.05],"wing":[238,12,10,1.02,1],"legs":[1,0,0]},{"t":0.59,"root":[82,-149,-23,1.03],"wing":[143,9,7,1,1],"legs":[1,0,0]},{"t":0.8,"root":[108,-178,-22,1.01],"wing":[206,26,34,0.8,0.86],"legs":[1,0,0]},{"t":1.0,"root":[140,-196,-20,1.0],"wing":[232,10,7,1,1],"legs":[1,0,0]}],"events":[{"t":0.59,"name":"second_power_stroke"}]},"cruise":{"loop":true,"keyframes":[{"t":0.0,"root":[0,-2,-2,1],"wing":[232,10,7,1,1],"legs":[1,0,0]},{"t":0.22,"root":[0,0,-1,1],"wing":[190,9,7,1,1],"legs":[1,0,0]},{"t":0.48,"root":[0,4,1,1],"wing":[142,12,10,1,1],"legs":[1,0,0]},{"t":0.72,"root":[0,1,0,1],"wing":[184,34,48,0.74,0.82],"legs":[1,0,0]},{"t":1.0,"root":[0,-2,-2,1],"wing":[232,10,7,1,1],"legs":[1,0,0]}],"events":[]},"approach":{"loop":false,"keyframes":[{"t":0.0,"root":[245,-178,-11,1],"wing":[208,16,16,1,1],"legs":[1,0,0]},{"t":0.35,"root":[195,-153,-7,1],"wing":[182,11,9,1.0,1.0],"legs":[0.92,0,0]},{"t":0.7,"root":[150,-127,-1,1],"wing":[148,13,11,1.0,1.0],"legs":[0.72,0,0]},{"t":1.0,"root":[112,-104,3,1],"wing":[198,16,17,0.98,1.0],"legs":[0.48,0,0]}],"events":[{"t":0.58,"name":"gear_down"}]},"flare":{"loop":false,"keyframes":[{"t":0.0,"root":[112,-104,3,1],"wing":[198,16,17,0.98,1.0],"legs":[0.48,0,0]},{"t":0.35,"root":[80,-78,7,0.99],"wing":[224,10,8,1.02,1.0],"legs":[0.2,0,0]},{"t":0.72,"root":[52,-54,12,0.98],"wing":[236,8,6,1.04,1.02],"legs":[0.02,0,0.35]},{"t":1.0,"root":[34,-36,13,0.97],"wing":[222,9,7,1.02,1.0],"legs":[0,0,0.7]}],"events":[{"t":0.24,"name":"flare_start"}]},"touchdown":{"loop":false,"keyframes":[{"t":0.0,"root":[34,-36,13,0.97],"wing":[222,9,7,1.02,1.0],"legs":[0,0,0.7]},{"t":0.3,"root":[21,-22,11,0.95],"wing":[210,12,11,0.98,0.98],"legs":[0,0.05,0.88]},{"t":0.58,"root":[7,-7,7,0.92],"wing":[192,18,21,0.86,0.9],"legs":[0,0.2,1]},{"t":0.72,"root":[0,0,5,0.9],"wing":[178,24,29,0.74,0.84],"legs":[0,0.32,1]},{"t":1.0,"root":[0,0,1,0.88],"wing":[166,28,34,0.64,0.78],"legs":[0,0.12,1]}],"events":[{"t":0.72,"name":"touchdown"},{"t":0.86,"name":"weight_transfer"}]},"settle":{"loop":false,"keyframes":[{"t":0.0,"root":[0,0,5,0.88],"wing":[166,28,34,0.64,0.78],"legs":[0,0.32,1]},{"t":0.24,"root":[0,0,-1.8,0.87],"wing":[165,28,34,0.64,0.78],"legs":[0,0.48,1]},{"t":0.5,"root":[0,0,1.1,0.866],"wing":[164,28,34,0.64,0.78],"legs":[0,0.2,1]},{"t":0.76,"root":[0,0,-0.4,0.864],"wing":[165,28,34,0.64,0.78],"legs":[0,0.1,1]},{"t":1.0,"root":[0,0,0,0.862],"wing":[165,28,34,0.64,0.78],"legs":[0,0.05,1]}],"events":[{"t":0.3,"name":"feet_locked"}]}},"world":{"outbound_curve":[[415,355],[635,258],[1015,160],[1460,128]],"inbound_curve":[[1460,198],[1120,216],[690,315],[505,360]],"scan_progress":0.52,"scan_duration_fraction":0.08}}]]></metadata>
+  <metadata id="percolia-animation-clips" data-animation-clips="true"><![CDATA[{"name":"Percolia Network Bird Animation Clips","version":"1.2.0","fps_reference":60,"coordinate_system":"SVG: x right, y down; root motion is relative to the P perch","timeline":[{"state":"perched","clip":"perched_idle","actor":"outbound","duration_ms":1500,"loop":true},{"state":"anticipation","clip":"anticipation_push","actor":"outbound","duration_ms":760,"blend_in_ms":140},{"state":"push_off","clip":"push_off","actor":"outbound","duration_ms":600,"blend_in_ms":110},{"state":"takeoff","clip":"takeoff","actor":"outbound","duration_ms":1450,"blend_in_ms":170},{"state":"outbound","clip":"cruise","actor":"outbound","duration_ms":4700,"loop":true,"blend_in_ms":260},{"state":"empty","actor":"none","duration_ms":850},{"state":"inbound","clip":"cruise","actor":"inbound","duration_ms":4400,"loop":true,"mirror":true},{"state":"approach","clip":"approach","actor":"inbound","duration_ms":1250,"mirror":true,"blend_in_ms":260},{"state":"flare","clip":"flare","actor":"inbound","duration_ms":950,"mirror":true,"blend_in_ms":150},{"state":"touchdown","clip":"touchdown","actor":"inbound","duration_ms":760,"mirror":true,"blend_in_ms":120},{"state":"settle","clip":"settle","actor":"inbound","duration_ms":1150,"mirror":true,"blend_in_ms":160},{"state":"perched_final","clip":"perched_idle","actor":"inbound","duration_ms":1500,"loop":true,"mirror":true,"blend_in_ms":180}],"clips":{"perched_idle":{"loop":true,"keyframes":[{"t":0.0,"root":[0,0,0,1],"wing":[176,38,48,0.58,0.72],"legs":[0,0.05,1]},{"t":0.5,"root":[0,0,0.45,1],"wing":[174,39,49,0.58,0.72],"legs":[0,0.08,1]},{"t":1.0,"root":[0,0,0,1],"wing":[176,38,48,0.58,0.72],"legs":[0,0.05,1]}],"events":[]},"anticipation_push":{"loop":false,"keyframes":[{"t":0.0,"root":[0,0,0,1],"wing":[176,38,48,0.58,0.72],"legs":[0,0.08,1]},{"t":0.3,"root":[0,0,-1.5,0.995],"wing":[184,31,36,0.68,0.79],"legs":[0,0.24,1]},{"t":0.68,"root":[0,0,-6.5,1.0],"wing":[218,18,16,0.88,0.94],"legs":[0,1.0,1]},{"t":1.0,"root":[0,0,-11,1.015],"wing":[238,12,10,1,1],"legs":[0,0.72,1]}],"events":[{"t":0.68,"name":"maximum_crouch"}]},"push_off":{"loop":false,"keyframes":[{"t":0.0,"root":[0,0,-11,1.015],"wing":[238,12,10,1,1],"legs":[0,0.72,1]},{"t":0.28,"root":[0,0,-15,1.02],"wing":[230,9,7,1,1],"legs":[0,0.34,1]},{"t":0.5,"root":[0,0,-19,1.03],"wing":[196,8,6,1,1],"legs":[0,0,1]},{"t":0.58,"root":[8,-12,-20,1.035],"wing":[174,9,7,1,1],"legs":[0.18,0,0]},{"t":1.0,"root":[40,-62,-18,1.03],"wing":[138,11,9,1,1],"legs":[0.75,0,0]}],"events":[{"t":0.52,"name":"toe_off"}]},"takeoff":{"loop":false,"keyframes":[{"t":0.0,"root":[0,0,-18,1.03],"wing":[138,11,9,1.0,1.0],"legs":[0.75,0,0]},{"t":0.18,"root":[23,-50,-20,1.04],"wing":[188,18,20,0.97,0.99],"legs":[0.9,0,0]},{"t":0.4,"root":[55,-108,-22,1.05],"wing":[238,12,10,1.0,1.0],"legs":[1,0,0]},{"t":0.59,"root":[82,-149,-23,1.03],"wing":[143,10,8,0.99,1.0],"legs":[1,0,0]},{"t":0.8,"root":[108,-178,-22,1.01],"wing":[206,18,22,0.97,0.99],"legs":[1,0,0]},{"t":1.0,"root":[140,-196,-20,1.0],"wing":[232,10,7,1.0,1.0],"legs":[1,0,0]}],"events":[{"t":0.59,"name":"second_power_stroke"}]},"cruise":{"loop":true,"keyframes":[{"t":0.0,"root":[0,-2,-2,1],"wing":[232,10,7,1.0,1.0],"legs":[1,0,0]},{"t":0.22,"root":[0,0,-1,1],"wing":[190,10,8,1.0,1.0],"legs":[1,0,0]},{"t":0.48,"root":[0,4,1,1],"wing":[142,11,9,1.0,1.0],"legs":[1,0,0]},{"t":0.72,"root":[0,1,0,1],"wing":[184,18,22,0.97,0.99],"legs":[1,0,0]},{"t":1.0,"root":[0,-2,-2,1],"wing":[232,10,7,1.0,1.0],"legs":[1,0,0]}],"events":[]},"approach":{"loop":false,"keyframes":[{"t":0.0,"root":[245,-178,-11,1],"wing":[208,16,16,1.0,1.0],"legs":[1,0,0]},{"t":0.35,"root":[195,-153,-7,1],"wing":[182,11,9,1.0,1.0],"legs":[0.92,0,0]},{"t":0.7,"root":[150,-127,-1,1],"wing":[148,13,11,1.0,1.0],"legs":[0.72,0,0]},{"t":1.0,"root":[112,-104,3,1],"wing":[198,16,17,1.0,1.0],"legs":[0.48,0,0]}],"events":[{"t":0.58,"name":"gear_down"}]},"flare":{"loop":false,"keyframes":[{"t":0.0,"root":[112,-104,3,1],"wing":[198,16,17,1.0,1.0],"legs":[0.48,0,0]},{"t":0.35,"root":[80,-78,7,0.99],"wing":[224,10,8,1.0,1.0],"legs":[0.2,0,0]},{"t":0.72,"root":[52,-54,12,0.98],"wing":[236,8,6,1.0,1.0],"legs":[0.02,0,0.35]},{"t":1.0,"root":[34,-36,13,0.97],"wing":[222,9,7,1.0,1.0],"legs":[0,0,0.7]}],"events":[{"t":0.24,"name":"flare_start"}]},"touchdown":{"loop":false,"keyframes":[{"t":0.0,"root":[34,-36,13,0.97],"wing":[222,9,7,1.0,1.0],"legs":[0,0,0.7]},{"t":0.3,"root":[21,-22,11,0.95],"wing":[210,12,11,1.0,1.0],"legs":[0,0.05,0.88]},{"t":0.58,"root":[7,-7,7,0.92],"wing":[192,18,21,1.0,1.0],"legs":[0,0.2,1]},{"t":0.72,"root":[0,0,5,0.9],"wing":[178,24,29,0.74,0.84],"legs":[0,0.32,1]},{"t":1.0,"root":[0,0,1,0.88],"wing":[166,28,34,0.64,0.78],"legs":[0,0.12,1]}],"events":[{"t":0.72,"name":"touchdown"},{"t":0.86,"name":"weight_transfer"}]},"settle":{"loop":false,"keyframes":[{"t":0.0,"root":[0,0,5,0.88],"wing":[166,28,34,0.64,0.78],"legs":[0,0.32,1]},{"t":0.24,"root":[0,0,-1.8,0.87],"wing":[165,28,34,0.64,0.78],"legs":[0,0.48,1]},{"t":0.5,"root":[0,0,1.1,0.866],"wing":[164,28,34,0.64,0.78],"legs":[0,0.2,1]},{"t":0.76,"root":[0,0,-0.4,0.864],"wing":[165,28,34,0.64,0.78],"legs":[0,0.1,1]},{"t":1.0,"root":[0,0,0,0.862],"wing":[165,28,34,0.64,0.78],"legs":[0,0.05,1]}],"events":[{"t":0.3,"name":"feet_locked"}]}},"world":{"outbound_curve":[[415,355],[635,258],[1015,160],[1460,128]],"inbound_curve":[[1460,198],[1120,216],[690,315],[505,360]],"scan_progress":0.52,"scan_duration_fraction":0.08,"takeoff_outbound_continuity":"C1"}}]]></metadata>
   <defs>
     <linearGradient id="stage-wash" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="#FFFFFF"/>
@@ -124,9 +124,9 @@ footer { margin-top:16px; color:var(--slate); font-size:.83rem; text-align:right
   <g id="perched-bird" data-perched-bird="true" transform="translate(260 538) scale(0.25) translate(-306 -285)"><svg width="520" height="292" overflow="visible" class="network-bird-svg network-bird-svg--compact" xmlns="http://www.w3.org/2000/svg" viewBox="55 34 520 292" role="img" aria-labelledby="title desc" class="percolia-bird">
   <title id="title">Oiseau-réseau Percolia</title>
   <desc id="desc">Oiseau triangulé Percolia avec rig, clips keyframés et scan depuis la tête.</desc>
-  <metadata id="percolia-network-model" data-network-model="true"><![CDATA[{"name":"Percolia Initial Network Bird","version":"1.1.0","viewBox":[0,0,640,360],"palette":{"ink":"#082C4C","blue":"#1C83D4","cyan":"#20C9C4","mist":"#EAF5F7","white":"#FFFFFF","slate":"#5D7385"},"body":{"nodes":{"t0":[78,210,3.4,"ink","node"],"t1":[126,184,3.0,"ink","node"],"t2":[184,178,3.5,"blue","node"],"t3":[140,216,3.0,"ink","node"],"t4":[88,252,3.4,"ink","node"],"t5":[192,226,3.5,"ink","node"],"t6":[150,202,4.6,"cyan","critical"],"b0":[190,178,3.1,"ink","node"],"b1":[220,144,3.8,"blue","node"],"b2":[262,158,3.2,"ink","node"],"b3":[306,184,4.5,"cyan","critical"],"b4":[350,202,3.5,"ink","node"],"b5":[330,244,3.8,"blue","node"],"b6":[276,270,3.7,"ink","node"],"b7":[220,244,3.2,"ink","node"],"b8":[248,204,4.6,"cyan","critical"],"b9":[292,224,3.0,"ink","node"],"n0":[342,158,4.6,"cyan","critical"],"n1":[368,116,3.4,"ink","node"],"c0":[380,208,3.4,"ink","node"],"h0":[404,96,3.7,"blue","node"],"h1":[444,106,3.1,"ink","node"],"h2":[466,130,4.0,"blue","node"],"h3":[450,158,3.5,"ink","node"],"h4":[408,166,3.3,"ink","node"],"h5":[407,132,4.8,"cyan","critical"],"eye":[438,124,2.3,"ink","decorative"],"q1":[532,144,3.0,"cyan","critical"],"q2":[469,151,2.8,"ink","node"]},"edges":[["t0","t1","mesh"],["t1","t2","mesh"],["t0","t6","critical"],["t6","t2","mesh"],["t0","t4","outline"],["t4","t3","mesh"],["t3","t5","mesh"],["t4","t5","outline"],["t3","t6","mesh"],["t6","t5","mesh"],["t2","t6","mesh"],["t2","b0","outline"],["t2","b1","outline"],["t5","b7","outline"],["b0","b1","mesh"],["b0","b8","mesh"],["b1","b2","mesh"],["b1","b8","mesh"],["b2","b3","mesh"],["b2","b8","mesh"],["b3","b8","critical"],["t6","b8","critical"],["b3","b9","mesh"],["b8","b9","mesh"],["b8","b7","mesh"],["b7","b9","mesh"],["b7","b6","outline"],["b6","b9","mesh"],["b6","b5","outline"],["b5","b9","mesh"],["b5","b4","outline"],["b4","b9","mesh"],["b3","b4","mesh"],["b4","c0","outline"],["b5","c0","mesh"],["b3","n0","critical"],["n0","n1","outline"],["n1","h0","outline"],["h0","h1","outline"],["h1","h2","outline"],["h2","h3","mesh"],["h3","h4","outline"],["h4","c0","outline"],["c0","b4","mesh"],["n0","h5","critical"],["n1","h5","mesh"],["h0","h5","mesh"],["h1","h5","mesh"],["h2","h5","critical"],["h3","h5","mesh"],["h4","h5","mesh"],["n0","h4","mesh"],["n0","c0","mesh"],["h2","q1","critical"],["q1","q2","outline"],["q2","h3","outline"],["q2","h2","mesh"]],"faces":[["f01",["t0","t1","t6"],"cyan",0.1],["f02",["t1","t2","t6"],"blue",0.1],["f03",["t0","t6","t4"],"cyan",0.08],["f04",["t4","t6","t3"],"blue",0.08],["f05",["t3","t6","t5"],"ink",0.07],["f10",["b0","b1","b8"],"cyan",0.1],["f11",["b1","b2","b8"],"blue",0.12],["f12",["b2","b3","b8"],"cyan",0.16],["f13",["b3","b9","b8"],"blue",0.15],["f14",["b3","b4","b9"],"ink",0.08],["f15",["b4","b5","b9"],"blue",0.11],["f16",["b5","b6","b9"],"cyan",0.1],["f17",["b6","b7","b9"],"ink",0.07],["f18",["b7","b8","b9"],"blue",0.09],["f30",["n0","n1","h5"],"cyan",0.1],["f31",["n1","h0","h5"],"blue",0.11],["f32",["h0","h1","h5"],"cyan",0.08],["f33",["h1","h2","h5"],"blue",0.14],["f34",["h2","h3","h5"],"cyan",0.12],["f35",["h3","h4","h5"],"ink",0.08],["f36",["h4","n0","h5"],"blue",0.09],["f37",["b3","n0","b4"],"cyan",0.1],["f38",["n0","h4","c0"],"blue",0.08],["f39",["n0","c0","b4"],"ink",0.07],["f40",["h4","h3","c0"],"cyan",0.08],["f41",["h2","q1","q2"],"blue",0.12],["f42",["h2","q2","h3"],"cyan",0.08]]},"scatter":{"s08":[116,207,2.0,"blue","scatter"],"s07":[147,55,1.4,"ink","scatter"],"s04":[95,112,1.8,"ink","scatter"],"s02":[60,138,1.8,"blue","scatter"],"s01":[42,178,2.2,"ink","scatter"],"s03":[68,246,2.3,"cyan","scatter"],"s06":[126,80,1.7,"cyan","scatter"],"s09":[147,263,1.4,"ink","scatter"],"s05":[106,285,1.6,"blue","scatter"],"s10":[158,126,1.5,"cyan","scatter"]},"wing":{"shoulders":{"near":[306.0,184.0],"far":[290.0,179.0]},"segment_lengths":[55.71355310873648,62.289646009589745,67.05221845696084],"chords":[30.0,42.0,29.0,1.6],"phase_stations":[0,1,2,3,4,5,6],"period_ms":3200,"stroke_center_deg":180,"stroke_amplitude_deg":52,"stroke_harmonic_deg":5,"stroke_harmonic_phase_deg":-28,"elbow_base_deg":9,"elbow_fold_deg":35,"wrist_base_deg":6,"wrist_fold_deg":48,"fold_phase_deg":0,"fold_exponent":1.45,"near_phase_offset":0,"far_phase_offset":0.018,"near_scale":1.0,"far_scale":0.88,"far_opacity":0.27,"leading_fraction":0.34,"folded_pose":{"stroke_deg":176.0,"elbow_deg":38.0,"wrist_deg":48.0,"span_scale":0.58,"chord_scale":0.72},"glide_phase":0.08,"display_pose":{"stroke_deg":201.03751102542182,"elbow_deg":26.565051177077976,"wrist_deg":25.043413161238874,"span_scale":1.0,"chord_scale":1.0},"reference_mesh":{"joints":[[306.0,184.0],[254.0,164.0],[212.0,118.0],[192.0,54.0]],"boundary":[[306.0,184.0],[330.0,146.0],[292.0,104.0],[192.0,54.0],[170.0,96.0],[220.0,144.0],[262.0,158.0]],"core":[244.0,126.0],"boundary_weights":[[1,0,0],[0.82,0.18,0],[0.12,0.78,0.1],[0,0,1],[0,0.16,0.84],[0.1,0.64,0.26],[0.74,0.26,0]],"core_weights":[0.18,0.62,0.2]}},"legs":{"near":{"hip":[306,247],"knee":[307,263],"ankle":[302,279],"toes":[[290,284],[303,285],[315,282]]},"far":{"hip":[326,238],"knee":[329,255],"ankle":[323,274],"toes":[[312,279],[324,280],[336,277]]}},"flight":{"stage_viewBox":[0,0,1360,760],"perch":[260,538],"perched_anchor":[306,285],"flight_anchor":[306,245],"bird_scale":0.29,"perched_scale":0.25,"foot_targets":{"near":{"ankle_offset":[-3,-9],"toe_offsets":[[-13,0],[-2,1],[10,-1]]},"far":{"ankle_offset":[7,-10],"toe_offsets":[[-5,-1],[6,0],[17,-2]]}},"outbound_curve":[[423,349],[670,244],[1030,158],[1460,124]],"inbound_curve":[[1460,198],[1110,220],[640,330],[388,415]],"scan_progress":0.54,"scan_duration_fraction":0.075,"one_shot":true},"scan":{"origin_node":"h5","direction_deg":0,"beam_length":92,"beam_half_angle_deg":11,"return_distance":101,"pulse_ms":520},"art_direction":{"preserve_palette":true,"preserve_network_silhouette":true,"scan_origin":"head_node_h5","beak_emission":false,"reference_profile":"original_upright_network_bird","wing_deformation":"linear_blend_skinning","preserve_reference_wing_mesh":true}}]]></metadata>
+  <metadata id="percolia-network-model" data-network-model="true"><![CDATA[{"name":"Percolia Initial Network Bird","version":"1.2.0","viewBox":[0,0,640,360],"palette":{"ink":"#082C4C","blue":"#1C83D4","cyan":"#20C9C4","mist":"#EAF5F7","white":"#FFFFFF","slate":"#5D7385"},"body":{"nodes":{"t0":[78,210,3.4,"ink","node"],"t1":[126,184,3.0,"ink","node"],"t2":[184,178,3.5,"blue","node"],"t3":[140,216,3.0,"ink","node"],"t4":[88,252,3.4,"ink","node"],"t5":[192,226,3.5,"ink","node"],"t6":[150,202,4.6,"cyan","critical"],"b0":[190,178,3.1,"ink","node"],"b1":[220,144,3.8,"blue","node"],"b2":[262,158,3.2,"ink","node"],"b3":[306,184,4.5,"cyan","critical"],"b4":[350,202,3.5,"ink","node"],"b5":[330,244,3.8,"blue","node"],"b6":[276,270,3.7,"ink","node"],"b7":[220,244,3.2,"ink","node"],"b8":[248,204,4.6,"cyan","critical"],"b9":[292,224,3.0,"ink","node"],"n0":[342,158,4.6,"cyan","critical"],"n1":[368,116,3.4,"ink","node"],"c0":[380,208,3.4,"ink","node"],"h0":[404,96,3.7,"blue","node"],"h1":[444,106,3.1,"ink","node"],"h2":[466,130,4.0,"blue","node"],"h3":[450,158,3.5,"ink","node"],"h4":[408,166,3.3,"ink","node"],"h5":[407,132,4.8,"cyan","critical"],"eye":[438,124,2.3,"ink","decorative"],"q1":[532,144,3.0,"cyan","critical"],"q2":[469,151,2.8,"ink","node"]},"edges":[["t0","t1","mesh"],["t1","t2","mesh"],["t0","t6","critical"],["t6","t2","mesh"],["t0","t4","outline"],["t4","t3","mesh"],["t3","t5","mesh"],["t4","t5","outline"],["t3","t6","mesh"],["t6","t5","mesh"],["t2","t6","mesh"],["t2","b0","outline"],["t2","b1","outline"],["t5","b7","outline"],["b0","b1","mesh"],["b0","b8","mesh"],["b1","b2","mesh"],["b1","b8","mesh"],["b2","b3","mesh"],["b2","b8","mesh"],["b3","b8","critical"],["t6","b8","critical"],["b3","b9","mesh"],["b8","b9","mesh"],["b8","b7","mesh"],["b7","b9","mesh"],["b7","b6","outline"],["b6","b9","mesh"],["b6","b5","outline"],["b5","b9","mesh"],["b5","b4","outline"],["b4","b9","mesh"],["b3","b4","mesh"],["b4","c0","outline"],["b5","c0","mesh"],["b3","n0","critical"],["n0","n1","outline"],["n1","h0","outline"],["h0","h1","outline"],["h1","h2","outline"],["h2","h3","mesh"],["h3","h4","outline"],["h4","c0","outline"],["c0","b4","mesh"],["n0","h5","critical"],["n1","h5","mesh"],["h0","h5","mesh"],["h1","h5","mesh"],["h2","h5","critical"],["h3","h5","mesh"],["h4","h5","mesh"],["n0","h4","mesh"],["n0","c0","mesh"],["h2","q1","critical"],["q1","q2","outline"],["q2","h3","outline"],["q2","h2","mesh"]],"faces":[["f01",["t0","t1","t6"],"cyan",0.1],["f02",["t1","t2","t6"],"blue",0.1],["f03",["t0","t6","t4"],"cyan",0.08],["f04",["t4","t6","t3"],"blue",0.08],["f05",["t3","t6","t5"],"ink",0.07],["f10",["b0","b1","b8"],"cyan",0.1],["f11",["b1","b2","b8"],"blue",0.12],["f12",["b2","b3","b8"],"cyan",0.16],["f13",["b3","b9","b8"],"blue",0.15],["f14",["b3","b4","b9"],"ink",0.08],["f15",["b4","b5","b9"],"blue",0.11],["f16",["b5","b6","b9"],"cyan",0.1],["f17",["b6","b7","b9"],"ink",0.07],["f18",["b7","b8","b9"],"blue",0.09],["f30",["n0","n1","h5"],"cyan",0.1],["f31",["n1","h0","h5"],"blue",0.11],["f32",["h0","h1","h5"],"cyan",0.08],["f33",["h1","h2","h5"],"blue",0.14],["f34",["h2","h3","h5"],"cyan",0.12],["f35",["h3","h4","h5"],"ink",0.08],["f36",["h4","n0","h5"],"blue",0.09],["f37",["b3","n0","b4"],"cyan",0.1],["f38",["n0","h4","c0"],"blue",0.08],["f39",["n0","c0","b4"],"ink",0.07],["f40",["h4","h3","c0"],"cyan",0.08],["f41",["h2","q1","q2"],"blue",0.12],["f42",["h2","q2","h3"],"cyan",0.08]]},"scatter":{"s08":[116,207,2.0,"blue","scatter"],"s07":[147,55,1.4,"ink","scatter"],"s04":[95,112,1.8,"ink","scatter"],"s02":[60,138,1.8,"blue","scatter"],"s01":[42,178,2.2,"ink","scatter"],"s03":[68,246,2.3,"cyan","scatter"],"s06":[126,80,1.7,"cyan","scatter"],"s09":[147,263,1.4,"ink","scatter"],"s05":[106,285,1.6,"blue","scatter"],"s10":[158,126,1.5,"cyan","scatter"]},"wing":{"shoulders":{"near":[306.0,184.0],"far":[290.0,179.0]},"segment_lengths":[55.71355310873648,62.289646009589745,67.05221845696084],"chords":[30.0,42.0,29.0,1.6],"phase_stations":[0,1,2,3,4,5,6],"period_ms":3200,"stroke_center_deg":180,"stroke_amplitude_deg":52,"stroke_harmonic_deg":5,"stroke_harmonic_phase_deg":-28,"elbow_base_deg":9,"elbow_fold_deg":35,"wrist_base_deg":6,"wrist_fold_deg":48,"fold_phase_deg":0,"fold_exponent":1.45,"near_phase_offset":0,"far_phase_offset":0.018,"near_scale":1.0,"far_scale":0.88,"far_opacity":0.27,"leading_fraction":0.34,"folded_pose":{"stroke_deg":176.0,"elbow_deg":38.0,"wrist_deg":48.0,"span_scale":0.58,"chord_scale":0.72},"glide_phase":0.08,"display_pose":{"stroke_deg":201.03751102542182,"elbow_deg":26.565051177077976,"wrist_deg":25.043413161238874,"span_scale":1.0,"chord_scale":1.0},"reference_mesh":{"joints":[[306.0,184.0],[254.0,164.0],[212.0,118.0],[192.0,54.0]],"boundary":[[306.0,184.0],[330.0,146.0],[292.0,104.0],[192.0,54.0],[170.0,96.0],[220.0,144.0],[262.0,158.0]],"core":[244.0,126.0],"boundary_weights":[[1,0,0],[0.82,0.18,0],[0.12,0.78,0.1],[0,0,1],[0,0.16,0.84],[0.1,0.64,0.26],[0.74,0.26,0]],"core_weights":[0.18,0.62,0.2]},"skinning_weight_power":4.0,"shape_preservation":{"mode":"rigid_reference_blend","folded_span":0.64,"extended_span":0.94,"folded_articulation_weight":0.62,"extended_articulation_weight":0.06}},"legs":{"near":{"hip":[306,247],"knee":[307,263],"ankle":[302,279],"toes":[[290,284],[303,285],[315,282]]},"far":{"hip":[326,238],"knee":[329,255],"ankle":[323,274],"toes":[[312,279],[324,280],[336,277]]}},"flight":{"stage_viewBox":[0,0,1360,760],"perch":[260,538],"perched_anchor":[306,285],"flight_anchor":[306,245],"bird_scale":0.29,"perched_scale":0.25,"foot_targets":{"near":{"ankle_offset":[-3,-9],"toe_offsets":[[-13,0],[-2,1],[10,-1]]},"far":{"ankle_offset":[7,-10],"toe_offsets":[[-5,-1],[6,0],[17,-2]]}},"outbound_curve":[[423,349],[670,244],[1030,158],[1460,124]],"inbound_curve":[[1460,198],[1110,220],[640,330],[388,415]],"scan_progress":0.54,"scan_duration_fraction":0.075,"one_shot":true,"takeoff_bridge_start":0.68,"takeoff_exit_speed_px_per_ms":0.145},"scan":{"origin_node":"h5","direction_deg":0,"beam_length":92,"beam_half_angle_deg":11,"return_distance":101,"pulse_ms":520},"art_direction":{"preserve_palette":true,"preserve_network_silhouette":true,"scan_origin":"head_node_h5","beak_emission":false,"reference_profile":"original_upright_network_bird","wing_deformation":"linear_blend_skinning","preserve_reference_wing_mesh":true,"flight_wing_shape":"reference-preserving"}}]]></metadata>
   <defs><filter id="scan-glow" x="-300%" y="-300%" width="600%" height="600%"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
-  <g id="percolia-bird" data-percolia-bird="true" data-model-version="1.1.0">
+  <g id="percolia-bird" data-percolia-bird="true" data-model-version="1.2.0">
     <g id="bird-body-network" data-layer="body">
       <g id="body-faces" data-layer="faces">
         <polygon id="f01" points="78,210 126,184 150,202" fill="#20C9C4" fill-opacity="0.1"/>
@@ -249,41 +249,41 @@ footer { margin-top:16px; color:var(--slate); font-size:.83rem; text-align:right
       </g>
     </g>
     <g id="wing-near" data-wing-side="near" opacity="0.96">
-      <polygon data-wing-outline="true" points="306,184 310.161,159.508 286.434,148.858 238.401,127.54 221.097,151.082 250.24,180.602 276.746,181.305" fill="#EAF5F7" fill-opacity="0.25" stroke="#082C4C" stroke-width="1.55" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+      <polygon data-wing-outline="true" points="306,184 309.291,158.151 283.962,146.546 229.198,133.669 218.458,157.732 251.437,181.352 276.505,181.143" fill="#EAF5F7" fill-opacity="0.25" stroke="#082C4C" stroke-width="1.55" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
       <g data-layer="faces">
-        <polygon data-wing-face="0" points="306,184 310.161,159.508 261.953,168.144" fill="#20C9C4" fill-opacity="0.1"/>
-        <polygon data-wing-face="1" points="310.161,159.508 286.434,148.858 261.953,168.144" fill="#1C83D4" fill-opacity="0.1"/>
-        <polygon data-wing-face="2" points="286.434,148.858 238.401,127.54 261.953,168.144" fill="#082C4C" fill-opacity="0.1"/>
-        <polygon data-wing-face="3" points="238.401,127.54 221.097,151.082 261.953,168.144" fill="#20C9C4" fill-opacity="0.1"/>
-        <polygon data-wing-face="4" points="221.097,151.082 250.24,180.602 261.953,168.144" fill="#1C83D4" fill-opacity="0.1"/>
-        <polygon data-wing-face="5" points="250.24,180.602 276.746,181.305 261.953,168.144" fill="#20C9C4" fill-opacity="0.1"/>
-        <polygon data-wing-face="6" points="276.746,181.305 306,184 261.953,168.144" fill="#1C83D4" fill-opacity="0.1"/>
+        <polygon data-wing-face="0" points="306,184 309.291,158.151 261.488,167.223" fill="#20C9C4" fill-opacity="0.1"/>
+        <polygon data-wing-face="1" points="309.291,158.151 283.962,146.546 261.488,167.223" fill="#1C83D4" fill-opacity="0.1"/>
+        <polygon data-wing-face="2" points="283.962,146.546 229.198,133.669 261.488,167.223" fill="#082C4C" fill-opacity="0.1"/>
+        <polygon data-wing-face="3" points="229.198,133.669 218.458,157.732 261.488,167.223" fill="#20C9C4" fill-opacity="0.1"/>
+        <polygon data-wing-face="4" points="218.458,157.732 251.437,181.352 261.488,167.223" fill="#1C83D4" fill-opacity="0.1"/>
+        <polygon data-wing-face="5" points="251.437,181.352 276.505,181.143 261.488,167.223" fill="#20C9C4" fill-opacity="0.1"/>
+        <polygon data-wing-face="6" points="276.505,181.143 306,184 261.488,167.223" fill="#1C83D4" fill-opacity="0.1"/>
       </g>
       <g fill="none" stroke-linecap="round" stroke-linejoin="round">
-        <line data-wing-boundary="0" x1="306" y1="184" x2="310.161" y2="159.508" stroke="#082C4C" stroke-width="1.45" vector-effect="non-scaling-stroke"/>
-        <line data-wing-spoke="0" x1="306" y1="184" x2="261.953" y2="168.144" stroke="#082C4C" stroke-width="0.85" vector-effect="non-scaling-stroke"/>
-        <line data-wing-boundary="1" x1="310.161" y1="159.508" x2="286.434" y2="148.858" stroke="#082C4C" stroke-width="1.45" vector-effect="non-scaling-stroke"/>
-        <line data-wing-spoke="1" x1="310.161" y1="159.508" x2="261.953" y2="168.144" stroke="#1C83D4" stroke-width="0.85" vector-effect="non-scaling-stroke"/>
-        <line data-wing-boundary="2" x1="286.434" y1="148.858" x2="238.401" y2="127.54" stroke="#082C4C" stroke-width="1.45" vector-effect="non-scaling-stroke"/>
-        <line data-wing-spoke="2" x1="286.434" y1="148.858" x2="261.953" y2="168.144" stroke="#082C4C" stroke-width="0.85" vector-effect="non-scaling-stroke"/>
-        <line data-wing-boundary="3" x1="238.401" y1="127.54" x2="221.097" y2="151.082" stroke="#082C4C" stroke-width="1.45" vector-effect="non-scaling-stroke"/>
-        <line data-wing-spoke="3" x1="238.401" y1="127.54" x2="261.953" y2="168.144" stroke="#1C83D4" stroke-width="0.85" vector-effect="non-scaling-stroke"/>
-        <line data-wing-boundary="4" x1="221.097" y1="151.082" x2="250.24" y2="180.602" stroke="#082C4C" stroke-width="1.45" vector-effect="non-scaling-stroke"/>
-        <line data-wing-spoke="4" x1="221.097" y1="151.082" x2="261.953" y2="168.144" stroke="#082C4C" stroke-width="0.85" vector-effect="non-scaling-stroke"/>
-        <line data-wing-boundary="5" x1="250.24" y1="180.602" x2="276.746" y2="181.305" stroke="#082C4C" stroke-width="1.45" vector-effect="non-scaling-stroke"/>
-        <line data-wing-spoke="5" x1="250.24" y1="180.602" x2="261.953" y2="168.144" stroke="#1C83D4" stroke-width="0.85" vector-effect="non-scaling-stroke"/>
-        <line data-wing-boundary="6" x1="276.746" y1="181.305" x2="306" y2="184" stroke="#082C4C" stroke-width="1.45" vector-effect="non-scaling-stroke"/>
-        <line data-wing-spoke="6" x1="276.746" y1="181.305" x2="261.953" y2="168.144" stroke="#082C4C" stroke-width="0.85" vector-effect="non-scaling-stroke"/>
+        <line data-wing-boundary="0" x1="306" y1="184" x2="309.291" y2="158.151" stroke="#082C4C" stroke-width="1.45" vector-effect="non-scaling-stroke"/>
+        <line data-wing-spoke="0" x1="306" y1="184" x2="261.488" y2="167.223" stroke="#082C4C" stroke-width="0.85" vector-effect="non-scaling-stroke"/>
+        <line data-wing-boundary="1" x1="309.291" y1="158.151" x2="283.962" y2="146.546" stroke="#082C4C" stroke-width="1.45" vector-effect="non-scaling-stroke"/>
+        <line data-wing-spoke="1" x1="309.291" y1="158.151" x2="261.488" y2="167.223" stroke="#1C83D4" stroke-width="0.85" vector-effect="non-scaling-stroke"/>
+        <line data-wing-boundary="2" x1="283.962" y1="146.546" x2="229.198" y2="133.669" stroke="#082C4C" stroke-width="1.45" vector-effect="non-scaling-stroke"/>
+        <line data-wing-spoke="2" x1="283.962" y1="146.546" x2="261.488" y2="167.223" stroke="#082C4C" stroke-width="0.85" vector-effect="non-scaling-stroke"/>
+        <line data-wing-boundary="3" x1="229.198" y1="133.669" x2="218.458" y2="157.732" stroke="#082C4C" stroke-width="1.45" vector-effect="non-scaling-stroke"/>
+        <line data-wing-spoke="3" x1="229.198" y1="133.669" x2="261.488" y2="167.223" stroke="#1C83D4" stroke-width="0.85" vector-effect="non-scaling-stroke"/>
+        <line data-wing-boundary="4" x1="218.458" y1="157.732" x2="251.437" y2="181.352" stroke="#082C4C" stroke-width="1.45" vector-effect="non-scaling-stroke"/>
+        <line data-wing-spoke="4" x1="218.458" y1="157.732" x2="261.488" y2="167.223" stroke="#082C4C" stroke-width="0.85" vector-effect="non-scaling-stroke"/>
+        <line data-wing-boundary="5" x1="251.437" y1="181.352" x2="276.505" y2="181.143" stroke="#082C4C" stroke-width="1.45" vector-effect="non-scaling-stroke"/>
+        <line data-wing-spoke="5" x1="251.437" y1="181.352" x2="261.488" y2="167.223" stroke="#1C83D4" stroke-width="0.85" vector-effect="non-scaling-stroke"/>
+        <line data-wing-boundary="6" x1="276.505" y1="181.143" x2="306" y2="184" stroke="#082C4C" stroke-width="1.45" vector-effect="non-scaling-stroke"/>
+        <line data-wing-spoke="6" x1="276.505" y1="181.143" x2="261.488" y2="167.223" stroke="#082C4C" stroke-width="0.85" vector-effect="non-scaling-stroke"/>
       </g>
       <g data-layer="nodes">
         <circle data-wing-node="0" cx="306" cy="184" r="2.25" fill="#20C9C4" stroke="#FFFFFF" stroke-width="0.65" vector-effect="non-scaling-stroke"/>
-        <circle data-wing-node="1" cx="310.161" cy="159.508" r="2.25" fill="#1C83D4" stroke="#FFFFFF" stroke-width="0.65" vector-effect="non-scaling-stroke"/>
-        <circle data-wing-node="2" cx="286.434" cy="148.858" r="2.25" fill="#082C4C" stroke="#FFFFFF" stroke-width="0.65" vector-effect="non-scaling-stroke"/>
-        <circle data-wing-node="3" cx="238.401" cy="127.54" r="2.7" fill="#20C9C4" stroke="#FFFFFF" stroke-width="0.65" vector-effect="non-scaling-stroke"/>
-        <circle data-wing-node="4" cx="221.097" cy="151.082" r="2.25" fill="#1C83D4" stroke="#FFFFFF" stroke-width="0.65" vector-effect="non-scaling-stroke"/>
-        <circle data-wing-node="5" cx="250.24" cy="180.602" r="2.25" fill="#20C9C4" stroke="#FFFFFF" stroke-width="0.65" vector-effect="non-scaling-stroke"/>
-        <circle data-wing-node="6" cx="276.746" cy="181.305" r="2.25" fill="#082C4C" stroke="#FFFFFF" stroke-width="0.65" vector-effect="non-scaling-stroke"/>
-        <circle data-wing-core="true" cx="261.953" cy="168.144" r="3.4" fill="#20C9C4" stroke="#FFFFFF" stroke-width="0.7" vector-effect="non-scaling-stroke"/>
+        <circle data-wing-node="1" cx="309.291" cy="158.151" r="2.25" fill="#1C83D4" stroke="#FFFFFF" stroke-width="0.65" vector-effect="non-scaling-stroke"/>
+        <circle data-wing-node="2" cx="283.962" cy="146.546" r="2.25" fill="#082C4C" stroke="#FFFFFF" stroke-width="0.65" vector-effect="non-scaling-stroke"/>
+        <circle data-wing-node="3" cx="229.198" cy="133.669" r="2.7" fill="#20C9C4" stroke="#FFFFFF" stroke-width="0.65" vector-effect="non-scaling-stroke"/>
+        <circle data-wing-node="4" cx="218.458" cy="157.732" r="2.25" fill="#1C83D4" stroke="#FFFFFF" stroke-width="0.65" vector-effect="non-scaling-stroke"/>
+        <circle data-wing-node="5" cx="251.437" cy="181.352" r="2.25" fill="#20C9C4" stroke="#FFFFFF" stroke-width="0.65" vector-effect="non-scaling-stroke"/>
+        <circle data-wing-node="6" cx="276.505" cy="181.143" r="2.25" fill="#082C4C" stroke="#FFFFFF" stroke-width="0.65" vector-effect="non-scaling-stroke"/>
+        <circle data-wing-core="true" cx="261.488" cy="167.223" r="3.4" fill="#20C9C4" stroke="#FFFFFF" stroke-width="0.7" vector-effect="non-scaling-stroke"/>
       </g>
     </g>
     <g id="bird-legs" data-layer="legs" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -306,9 +306,9 @@ footer { margin-top:16px; color:var(--slate); font-size:.83rem; text-align:right
   <g id="outbound-bird" data-flight-bird="outbound" opacity="0"><svg width="640" height="360" overflow="visible" class="network-bird-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-labelledby="title desc" class="percolia-bird">
   <title id="title">Oiseau-réseau Percolia</title>
   <desc id="desc">Oiseau triangulé Percolia avec rig, clips keyframés et scan depuis la tête.</desc>
-  <metadata id="percolia-network-model" data-network-model="true"><![CDATA[{"name":"Percolia Initial Network Bird","version":"1.1.0","viewBox":[0,0,640,360],"palette":{"ink":"#082C4C","blue":"#1C83D4","cyan":"#20C9C4","mist":"#EAF5F7","white":"#FFFFFF","slate":"#5D7385"},"body":{"nodes":{"t0":[78,210,3.4,"ink","node"],"t1":[126,184,3.0,"ink","node"],"t2":[184,178,3.5,"blue","node"],"t3":[140,216,3.0,"ink","node"],"t4":[88,252,3.4,"ink","node"],"t5":[192,226,3.5,"ink","node"],"t6":[150,202,4.6,"cyan","critical"],"b0":[190,178,3.1,"ink","node"],"b1":[220,144,3.8,"blue","node"],"b2":[262,158,3.2,"ink","node"],"b3":[306,184,4.5,"cyan","critical"],"b4":[350,202,3.5,"ink","node"],"b5":[330,244,3.8,"blue","node"],"b6":[276,270,3.7,"ink","node"],"b7":[220,244,3.2,"ink","node"],"b8":[248,204,4.6,"cyan","critical"],"b9":[292,224,3.0,"ink","node"],"n0":[342,158,4.6,"cyan","critical"],"n1":[368,116,3.4,"ink","node"],"c0":[380,208,3.4,"ink","node"],"h0":[404,96,3.7,"blue","node"],"h1":[444,106,3.1,"ink","node"],"h2":[466,130,4.0,"blue","node"],"h3":[450,158,3.5,"ink","node"],"h4":[408,166,3.3,"ink","node"],"h5":[407,132,4.8,"cyan","critical"],"eye":[438,124,2.3,"ink","decorative"],"q1":[532,144,3.0,"cyan","critical"],"q2":[469,151,2.8,"ink","node"]},"edges":[["t0","t1","mesh"],["t1","t2","mesh"],["t0","t6","critical"],["t6","t2","mesh"],["t0","t4","outline"],["t4","t3","mesh"],["t3","t5","mesh"],["t4","t5","outline"],["t3","t6","mesh"],["t6","t5","mesh"],["t2","t6","mesh"],["t2","b0","outline"],["t2","b1","outline"],["t5","b7","outline"],["b0","b1","mesh"],["b0","b8","mesh"],["b1","b2","mesh"],["b1","b8","mesh"],["b2","b3","mesh"],["b2","b8","mesh"],["b3","b8","critical"],["t6","b8","critical"],["b3","b9","mesh"],["b8","b9","mesh"],["b8","b7","mesh"],["b7","b9","mesh"],["b7","b6","outline"],["b6","b9","mesh"],["b6","b5","outline"],["b5","b9","mesh"],["b5","b4","outline"],["b4","b9","mesh"],["b3","b4","mesh"],["b4","c0","outline"],["b5","c0","mesh"],["b3","n0","critical"],["n0","n1","outline"],["n1","h0","outline"],["h0","h1","outline"],["h1","h2","outline"],["h2","h3","mesh"],["h3","h4","outline"],["h4","c0","outline"],["c0","b4","mesh"],["n0","h5","critical"],["n1","h5","mesh"],["h0","h5","mesh"],["h1","h5","mesh"],["h2","h5","critical"],["h3","h5","mesh"],["h4","h5","mesh"],["n0","h4","mesh"],["n0","c0","mesh"],["h2","q1","critical"],["q1","q2","outline"],["q2","h3","outline"],["q2","h2","mesh"]],"faces":[["f01",["t0","t1","t6"],"cyan",0.1],["f02",["t1","t2","t6"],"blue",0.1],["f03",["t0","t6","t4"],"cyan",0.08],["f04",["t4","t6","t3"],"blue",0.08],["f05",["t3","t6","t5"],"ink",0.07],["f10",["b0","b1","b8"],"cyan",0.1],["f11",["b1","b2","b8"],"blue",0.12],["f12",["b2","b3","b8"],"cyan",0.16],["f13",["b3","b9","b8"],"blue",0.15],["f14",["b3","b4","b9"],"ink",0.08],["f15",["b4","b5","b9"],"blue",0.11],["f16",["b5","b6","b9"],"cyan",0.1],["f17",["b6","b7","b9"],"ink",0.07],["f18",["b7","b8","b9"],"blue",0.09],["f30",["n0","n1","h5"],"cyan",0.1],["f31",["n1","h0","h5"],"blue",0.11],["f32",["h0","h1","h5"],"cyan",0.08],["f33",["h1","h2","h5"],"blue",0.14],["f34",["h2","h3","h5"],"cyan",0.12],["f35",["h3","h4","h5"],"ink",0.08],["f36",["h4","n0","h5"],"blue",0.09],["f37",["b3","n0","b4"],"cyan",0.1],["f38",["n0","h4","c0"],"blue",0.08],["f39",["n0","c0","b4"],"ink",0.07],["f40",["h4","h3","c0"],"cyan",0.08],["f41",["h2","q1","q2"],"blue",0.12],["f42",["h2","q2","h3"],"cyan",0.08]]},"scatter":{"s08":[116,207,2.0,"blue","scatter"],"s07":[147,55,1.4,"ink","scatter"],"s04":[95,112,1.8,"ink","scatter"],"s02":[60,138,1.8,"blue","scatter"],"s01":[42,178,2.2,"ink","scatter"],"s03":[68,246,2.3,"cyan","scatter"],"s06":[126,80,1.7,"cyan","scatter"],"s09":[147,263,1.4,"ink","scatter"],"s05":[106,285,1.6,"blue","scatter"],"s10":[158,126,1.5,"cyan","scatter"]},"wing":{"shoulders":{"near":[306.0,184.0],"far":[290.0,179.0]},"segment_lengths":[55.71355310873648,62.289646009589745,67.05221845696084],"chords":[30.0,42.0,29.0,1.6],"phase_stations":[0,1,2,3,4,5,6],"period_ms":3200,"stroke_center_deg":180,"stroke_amplitude_deg":52,"stroke_harmonic_deg":5,"stroke_harmonic_phase_deg":-28,"elbow_base_deg":9,"elbow_fold_deg":35,"wrist_base_deg":6,"wrist_fold_deg":48,"fold_phase_deg":0,"fold_exponent":1.45,"near_phase_offset":0,"far_phase_offset":0.018,"near_scale":1.0,"far_scale":0.88,"far_opacity":0.27,"leading_fraction":0.34,"folded_pose":{"stroke_deg":176.0,"elbow_deg":38.0,"wrist_deg":48.0,"span_scale":0.58,"chord_scale":0.72},"glide_phase":0.08,"display_pose":{"stroke_deg":201.03751102542182,"elbow_deg":26.565051177077976,"wrist_deg":25.043413161238874,"span_scale":1.0,"chord_scale":1.0},"reference_mesh":{"joints":[[306.0,184.0],[254.0,164.0],[212.0,118.0],[192.0,54.0]],"boundary":[[306.0,184.0],[330.0,146.0],[292.0,104.0],[192.0,54.0],[170.0,96.0],[220.0,144.0],[262.0,158.0]],"core":[244.0,126.0],"boundary_weights":[[1,0,0],[0.82,0.18,0],[0.12,0.78,0.1],[0,0,1],[0,0.16,0.84],[0.1,0.64,0.26],[0.74,0.26,0]],"core_weights":[0.18,0.62,0.2]}},"legs":{"near":{"hip":[306,247],"knee":[307,263],"ankle":[302,279],"toes":[[290,284],[303,285],[315,282]]},"far":{"hip":[326,238],"knee":[329,255],"ankle":[323,274],"toes":[[312,279],[324,280],[336,277]]}},"flight":{"stage_viewBox":[0,0,1360,760],"perch":[260,538],"perched_anchor":[306,285],"flight_anchor":[306,245],"bird_scale":0.29,"perched_scale":0.25,"foot_targets":{"near":{"ankle_offset":[-3,-9],"toe_offsets":[[-13,0],[-2,1],[10,-1]]},"far":{"ankle_offset":[7,-10],"toe_offsets":[[-5,-1],[6,0],[17,-2]]}},"outbound_curve":[[423,349],[670,244],[1030,158],[1460,124]],"inbound_curve":[[1460,198],[1110,220],[640,330],[388,415]],"scan_progress":0.54,"scan_duration_fraction":0.075,"one_shot":true},"scan":{"origin_node":"h5","direction_deg":0,"beam_length":92,"beam_half_angle_deg":11,"return_distance":101,"pulse_ms":520},"art_direction":{"preserve_palette":true,"preserve_network_silhouette":true,"scan_origin":"head_node_h5","beak_emission":false,"reference_profile":"original_upright_network_bird","wing_deformation":"linear_blend_skinning","preserve_reference_wing_mesh":true}}]]></metadata>
+  <metadata id="percolia-network-model" data-network-model="true"><![CDATA[{"name":"Percolia Initial Network Bird","version":"1.2.0","viewBox":[0,0,640,360],"palette":{"ink":"#082C4C","blue":"#1C83D4","cyan":"#20C9C4","mist":"#EAF5F7","white":"#FFFFFF","slate":"#5D7385"},"body":{"nodes":{"t0":[78,210,3.4,"ink","node"],"t1":[126,184,3.0,"ink","node"],"t2":[184,178,3.5,"blue","node"],"t3":[140,216,3.0,"ink","node"],"t4":[88,252,3.4,"ink","node"],"t5":[192,226,3.5,"ink","node"],"t6":[150,202,4.6,"cyan","critical"],"b0":[190,178,3.1,"ink","node"],"b1":[220,144,3.8,"blue","node"],"b2":[262,158,3.2,"ink","node"],"b3":[306,184,4.5,"cyan","critical"],"b4":[350,202,3.5,"ink","node"],"b5":[330,244,3.8,"blue","node"],"b6":[276,270,3.7,"ink","node"],"b7":[220,244,3.2,"ink","node"],"b8":[248,204,4.6,"cyan","critical"],"b9":[292,224,3.0,"ink","node"],"n0":[342,158,4.6,"cyan","critical"],"n1":[368,116,3.4,"ink","node"],"c0":[380,208,3.4,"ink","node"],"h0":[404,96,3.7,"blue","node"],"h1":[444,106,3.1,"ink","node"],"h2":[466,130,4.0,"blue","node"],"h3":[450,158,3.5,"ink","node"],"h4":[408,166,3.3,"ink","node"],"h5":[407,132,4.8,"cyan","critical"],"eye":[438,124,2.3,"ink","decorative"],"q1":[532,144,3.0,"cyan","critical"],"q2":[469,151,2.8,"ink","node"]},"edges":[["t0","t1","mesh"],["t1","t2","mesh"],["t0","t6","critical"],["t6","t2","mesh"],["t0","t4","outline"],["t4","t3","mesh"],["t3","t5","mesh"],["t4","t5","outline"],["t3","t6","mesh"],["t6","t5","mesh"],["t2","t6","mesh"],["t2","b0","outline"],["t2","b1","outline"],["t5","b7","outline"],["b0","b1","mesh"],["b0","b8","mesh"],["b1","b2","mesh"],["b1","b8","mesh"],["b2","b3","mesh"],["b2","b8","mesh"],["b3","b8","critical"],["t6","b8","critical"],["b3","b9","mesh"],["b8","b9","mesh"],["b8","b7","mesh"],["b7","b9","mesh"],["b7","b6","outline"],["b6","b9","mesh"],["b6","b5","outline"],["b5","b9","mesh"],["b5","b4","outline"],["b4","b9","mesh"],["b3","b4","mesh"],["b4","c0","outline"],["b5","c0","mesh"],["b3","n0","critical"],["n0","n1","outline"],["n1","h0","outline"],["h0","h1","outline"],["h1","h2","outline"],["h2","h3","mesh"],["h3","h4","outline"],["h4","c0","outline"],["c0","b4","mesh"],["n0","h5","critical"],["n1","h5","mesh"],["h0","h5","mesh"],["h1","h5","mesh"],["h2","h5","critical"],["h3","h5","mesh"],["h4","h5","mesh"],["n0","h4","mesh"],["n0","c0","mesh"],["h2","q1","critical"],["q1","q2","outline"],["q2","h3","outline"],["q2","h2","mesh"]],"faces":[["f01",["t0","t1","t6"],"cyan",0.1],["f02",["t1","t2","t6"],"blue",0.1],["f03",["t0","t6","t4"],"cyan",0.08],["f04",["t4","t6","t3"],"blue",0.08],["f05",["t3","t6","t5"],"ink",0.07],["f10",["b0","b1","b8"],"cyan",0.1],["f11",["b1","b2","b8"],"blue",0.12],["f12",["b2","b3","b8"],"cyan",0.16],["f13",["b3","b9","b8"],"blue",0.15],["f14",["b3","b4","b9"],"ink",0.08],["f15",["b4","b5","b9"],"blue",0.11],["f16",["b5","b6","b9"],"cyan",0.1],["f17",["b6","b7","b9"],"ink",0.07],["f18",["b7","b8","b9"],"blue",0.09],["f30",["n0","n1","h5"],"cyan",0.1],["f31",["n1","h0","h5"],"blue",0.11],["f32",["h0","h1","h5"],"cyan",0.08],["f33",["h1","h2","h5"],"blue",0.14],["f34",["h2","h3","h5"],"cyan",0.12],["f35",["h3","h4","h5"],"ink",0.08],["f36",["h4","n0","h5"],"blue",0.09],["f37",["b3","n0","b4"],"cyan",0.1],["f38",["n0","h4","c0"],"blue",0.08],["f39",["n0","c0","b4"],"ink",0.07],["f40",["h4","h3","c0"],"cyan",0.08],["f41",["h2","q1","q2"],"blue",0.12],["f42",["h2","q2","h3"],"cyan",0.08]]},"scatter":{"s08":[116,207,2.0,"blue","scatter"],"s07":[147,55,1.4,"ink","scatter"],"s04":[95,112,1.8,"ink","scatter"],"s02":[60,138,1.8,"blue","scatter"],"s01":[42,178,2.2,"ink","scatter"],"s03":[68,246,2.3,"cyan","scatter"],"s06":[126,80,1.7,"cyan","scatter"],"s09":[147,263,1.4,"ink","scatter"],"s05":[106,285,1.6,"blue","scatter"],"s10":[158,126,1.5,"cyan","scatter"]},"wing":{"shoulders":{"near":[306.0,184.0],"far":[290.0,179.0]},"segment_lengths":[55.71355310873648,62.289646009589745,67.05221845696084],"chords":[30.0,42.0,29.0,1.6],"phase_stations":[0,1,2,3,4,5,6],"period_ms":3200,"stroke_center_deg":180,"stroke_amplitude_deg":52,"stroke_harmonic_deg":5,"stroke_harmonic_phase_deg":-28,"elbow_base_deg":9,"elbow_fold_deg":35,"wrist_base_deg":6,"wrist_fold_deg":48,"fold_phase_deg":0,"fold_exponent":1.45,"near_phase_offset":0,"far_phase_offset":0.018,"near_scale":1.0,"far_scale":0.88,"far_opacity":0.27,"leading_fraction":0.34,"folded_pose":{"stroke_deg":176.0,"elbow_deg":38.0,"wrist_deg":48.0,"span_scale":0.58,"chord_scale":0.72},"glide_phase":0.08,"display_pose":{"stroke_deg":201.03751102542182,"elbow_deg":26.565051177077976,"wrist_deg":25.043413161238874,"span_scale":1.0,"chord_scale":1.0},"reference_mesh":{"joints":[[306.0,184.0],[254.0,164.0],[212.0,118.0],[192.0,54.0]],"boundary":[[306.0,184.0],[330.0,146.0],[292.0,104.0],[192.0,54.0],[170.0,96.0],[220.0,144.0],[262.0,158.0]],"core":[244.0,126.0],"boundary_weights":[[1,0,0],[0.82,0.18,0],[0.12,0.78,0.1],[0,0,1],[0,0.16,0.84],[0.1,0.64,0.26],[0.74,0.26,0]],"core_weights":[0.18,0.62,0.2]},"skinning_weight_power":4.0,"shape_preservation":{"mode":"rigid_reference_blend","folded_span":0.64,"extended_span":0.94,"folded_articulation_weight":0.62,"extended_articulation_weight":0.06}},"legs":{"near":{"hip":[306,247],"knee":[307,263],"ankle":[302,279],"toes":[[290,284],[303,285],[315,282]]},"far":{"hip":[326,238],"knee":[329,255],"ankle":[323,274],"toes":[[312,279],[324,280],[336,277]]}},"flight":{"stage_viewBox":[0,0,1360,760],"perch":[260,538],"perched_anchor":[306,285],"flight_anchor":[306,245],"bird_scale":0.29,"perched_scale":0.25,"foot_targets":{"near":{"ankle_offset":[-3,-9],"toe_offsets":[[-13,0],[-2,1],[10,-1]]},"far":{"ankle_offset":[7,-10],"toe_offsets":[[-5,-1],[6,0],[17,-2]]}},"outbound_curve":[[423,349],[670,244],[1030,158],[1460,124]],"inbound_curve":[[1460,198],[1110,220],[640,330],[388,415]],"scan_progress":0.54,"scan_duration_fraction":0.075,"one_shot":true,"takeoff_bridge_start":0.68,"takeoff_exit_speed_px_per_ms":0.145},"scan":{"origin_node":"h5","direction_deg":0,"beam_length":92,"beam_half_angle_deg":11,"return_distance":101,"pulse_ms":520},"art_direction":{"preserve_palette":true,"preserve_network_silhouette":true,"scan_origin":"head_node_h5","beak_emission":false,"reference_profile":"original_upright_network_bird","wing_deformation":"linear_blend_skinning","preserve_reference_wing_mesh":true,"flight_wing_shape":"reference-preserving"}}]]></metadata>
   <defs><filter id="scan-glow" x="-300%" y="-300%" width="600%" height="600%"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
-  <g id="percolia-bird" data-percolia-bird="true" data-model-version="1.1.0">
+  <g id="percolia-bird" data-percolia-bird="true" data-model-version="1.2.0">
     <g id="bird-scatter" data-layer="scatter" opacity="0.50">
       <circle id="scatter-s08" cx="116" cy="207" r="2" fill="#1C83D4"/>
       <circle id="scatter-s07" cx="147" cy="55" r="1.4" fill="#082C4C"/>
@@ -543,9 +543,9 @@ footer { margin-top:16px; color:var(--slate); font-size:.83rem; text-align:right
   <g id="inbound-bird" data-flight-bird="inbound" opacity="0"><svg width="640" height="360" overflow="visible" class="network-bird-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-labelledby="title desc" class="percolia-bird">
   <title id="title">Oiseau-réseau Percolia</title>
   <desc id="desc">Oiseau triangulé Percolia avec rig, clips keyframés et scan depuis la tête.</desc>
-  <metadata id="percolia-network-model" data-network-model="true"><![CDATA[{"name":"Percolia Initial Network Bird","version":"1.1.0","viewBox":[0,0,640,360],"palette":{"ink":"#082C4C","blue":"#1C83D4","cyan":"#20C9C4","mist":"#EAF5F7","white":"#FFFFFF","slate":"#5D7385"},"body":{"nodes":{"t0":[78,210,3.4,"ink","node"],"t1":[126,184,3.0,"ink","node"],"t2":[184,178,3.5,"blue","node"],"t3":[140,216,3.0,"ink","node"],"t4":[88,252,3.4,"ink","node"],"t5":[192,226,3.5,"ink","node"],"t6":[150,202,4.6,"cyan","critical"],"b0":[190,178,3.1,"ink","node"],"b1":[220,144,3.8,"blue","node"],"b2":[262,158,3.2,"ink","node"],"b3":[306,184,4.5,"cyan","critical"],"b4":[350,202,3.5,"ink","node"],"b5":[330,244,3.8,"blue","node"],"b6":[276,270,3.7,"ink","node"],"b7":[220,244,3.2,"ink","node"],"b8":[248,204,4.6,"cyan","critical"],"b9":[292,224,3.0,"ink","node"],"n0":[342,158,4.6,"cyan","critical"],"n1":[368,116,3.4,"ink","node"],"c0":[380,208,3.4,"ink","node"],"h0":[404,96,3.7,"blue","node"],"h1":[444,106,3.1,"ink","node"],"h2":[466,130,4.0,"blue","node"],"h3":[450,158,3.5,"ink","node"],"h4":[408,166,3.3,"ink","node"],"h5":[407,132,4.8,"cyan","critical"],"eye":[438,124,2.3,"ink","decorative"],"q1":[532,144,3.0,"cyan","critical"],"q2":[469,151,2.8,"ink","node"]},"edges":[["t0","t1","mesh"],["t1","t2","mesh"],["t0","t6","critical"],["t6","t2","mesh"],["t0","t4","outline"],["t4","t3","mesh"],["t3","t5","mesh"],["t4","t5","outline"],["t3","t6","mesh"],["t6","t5","mesh"],["t2","t6","mesh"],["t2","b0","outline"],["t2","b1","outline"],["t5","b7","outline"],["b0","b1","mesh"],["b0","b8","mesh"],["b1","b2","mesh"],["b1","b8","mesh"],["b2","b3","mesh"],["b2","b8","mesh"],["b3","b8","critical"],["t6","b8","critical"],["b3","b9","mesh"],["b8","b9","mesh"],["b8","b7","mesh"],["b7","b9","mesh"],["b7","b6","outline"],["b6","b9","mesh"],["b6","b5","outline"],["b5","b9","mesh"],["b5","b4","outline"],["b4","b9","mesh"],["b3","b4","mesh"],["b4","c0","outline"],["b5","c0","mesh"],["b3","n0","critical"],["n0","n1","outline"],["n1","h0","outline"],["h0","h1","outline"],["h1","h2","outline"],["h2","h3","mesh"],["h3","h4","outline"],["h4","c0","outline"],["c0","b4","mesh"],["n0","h5","critical"],["n1","h5","mesh"],["h0","h5","mesh"],["h1","h5","mesh"],["h2","h5","critical"],["h3","h5","mesh"],["h4","h5","mesh"],["n0","h4","mesh"],["n0","c0","mesh"],["h2","q1","critical"],["q1","q2","outline"],["q2","h3","outline"],["q2","h2","mesh"]],"faces":[["f01",["t0","t1","t6"],"cyan",0.1],["f02",["t1","t2","t6"],"blue",0.1],["f03",["t0","t6","t4"],"cyan",0.08],["f04",["t4","t6","t3"],"blue",0.08],["f05",["t3","t6","t5"],"ink",0.07],["f10",["b0","b1","b8"],"cyan",0.1],["f11",["b1","b2","b8"],"blue",0.12],["f12",["b2","b3","b8"],"cyan",0.16],["f13",["b3","b9","b8"],"blue",0.15],["f14",["b3","b4","b9"],"ink",0.08],["f15",["b4","b5","b9"],"blue",0.11],["f16",["b5","b6","b9"],"cyan",0.1],["f17",["b6","b7","b9"],"ink",0.07],["f18",["b7","b8","b9"],"blue",0.09],["f30",["n0","n1","h5"],"cyan",0.1],["f31",["n1","h0","h5"],"blue",0.11],["f32",["h0","h1","h5"],"cyan",0.08],["f33",["h1","h2","h5"],"blue",0.14],["f34",["h2","h3","h5"],"cyan",0.12],["f35",["h3","h4","h5"],"ink",0.08],["f36",["h4","n0","h5"],"blue",0.09],["f37",["b3","n0","b4"],"cyan",0.1],["f38",["n0","h4","c0"],"blue",0.08],["f39",["n0","c0","b4"],"ink",0.07],["f40",["h4","h3","c0"],"cyan",0.08],["f41",["h2","q1","q2"],"blue",0.12],["f42",["h2","q2","h3"],"cyan",0.08]]},"scatter":{"s08":[116,207,2.0,"blue","scatter"],"s07":[147,55,1.4,"ink","scatter"],"s04":[95,112,1.8,"ink","scatter"],"s02":[60,138,1.8,"blue","scatter"],"s01":[42,178,2.2,"ink","scatter"],"s03":[68,246,2.3,"cyan","scatter"],"s06":[126,80,1.7,"cyan","scatter"],"s09":[147,263,1.4,"ink","scatter"],"s05":[106,285,1.6,"blue","scatter"],"s10":[158,126,1.5,"cyan","scatter"]},"wing":{"shoulders":{"near":[306.0,184.0],"far":[290.0,179.0]},"segment_lengths":[55.71355310873648,62.289646009589745,67.05221845696084],"chords":[30.0,42.0,29.0,1.6],"phase_stations":[0,1,2,3,4,5,6],"period_ms":3200,"stroke_center_deg":180,"stroke_amplitude_deg":52,"stroke_harmonic_deg":5,"stroke_harmonic_phase_deg":-28,"elbow_base_deg":9,"elbow_fold_deg":35,"wrist_base_deg":6,"wrist_fold_deg":48,"fold_phase_deg":0,"fold_exponent":1.45,"near_phase_offset":0,"far_phase_offset":0.018,"near_scale":1.0,"far_scale":0.88,"far_opacity":0.27,"leading_fraction":0.34,"folded_pose":{"stroke_deg":176.0,"elbow_deg":38.0,"wrist_deg":48.0,"span_scale":0.58,"chord_scale":0.72},"glide_phase":0.08,"display_pose":{"stroke_deg":201.03751102542182,"elbow_deg":26.565051177077976,"wrist_deg":25.043413161238874,"span_scale":1.0,"chord_scale":1.0},"reference_mesh":{"joints":[[306.0,184.0],[254.0,164.0],[212.0,118.0],[192.0,54.0]],"boundary":[[306.0,184.0],[330.0,146.0],[292.0,104.0],[192.0,54.0],[170.0,96.0],[220.0,144.0],[262.0,158.0]],"core":[244.0,126.0],"boundary_weights":[[1,0,0],[0.82,0.18,0],[0.12,0.78,0.1],[0,0,1],[0,0.16,0.84],[0.1,0.64,0.26],[0.74,0.26,0]],"core_weights":[0.18,0.62,0.2]}},"legs":{"near":{"hip":[306,247],"knee":[307,263],"ankle":[302,279],"toes":[[290,284],[303,285],[315,282]]},"far":{"hip":[326,238],"knee":[329,255],"ankle":[323,274],"toes":[[312,279],[324,280],[336,277]]}},"flight":{"stage_viewBox":[0,0,1360,760],"perch":[260,538],"perched_anchor":[306,285],"flight_anchor":[306,245],"bird_scale":0.29,"perched_scale":0.25,"foot_targets":{"near":{"ankle_offset":[-3,-9],"toe_offsets":[[-13,0],[-2,1],[10,-1]]},"far":{"ankle_offset":[7,-10],"toe_offsets":[[-5,-1],[6,0],[17,-2]]}},"outbound_curve":[[423,349],[670,244],[1030,158],[1460,124]],"inbound_curve":[[1460,198],[1110,220],[640,330],[388,415]],"scan_progress":0.54,"scan_duration_fraction":0.075,"one_shot":true},"scan":{"origin_node":"h5","direction_deg":0,"beam_length":92,"beam_half_angle_deg":11,"return_distance":101,"pulse_ms":520},"art_direction":{"preserve_palette":true,"preserve_network_silhouette":true,"scan_origin":"head_node_h5","beak_emission":false,"reference_profile":"original_upright_network_bird","wing_deformation":"linear_blend_skinning","preserve_reference_wing_mesh":true}}]]></metadata>
+  <metadata id="percolia-network-model" data-network-model="true"><![CDATA[{"name":"Percolia Initial Network Bird","version":"1.2.0","viewBox":[0,0,640,360],"palette":{"ink":"#082C4C","blue":"#1C83D4","cyan":"#20C9C4","mist":"#EAF5F7","white":"#FFFFFF","slate":"#5D7385"},"body":{"nodes":{"t0":[78,210,3.4,"ink","node"],"t1":[126,184,3.0,"ink","node"],"t2":[184,178,3.5,"blue","node"],"t3":[140,216,3.0,"ink","node"],"t4":[88,252,3.4,"ink","node"],"t5":[192,226,3.5,"ink","node"],"t6":[150,202,4.6,"cyan","critical"],"b0":[190,178,3.1,"ink","node"],"b1":[220,144,3.8,"blue","node"],"b2":[262,158,3.2,"ink","node"],"b3":[306,184,4.5,"cyan","critical"],"b4":[350,202,3.5,"ink","node"],"b5":[330,244,3.8,"blue","node"],"b6":[276,270,3.7,"ink","node"],"b7":[220,244,3.2,"ink","node"],"b8":[248,204,4.6,"cyan","critical"],"b9":[292,224,3.0,"ink","node"],"n0":[342,158,4.6,"cyan","critical"],"n1":[368,116,3.4,"ink","node"],"c0":[380,208,3.4,"ink","node"],"h0":[404,96,3.7,"blue","node"],"h1":[444,106,3.1,"ink","node"],"h2":[466,130,4.0,"blue","node"],"h3":[450,158,3.5,"ink","node"],"h4":[408,166,3.3,"ink","node"],"h5":[407,132,4.8,"cyan","critical"],"eye":[438,124,2.3,"ink","decorative"],"q1":[532,144,3.0,"cyan","critical"],"q2":[469,151,2.8,"ink","node"]},"edges":[["t0","t1","mesh"],["t1","t2","mesh"],["t0","t6","critical"],["t6","t2","mesh"],["t0","t4","outline"],["t4","t3","mesh"],["t3","t5","mesh"],["t4","t5","outline"],["t3","t6","mesh"],["t6","t5","mesh"],["t2","t6","mesh"],["t2","b0","outline"],["t2","b1","outline"],["t5","b7","outline"],["b0","b1","mesh"],["b0","b8","mesh"],["b1","b2","mesh"],["b1","b8","mesh"],["b2","b3","mesh"],["b2","b8","mesh"],["b3","b8","critical"],["t6","b8","critical"],["b3","b9","mesh"],["b8","b9","mesh"],["b8","b7","mesh"],["b7","b9","mesh"],["b7","b6","outline"],["b6","b9","mesh"],["b6","b5","outline"],["b5","b9","mesh"],["b5","b4","outline"],["b4","b9","mesh"],["b3","b4","mesh"],["b4","c0","outline"],["b5","c0","mesh"],["b3","n0","critical"],["n0","n1","outline"],["n1","h0","outline"],["h0","h1","outline"],["h1","h2","outline"],["h2","h3","mesh"],["h3","h4","outline"],["h4","c0","outline"],["c0","b4","mesh"],["n0","h5","critical"],["n1","h5","mesh"],["h0","h5","mesh"],["h1","h5","mesh"],["h2","h5","critical"],["h3","h5","mesh"],["h4","h5","mesh"],["n0","h4","mesh"],["n0","c0","mesh"],["h2","q1","critical"],["q1","q2","outline"],["q2","h3","outline"],["q2","h2","mesh"]],"faces":[["f01",["t0","t1","t6"],"cyan",0.1],["f02",["t1","t2","t6"],"blue",0.1],["f03",["t0","t6","t4"],"cyan",0.08],["f04",["t4","t6","t3"],"blue",0.08],["f05",["t3","t6","t5"],"ink",0.07],["f10",["b0","b1","b8"],"cyan",0.1],["f11",["b1","b2","b8"],"blue",0.12],["f12",["b2","b3","b8"],"cyan",0.16],["f13",["b3","b9","b8"],"blue",0.15],["f14",["b3","b4","b9"],"ink",0.08],["f15",["b4","b5","b9"],"blue",0.11],["f16",["b5","b6","b9"],"cyan",0.1],["f17",["b6","b7","b9"],"ink",0.07],["f18",["b7","b8","b9"],"blue",0.09],["f30",["n0","n1","h5"],"cyan",0.1],["f31",["n1","h0","h5"],"blue",0.11],["f32",["h0","h1","h5"],"cyan",0.08],["f33",["h1","h2","h5"],"blue",0.14],["f34",["h2","h3","h5"],"cyan",0.12],["f35",["h3","h4","h5"],"ink",0.08],["f36",["h4","n0","h5"],"blue",0.09],["f37",["b3","n0","b4"],"cyan",0.1],["f38",["n0","h4","c0"],"blue",0.08],["f39",["n0","c0","b4"],"ink",0.07],["f40",["h4","h3","c0"],"cyan",0.08],["f41",["h2","q1","q2"],"blue",0.12],["f42",["h2","q2","h3"],"cyan",0.08]]},"scatter":{"s08":[116,207,2.0,"blue","scatter"],"s07":[147,55,1.4,"ink","scatter"],"s04":[95,112,1.8,"ink","scatter"],"s02":[60,138,1.8,"blue","scatter"],"s01":[42,178,2.2,"ink","scatter"],"s03":[68,246,2.3,"cyan","scatter"],"s06":[126,80,1.7,"cyan","scatter"],"s09":[147,263,1.4,"ink","scatter"],"s05":[106,285,1.6,"blue","scatter"],"s10":[158,126,1.5,"cyan","scatter"]},"wing":{"shoulders":{"near":[306.0,184.0],"far":[290.0,179.0]},"segment_lengths":[55.71355310873648,62.289646009589745,67.05221845696084],"chords":[30.0,42.0,29.0,1.6],"phase_stations":[0,1,2,3,4,5,6],"period_ms":3200,"stroke_center_deg":180,"stroke_amplitude_deg":52,"stroke_harmonic_deg":5,"stroke_harmonic_phase_deg":-28,"elbow_base_deg":9,"elbow_fold_deg":35,"wrist_base_deg":6,"wrist_fold_deg":48,"fold_phase_deg":0,"fold_exponent":1.45,"near_phase_offset":0,"far_phase_offset":0.018,"near_scale":1.0,"far_scale":0.88,"far_opacity":0.27,"leading_fraction":0.34,"folded_pose":{"stroke_deg":176.0,"elbow_deg":38.0,"wrist_deg":48.0,"span_scale":0.58,"chord_scale":0.72},"glide_phase":0.08,"display_pose":{"stroke_deg":201.03751102542182,"elbow_deg":26.565051177077976,"wrist_deg":25.043413161238874,"span_scale":1.0,"chord_scale":1.0},"reference_mesh":{"joints":[[306.0,184.0],[254.0,164.0],[212.0,118.0],[192.0,54.0]],"boundary":[[306.0,184.0],[330.0,146.0],[292.0,104.0],[192.0,54.0],[170.0,96.0],[220.0,144.0],[262.0,158.0]],"core":[244.0,126.0],"boundary_weights":[[1,0,0],[0.82,0.18,0],[0.12,0.78,0.1],[0,0,1],[0,0.16,0.84],[0.1,0.64,0.26],[0.74,0.26,0]],"core_weights":[0.18,0.62,0.2]},"skinning_weight_power":4.0,"shape_preservation":{"mode":"rigid_reference_blend","folded_span":0.64,"extended_span":0.94,"folded_articulation_weight":0.62,"extended_articulation_weight":0.06}},"legs":{"near":{"hip":[306,247],"knee":[307,263],"ankle":[302,279],"toes":[[290,284],[303,285],[315,282]]},"far":{"hip":[326,238],"knee":[329,255],"ankle":[323,274],"toes":[[312,279],[324,280],[336,277]]}},"flight":{"stage_viewBox":[0,0,1360,760],"perch":[260,538],"perched_anchor":[306,285],"flight_anchor":[306,245],"bird_scale":0.29,"perched_scale":0.25,"foot_targets":{"near":{"ankle_offset":[-3,-9],"toe_offsets":[[-13,0],[-2,1],[10,-1]]},"far":{"ankle_offset":[7,-10],"toe_offsets":[[-5,-1],[6,0],[17,-2]]}},"outbound_curve":[[423,349],[670,244],[1030,158],[1460,124]],"inbound_curve":[[1460,198],[1110,220],[640,330],[388,415]],"scan_progress":0.54,"scan_duration_fraction":0.075,"one_shot":true,"takeoff_bridge_start":0.68,"takeoff_exit_speed_px_per_ms":0.145},"scan":{"origin_node":"h5","direction_deg":0,"beam_length":92,"beam_half_angle_deg":11,"return_distance":101,"pulse_ms":520},"art_direction":{"preserve_palette":true,"preserve_network_silhouette":true,"scan_origin":"head_node_h5","beak_emission":false,"reference_profile":"original_upright_network_bird","wing_deformation":"linear_blend_skinning","preserve_reference_wing_mesh":true,"flight_wing_shape":"reference-preserving"}}]]></metadata>
   <defs><filter id="scan-glow" x="-300%" y="-300%" width="600%" height="600%"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
-  <g id="percolia-bird" data-percolia-bird="true" data-model-version="1.1.0">
+  <g id="percolia-bird" data-percolia-bird="true" data-model-version="1.2.0">
     <g id="bird-scatter" data-layer="scatter" opacity="0.50">
       <circle id="scatter-s08" cx="116" cy="207" r="2" fill="#1C83D4"/>
       <circle id="scatter-s07" cx="147" cy="55" r="1.4" fill="#082C4C"/>
@@ -897,28 +897,120 @@ footer { margin-top:16px; color:var(--slate); font-size:.83rem; text-align:right
   function pchipTangent(h0,h1,d0,d1) {
     if (h0<=0||h1<=0||d0*d1<=0) return 0; const w1=2*h1+h0,w2=h1+2*h0; return (w1+w2)/(w1/d0+w2/d1);
   }
-  function sampleTrack(frames,key,progress,loop=false) {
-    if (frames.length===1) return frames[0][key].slice();
-    const source=loop&&frames.length>2&&Math.abs(frames[frames.length-1].t-1)<1e-9?frames.slice(0,-1):frames;
-    let t=loop?((progress%1)+1)%1:clamp(progress,0,1),f0,f1,f2,f3,t0,t1,t2,t3;
+  function pchipEndpoint(h0, h1, d0, d1) {
+    let tangent = ((2 * h0 + h1) * d0 - h0 * d1) / Math.max(1e-9, h0 + h1);
+    if (tangent * d0 <= 0) return 0;
+    if (d0 * d1 < 0 && Math.abs(tangent) > 3 * Math.abs(d0)) tangent = 3 * d0;
+    return tangent;
+  }
+
+  function sampleTrack(frames, key, progress, loop = false) {
+    if (frames.length === 1) return frames[0][key].slice();
+    const source = loop && frames.length > 2 && Math.abs(frames[frames.length - 1].t - 1) < 1e-9
+      ? frames.slice(0, -1)
+      : frames;
+    let t = loop ? ((progress % 1) + 1) % 1 : clamp(progress, 0, 1);
+
     if (loop) {
-      const n=source.length; let index=n-1;
-      for (let i=0;i<n;i+=1) { const next=(i+1)%n,end=source[next].t+(next<=i?1:0),candidate=t<source[i].t?t+1:t; if (candidate<=end) {index=i;t=candidate;break;} }
-      const next=(index+1)%n,prev=(index-1+n)%n,after=(next+1)%n; f0=source[prev];f1=source[index];f2=source[next];f3=source[after];
-      t1=f1.t;t2=f2.t;while(t2<=t1)t2+=1;t0=f0.t;while(t0>=t1)t0-=1;t3=f3.t;while(t3<=t2)t3+=1;
-    } else {
-      if (t<=source[0].t) return source[0][key].slice(); if (t>=source[source.length-1].t) return source[source.length-1][key].slice();
-      let index=source.length-2; for(let i=0;i<source.length-1;i+=1){if(t<=source[i+1].t){index=i;break;}}
-      f1=source[index];f2=source[index+1];f0=source[Math.max(0,index-1)];f3=source[Math.min(source.length-1,index+2)];
-      t1=f1.t;t2=f2.t;t0=index>0?f0.t:t1-(t2-t1);t3=index+2<source.length?f3.t:t2+(t2-t1);
+      const count = source.length;
+      let index = count - 1;
+      for (let candidateIndex = 0; candidateIndex < count; candidateIndex += 1) {
+        const nextIndex = (candidateIndex + 1) % count;
+        const end = source[nextIndex].t + (nextIndex <= candidateIndex ? 1 : 0);
+        const candidate = t < source[candidateIndex].t ? t + 1 : t;
+        if (candidate <= end) {
+          index = candidateIndex;
+          t = candidate;
+          break;
+        }
+      }
+      const next = (index + 1) % count;
+      const previous = (index - 1 + count) % count;
+      const after = (next + 1) % count;
+      const f0 = source[previous];
+      const f1 = source[index];
+      const f2 = source[next];
+      const f3 = source[after];
+      const t1 = f1.t;
+      let t2 = f2.t;
+      while (t2 <= t1) t2 += 1;
+      let t0 = f0.t;
+      while (t0 >= t1) t0 -= 1;
+      let t3 = f3.t;
+      while (t3 <= t2) t3 += 1;
+      return f1[key].map((_, component) => {
+        const p0 = f0[key][component];
+        const p1 = f1[key][component];
+        const p2 = f2[key][component];
+        const p3 = f3[key][component];
+        const h0 = t1 - t0;
+        const h1 = t2 - t1;
+        const h2 = t3 - t2;
+        const d0 = (p1 - p0) / Math.max(1e-9, h0);
+        const d1 = (p2 - p1) / Math.max(1e-9, h1);
+        const d2 = (p3 - p2) / Math.max(1e-9, h2);
+        return hermiteWithTangents(
+          p1,
+          p2,
+          pchipTangent(h0, h1, d0, d1),
+          pchipTangent(h1, h2, d1, d2),
+          t1,
+          t2,
+          t
+        );
+      });
     }
-    const output=[];
-    for(let component=0;component<f1[key].length;component+=1){
-      const p0=f0[key][component],p1=f1[key][component],p2=f2[key][component],p3=f3[key][component];
-      const h0=t1-t0,h1=t2-t1,h2=t3-t2,d0=(p1-p0)/Math.max(1e-9,h0),d1=(p2-p1)/Math.max(1e-9,h1),d2=(p3-p2)/Math.max(1e-9,h2);
-      output.push(hermiteWithTangents(p1,p2,pchipTangent(h0,h1,d0,d1),pchipTangent(h1,h2,d1,d2),t1,t2,t));
+
+    if (t <= source[0].t) return source[0][key].slice();
+    if (t >= source[source.length - 1].t) return source[source.length - 1][key].slice();
+    let index = source.length - 2;
+    for (let candidateIndex = 0; candidateIndex < source.length - 1; candidateIndex += 1) {
+      if (t <= source[candidateIndex + 1].t) {
+        index = candidateIndex;
+        break;
+      }
     }
-    return output;
+    const tangentsByComponent = source[0][key].map((_, component) => {
+      const slopes = source.slice(0, -1).map((frame, slopeIndex) => (
+        (source[slopeIndex + 1][key][component] - frame[key][component])
+        / Math.max(1e-9, source[slopeIndex + 1].t - frame.t)
+      ));
+      if (source.length === 2) return [slopes[0], slopes[0]];
+      const tangents = new Array(source.length);
+      tangents[0] = pchipEndpoint(
+        source[1].t - source[0].t,
+        source[2].t - source[1].t,
+        slopes[0],
+        slopes[1]
+      );
+      for (let tangentIndex = 1; tangentIndex < source.length - 1; tangentIndex += 1) {
+        tangents[tangentIndex] = pchipTangent(
+          source[tangentIndex].t - source[tangentIndex - 1].t,
+          source[tangentIndex + 1].t - source[tangentIndex].t,
+          slopes[tangentIndex - 1],
+          slopes[tangentIndex]
+        );
+      }
+      const last = source.length - 1;
+      tangents[last] = pchipEndpoint(
+        source[last].t - source[last - 1].t,
+        source[last - 1].t - source[last - 2].t,
+        slopes[last - 1],
+        slopes[last - 2]
+      );
+      return tangents;
+    });
+    const f1 = source[index];
+    const f2 = source[index + 1];
+    return f1[key].map((value, component) => hermiteWithTangents(
+      value,
+      f2[key][component],
+      tangentsByComponent[component][index],
+      tangentsByComponent[component][index + 1],
+      f1.t,
+      f2.t,
+      t
+    ));
   }
 
   function sampleClip(library, name, progress) {
@@ -935,9 +1027,16 @@ footer { margin-top:16px; color:var(--slate); font-size:.83rem; text-align:right
   }
 
 
-  function blendRigSample(previous,current,amount) {
-    const t=clamp(amount,0,1);
-    return {root:[current.root[0],current.root[1],lerp(previous.root[2],current.root[2],t),lerp(previous.root[3],current.root[3],t)],wing:current.wing.map((v,i)=>lerp(previous.wing[i],v,t)),legs:current.legs.map((v,i)=>lerp(previous.legs[i],v,t))};
+  function blendRigSample(previous, current, amount) {
+    const t = clamp(amount, 0, 1);
+    // Root tracks have different semantics across states: absolute root motion
+    // in authored clips, additive bob in cruise. Never mix those coordinate
+    // systems. Position/rotation continuity is handled by the world bridge.
+    return {
+      root: current.root.slice(),
+      wing: current.wing.map((value, index) => lerp(previous.wing[index], value, t)),
+      legs: current.legs.map((value, index) => lerp(previous.legs[index], value, t)),
+    };
   }
 
   function eventTime(library, clipName, eventName) {
@@ -969,8 +1068,28 @@ footer { margin-top:16px; color:var(--slate); font-size:.83rem; text-align:right
     return add(currentA,[scale*(local[0]*c-local[1]*s),scale*(local[0]*s+local[1]*c)]);
   }
 
-  function skinPoint(point, weights, restJoints, currentJoints) {
-    return weights.reduce((result,weight,index)=>add(result,mul(transformByBone(point,restJoints[index],restJoints[index+1],currentJoints[index],currentJoints[index+1]),weight)),[0,0]);
+  function sharpenSkinWeights(weights, power) {
+    const shaped = weights.map((weight) => Math.pow(Math.max(0, weight), power));
+    const total = shaped.reduce((sum, weight) => sum + weight, 0);
+    if (total < 1e-9) return weights.slice();
+    return shaped.map((weight) => weight / total);
+  }
+
+  function skinPoint(point, weights, restJoints, currentJoints, power = 1) {
+    const stableWeights = sharpenSkinWeights(weights, power);
+    return stableWeights.reduce((result, weight, index) => add(
+      result,
+      mul(
+        transformByBone(
+          point,
+          restJoints[index],
+          restJoints[index + 1],
+          currentJoints[index],
+          currentJoints[index + 1]
+        ),
+        weight
+      )
+    ), [0, 0]);
   }
 
   function wingGeometry(model, pose, side) {
@@ -982,12 +1101,63 @@ footer { margin-top:16px; color:var(--slate); font-size:.83rem; text-align:right
     const tip=add(w,[lengths[2]*Math.cos(a3),lengths[2]*Math.sin(a3)]); const joints=[s,e,w,tip];
     const reference=wing.reference_mesh;
     if (reference) {
-      const refShoulder=reference.joints[0]; const perspective=wing[`${side}_scale`];
-      const mapRef=(point)=>add(shoulder,mul(sub(point,refShoulder),perspective));
-      const restJoints=reference.joints.map(mapRef); const restBoundary=reference.boundary.map(mapRef); const restCore=mapRef(reference.core);
-      const boundary=restBoundary.map((point,index)=>skinPoint(point,reference.boundary_weights[index],restJoints,joints));
-      const core=skinPoint(restCore,reference.core_weights,restJoints,joints);
-      return {boundary,core,joints};
+      const refShoulder = reference.joints[0];
+      const perspective = wing[`${side}_scale`];
+      const mapRef = (point) => add(shoulder, mul(sub(point, refShoulder), perspective));
+      const restJoints = reference.joints.map(mapRef);
+      const restBoundary = reference.boundary.map(mapRef);
+      const restCore = mapRef(reference.core);
+      const weightPower = wing.skinning_weight_power || 1;
+      const articulatedBoundary = restBoundary.map((point, index) => skinPoint(
+        point,
+        reference.boundary_weights[index],
+        restJoints,
+        joints,
+        weightPower
+      ));
+      const articulatedCore = skinPoint(
+        restCore,
+        reference.core_weights,
+        restJoints,
+        joints,
+        weightPower
+      );
+      // A fully spread wing keeps the exact reference silhouette up to one
+      // similarity transform. Articulation is progressively reintroduced only
+      // while folding near the perch.
+      const rigidBoundary = restBoundary.map((point) => transformByBone(
+        point,
+        restJoints[0],
+        restJoints[1],
+        joints[0],
+        joints[1]
+      ));
+      const rigidCore = transformByBone(
+        restCore,
+        restJoints[0],
+        restJoints[1],
+        joints[0],
+        joints[1]
+      );
+      const preservation = wing.shape_preservation || {};
+      const normalizedSpan = pose.span_scale / Math.max(1e-9, perspective);
+      const extension = smoothstep(
+        preservation.folded_span || 0.64,
+        preservation.extended_span || 0.94,
+        normalizedSpan
+      );
+      const articulation = lerp(
+        preservation.folded_articulation_weight || 0.62,
+        preservation.extended_articulation_weight || 0.06,
+        extension
+      );
+      const boundary = rigidBoundary.map((point, index) => mixPoint(
+        point,
+        articulatedBoundary[index],
+        articulation
+      ));
+      const core = mixPoint(rigidCore, articulatedCore, articulation);
+      return { boundary, core, joints };
     }
     const tangents=[sub(e,s),add(unit(sub(e,s)),unit(sub(w,e))),add(unit(sub(w,e)),unit(sub(tip,w))),sub(tip,w)];
     const normals=tangents.map(normal); const widths=wing.chords.map((value)=>value*pose.chord_scale);
@@ -1353,21 +1523,102 @@ footer { margin-top:16px; color:var(--slate); font-size:.83rem; text-align:right
         }
 
         case 'takeoff': {
-          const origin=pushEndPose(),first=library.clips.takeoff.keyframes[0].root;
-          let position=add(origin.position,[sample.root[0]-first[0],sample.root[1]-first[1]]);
-          const target=library.world.outbound_curve[0],endSample=sampleClip(library,'takeoff',1),authoredEnd=add(origin.position,[endSample.root[0]-first[0],endSample.root[1]-first[1]]);
-          position=add(position,mul(sub(target,authoredEnd),smoothstep(.62,1,p))); outbound.setWingPose(sample.wing); outbound.setLegPose(sample.legs);
-          const initialRoot=sampleClip(library,'takeoff',0).root,initialBase=origin.scale/Math.max(1e-6,initialRoot[3]),baseScale=lerp(initialBase,flight.bird_scale,smoothstep(0,.62,p));
-          outbound.place(position,[1,-.35],baseScale*sample.root[3],false,1,sample.root[2]); break;
+          const origin = pushEndPose();
+          const first = library.clips.takeoff.keyframes[0].root;
+          const authoredAt = (progress) => {
+            const authoredSample = sampleClip(library, 'takeoff', progress);
+            return add(origin.position, [
+              authoredSample.root[0] - first[0],
+              authoredSample.root[1] - first[1],
+            ]);
+          };
+          const bridgeStart = flight.takeoff_bridge_start || 0.68;
+          const target = library.world.outbound_curve[0];
+          const outboundTangent = unit(cubicDerivative(library.world.outbound_curve, 0));
+          const cruiseStart = sampleClip(library, 'cruise', 0);
+          const targetRotation = visualRotation(outboundTangent, false, -24, 7)
+            + cruiseStart.root[2] * 0.28;
+          let position = authoredAt(p);
+          let rotation = sample.root[2];
+
+          if (p > bridgeStart) {
+            const u = (p - bridgeStart) / (1 - bridgeStart);
+            const startPosition = authoredAt(bridgeStart);
+            const beforeProgress = Math.max(0, bridgeStart - 0.02);
+            const beforePosition = authoredAt(beforeProgress);
+            const startDerivative = mul(
+              sub(startPosition, beforePosition),
+              (1 - bridgeStart) / Math.max(1e-9, bridgeStart - beforeProgress)
+            );
+            const bridgeDuration = entry.duration_ms * (1 - bridgeStart);
+            const endDerivative = mul(
+              outboundTangent,
+              (flight.takeoff_exit_speed_px_per_ms || 0.145) * bridgeDuration
+            );
+            position = hermitePoint(
+              startPosition,
+              target,
+              startDerivative,
+              endDerivative,
+              u
+            );
+            const startRotation = sampleClip(library, 'takeoff', bridgeStart).root[2];
+            rotation = lerp(startRotation, targetRotation, smoothstep(0, 1, u));
+          }
+
+          outbound.setWingPose(sample.wing);
+          outbound.setLegPose(sample.legs);
+          const initialRoot = sampleClip(library, 'takeoff', 0).root;
+          const initialBase = origin.scale / Math.max(1e-6, initialRoot[3]);
+          const authoredBase = lerp(initialBase, flight.bird_scale, smoothstep(0, 0.62, p));
+          let scale = authoredBase * sample.root[3];
+          if (p > bridgeStart) {
+            const u = smoothstep(0, 1, (p - bridgeStart) / (1 - bridgeStart));
+            scale = lerp(scale, flight.bird_scale * cruiseStart.root[3], u);
+          }
+          outbound.place(position, outboundTangent, scale, false, 1, rotation);
+          break;
         }
 
         case 'outbound': {
-          const curve=cubicArcSample(library.world.outbound_curve,speedProfile(p,.58,1.02)),bobWeight=smoothstep(0,.08,p);
-          const position=add(curve.position,[sample.root[0]*bobWeight,sample.root[1]*bobWeight]); outbound.setWingPose(sample.wing); outbound.setLegPose(sample.legs);
-          const fade=1-smoothstep(.93,1,p),rotation=visualRotation(curve.tangent,false,-24,7)+sample.root[2]*.28;
-          outbound.place(position,curve.tangent,flight.bird_scale*sample.root[3],false,fade,rotation);
-          const scanHalf=library.world.scan_duration_fraction/2,scanDistance=Math.abs(p-library.world.scan_progress),scanStrength=1-clamp(scanDistance/scanHalf,0,1),scanSweep=clamp((p-(library.world.scan_progress-scanHalf))/(2*scanHalf),0,1);
-          outbound.setLidar(scanStrength,scanSweep); break;
+          const exitSpeed = flight.takeoff_exit_speed_px_per_ms || 0.145;
+          const startSlope = clamp(
+            exitSpeed * entry.duration_ms / Math.max(1e-9, arcTable(library.world.outbound_curve).total),
+            0.25,
+            1.35
+          );
+          const curve = cubicArcSample(
+            library.world.outbound_curve,
+            speedProfile(p, startSlope, 1.02)
+          );
+          const bobWeight = smoothstep(0, 0.08, p);
+          const position = add(curve.position, [
+            sample.root[0] * bobWeight,
+            sample.root[1] * bobWeight,
+          ]);
+          outbound.setWingPose(sample.wing);
+          outbound.setLegPose(sample.legs);
+          const fade = 1 - smoothstep(0.93, 1, p);
+          const rotation = visualRotation(curve.tangent, false, -24, 7)
+            + sample.root[2] * 0.28;
+          outbound.place(
+            position,
+            curve.tangent,
+            flight.bird_scale * sample.root[3],
+            false,
+            fade,
+            rotation
+          );
+          const scanHalf = library.world.scan_duration_fraction / 2;
+          const scanDistance = Math.abs(p - library.world.scan_progress);
+          const scanStrength = 1 - clamp(scanDistance / scanHalf, 0, 1);
+          const scanSweep = clamp(
+            (p - (library.world.scan_progress - scanHalf)) / (2 * scanHalf),
+            0,
+            1
+          );
+          outbound.setLidar(scanStrength, scanSweep);
+          break;
         }
 
         case 'empty':

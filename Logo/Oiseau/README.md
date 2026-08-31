@@ -1,6 +1,13 @@
-# Oiseau-réseau Percolia — direction 05
+# Oiseau-réseau Percolia — direction 06
 
 Cette direction conserve le **premier oiseau triangulé** de Percolia et remplace la cinématique globale par une architecture inspirée des moteurs de jeu : clips keyframés, machine à états, root motion, événements d’animation, motion warping et IK de contact.
+
+
+## Stabilité de la transition et conservation de la silhouette
+
+La fin du clip `takeoff` est maintenant raccordée au début de `outbound` par un pont d’Hermite **C1** : position et vitesse coïncident avec la trajectoire de croisière paramétrée par longueur d’arc. L’orientation et l’échelle arrivent elles aussi exactement sur la première pose de sortie. Le mélange générique ne combine plus une rotation absolue de décollage avec une oscillation additive de croisière, qui étaient deux grandeurs portant le même nom mais pas le même sens — une petite tradition logicielle particulièrement efficace pour fabriquer des secousses.
+
+En vol, le contour de référence de l’aile est préservé par un mélange entre transformation rigide et articulation locale. À pleine extension, 94 % de la géométrie provient d’une même similitude du dessin original ; l’articulation forte n’est réintroduite que pendant le pliage près du perchoir. Les clips de vol n’écrasent plus artificiellement l’envergure ou la corde.
 
 ## Raffinement de la direction 05
 

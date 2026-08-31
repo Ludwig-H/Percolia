@@ -1,6 +1,6 @@
 {
   "name": "Percolia Initial Network Bird",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "viewBox": [
     0,
     0,
@@ -1011,6 +1011,14 @@
         0.62,
         0.2
       ]
+    },
+    "skinning_weight_power": 4.0,
+    "shape_preservation": {
+      "mode": "rigid_reference_blend",
+      "folded_span": 0.64,
+      "extended_span": 0.94,
+      "folded_articulation_weight": 0.62,
+      "extended_articulation_weight": 0.06
     }
   },
   "legs": {
@@ -1172,7 +1180,9 @@
     ],
     "scan_progress": 0.54,
     "scan_duration_fraction": 0.075,
-    "one_shot": true
+    "one_shot": true,
+    "takeoff_bridge_start": 0.68,
+    "takeoff_exit_speed_px_per_ms": 0.145
   },
   "scan": {
     "origin_node": "h5",
@@ -1189,6 +1199,7 @@
     "beak_emission": false,
     "reference_profile": "original_upright_network_bird",
     "wing_deformation": "linear_blend_skinning",
-    "preserve_reference_wing_mesh": true
+    "preserve_reference_wing_mesh": true,
+    "flight_wing_shape": "reference-preserving"
   }
 }

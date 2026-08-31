@@ -123,12 +123,27 @@ def _transform_by_bone(point, rest_a, rest_b, current_a, current_b):
     local=sub(point,rest_a); c=math.cos(angle); s=math.sin(angle)
     return add(current_a,(scale*(local[0]*c-local[1]*s),scale*(local[0]*s+local[1]*c)))
 
-def _skin_point(point,weights,rest_joints,current_joints):
-    if abs(sum(weights)-1)>1e-6: raise ValueError("wing skin weights must sum to one")
-    result=(0.0,0.0)
-    for index,weight in enumerate(weights):
-        transformed=_transform_by_bone(point,rest_joints[index],rest_joints[index+1],current_joints[index],current_joints[index+1])
-        result=add(result,mul(transformed,weight))
+def _normalise_skin_weights(weights, power):
+    shaped = [max(0.0, weight) ** power for weight in weights]
+    total = sum(shaped)
+    if total < 1e-9:
+        return list(weights)
+    return [weight / total for weight in shaped]
+
+
+def _skin_point(point, weights, rest_joints, current_joints, power=1.0):
+    if abs(sum(weights) - 1) > 1e-6:
+        raise ValueError("wing skin weights must sum to one")
+    result = (0.0, 0.0)
+    for index, weight in enumerate(_normalise_skin_weights(weights, power)):
+        transformed = _transform_by_bone(
+            point,
+            rest_joints[index],
+            rest_joints[index + 1],
+            current_joints[index],
+            current_joints[index + 1],
+        )
+        result = add(result, mul(transformed, weight))
     return result
 
 def wing_geometry(model: dict, pose: dict, side: str) -> dict:
@@ -139,14 +154,55 @@ def wing_geometry(model: dict, pose: dict, side: str) -> dict:
     s=shoulder; e=add(s,(l1*math.cos(a1),l1*math.sin(a1))); w=add(e,(l2*math.cos(a2),l2*math.sin(a2))); tip=add(w,(l3*math.cos(a3),l3*math.sin(a3)))
     joints=[s,e,w,tip]; reference=wing.get("reference_mesh")
     if reference:
-        ref_shoulder=tuple(reference["joints"][0]); perspective=wing[f"{side}_scale"]
-        map_ref=lambda point:add(shoulder,mul(sub(tuple(point),ref_shoulder),perspective))
-        rest_joints=[map_ref(point) for point in reference["joints"]]
-        rest_boundary=[map_ref(point) for point in reference["boundary"]]
-        rest_core=map_ref(reference["core"])
-        boundary=[_skin_point(point,weights,rest_joints,joints) for point,weights in zip(rest_boundary,reference["boundary_weights"])]
-        core=_skin_point(rest_core,reference["core_weights"],rest_joints,joints)
-        return {"boundary":boundary,"core":core,"joints":joints}
+        ref_shoulder = tuple(reference["joints"][0])
+        perspective = wing[f"{side}_scale"]
+        map_ref = lambda point: add(shoulder, mul(sub(tuple(point), ref_shoulder), perspective))
+        rest_joints = [map_ref(point) for point in reference["joints"]]
+        rest_boundary = [map_ref(point) for point in reference["boundary"]]
+        rest_core = map_ref(reference["core"])
+        power = wing.get("skinning_weight_power", 1.0)
+        articulated_boundary = [
+            _skin_point(point, weights, rest_joints, joints, power)
+            for point, weights in zip(rest_boundary, reference["boundary_weights"])
+        ]
+        articulated_core = _skin_point(
+            rest_core,
+            reference["core_weights"],
+            rest_joints,
+            joints,
+            power,
+        )
+        rigid_boundary = [
+            _transform_by_bone(point, rest_joints[0], rest_joints[1], joints[0], joints[1])
+            for point in rest_boundary
+        ]
+        rigid_core = _transform_by_bone(
+            rest_core,
+            rest_joints[0],
+            rest_joints[1],
+            joints[0],
+            joints[1],
+        )
+        preservation = wing.get("shape_preservation", {})
+        normalised_span = pose["span_scale"] / max(1e-9, perspective)
+        denominator = max(
+            1e-9,
+            preservation.get("extended_span", 0.94) - preservation.get("folded_span", 0.64),
+        )
+        extension = smoothstep(
+            (normalised_span - preservation.get("folded_span", 0.64)) / denominator
+        )
+        articulation = lerp(
+            preservation.get("folded_articulation_weight", 0.62),
+            preservation.get("extended_articulation_weight", 0.06),
+            extension,
+        )
+        boundary = [
+            lerp_point(rigid, articulated, articulation)
+            for rigid, articulated in zip(rigid_boundary, articulated_boundary)
+        ]
+        core = lerp_point(rigid_core, articulated_core, articulation)
+        return {"boundary": boundary, "core": core, "joints": joints}
     tangents=[sub(e,s),add(unit(sub(e,s)),unit(sub(w,e))),add(unit(sub(w,e)),unit(sub(tip,w))),sub(tip,w)]
     normals=[normal(vector) for vector in tangents]; widths=[value*pose["chord_scale"] for value in wing["chords"]]
     lead=wing["leading_fraction"]

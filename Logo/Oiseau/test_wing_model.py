@@ -22,14 +22,20 @@ library = json.loads(CLIPS_PATH.read_text(encoding="utf-8"))
 wing = model["wing"]
 flight = model["flight"]
 
-assert model["version"] == "1.1.0"
-assert library["version"] == "1.1.0"
+assert model["version"] == "1.2.0"
+assert library["version"] == "1.2.0"
 assert wing["period_ms"] >= 2800, "the cruise wingbeat must stay deliberately slow"
 assert flight["one_shot"] is True
 assert model["art_direction"]["preserve_palette"] is True
 assert model["art_direction"]["preserve_network_silhouette"] is True
 assert model["art_direction"]["scan_origin"] == "head_node_h5"
 assert model["art_direction"]["beak_emission"] is False
+shape_preservation = wing["shape_preservation"]
+assert wing["skinning_weight_power"] >= 4
+assert shape_preservation["mode"] == "rigid_reference_blend"
+assert shape_preservation["extended_articulation_weight"] <= 0.08
+assert flight["takeoff_bridge_start"] >= 0.6
+assert 0.10 <= flight["takeoff_exit_speed_px_per_ms"] <= 0.20
 
 
 def polygon_area(points: list[tuple[float, float]]) -> float:
@@ -106,6 +112,12 @@ required_clips = {
     "settle",
 }
 assert required_clips <= set(library["clips"])
+assert library["world"]["takeoff_outbound_continuity"] == "C1"
+assert library["clips"]["takeoff"]["keyframes"][-1]["wing"] == library["clips"]["cruise"]["keyframes"][0]["wing"]
+for clip_name in ("takeoff", "cruise", "approach", "flare"):
+    for frame in library["clips"][clip_name]["keyframes"]:
+        assert frame["wing"][3] >= 0.94
+        assert frame["wing"][4] >= 0.96
 
 for name, clip in library["clips"].items():
     frames = clip["keyframes"]
@@ -181,6 +193,10 @@ assert "touchdown" in js
 assert "model.body.nodes.h5" in js
 assert "model.body.nodes.q1.slice" not in js
 assert "staticOpacity" not in js
+assert "pchipEndpoint" in js
+assert "takeoff_exit_speed_px_per_ms" in js
+assert "root: current.root.slice()" in js
+assert "rigidBoundary" in js
 
 html = (ROOT / "demo.html").read_text(encoding="utf-8")
 assert 'data-flight-bird="outbound"' in html
@@ -192,6 +208,36 @@ assert 'PRÉPARATION' in html
 assert 'TOE-OFF' in html
 assert 'TOUCHDOWN' in html
 assert 'PATTES VERROUILLÉES' in html
+
+# Quantify visual shape stability independently of position, rotation and size.
+def shape_signature(geometry):
+    boundary = geometry["boundary"]
+    perimeter = sum(math.dist(boundary[index], boundary[(index + 1) % len(boundary)]) for index in range(len(boundary)))
+    return [
+        math.dist(boundary[i], boundary[j]) / perimeter
+        for i in range(len(boundary))
+        for j in range(i + 1, len(boundary))
+    ]
+
+
+reference_signature = None
+max_shape_delta = 0.0
+for index in range(121):
+    sample = build_bird.sample_clip(model, "cruise", index / 120)
+    track = sample["wing"]
+    pose = {
+        "stroke_deg": track[0],
+        "elbow_deg": track[1],
+        "wrist_deg": track[2],
+        "span_scale": track[3],
+        "chord_scale": track[4],
+    }
+    signature = shape_signature(build_bird.wing_geometry(model, pose, "near"))
+    if reference_signature is None:
+        reference_signature = signature
+    else:
+        max_shape_delta = max(max_shape_delta, max(abs(a - b) for a, b in zip(reference_signature, signature)))
+assert max_shape_delta < 0.045, max_shape_delta
 
 print("game-style network-bird animation: OK")
 

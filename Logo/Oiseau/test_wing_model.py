@@ -22,8 +22,8 @@ library = json.loads(CLIPS_PATH.read_text(encoding="utf-8"))
 wing = model["wing"]
 flight = model["flight"]
 
-assert model["version"] == "2.0.0"
-assert library["version"] == "2.0.0"
+assert model["version"] == "2.1.0"
+assert library["version"] == "2.1.0"
 assert model["palette"] == {
     "ink": "#082C4C", "blue": "#1C83D4", "cyan": "#20C9C4",
     "mist": "#EAF5F7", "white": "#FFFFFF", "slate": "#5D7385",
@@ -31,6 +31,15 @@ assert model["palette"] == {
 assert model["art_direction"]["beak_emission"] is False
 assert model["scan"]["origin_node"] == "h5"
 assert flight["one_shot"] is True
+
+static_logo = model["static_logo"]
+assert static_logo["clip"] == "perched_idle"
+assert static_logo["progress"] == 0.0
+assert static_logo["mirror"] is True
+assert static_logo["include_far_wing"] is True
+assert static_logo["anchor"] == flight["perched_anchor"]
+assert library["timeline"][-1]["state"] == "perched_final"
+assert library["timeline"][-1]["mirror"] is True
 
 # Rotation is around the network's visual centre, not around its feet.
 body_points = [values[:2] for values in model["body"]["nodes"].values()]
@@ -134,10 +143,18 @@ assert 'fetch(' not in html
 assert 'data-flight-bird="outbound"' in html
 assert 'data-flight-bird="inbound"' in html
 assert 'data-animation-clips="true"' in html
+assert 'translate(612 0) scale(-1 1)' in html
+
+compact_svg = (ROOT / "percolia-bird-compact.svg").read_text(encoding="utf-8")
+assert 'transform="translate(612 0) scale(-1 1)"' in compact_svg
+assert 'id="wing-far"' in compact_svg
+assert 'id="wing-near"' in compact_svg
+lockup = (ROOT.parent / "percolia-lockup-horizontal.svg").read_text(encoding="utf-8")
+assert 'translate(612 0) scale(-1 1)' in lockup
 
 for svg_path in ROOT.glob("percolia-bird-*.svg"):
     text = svg_path.read_text(encoding="utf-8").lower()
     assert 'data-lidar-ray="true"' not in text
     assert "data-lidar-beam" not in text
 
-print("canonical Percolia network-bird v2: OK")
+print("canonical Percolia network-bird v2.1, final static pose: OK")

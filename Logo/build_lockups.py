@@ -63,13 +63,13 @@ def horizontal(variant: str) -> str:
     lines = header(
         "0 0 1120 300",
         f"Logo horizontal Percolia — {variant}",
-        "Mot-symbole en petites capitales avec le modèle d’oiseau-réseau initial, perché sur le P.",
+        "Mot-symbole en petites capitales avec l’oiseau-réseau dans la pose finale, tourné vers la gauche et perché sur le P.",
         "#082C4C" if inverse else None,
     )
     lines.append(f"  <style>{word_style}</style>")
     lines.append('  <g id="logo-horizontal">')
     lines.append(f'    <g transform="translate(60 70) scale(.96)">{wordmark}</g>')
-    # Local foot point (306,285) is mapped to the top of the P.
+    # The mirrored final pose keeps the local perch point (306,285) fixed on the P.
     lines.append(f'    <g transform="translate(148 106) scale(.22) translate(-306 -285)">{bird}</g>')
     lines.extend(['  </g>', '</svg>', ''])
     return "\n".join(lines)
@@ -78,7 +78,7 @@ def horizontal(variant: str) -> str:
 def stacked() -> str:
     word_style, wordmark = extract_file(ROOT / "Police" / "percolia-wordmark-primary.svg", "percolia-wordmark")
     bird = compact_bird("primary")
-    lines = header("0 0 1120 410", "Logo vertical Percolia", "Signature centrée avec le petit oiseau-réseau perché sur le P.")
+    lines = header("0 0 1120 410", "Logo vertical Percolia", "Signature centrée avec l’oiseau-réseau de la pose finale, tourné vers la gauche et perché sur le P.")
     lines.append(f"  <style>{word_style}</style>")
     lines.append('  <g id="logo-stacked">')
     lines.append(f'    <g transform="translate(56 160) scale(.98)">{wordmark}</g>')
@@ -92,7 +92,7 @@ def brand_board() -> str:
     _, flight_bird = extract_file(ROOT / "Oiseau" / "percolia-bird-primary.svg", "percolia-bird")
     perched_bird = compact_bird("primary")
     _, monogram = extract_file(ROOT / "Police" / "percolia-p-monogram-primary.svg", "percolia-p-monogram")
-    lines = header("0 0 1600 1120", "Planche de marque Percolia", "P distinctif, petites capitales et retour au premier oiseau-réseau.", "#F7FBFC")
+    lines = header("0 0 1600 1120", "Planche de marque Percolia", "P distinctif, petites capitales et pose finale de l’oiseau-réseau tournée vers la gauche.", "#F7FBFC")
     lines.extend([
         f'''  <style>{word_style}
         .text{{font-family:Inter,ui-sans-serif,system-ui,sans-serif;fill:#082C4C}}
@@ -100,7 +100,7 @@ def brand_board() -> str:
         .small{{font-size:19px;fill:#5D7385}}
         </style>''',
         '  <text class="text" x="92" y="84" font-size="38" font-weight="760" letter-spacing="5">PERCOLIA — DIRECTION 03</text>',
-        '  <text class="text small" x="92" y="124">Retour au modèle d’oiseau en réseau initial, avec ailes déformables et vol directionnel.</text>',
+        '  <text class="text small" x="92" y="124">Le logo statique reprend la dernière pose de l’animation : l’oiseau est perché et regarde vers la gauche.</text>',
         '  <rect x="72" y="160" width="1456" height="300" rx="32" fill="#FFFFFF" stroke="#DCEBED"/>',
         '  <text class="text label" x="112" y="212">SIGNATURE PRINCIPALE</text>',
         f'  <g transform="translate(120 250) scale(.78)">{wordmark}</g>',

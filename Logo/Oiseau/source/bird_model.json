@@ -1,6 +1,6 @@
 {
   "name": "Percolia Initial Network Bird",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "viewBox": [
     0,
     0,
@@ -1167,6 +1167,18 @@
     "flight_wing_shape": "constant reference silhouette",
     "resting_wing": "full-sized reference silhouette folded along the body",
     "flight_path": "relative to the exact terminal take-off pose",
-    "rotation_pivot": "visual centre of mass"
+    "rotation_pivot": "visual centre of mass",
+    "static_logo_pose": "final inbound perch, facing left"
+  },
+  "static_logo": {
+    "clip": "perched_idle",
+    "progress": 0.0,
+    "mirror": true,
+    "anchor": [
+      306,
+      285
+    ],
+    "include_far_wing": true,
+    "description": "final inbound perched frame, facing left"
   }
 }

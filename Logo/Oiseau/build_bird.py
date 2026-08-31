@@ -114,6 +114,25 @@ def display_pose(model: dict, side: str) -> dict:
     return pose
 
 
+def static_perched_pose(model: dict, side: str) -> dict:
+    """Return the exact wing pose used by the final perched animation frame."""
+    config = model.get("static_logo", {})
+    frame = sample_clip(
+        model,
+        config.get("clip", "perched_idle"),
+        float(config.get("progress", 0.0)),
+    )
+    stroke, elbow, wrist, span, chord = frame["wing"]
+    side_scale = model["wing"][f"{side}_scale"]
+    return {
+        "stroke_deg": stroke + (-2.0 if side == "far" else 0.0),
+        "elbow_deg": elbow + (1.0 if side == "far" else 0.0),
+        "wrist_deg": wrist + (1.5 if side == "far" else 0.0),
+        "span_scale": span * side_scale,
+        "chord_scale": chord * math.sqrt(side_scale),
+    }
+
+
 def _transform_by_bone(point, rest_a, rest_b, current_a, current_b):
     rest_vector=sub(rest_b,rest_a); current_vector=sub(current_b,current_a)
     rest_length=norm(rest_vector); current_length=norm(current_vector)
@@ -226,7 +245,7 @@ def sample_clip(model: dict, clip_name: str, phase: float) -> dict:
 
 def svg_header(model: dict, variant: str, compact: bool) -> list[str]:
     palette = model["palette"]
-    view_box = [55, 34, 520, 292] if compact else model["viewBox"]
+    view_box = [32, 34, 544, 292] if compact else model["viewBox"]
     x, y, width, height = view_box
     lines = [
         '<?xml version="1.0" encoding="UTF-8"?>',
@@ -345,10 +364,22 @@ def render_lidar(model: dict) -> str:
 def render_bird(model: dict, variant: str, compact: bool) -> str:
     lines = svg_header(model, variant, compact)
     lines.append('  <defs><filter id="scan-glow" x="-300%" y="-300%" width="600%" height="600%"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>')
-    lines.append(f'  <g id="percolia-bird" data-percolia-bird="true" data-model-version="{escape(model["version"])}">')
+    static_logo = model.get("static_logo", {})
+    transform = ""
+    if compact and static_logo.get("mirror", False):
+        anchor = static_logo.get("anchor", model["flight"].get("perched_anchor", [306, 285]))
+        transform = f' transform="translate({fmt(2 * anchor[0])} 0) scale(-1 1)"'
+    lines.append(f'  <g id="percolia-bird" data-percolia-bird="true" data-model-version="{escape(model["version"])}"{transform}>')
     if compact:
+        pose_far = static_perched_pose(model, "far")
+        pose_near = static_perched_pose(model, "near")
+        if static_logo.get("include_far_wing", True):
+            lines.append(render_wing(
+                model, variant, "far", wing_geometry(model, pose_far, "far"),
+                model["wing"]["far_opacity"],
+            ))
         lines.append(render_mesh(model, variant))
-        lines.append(render_wing(model, variant, "near", wing_geometry(model, folded_pose(model, "near"), "near"), 0.96))
+        lines.append(render_wing(model, variant, "near", wing_geometry(model, pose_near, "near"), 0.98))
         lines.append(render_legs(model, variant, tucked=False))
     else:
         lines.append(render_scatter(model, variant))

@@ -12,6 +12,10 @@ Cette version est la source canonique de l’oiseau Percolia. Elle reprend la si
 
 Le premier oiseau ne fait jamais demi-tour. Les deux traversées utilisent deux objets SVG distincts.
 
+## Logo statique
+
+Les signatures principales utilisent désormais la **dernière pose de l’animation** : le second oiseau, arrivé depuis la droite, reste perché sur le `P` et regarde vers la gauche. La pose provient directement du clip `perched_idle`, avec les deux ailes visibles. Le miroir est effectué autour du point d’appui, de sorte que les pattes restent exactement au même endroit sur le `P`.
+
 ## Principes géométriques
 
 ### Trajectoire cohérente

@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 300" role="img" aria-labelledby="title desc">
   <title id="title">Logo horizontal Percolia — primary</title>
-  <desc id="desc">Mot-symbole en petites capitales avec le modèle d’oiseau-réseau initial, perché sur le P.</desc>
+  <desc id="desc">Mot-symbole en petites capitales avec l’oiseau-réseau dans la pose finale, tourné vers la gauche et perché sur le P.</desc>
   <style>
     .glyph-path{fill:none;stroke:#082C4C;stroke-width:14;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
     .glyph-node{vector-effect:non-scaling-stroke}.tone-ink{fill:#082C4C}.tone-blue{fill:#1C83D4}.tone-cyan{fill:#20C9C4}
@@ -42,7 +42,45 @@
   </g>
   </g>
 </g>
-    <g transform="translate(148 106) scale(.22) translate(-306 -285)"><g xmlns="http://www.w3.org/2000/svg" id="percolia-bird" data-percolia-bird="true" data-model-version="2.0.0">
+    <g transform="translate(148 106) scale(.22) translate(-306 -285)"><g xmlns="http://www.w3.org/2000/svg" id="percolia-bird" data-percolia-bird="true" data-model-version="2.1.0" transform="translate(612 0) scale(-1 1)">
+    <g id="wing-far" data-wing-side="far" opacity="0.34">
+      <polygon data-wing-outline="true" points="290,179 272.747,143.25 223.539,152.074 139.304,203.556 160.452,239.698 219.812,224.723 249.947,199.813" fill="#EAF5F7" fill-opacity="0.16" stroke="#082C4C" stroke-width="1.55" stroke-linejoin="round" vector-effect="non-scaling-stroke" />
+      <g data-layer="faces">
+        <polygon data-wing-face="0" points="290,179 272.747,143.25 217.602,198.191" fill="#20C9C4" fill-opacity="0.055" />
+        <polygon data-wing-face="1" points="272.747,143.25 223.539,152.074 217.602,198.191" fill="#1C83D4" fill-opacity="0.055" />
+        <polygon data-wing-face="2" points="223.539,152.074 139.304,203.556 217.602,198.191" fill="#082C4C" fill-opacity="0.055" />
+        <polygon data-wing-face="3" points="139.304,203.556 160.452,239.698 217.602,198.191" fill="#20C9C4" fill-opacity="0.055" />
+        <polygon data-wing-face="4" points="160.452,239.698 219.812,224.723 217.602,198.191" fill="#1C83D4" fill-opacity="0.055" />
+        <polygon data-wing-face="5" points="219.812,224.723 249.947,199.813 217.602,198.191" fill="#20C9C4" fill-opacity="0.055" />
+        <polygon data-wing-face="6" points="249.947,199.813 290,179 217.602,198.191" fill="#1C83D4" fill-opacity="0.055" />
+      </g>
+      <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <line data-wing-boundary="0" x1="290" y1="179" x2="272.747" y2="143.25" stroke="#082C4C" stroke-width="1.45" vector-effect="non-scaling-stroke" />
+        <line data-wing-spoke="0" x1="290" y1="179" x2="217.602" y2="198.191" stroke="#082C4C" stroke-width="0.85" vector-effect="non-scaling-stroke" />
+        <line data-wing-boundary="1" x1="272.747" y1="143.25" x2="223.539" y2="152.074" stroke="#082C4C" stroke-width="1.45" vector-effect="non-scaling-stroke" />
+        <line data-wing-spoke="1" x1="272.747" y1="143.25" x2="217.602" y2="198.191" stroke="#1C83D4" stroke-width="0.85" vector-effect="non-scaling-stroke" />
+        <line data-wing-boundary="2" x1="223.539" y1="152.074" x2="139.304" y2="203.556" stroke="#082C4C" stroke-width="1.45" vector-effect="non-scaling-stroke" />
+        <line data-wing-spoke="2" x1="223.539" y1="152.074" x2="217.602" y2="198.191" stroke="#082C4C" stroke-width="0.85" vector-effect="non-scaling-stroke" />
+        <line data-wing-boundary="3" x1="139.304" y1="203.556" x2="160.452" y2="239.698" stroke="#082C4C" stroke-width="1.45" vector-effect="non-scaling-stroke" />
+        <line data-wing-spoke="3" x1="139.304" y1="203.556" x2="217.602" y2="198.191" stroke="#1C83D4" stroke-width="0.85" vector-effect="non-scaling-stroke" />
+        <line data-wing-boundary="4" x1="160.452" y1="239.698" x2="219.812" y2="224.723" stroke="#082C4C" stroke-width="1.45" vector-effect="non-scaling-stroke" />
+        <line data-wing-spoke="4" x1="160.452" y1="239.698" x2="217.602" y2="198.191" stroke="#082C4C" stroke-width="0.85" vector-effect="non-scaling-stroke" />
+        <line data-wing-boundary="5" x1="219.812" y1="224.723" x2="249.947" y2="199.813" stroke="#082C4C" stroke-width="1.45" vector-effect="non-scaling-stroke" />
+        <line data-wing-spoke="5" x1="219.812" y1="224.723" x2="217.602" y2="198.191" stroke="#1C83D4" stroke-width="0.85" vector-effect="non-scaling-stroke" />
+        <line data-wing-boundary="6" x1="249.947" y1="199.813" x2="290" y2="179" stroke="#082C4C" stroke-width="1.45" vector-effect="non-scaling-stroke" />
+        <line data-wing-spoke="6" x1="249.947" y1="199.813" x2="217.602" y2="198.191" stroke="#082C4C" stroke-width="0.85" vector-effect="non-scaling-stroke" />
+      </g>
+      <g data-layer="nodes">
+        <circle data-wing-node="0" cx="290" cy="179" r="2.25" fill="#20C9C4" stroke="#FFFFFF" stroke-width="0.65" vector-effect="non-scaling-stroke" />
+        <circle data-wing-node="1" cx="272.747" cy="143.25" r="2.25" fill="#1C83D4" stroke="#FFFFFF" stroke-width="0.65" vector-effect="non-scaling-stroke" />
+        <circle data-wing-node="2" cx="223.539" cy="152.074" r="2.25" fill="#082C4C" stroke="#FFFFFF" stroke-width="0.65" vector-effect="non-scaling-stroke" />
+        <circle data-wing-node="3" cx="139.304" cy="203.556" r="2.7" fill="#20C9C4" stroke="#FFFFFF" stroke-width="0.65" vector-effect="non-scaling-stroke" />
+        <circle data-wing-node="4" cx="160.452" cy="239.698" r="2.25" fill="#1C83D4" stroke="#FFFFFF" stroke-width="0.65" vector-effect="non-scaling-stroke" />
+        <circle data-wing-node="5" cx="219.812" cy="224.723" r="2.25" fill="#20C9C4" stroke="#FFFFFF" stroke-width="0.65" vector-effect="non-scaling-stroke" />
+        <circle data-wing-node="6" cx="249.947" cy="199.813" r="2.25" fill="#082C4C" stroke="#FFFFFF" stroke-width="0.65" vector-effect="non-scaling-stroke" />
+        <circle data-wing-core="true" cx="217.602" cy="198.191" r="3.4" fill="#20C9C4" stroke="#FFFFFF" stroke-width="0.7" vector-effect="non-scaling-stroke" />
+      </g>
+    </g>
     <g id="bird-body-network" data-layer="body">
       <g id="body-faces" data-layer="faces">
         <polygon id="f01" points="78,210 126,184 150,202" fill="#20C9C4" fill-opacity="0.1" />
@@ -164,7 +202,7 @@
         <circle id="body-node-q2" cx="469" cy="151" r="2.8" fill="#082C4C" stroke="#FFFFFF" stroke-width="0.75" data-kind="node" vector-effect="non-scaling-stroke" />
       </g>
     </g>
-    <g id="wing-near" data-wing-side="near" opacity="0.96">
+    <g id="wing-near" data-wing-side="near" opacity="0.98">
       <polygon data-wing-outline="true" points="306,184 288.615,144.511 234.803,152.239 141.353,205.033 162.99,245.078 228.026,231.018 261.701,205.09" fill="#EAF5F7" fill-opacity="0.25" stroke="#082C4C" stroke-width="1.55" stroke-linejoin="round" vector-effect="non-scaling-stroke" />
       <g data-layer="faces">
         <polygon data-wing-face="0" points="306,184 288.615,144.511 226.585,202.212" fill="#20C9C4" fill-opacity="0.1" />

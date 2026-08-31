@@ -1,6 +1,6 @@
 {
   "name": "Percolia Network Bird Animation Clips",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "fps_reference": 60,
   "coordinate_system": "SVG: x right, y down; root motion is relative to the P perch",
   "timeline": [

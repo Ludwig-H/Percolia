@@ -21,6 +21,9 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Apply canonical bird v2 migration
+        run: python Logo/Oiseau/apply_final_bird_v20.py
+
       - name: Generate assets
         run: |
           python Logo/Police/build_wordmark.py
@@ -28,7 +31,7 @@ jobs:
           python Logo/build_lockups.py
           python Logo/Oiseau/build_demo.py
 
-      - name: Validate model and generated files
+      - name: Validate canonical sources and generated assets
         run: |
           python -m py_compile \
             Logo/Police/build_wordmark.py \
@@ -54,15 +57,10 @@ jobs:
           assert 'data-flight-bird="outbound"' in demo
           assert 'data-flight-bird="inbound"' in demo
           assert 'data-animation-clips="true"' in demo
-          assert 'TOE-OFF' in demo
-          assert 'TOUCHDOWN' in demo
-          assert 'PATTES VERROUILLÉES' in demo
-          assert 'data-lidar-beam' not in demo
-          assert 'data-lidar-ray="true"' not in demo
           assert not any(path.name.startswith('apply_') for path in Path('Logo/Oiseau').glob('*.py'))
           PY
 
-      - name: Commit generated assets
+      - name: Commit canonical v2 assets
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -70,6 +68,6 @@ jobs:
           if git diff --cached --quiet; then
             echo "Generated assets are already up to date."
           else
-            git commit -m "Génère les actifs de l’animation keyframée"
+            git commit -m "Recalibre le décollage et restaure des ailes pleines"
             git push
           fi

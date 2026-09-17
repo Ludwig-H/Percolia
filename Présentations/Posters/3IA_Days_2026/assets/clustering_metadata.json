@@ -1,0 +1,17 @@
+{
+  "dataset": "HDBSCAN clusterable_data.npy",
+  "n_points": 2309,
+  "scikit_learn": "1.8.0",
+  "min_cluster_size": 15,
+  "min_samples": 16,
+  "cluster_counts": {
+    "-1": 581,
+    "0": 196,
+    "1": 311,
+    "2": 264,
+    "3": 406,
+    "4": 354,
+    "5": 197
+  },
+  "purpose": "Introductory example only; not an HGP-versus-HDBSCAN benchmark."
+}

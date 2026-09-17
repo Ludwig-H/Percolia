@@ -1,0 +1,116 @@
+% Static diagram adapted from the defense, English label; schematic radii.
+                    % Hierarchie de K-polyedres proposee comme unite de calcul a la place du point.
+                    % Les six pieces des feuilles sont les six secteurs d'un meme polygone maitre
+                    % irregulier (decoupe en eventail autour d'un point interieur O). Elles sont
+                    % dessinees partout a la meme echelle et dans la meme orientation : le polyedre
+                    % d'un noeud interne est donc litteralement le recollement de ceux de ses deux
+                    % enfants, soude le long de la face tracee en rouge epais. L'ordonnee est le
+                    % rayon physique r ; le point rouge d'un noeud est place en O, au coeur du polyedre.
+                    \begin{tikzpicture}[xscale=1.0, yscale=1.0]
+                    \useasboundingbox (-1.70, -0.40) rectangle (10.303, 7.541);
+
+                    \tikzset{arbre/.style={inriagrayblue!75, line width=0.9pt}}
+                    \tikzset{bord/.style={draw=inriablue!80!black, line width=1.05pt, line join=round}}
+                    \tikzset{couture/.style={draw=inriablue!70, line width=0.4pt}}
+                    \tikzset{soudure/.style={draw=inriared, line width=1.7pt}}
+
+                    % ==== axe des rayons ====
+                    \draw[-{Latex[length=2.4mm]}, inriagrayblue, line width=0.8pt] (-1.00,-0.25) -- (-1.00,7.271);
+                    \node[font=\fontsize{9}{10}\selectfont, text=inriagrayblue, anchor=south] at (-1.00,7.341) {$r$};
+                    \draw[inriagrayblue, line width=0.6pt] (-1.00,0.6) -- (-0.84,0.6);
+                    \draw[inriagrayblue, line width=0.6pt] (-1.00,1.2) -- (-0.84,1.2);
+                    \draw[inriagrayblue, line width=0.6pt] (-1.00,2.4) -- (-0.84,2.4);
+                    \draw[inriagrayblue, line width=0.6pt] (-1.00,3.6) -- (-0.84,3.6);
+                    \draw[inriagrayblue, line width=0.6pt] (-1.00,4.8) -- (-0.84,4.8);
+                    \draw[inriagrayblue, line width=0.6pt] (-1.00,6) -- (-0.84,6);
+                    \node[rotate=90, font=\fontsize{9}{10}\selectfont, text=inriagrayblue, anchor=south] at (-1.50,2.88) {merging radius};
+
+                    % ==== arbre (passe derriere les polyedres) ====
+                    \draw[arbre] (5.9,0.528) -- (5.9,1.92);
+                    \draw[arbre] (4.1,0.912) -- (4.1,1.92);
+                    \draw[arbre] (5.9,1.92) -- (4.1,1.92);
+                    \draw[arbre] (0.5,0.312) -- (0.5,2.4);
+                    \draw[arbre] (2.3,0.744) -- (2.3,2.4);
+                    \draw[arbre] (0.5,2.4) -- (2.3,2.4);
+                    \draw[arbre] (7.7,1.056) -- (7.7,2.76);
+                    \draw[arbre] (9.5,0.624) -- (9.5,2.76);
+                    \draw[arbre] (7.7,2.76) -- (9.5,2.76);
+                    \draw[arbre] (5,1.92) -- (5,4.2);
+                    \draw[arbre] (1.4,2.4) -- (1.4,4.2);
+                    \draw[arbre] (5,4.2) -- (1.4,4.2);
+                    \draw[arbre] (3.2,4.2) -- (3.2,6.24);
+                    \draw[arbre] (8.6,2.76) -- (8.6,6.24);
+                    \draw[arbre] (3.2,6.24) -- (8.6,6.24);
+
+                    % ==== polyedres : un par noeud, a sa hauteur ====
+                    % noeud p1
+                    \fill[inriablue!12] (5.397,0.321) -- (6.403,0.445) -- (6.103,0.735) -- cycle;
+                    \draw[bord] (5.397,0.321) -- (6.403,0.445) -- (6.103,0.735) -- cycle;
+                    % noeud p2
+                    \fill[inriablue!58] (3.902,0.582) -- (4.608,0.996) -- (4.103,1.242) -- (3.592,1.048) -- cycle;
+                    \draw[bord] (3.902,0.582) -- (4.608,0.996) -- (4.103,1.242) -- (3.592,1.048) -- cycle;
+                    % noeud p3
+                    \fill[inriablue!30] (0.936,0.274) -- (0.626,0.74) -- (0.064,0.627) -- (0.131,0.294) -- (0.14,-0.116) -- cycle;
+                    \draw[bord] (0.936,0.274) -- (0.626,0.74) -- (0.064,0.627) -- (0.131,0.294) -- (0.14,-0.116) -- cycle;
+                    % noeud p4
+                    \fill[inriablue!78] (2.698,1.095) -- (1.902,0.704) -- (2.43,0.393) -- cycle;
+                    \draw[bord] (2.698,1.095) -- (1.902,0.704) -- (2.43,0.393) -- cycle;
+                    % noeud p5
+                    \fill[inriablue!42] (7.547,1.407) -- (7.279,0.705) -- (7.745,0.89) -- (8.121,0.928) -- cycle;
+                    \draw[bord] (7.547,1.407) -- (7.279,0.705) -- (7.745,0.89) -- (8.121,0.928) -- cycle;
+                    % noeud p6
+                    \fill[inriablue!95] (8.997,0.801) -- (9.57,0.322) -- (9.897,0.507) -- (9.843,0.749) -- (10.003,0.926) -- cycle;
+                    \draw[bord] (8.997,0.801) -- (9.57,0.322) -- (9.897,0.507) -- (9.843,0.749) -- (10.003,0.926) -- cycle;
+                    % noeud A
+                    \fill[inriablue!12] (4.652,1.59) -- (5.659,1.714) -- (5.358,2.004) -- cycle;
+                    \fill[inriablue!58] (4.652,1.59) -- (5.358,2.004) -- (4.852,2.25) -- (4.341,2.056) -- cycle;
+                    \draw[bord] (4.652,1.59) -- (5.659,1.714) -- (5.358,2.004) -- (4.852,2.25) -- (4.341,2.056) -- cycle;
+                    \draw[soudure] (4.652,1.59) -- (5.358,2.004);
+                    % noeud B
+                    \fill[inriablue!30] (1.836,2.518) -- (1.526,2.983) -- (0.964,2.87) -- (1.031,2.537) -- (1.04,2.127) -- cycle;
+                    \fill[inriablue!78] (1.836,2.518) -- (1.04,2.127) -- (1.568,1.817) -- cycle;
+                    \draw[bord] (1.836,2.518) -- (1.526,2.983) -- (0.964,2.87) -- (1.031,2.537) -- (1.04,2.127) -- (1.568,1.817) -- cycle;
+                    \draw[soudure] (1.836,2.518) -- (1.04,2.127);
+                    % noeud C
+                    \fill[inriablue!42] (8.231,3.048) -- (7.962,2.347) -- (8.428,2.532) -- (8.805,2.57) -- cycle;
+                    \fill[inriablue!95] (8.231,3.048) -- (8.805,2.57) -- (9.131,2.754) -- (9.077,2.997) -- (9.238,3.173) -- cycle;
+                    \draw[bord] (8.231,3.048) -- (7.962,2.347) -- (8.428,2.532) -- (8.805,2.57) -- (9.131,2.754) -- (9.077,2.997) -- (9.238,3.173) -- cycle;
+                    \draw[soudure] (8.231,3.048) -- (8.805,2.57);
+                    % noeud D
+                    \fill[inriablue!12] (3.133,4.22) -- (4.14,4.344) -- (3.839,4.635) -- cycle;
+                    \fill[inriablue!58] (3.133,4.22) -- (3.839,4.635) -- (3.334,4.881) -- (2.823,4.686) -- cycle;
+                    \fill[inriablue!30] (3.133,4.22) -- (2.823,4.686) -- (2.26,4.573) -- (2.327,4.24) -- (2.337,3.83) -- cycle;
+                    \fill[inriablue!78] (3.133,4.22) -- (2.337,3.83) -- (2.865,3.519) -- cycle;
+                    \draw[couture] (3.133,4.22) -- (3.839,4.635);
+                    \draw[couture] (3.133,4.22) -- (2.337,3.83);
+                    \draw[bord] (3.133,4.22) -- (4.14,4.344) -- (3.839,4.635) -- (3.334,4.881) -- (2.823,4.686) -- (2.26,4.573) -- (2.327,4.24) -- (2.337,3.83) -- (2.865,3.519) -- cycle;
+                    \draw[soudure] (3.133,4.22) -- (2.823,4.686);
+                    % noeud R
+                    \fill[inriablue!12] (5.833,6.26) -- (6.84,6.384) -- (6.539,6.675) -- cycle;
+                    \fill[inriablue!58] (5.833,6.26) -- (6.539,6.675) -- (6.034,6.921) -- (5.523,6.726) -- cycle;
+                    \fill[inriablue!30] (5.833,6.26) -- (5.523,6.726) -- (4.96,6.613) -- (5.027,6.28) -- (5.037,5.87) -- cycle;
+                    \fill[inriablue!78] (5.833,6.26) -- (5.037,5.87) -- (5.565,5.559) -- cycle;
+                    \fill[inriablue!42] (5.833,6.26) -- (5.565,5.559) -- (6.031,5.744) -- (6.407,5.781) -- cycle;
+                    \fill[inriablue!95] (5.833,6.26) -- (6.407,5.781) -- (6.734,5.966) -- (6.679,6.208) -- (6.84,6.384) -- cycle;
+                    \draw[couture] (5.833,6.26) -- (6.539,6.675);
+                    \draw[couture] (5.833,6.26) -- (5.523,6.726);
+                    \draw[couture] (5.833,6.26) -- (5.037,5.87);
+                    \draw[couture] (5.833,6.26) -- (6.407,5.781);
+                    \draw[bord] (6.84,6.384) -- (6.539,6.675) -- (6.034,6.921) -- (5.523,6.726) -- (4.96,6.613) -- (5.027,6.28) -- (5.037,5.87) -- (5.565,5.559) -- (6.031,5.744) -- (6.407,5.781) -- (6.734,5.966) -- (6.679,6.208) -- (6.84,6.384) -- cycle;
+                    \draw[soudure] (5.833,6.26) -- (5.565,5.559);
+                    \draw[soudure] (5.833,6.26) -- (6.84,6.384);
+
+                    % ==== noeuds : le point de fusion, au centre du polyedre ====
+                    \fill[inriared] (5.9,0.528) circle (2.0pt);
+                    \fill[inriared] (4.1,0.912) circle (2.0pt);
+                    \fill[inriared] (0.5,0.312) circle (2.0pt);
+                    \fill[inriared] (2.3,0.744) circle (2.0pt);
+                    \fill[inriared] (7.7,1.056) circle (2.0pt);
+                    \fill[inriared] (9.5,0.624) circle (2.0pt);
+                    \fill[inriared] (5,1.92) circle (2.6pt);
+                    \fill[inriared] (1.4,2.4) circle (2.6pt);
+                    \fill[inriared] (8.6,2.76) circle (2.6pt);
+                    \fill[inriared] (3.2,4.2) circle (2.6pt);
+                    \fill[inriared] (5.9,6.24) circle (3.0pt);
+
+                    \end{tikzpicture}

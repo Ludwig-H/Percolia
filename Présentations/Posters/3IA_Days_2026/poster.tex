@@ -32,7 +32,7 @@
 \vspace{0.6cm}
 \begin{columns}[T,onlytextwidth]
 \begin{column}{\colwidth}
-\begin{posterbox}{Clustering}{16.0cm}
+\begin{posterbox}{1}{Clustering}{16.0cm}
 Clustering groups similar points into \emph{clusters}. Here, similarity is measured by \textbf{\mbox{Euclidean distance}}.
 \vfill
 \centering\resizebox{0.88\linewidth}{!}{\input{figures/clustering.tex}}\par
@@ -40,7 +40,7 @@ Clustering groups similar points into \emph{clusters}. Here, similarity is measu
 \captiontext{Clusters in colour; unassigned points in grey \refb{3}.}
 \end{posterbox}
 \gap
-\begin{posterbox}{\textsc{Hartigan}'s model and hierarchy}{33.5cm}
+\begin{posterbox}{2}{\textsc{Hartigan}'s model and hierarchy}{33.5cm}
 For a density $f$, clusters are the \textbf{connected components} of its superlevel sets \refb{1}.
 \formulabox{$\displaystyle E_\lambda=\{y\in\mathbb R^d:f(y)\geq\lambda\}$}
 Lowering $\lambda$ makes components grow and merge: a \textbf{hierarchy}.\par\vspace{0.75cm}
@@ -57,7 +57,7 @@ Lowering $\lambda$ makes components grow and merge: a \textbf{hierarchy}.\par\vs
 \formulabox{{\fontsize{28}{33}\selectfont$\displaystyle\widehat f_{K\text{-NN}}(y)\geq\lambda\ \Longleftrightarrow\ \textcolor{inriablue}{r_K(y)}\leq\bigl(K/(n\omega_d\lambda)\bigr)^{1/d}=:r(\lambda)$}}
 \end{posterbox}
 \gap
-\begin{posterbox}{Same six points, different hierarchies}{30.3cm}
+\begin{posterbox}{3}{Same six points, different hierarchies}{30.3cm}
 For $K=2$, a density superlevel set is the region covered by \textbf{at least two balls}:
 \formulabox{{\fontsize{28}{33}\selectfont$\displaystyle\{\widehat f_{2\text{-NN}}\geq\lambda\}=\bigcup_{i<j}\bigl(B(x_i,r(\lambda))\cap B(x_j,r(\lambda))\bigr)$}}
 \vfill
@@ -80,11 +80,11 @@ For $K=2$, a density superlevel set is the region covered by \textbf{at least tw
 \end{posterbox}
 \end{column}
 \begin{column}{\colwidth}
-\begin{posterbox}{LiDAR: detect unexpected objects}{27.5cm}
+\begin{posterbox}{4}{LiDAR: detect unexpected objects}{24.5cm}
 Objects present in a scan, absent from a \textbf{reference 3D model}.
 \smalltext{With Marie \textsc{Aspro} (Inria Startup Studio).}
 \vfill
-\centering\includegraphics[width=\linewidth]{assets/shipyard.png}\par
+\centering\includegraphics[width=0.84\linewidth]{assets/shipyard.png}\par
 \captiontext{Synthetic benchmark: 2 million points. Red: model-consistent; other colours: anomalies; grey: background. \textcopyright\ Naval Group \refb{6}.}
 \vfill
 \centering\resizebox{\linewidth}{!}{\input{figures/lidar_pipeline.tex}}\par
@@ -92,23 +92,30 @@ Objects present in a scan, absent from a \textbf{reference 3D model}.
 \RaggedRight\textbf{Geometric priors select branches. No training required.}
 \end{posterbox}
 \gap
-\begin{posterbox}[inriared]{Perspective: geometry-guided 3D learning}{45.3cm}
-\textbf{The same object, different sampling.}
-\vspace{0.2cm}
+\begin{posterbox}[inriared]{5}{Perspective: geometry-guided 3D learning}{48.3cm}
+% Three distinct, untitled panels; their total heights plus two gaps equal 48.3 cm.
+\begin{perspectivesubblock}{7.0cm}
+GPT represents text with \textbf{subword tokens} \refb{7}.
+\vfill
+\centering\resizebox{0.97\linewidth}{!}{\input{figures/gpt_subwords.tex}}\par
+\vfill
+\end{perspectivesubblock}
+\perspectivesubgap
+\begin{perspectivesubblock}{14.5cm}
+\vfill
 \centering\resizebox{\linewidth}{!}{\input{figures/defense/verrou_portee.tex}}\par
-\captiontext{Range, scan pattern and occlusion change the point cloud.}
 \vfill
-\RaggedRight\textbf{Polyhedra as tokens; hierarchy as multiscale context.}
-\vspace{0.25cm}
-\centering\resizebox{0.78\linewidth}{!}{\input{figures/defense/hierarchie_surfaces.tex}}\par
-\captiontext{Parents join children along shared faces (red).}
+\end{perspectivesubblock}
+\perspectivesubgap
+\begin{perspectivesubblock}{25.8cm}
 \vfill
-\centering\resizebox{\linewidth}{!}{\input{figures/learning_pipeline.tex}}\par
-\vspace{0.4cm}
-\RaggedRight\smalltext{\textcolor{inriared}{\textbf{Research hypothesis:}} use polyhedral tokens and merging scales to guide a 3D foundation model.}
+\centering\resizebox{0.80\linewidth}{!}{\input{figures/defense/hierarchie_surfaces.tex}}\par
+\vfill
+\RaggedRight\smalltext{\textcolor{inriared}{\textbf{Research hypothesis:}} use polyhedral tokens and hierarchical merging scales as multiscale context to guide a 3D foundation model.}
+\end{perspectivesubblock}
 \end{posterbox}
 \gap
-\begin{posterbox}{Inria Startup Studio: Percolia}{7.0cm}
+\begin{posterbox}{6}{Inria Startup Studio: Percolia}{7.0cm}
 \vfill
 % Crop only the SVG canvas margins, not the mark; align all three cells by centre.
 \begin{minipage}[c][6.0cm][c]{0.19\linewidth}\centering
@@ -129,7 +136,7 @@ Objects present in a scan, absent from a \textbf{reference 3D model}.
 \end{column}
 \end{columns}
 \gap
-\begin{posterbox}{References}{5.8cm}
+\begin{posterbox}{7}{References}{5.8cm}
 \input{references.tex}
 \end{posterbox}
 \end{frame}

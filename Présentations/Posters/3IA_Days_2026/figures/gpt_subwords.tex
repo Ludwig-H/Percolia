@@ -1,0 +1,22 @@
+% English adaptation of the language row in the defense's alphabet_fondation.tex.
+% Source revision: 3593fbf25434c4715b37537eae1287bf49239fa7.
+% Token boxes, relative positioning and model arrow follow the original TikZ.
+% Illustrative subword split, not a claim about every GPT tokenizer/version.
+\begin{tikzpicture}[xscale=1,yscale=1]
+\useasboundingbox (0,-0.25) rectangle (11.65,1.35);
+\tikzset{jeton/.style={draw=inria-2024-bleu-canard,line width=0.7pt,
+  rounded corners=1.5pt,fill=inria-2024-bleu-canard!12,
+  inner xsep=5pt,inner ysep=4pt,font=\fontsize{11}{13}\selectfont,
+  minimum height=7mm}}
+\tikzset{modele/.style={draw=gris_fonce_inria,line width=1pt,
+  rounded corners=3pt,fill=gray!8,inner sep=5pt,
+  font=\fontsize{13}{15}\selectfont\bfseries,
+  minimum width=1.5cm,minimum height=8mm}}
+\node[jeton,anchor=west] (t1) at (0.15,0.62) {Graph};
+\node[jeton,anchor=west] (t2) at ($(t1.east)+(0.09,0)$) {s};
+\node[jeton,anchor=west] (t3) at ($(t2.east)+(0.32,0)$) {are};
+\node[jeton,anchor=west] (t4) at ($(t3.east)+(0.32,0)$) {everywhere};
+\node[modele,anchor=east] (gpt) at (11.45,0.62) {GPT};
+\draw[-{Latex[length=2.2mm]},line width=0.9pt,color=gray!55]
+  ($(t4.east)+(0.30,0)$) -- ($(gpt.west)+(-0.15,0)$);
+\end{tikzpicture}

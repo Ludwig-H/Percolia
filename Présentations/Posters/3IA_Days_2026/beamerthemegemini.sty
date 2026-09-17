@@ -45,19 +45,30 @@
       Sophia Antipolis, 24--25 September 2026\par}
     \vskip0.45cm
   \end{beamercolorbox}}
-% Unnumbered headings. Suppress implicit interline glue between stacked boxes.
-\newenvironment{posterbox}[3][inriagrayblue]{%
+% Explicit numbering keeps the two-column reading order stable.
+\newenvironment{posterbox}[4][inriagrayblue]{%
   \par\nointerlineskip
   \setbeamercolor{localtitle}{fg=white,bg=#1}%
   \begin{beamercolorbox}[wd=\linewidth,ht=1.35cm,dp=0.45cm,leftskip=0.5cm]{localtitle}
-    \fontsize{37}{41}\selectfont\bfseries #2
+    \fontsize{37}{41}\selectfont\bfseries #2\hspace{0.3cm}#3
   \end{beamercolorbox}\par\nointerlineskip
   \begin{beamercolorbox}[wd=\linewidth,sep=0.5cm]{block body}%
-  \begin{minipage}[t][#3][t]{\dimexpr\linewidth-1cm\relax}
+  \begin{minipage}[t][#4][t]{\dimexpr\linewidth-1cm\relax}
     \fontsize{30}{35}\selectfont\RaggedRight
     \setlength{\parskip}{0.25cm}\setlength{\parindent}{0pt}
     \setlength{\abovedisplayskip}{0.25cm}\setlength{\belowdisplayskip}{0.25cm}
 }{\end{minipage}\end{beamercolorbox}\par\nointerlineskip}
+% Untitled white panels inside the grey Perspective body.
+% The argument is the TOTAL panel height, including its 3 mm padding.
+\newenvironment{perspectivesubblock}[1]{%
+  \par\nointerlineskip
+  \setbeamercolor{perspective subbody}{fg=black,bg=white}%
+  \begin{beamercolorbox}[wd=\linewidth,sep=0.3cm]{perspective subbody}
+  \begin{minipage}[t][\dimexpr#1-0.6cm\relax][t]{\dimexpr\linewidth-0.6cm\relax}
+    \fontsize{27}{32}\selectfont\RaggedRight
+    \setlength{\parskip}{0.2cm}\setlength{\parindent}{0pt}
+}{\end{minipage}\end{beamercolorbox}\par\nointerlineskip}
+\newcommand{\perspectivesubgap}{\par\nointerlineskip\vskip0.5cm\nointerlineskip}
 \newcommand{\captiontext}[1]{{\fontsize{25}{29}\selectfont\color{inriagrayblue}#1\par}}
 \newcommand{\smalltext}[1]{{\fontsize{27}{31}\selectfont #1\par}}
 \newcommand{\refb}[1]{\textcolor{inriagrayblue}{\textbf{[#1]}}}

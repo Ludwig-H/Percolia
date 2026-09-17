@@ -6,7 +6,6 @@
 \usecolortheme{inria}
 \usepackage{amsmath,amssymb,graphicx,tikz,multicol,qrcode}
 \usetikzlibrary{arrows.meta,calc,positioning,backgrounds,shapes.geometric}
-% The original defense colours are mapped once; source geometry is retained.
 \colorlet{inria-bleu}{inriablue}
 \colorlet{inria-rouge}{inriared}
 \colorlet{gris_fonce_inria}{inriagrayblue}
@@ -21,68 +20,62 @@
 \institute{Inria, Universit\'e C\^ote d'Azur\quad\textperiodcentered\quad NEO \& AYANA teams\quad\textperiodcentered\quad 3IA--DS4H}
 \newlength{\colwidth}\setlength{\colwidth}{38.5cm}
 \newcommand{\gap}{\vspace{0.7cm}}
+% A visible border, not only a tinted background.
+\newcommand{\formulabox}[2][inriablue]{%
+  \par\vspace{0.25cm}{\centering
+  \begin{tikzpicture}
+    \node[draw=#1!85,fill=white,rounded corners=2mm,line width=1.2pt,
+          inner xsep=5mm,inner ysep=3.5mm] {#2};
+  \end{tikzpicture}\par}\vspace{0.2cm}}
 \begin{document}
 \begin{frame}[t]
 \vspace{0.6cm}
 \begin{columns}[T,onlytextwidth]
 \begin{column}{\colwidth}
-\begin{posterbox}{1}{Clustering}{17.8cm}
+\begin{posterbox}{1}{Clustering}{15.8cm}
 \textbf{Find groups without class labels.} Recover non-convex shapes and leave noisy points unassigned.
 \vfill
-\centering\resizebox{\linewidth}{!}{\input{figures/clustering.tex}}\par
+\centering\resizebox{0.88\linewidth}{!}{\input{figures/clustering.tex}}\par
 \vfill
 \captiontext{Colours: clusters; grey: unassigned points \refb{3}.}
 \end{posterbox}
 \gap
-\begin{posterbox}{2}{Hartigan's density model}{22.5cm}
-\textbf{Clusters are connected components} of density superlevel sets \refb{1}:
-\[
- E_\lambda=\{y\in\mathbb R^d:f(y)\geq\lambda\}.
-\]
-\centering\resizebox{\linewidth}{!}{\input{figures/hartigan.tex}}\par
-\captiontext{Lower $\lambda$: components grow and merge.}
+\begin{posterbox}{2}{\textsc{Hartigan}'s model and hierarchy}{27.7cm}
+\textbf{Clusters are connected components} of density superlevel sets \refb{1}.
+\formulabox{$\displaystyle E_\lambda=\{y\in\mathbb R^d:f(y)\geq\lambda\}$}
+Lowering $\lambda$ makes components grow and merge: a \textbf{hierarchy}.\par\vspace{0.6cm}
 \vfill
-\RaggedRight\textbf{$K$-nearest-neighbour density estimate} \refb{2}:
-\[
- \widehat f_K(y)=\frac{K}{n\,\omega_d\,r_K(y)^d}.
-\]
-\captiontext{$r_K(y)$: distance to the $K$-th sample point; $\omega_d$: unit-ball volume. High density means small $r_K$.}
+\centering\resizebox{0.92\linewidth}{!}{\input{figures/hartigan.tex}}\par
+\vfill
+\RaggedRight\textbf{Key quantity: the neighbour radius \textcolor{inriablue}{$r_K(y)$}.}
+\formulabox{{\fontsize{33}{38}\selectfont\color{inriablue}
+$\displaystyle r_K(y)=\min\{r\geq0:\#(X\cap B(y,r))\geq K\}$}}
+\captiontext{Distance from $y$ to its $K$-th nearest sample point \refb{2}.}
+\formulabox{$\displaystyle \widehat f_K(y)=\frac{K}{n\,\omega_d\,\textcolor{inriablue}{r_K(y)}^d}$}
+\captiontext{$n$: number of points; $\omega_d$: unit-ball volume.}
 \end{posterbox}
 \gap
-\begin{posterbox}{3}{Same six points, different hierarchies}{33.7cm}
+\begin{posterbox}{3}{Same six points, different hierarchies}{34.7cm}
 For $K=2$, track the region covered by \textbf{at least two balls}:
-\[
- E_{2,\rho}=\{y:r_2(y)\leq\rho\}
-     =\bigcup_{\{x_i,x_j\}\subset X}\!\bigl(B(x_i,\rho)\cap B(x_j,\rho)\bigr).
-\]
-\vspace{0.3cm}
+\formulabox{$\displaystyle\begin{gathered}
+ E_{2,\rho}=\{y:r_2(y)\leq\rho\}\\[0.12cm]
+ =\bigcup_{\{x_i,x_j\}\subset X}\bigl(B(x_i,\rho)\cap B(x_j,\rho)\bigr)
+\end{gathered}$}
+\vfill
 \begin{minipage}[t]{0.32\linewidth}\centering
 \resizebox{\linewidth}{!}{\input{figures/defense/deuxnn_r_boules.tex}}\par
-\captiontext{$\rho\gtrsim r$: \textbf{7} overlaps}
+\captiontext{$r$: \textbf{7} overlaps}
 \end{minipage}\hfill
 \begin{minipage}[t]{0.32\linewidth}\centering
 \resizebox{\linewidth}{!}{\input{figures/defense/deuxnn_rp_boules.tex}}\par
-\captiontext{$\rho=r'$: \textbf{3} components}
+\captiontext{$r'$: \textbf{3} components}
 \end{minipage}\hfill
 \begin{minipage}[t]{0.32\linewidth}\centering
 \resizebox{\linewidth}{!}{\input{figures/defense/deuxnn_rs_boules.tex}}\par
-\captiontext{$\rho=r''$: \textbf{1} component}
+\captiontext{$r''$: \textbf{1} component}
 \end{minipage}
 \vfill
-\begin{minipage}[t]{0.37\linewidth}\centering
-{\fontsize{29}{33}\selectfont\textbf{DBSCAN / Robust SL}}\par
-{\fontsize{24}{28}\selectfont $K=2$, neighbourhood radius $\epsilon$}\par
-\vspace{0.5cm}
-\resizebox{\linewidth}{!}{\input{figures/defense/comp_dendro_rsl.tex}}\par
-\vspace{0.25cm}\captiontext{All six points merge at once.}
-\end{minipage}\hfill
-\begin{minipage}[t]{0.59\linewidth}\centering
-{\fontsize{29}{33}\selectfont\textcolor{inriared}{\textbf{2-NN \textsc{Hartigan}}}}\par
-{\fontsize{24}{28}\selectfont Connected components of $E_{2,\rho}$}\par
-\vspace{0.5cm}
-\resizebox{\linewidth}{!}{\input{figures/defense/comp_dendro_2nn.tex}}\par
-\vspace{0.25cm}\captiontext{$ABC$, $CD$, $DEF$ remain distinct until $r''$.}
-\end{minipage}
+\centering\resizebox{\linewidth}{!}{\input{figures/six_point_hierarchies.tex}}\par
 \vfill
 \RaggedRight\textbf{HGP-Clusterer connects edges through triangles}, recovering the exact hierarchy \myref{4,5}. Its branches may share points.
 \end{posterbox}
@@ -100,7 +93,7 @@ Objects present in a scan, absent from a \textbf{reference 3D model}.
 \RaggedRight\textbf{Geometric priors select branches. No training required.}
 \end{posterbox}
 \gap
-\begin{posterbox}[inriared]{5}{Perspective: geometry-guided 3D learning}{50.8cm}
+\begin{posterbox}[inriared]{5}{Perspective: geometry-guided 3D learning}{45.5cm}
 \textbf{The same object, different sampling.}
 \vspace{0.2cm}
 \centering\resizebox{\linewidth}{!}{\input{figures/defense/verrou_portee.tex}}\par
@@ -108,17 +101,35 @@ Objects present in a scan, absent from a \textbf{reference 3D model}.
 \vfill
 \RaggedRight\textbf{Polyhedra as tokens; hierarchy as multiscale context.}
 \vspace{0.25cm}
-\centering\resizebox{0.93\linewidth}{!}{\input{figures/defense/hierarchie_surfaces.tex}}\par
+\centering\resizebox{0.78\linewidth}{!}{\input{figures/defense/hierarchie_surfaces.tex}}\par
 \captiontext{Each parent joins its children along shared faces (red). Schematic geometry and merging radii.}
 \vfill
 \centering\resizebox{\linewidth}{!}{\input{figures/learning_pipeline.tex}}\par
 \vspace{0.4cm}
 \RaggedRight\smalltext{\textcolor{inriared}{\textbf{Research hypothesis:}} guide a 3D foundation model with geometric tokens and their merging scales. Learning gains remain to be tested.}
 \end{posterbox}
+\gap
+\begin{posterbox}{6}{Inria Startup Studio: Percolia}{6.0cm}
+\vfill
+\begin{minipage}[c]{0.14\linewidth}\centering
+\includegraphics[width=4.2cm]{assets/percolia-p.pdf}
+\end{minipage}\hfill
+\begin{minipage}[c]{0.61\linewidth}
+\textbf{Louis \textsc{Hauseux} \& Alban \textsc{Hauseux}}\par
+\smalltext{Entering \textbf{Inria Startup Studio}.}
+\vspace{0.2cm}
+\smalltext{Geometry-aware tools for 3D perception.}
+\end{minipage}\hfill
+\begin{minipage}[c]{0.20\linewidth}\centering
+{\hypersetup{urlcolor=black}\qrcode[height=4.3cm,hyperlink=false]{\PercoliaLinkedIn}}\par
+\vspace{0.18cm}{\fontsize{23}{26}\selectfont\href{\PercoliaLinkedIn}{LinkedIn}\par}
+\end{minipage}
+\vfill
+\end{posterbox}
 \end{column}
 \end{columns}
 \vspace{0.65cm}
-\begin{posterbox}{6}{References}{5.8cm}
+\begin{posterbox}{7}{References}{5.8cm}
 \input{references.tex}
 \end{posterbox}
 \end{frame}

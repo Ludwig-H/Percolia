@@ -1,4 +1,4 @@
-% Inria / 3IA / DS4H Gemini poster theme, adapted for a compact title and footer.
+% Inria / 3IA / DS4H Gemini poster theme; institutional logos in the footer.
 \RequirePackage{fontspec}
 \RequirePackage{ragged2e}
 \usefonttheme{professionalfonts}
@@ -30,24 +30,8 @@
     \vskip0.8cm
   \end{beamercolorbox}
   \begin{beamercolorbox}[wd=\paperwidth,ht=0.14cm]{headline rule}\end{beamercolorbox}}
-% All branding is placed here, below the scientific content and references.
+% Percolia has its own content block; no duplicate logo or QR in the footer.
 \setbeamertemplate{footline}{%
-  \begin{beamercolorbox}[wd=\paperwidth,sep=0.5cm]{palette primary}
-  \hspace{2cm}%
-  \begin{minipage}[c]{5cm}\centering
-    \includegraphics[width=4.2cm]{assets/percolia-p.pdf}
-  \end{minipage}\hspace{1cm}%
-  \begin{minipage}[c]{59cm}
-    {\fontsize{32}{36}\selectfont\textbf{Percolia}\quad
-     Louis \textsc{Hauseux} \& Alban \textsc{Hauseux}\par}
-    \vspace{0.15cm}
-    {\fontsize{27}{31}\selectfont Entering Inria Startup Studio\quad\textperiodcentered\quad Geometry-aware 3D perception\par}
-  \end{minipage}\hspace{1cm}%
-  \begin{minipage}[c]{10cm}\centering
-    {\hypersetup{urlcolor=black}\href{\PercoliaLinkedIn}{\qrcode[height=3.8cm,hyperlink=false]{\PercoliaLinkedIn}}}\par
-    \vspace{0.12cm}{\fontsize{22}{24}\selectfont LinkedIn\par}
-  \end{minipage}
-  \end{beamercolorbox}
   \begin{beamercolorbox}[wd=\paperwidth,ht=0.13cm]{headline rule}\end{beamercolorbox}
   \begin{beamercolorbox}[wd=\paperwidth,center]{headline}
     \vskip0.5cm

@@ -62,7 +62,10 @@
                         \draw[surf] plot coordinates {(0.080,0.440) (0.420,0.440) (0.692,0.710) (1.100,0.980) (1.440,0.980) (1.780,0.980) (2.218,0.710) (2.580,0.440) (2.920,0.440)};
                     \end{scope}
 
-                    \node[font=\fontsize{14}{15}\selectfont\bfseries, text=inria-rouge] at (6.15,-1.86) {$\approx$};
+                    % Both comparison signs share the midpoint between the two panels.
+\def\comparisonx{5.15}
+\node[font=\fontsize{18}{20}\selectfont\bfseries, text=inriablue] at (\comparisonx,0.95) {$\ne$};
+\node[font=\fontsize{18}{20}\selectfont\bfseries, text=inria-rouge] at (\comparisonx,-1.86) {$\approx$};
 
                     \node[font=\fontsize{8}{9}\selectfont, text=inria-2024-bleu-canard, anchor=east, align=right] at (12.45,0.95)
                         {\textbf{Sampling}\\depends on\\sensor and range};

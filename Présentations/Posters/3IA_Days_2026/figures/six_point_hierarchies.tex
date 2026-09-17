@@ -1,0 +1,46 @@
+% Same six-point example and branches as defense/comp_dendro_*.tex.
+% One TikZ canvas gives both trees the same baseline and vertical scale.
+% The DBSCAN display radius is epsilon/2, so its flat merge is labelled r.
+\begin{tikzpicture}[font=\fontsize{9}{10}\selectfont,>=latex,line cap=round]
+\useasboundingbox (-0.7,-0.85) rectangle (13.25,3.95);
+\def\hr{1.0}\def\hrprime{1.5}\def\hrsecond{2.3}
+\node[font=\fontsize{11}{12}\selectfont\bfseries] at (2.15,3.63) {DBSCAN / Robust SL};
+\node[font=\fontsize{11}{12}\selectfont\bfseries,text=inria-rouge] at (9.10,3.63) {2-NN \textsc{Hartigan}};
+\begin{scope}[xscale=0.72]
+  \foreach \L [count=\i] in {A,B,C,D,E,F}{
+    \pgfmathsetmacro{\x}{\i-0.5}
+    \node[below] at (\x,0.3) {$\L$};
+    \draw[very thick,black] (\x,0.3)--(\x,\hr);
+  }
+  \draw[very thick,black] (0.5,\hr)--(5.5,\hr);
+  \draw[very thick,black] (3,\hr)--(3,2.8);
+  \draw[->,thick,black] (0,0.2)--(0,3.0);
+  \draw[dashed,black] (-0.1,\hr)--(0.5,\hr);
+  \node[left,black] at (-0.1,\hr) {$r$};
+\end{scope}
+\begin{scope}[xshift=5.8cm]
+  \foreach \L/\R [count=\i] in {A/B,B/C,A/C,C/D,D/E,E/F,D/F}{
+    \pgfmathsetmacro{\x}{(\i-1)*1.1}
+    \node[below] at (\x,0.3) {$\L$};
+    \node[below] at (\x+0.5,0.3) {$\R$};
+    \draw[very thick,inria-rouge] (\x,0.3)--(\x,\hr)--(\x+0.5,\hr)--(\x+0.5,0.3);
+    \draw[very thick,inria-rouge] (\x+0.25,\hr)--(\x+0.25,\hrprime);
+  }
+  \draw[very thick,inria-rouge] (0.25,\hrprime)--(2.45,\hrprime);
+  \draw[very thick,inria-rouge] (1.35,\hrprime)--(1.35,\hrsecond);
+  \draw[very thick,inria-rouge] (3.55,\hrprime)--(3.55,\hrsecond);
+  \draw[very thick,inria-rouge] (4.65,\hrprime)--(6.85,\hrprime);
+  \draw[very thick,inria-rouge] (5.75,\hrprime)--(5.75,\hrsecond);
+  \draw[very thick,inria-rouge] (1.35,\hrsecond)--(5.75,\hrsecond);
+  \draw[very thick,inria-rouge] (3.55,\hrsecond)--(3.55,2.8);
+  \draw[->,thick] (-0.5,0.2)--(-0.5,3.0);
+  \foreach \y/\label in {\hr/r,\hrprime/r',\hrsecond/r''}{
+    \draw[dashed,inria-rouge] (-0.6,\y)--(0.0,\y);
+    \node[left,inria-rouge] at (-0.6,\y) {$\label$};
+  }
+\end{scope}
+\node[align=center,text width=4.7cm,font=\fontsize{9}{10}\selectfont] at (2.15,-0.55)
+  {All six points merge at $r$.};
+\node[align=center,text width=7.6cm,font=\fontsize{9}{10}\selectfont] at (9.10,-0.55)
+  {$ABC$, $CD$, $DEF$ stay distinct until $r''$.};
+\end{tikzpicture}

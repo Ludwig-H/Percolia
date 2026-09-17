@@ -1,0 +1,41 @@
+% Adapted from the defense at 3593fbf25434c4715b37537eae1287bf49239fa7; original blob 53163804fa744353e9d9cb2ade144417c749e932.
+                \begin{tikzpicture}[scale=0.52,font=\fontsize{10}{11}\selectfont]
+                    \def\r{1.2}
+                    \pgfmathsetmacro{\h}{\r*sqrt(3)}
+                    \pgfmathsetmacro{\rprime}{\r * 2 / sqrt(3)}
+                    
+                    \coordinate (C) at (-\r, 0);
+                    \coordinate (D) at (\r, 0);
+                    \coordinate (A) at (-\r-\h, \r);
+                    \coordinate (B) at (-\r-\h, -\r);
+                    \coordinate (E) at (\r+\h, \r);
+                    \coordinate (F) at (\r+\h, -\r);
+ 
+                    % 2-intersections fill (light blue)
+                    \begin{scope}
+                        \foreach \p/\q in {A/B, B/C, C/A, C/D, D/E, E/F, F/D} {
+                            \begin{scope}
+                                \clip (\p) circle (\rprime);
+                                \fill[inria-bleu, opacity=0.3] (\q) circle (\rprime);
+                            \end{scope}
+                        }
+                    \end{scope}
+ 
+                    % Circles of radius r' (transparent, dashed)
+                    \foreach \P in {A,B,C,D,E,F} {
+                        \draw[dashed, gray!60, thick] (\P) circle (\rprime);
+                    }
+                    
+                    % 3-intersection circumcenters marked in red
+                    \fill[inria-rouge] (barycentric cs:A=1,B=1,C=1) circle (3.5pt);
+                    \fill[inria-rouge] (barycentric cs:D=1,E=1,F=1) circle (3.5pt);
+                    
+                    % Points
+                    \foreach \P/\pos in {A/left, B/left, C/above left, D/above right, E/right, F/right} {
+                        \fill (\P) circle (2.5pt);
+                        \node[\pos] at (\P) {\fontsize{10}{11}\selectfont \P};
+                    }
+                    
+                    % Radius arrow
+                    \draw[->, >=latex] (A) -- ++(120:\rprime) node[midway, sloped, above] {$r'$};
+                \end{tikzpicture}

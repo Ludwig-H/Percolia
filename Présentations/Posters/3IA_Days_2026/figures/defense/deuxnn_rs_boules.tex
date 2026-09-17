@@ -1,0 +1,57 @@
+% Adapted from the defense at 3593fbf25434c4715b37537eae1287bf49239fa7; original blob 7ed6ec6b9f274e93f80dfaa93cd305b51cc2e89f.
+                \begin{tikzpicture}[scale=0.52,font=\fontsize{10}{11}\selectfont]
+                    \def\r{1.2}
+                    \pgfmathsetmacro{\h}{\r*sqrt(3)}
+                    \pgfmathsetmacro{\rsecond}{\r * sqrt(2 + sqrt(3))}
+                    
+                    \coordinate (C) at (-\r, 0);
+                    \coordinate (D) at (\r, 0);
+                    \coordinate (A) at (-\r-\h, \r);
+                    \coordinate (B) at (-\r-\h, -\r);
+                    \coordinate (E) at (\r+\h, \r);
+                    \coordinate (F) at (\r+\h, -\r);
+ 
+                    % 2-intersections fill (light blue)
+                    \begin{scope}
+                        \foreach \p/\q in {A/B, B/C, C/A, C/D, D/E, E/F, F/D} {
+                            \begin{scope}
+                                \clip (\p) circle (\rsecond);
+                                \fill[inria-bleu, opacity=0.15] (\q) circle (\rsecond);
+                            \end{scope}
+                        }
+                    \end{scope}
+ 
+                    % 3-intersections fill (color overlay in red)
+                    \begin{scope}
+                        \clip (A) circle (\rsecond);
+                        \clip (B) circle (\rsecond);
+                        \clip (C) circle (\rsecond);
+                        \fill[inria-rouge, opacity=0.25] (-10,-10) rectangle (10,10);
+                    \end{scope}
+                    \begin{scope}
+                        \clip (D) circle (\rsecond);
+                        \clip (E) circle (\rsecond);
+                        \clip (F) circle (\rsecond);
+                        \fill[inria-rouge, opacity=0.25] (-10,-10) rectangle (10,10);
+                    \end{scope}
+ 
+                    % Circles of radius r'' (transparent, dashed)
+                    \foreach \P in {A,B,C,D,E,F} {
+                        \draw[dashed, gray!60, thick] (\P) circle (\rsecond);
+                    }
+                    
+                    % 4 points of tangency marked in red
+                    \fill[inria-rouge] ($ (A)!0.5!(D) $) circle (3.5pt);
+                    \fill[inria-rouge] ($ (C)!0.5!(E) $) circle (3.5pt);
+                    \fill[inria-rouge] ($ (B)!0.5!(D) $) circle (3.5pt);
+                    \fill[inria-rouge] ($ (C)!0.5!(F) $) circle (3.5pt);
+                    
+                    % Points
+                    \foreach \P/\pos in {A/left, B/left, C/above left, D/above right, E/right, F/right} {
+                        \fill (\P) circle (2.5pt);
+                        \node[\pos] at (\P) {\fontsize{10}{11}\selectfont \P};
+                    }
+                    
+                    % Radius arrow
+                    \draw[->, >=latex] (A) -- ++(120:\rsecond) node[midway, sloped, above] {$r''$};
+                \end{tikzpicture}

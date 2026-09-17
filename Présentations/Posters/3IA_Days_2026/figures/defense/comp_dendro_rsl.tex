@@ -1,0 +1,27 @@
+% Adapted from the defense at 3593fbf25434c4715b37537eae1287bf49239fa7; original blob ba049ea61cb2659e3822f82867c0386418ac4ee3.
+                \begin{tikzpicture}[scale=0.7, >=latex, font=\fontsize{8}{9}\selectfont]
+                    % Dendrogram branches for A, B, C, D, E, F (very thick, black)
+                    \draw[very thick, black] (0.5, 0.3) -- (0.5, 2.0);
+                    \draw[very thick, black] (1.5, 0.3) -- (1.5, 2.0);
+                    \draw[very thick, black] (2.5, 0.3) -- (2.5, 2.0);
+                    \draw[very thick, black] (3.5, 0.3) -- (3.5, 2.0);
+                    \draw[very thick, black] (4.5, 0.3) -- (4.5, 2.0);
+                    \draw[very thick, black] (5.5, 0.3) -- (5.5, 2.0);
+                    
+                    % Horizontal bar at y=2.0 (resolution 2r)
+                    \draw[very thick, black] (0.5, 2.0) -- (5.5, 2.0);
+                    \draw[very thick, black] (3.0, 2.0) -- (3.0, 2.8);
+                    
+                    % Leaf nodes
+                    \node[below] at (0.5, 0.3) {$A$};
+                    \node[below] at (1.5, 0.3) {$B$};
+                    \node[below] at (2.5, 0.3) {$C$};
+                    \node[below] at (3.5, 0.3) {$D$};
+                    \node[below] at (4.5, 0.3) {$E$};
+                    \node[below] at (5.5, 0.3) {$F$};
+                    
+                    % Height axis
+                    \draw[->, thick] (0, 0.2) -- (0, 3.0) node[above] {$\epsilon$};
+                    \draw[dashed, black] (-0.1, 2.0) -- (0.5, 2.0);
+                    \node[left, black] at (-0.1, 2.0) {$2r$};
+                \end{tikzpicture}

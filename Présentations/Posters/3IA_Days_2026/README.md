@@ -18,23 +18,23 @@ Le bloc de Hartigan présente la hiérarchie des composantes de sur-niveaux. La 
 
 Un même espacement de **8 mm** sépare tous les blocs, y compris la bibliographie. Le paramètre `\posterblockgap` est défini dans `beamerthemegemini.sty`. Les deux colonnes ont la même hauteur totale ; la colle interligne implicite est supprimée entre les blocs.
 
-L’image Naval Group occupe **84 % de la largeur intérieure** de son bloc. La hauteur du corps LiDAR passe de 27,5 à **24,5 cm**, libérant 3 cm pour la perspective sans déplacer Percolia ni la bibliographie.
+L’image Naval Group occupe **84 % de la largeur intérieure** de son bloc. Le corps LiDAR mesure **24,5 cm**, pour conserver de la place à la perspective sans déplacer Percolia ni la bibliographie.
 
 Percolia conserve son propre bloc en bas à droite. Le monogramme P est affiché à **5,3 cm de hauteur**, après retrait des seules marges de son canevas, et centré verticalement avec le texte et le QR. Le dessin du logo n’est pas modifié. Le pied de page ne répète ni le logo Percolia ni le QR.
 
-## Perspective : trois sous-blocs sans titre
+## Perspective : trois parties, deux séparateurs
 
-Le bloc 5 contient trois panneaux blancs distincts, séparés par **5 mm**, sans titre ni numérotation interne :
+Le bloc 5 garde **un seul fond gris uniforme**. Deux lignes horizontales fines, alignées sur les marges intérieures, séparent trois parties sans titre ni numérotation interne. Aucun rectangle blanc supplémentaire n’est dessiné.
 
-1. **Analogie GPT** : des sous-mots comme tokens. `figures/gpt_subwords.tex` adapte en anglais la ligne « langage » de `alphabet_fondation.tex` dans la soutenance. Il conserve les boîtes de tokens, le positionnement relatif et la flèche vers GPT. Le découpage de « Graphs are everywhere » est illustratif, pas une spécification valable pour tous les tokeniseurs GPT. La référence Brown et al., NeurIPS 2020, est ajoutée en [7].
+1. **Analogie GPT** : GPT découpe le texte en tokens, souvent des fragments de mots, et apprend comment ils s’articulent. La transposition proposée est explicite : utiliser des pièces géométriques comme tokens 3D plutôt que des points isolés. `figures/gpt_subwords.tex` adapte la ligne « langage » de `alphabet_fondation.tex` dans la soutenance. Le découpage de « Graphs are everywhere » est illustratif, pas une spécification valable pour tous les tokeniseurs GPT. Brown et al., NeurIPS 2020, est cité en [7].
 2. **Difficulté LiDAR et intérêt des polyèdres** : les voitures proche et lointaine, leurs échantillonnages et leurs contours, repris du TikZ de la soutenance. Les signes ≠ bleu et ≈ rouge restent alignés. Pas de phrase répétant les annotations du dessin.
-3. **Hiérarchie 3D** : l’arbre de pièces recollées de la soutenance. Une seule phrase réunit les tokens polyédriques, les échelles de fusion et le contexte multi-échelle pour guider un modèle de fondation, explicitement comme hypothèse de recherche. L’ancien pipeline redondant n’est plus affiché.
+3. **Hiérarchie 3D** : l’arbre de pièces recollées de la soutenance. Une seule phrase finale propose de guider un modèle de fondation 3D avec des tokens polyédriques et le contexte multi-échelle de leur hiérarchie de fusion. Il s’agit explicitement d’une hypothèse de recherche.
 
-Les hauteurs totales des sous-blocs sont **7,0 / 14,5 / 25,8 cm** ; avec les deux séparations, elles occupent les **48,3 cm** du corps Perspective. L’environnement `perspectivesubblock` ne possède pas de champ titre. La bibliographie conserve son bloc et affiche ses sept entrées en corps réduit.
+Les hauteurs des trois parties sont **9,3 / 13,8 / 23,6 cm**. Chaque séparateur occupe une bande de **8 mm**, dont un filet de 1 pt, avec des marges verticales symétriques. L’ensemble remplit les **48,3 cm** du corps Perspective. `perspectivesubblock` est une minipage sans fond propre ; `\perspectivesubgap` trace le séparateur. L’explication GPT utilise le même corps de texte que les blocs principaux. La bibliographie conserve ses sept entrées en corps réduit.
 
 ## Figures originales de la soutenance
 
-Sources : [TikZ de la soutenance](https://github.com/Ludwig-H/Manuscrit-de-th-se/tree/3593fbf25434c4715b37537eae1287bf49239fa7/Soutenance/soutenance/figs). Les empreintes des figures reprises sont contrôlées par `prepare_defense_figures.py`. La nouvelle analogie GPT est un fichier autonome versionné, adapté de `alphabet_fondation.tex` à cette même révision (blob `3ffac4ad7fe2bed1c3ff4f03129e61b9f0c184ca`).
+Sources : [TikZ de la soutenance](https://github.com/Ludwig-H/Manuscrit-de-th-se/tree/3593fbf25434c4715b37537eae1287bf49239fa7/Soutenance/soutenance/figs). Les empreintes des figures reprises sont contrôlées par `prepare_defense_figures.py`. L’analogie GPT est un fichier autonome versionné, adapté de `alphabet_fondation.tex` à cette même révision (blob `3ffac4ad7fe2bed1c3ff4f03129e61b9f0c184ca`).
 
 `figures/defense/deuxnn_r_boules.tex`, `deuxnn_rp_boules.tex` et `deuxnn_rs_boules.tex` conservent les six points A–F et les étapes **7 → 3 → 1**. Les deux topologies sont regroupées dans `figures/six_point_hierarchies.tex`, sur un canevas commun : mêmes ligne de base, échelle verticale et hauteurs de titre, sans nom de variable sur les axes.
 
@@ -64,7 +64,7 @@ python3 -m pip install -r requirements-build.txt
 make check preview
 ```
 
-Les contrôles portent sur l’A0, les polices incorporées, l’ordre des formules, l’absence de ρ, la numérotation 1–7, le contenu à l’intérieur des blocs, les **espacements mesurés dans le PDF**, les trois panneaux Perspective et leur ordre, la taille de l’image Naval Group, le QR unique et l’exemple géométrique. Ils complètent l’inspection visuelle. Les auxiliaires restent dans `build/`, ignoré par Git. Le workflow reconstruit et enregistre les livrables sur `main`.
+Les contrôles portent sur l’A0, les polices incorporées, l’ordre des formules, l’absence de ρ, la numérotation 1–7, le contenu à l’intérieur des blocs, les **espacements mesurés dans le PDF**, les deux séparateurs Perspective et l’absence de panneaux blancs, l’ordre des trois parties et la marge du texte autour des lignes, la taille de l’image Naval Group, le QR unique et l’exemple géométrique. Ils complètent l’inspection visuelle. Les auxiliaires restent dans `build/`, ignoré par Git. Le workflow reconstruit et enregistre les livrables sur `main`.
 
 `prepare_defense_figures.py` restaure les figures absentes depuis la révision figée ; `--force` applique à nouveau les adaptations documentées. L’exemple introductif conserve les données et paramètres HDBSCAN initiaux (`min_cluster_size=15`, `min_samples=16`, qui inclut le point lui-même).
 

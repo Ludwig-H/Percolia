@@ -1,4 +1,4 @@
-"""Check A0, numbered cards, three Perspective panels, spacing and LinkedIn QR."""
+"""Check A0, numbering, horizontal Perspective separators, spacing and QR."""
 import argparse
 from pathlib import Path
 import re
@@ -10,8 +10,9 @@ BODY_COLOUR = (0.961, 0.963, 0.967)
 
 
 def check_source(directory: Path) -> None:
-    """Keep notation, display order and the three-part narrative consistent."""
+    """Keep the notation and the GPT -> LiDAR -> hierarchy reading order."""
     source = (directory / 'poster.tex').read_text(encoding='utf-8')
+    theme = (directory / 'beamerthemegemini.sty').read_text(encoding='utf-8')
     forbidden = [r'\rho', r'\begin{gathered}', r'\begin{aligned}',
                  'Its branches may share points.',
                  'Range, scan pattern and occlusion change the point cloud.',
@@ -27,12 +28,16 @@ def check_source(directory: Path) -> None:
     positions = [source.index(token) for token in sequence]
     if positions != sorted(positions):
         raise ValueError('Estimator / formula / change-of-variable order changed.')
-    panels = re.findall(r'\\begin\{perspectivesubblock\}\{[^}]+\}(.*?)'
-                        r'\\end\{perspectivesubblock\}', source, re.S)
+    parts = re.findall(r'\\begin\{perspectivesubblock\}\{[^}]+\}(.*?)'
+                       r'\\end\{perspectivesubblock\}', source, re.S)
     figures = ['figures/gpt_subwords.tex', 'figures/defense/verrou_portee.tex',
                'figures/defense/hierarchie_surfaces.tex']
-    if len(panels) != 3 or not all(fig in panel for fig, panel in zip(figures, panels)):
+    if len(parts) != 3 or not all(fig in part for fig, part in zip(figures, parts)):
         raise ValueError('Perspective must contain GPT, LiDAR and hierarchy, in that order.')
+    if source.count(r'\perspectivesubgap') != 2:
+        raise ValueError('Perspective requires exactly two horizontal separators.')
+    if 'perspective subbody' in theme:
+        raise ValueError('The separate painted Perspective panels must not return.')
     if source.count('Research hypothesis:') != 1:
         raise ValueError('Use one combined research-hypothesis sentence.')
     if r'\includegraphics[width=0.84\linewidth]{assets/shipyard.png}' not in source:
@@ -56,8 +61,8 @@ def main() -> None:
         required = ['DBSCAN / Robust SL', 'HGP-Clusterer', 'Near', 'Far',
                     'Marie', 'Alban', 'Research hypothesis', 'Naval Group',
                     'model and hierarchy', 'Euclidean distance',
-                    'non-parametric', 'Change of variable', 'subword tokens',
-                    'Language Models are Few-Shot Learners',
+                    'non-parametric', 'Change of variable', 'parts of words',
+                    'geometric pieces as tokens', 'Language Models are Few-Shot Learners',
                     'Inria Startup Studio: Percolia', 'References']
         for phrase in required:
             if phrase.casefold() not in text.casefold():
@@ -107,7 +112,6 @@ def main() -> None:
                 if abs(next_title.y0 - body.y1 - gap_target) > .75:
                     raise ValueError('Irregular inter-block spacing.')
 
-        # Confirm the rendered numbering in column-wise reading order.
         reading_order = sorted(headers, key=lambda r: (r.width > 2000,
                                r.x0 > page.rect.width / 2, r.y0))
         for number, header in enumerate(reading_order, 1):
@@ -115,7 +119,6 @@ def main() -> None:
             if not re.match(rf'^{number}\s', heading):
                 raise ValueError(f'Wrong rendered block number: {heading!r}')
 
-        # Every line in the main layout must fit one card body or title.
         layout_top, layout_bottom = min(h.y0 for h in headers), max(b.y1 for b in bodies)
         allowed = [fitz.Rect(r.x0 - 1, r.y0 - 1, r.x1 + 1, r.y1 + 1) for r in bodies + headers]
         lines = [line for block in page.get_text('dict')['blocks']
@@ -126,26 +129,40 @@ def main() -> None:
                 content = ''.join(span['text'] for span in line['spans'])
                 raise ValueError(f'Text exceeds its card: {content}')
 
-        # Three genuinely separate white panels, all inside Perspective.
+        # A single background and two thin, full-width horizontal rules.
         right_bodies = sorted([b for b in bodies if b.x0 > page.rect.width / 2], key=lambda r: r.y0)
         naval_body, perspective_body, _ = right_bodies
-        panels = sorted([d['rect'] for d in drawings if d['fill'] is not None
-                         and all(abs(v - 1) < .004 for v in d['fill'])
-                         and d['rect'].width > 1000 and d['rect'].height > 100
-                         and perspective_body.contains(d['rect'])], key=lambda r: r.y0)
-        if len(panels) != 3:
-            raise ValueError(f'Expected three Perspective panels, found {len(panels)}.')
-        for first, second in zip(panels, panels[1:]):
-            if abs(second.y0 - first.y1 - 5 * 72 / 25.4) > .75:
-                raise ValueError('Irregular spacing between Perspective panels.')
+        white_panels = [d for d in drawings if d['fill'] is not None
+                        and all(abs(v - 1) < .004 for v in d['fill'])
+                        and d['rect'].width > 1000 and d['rect'].height > 100
+                        and perspective_body.contains(d['rect'])]
+        if white_panels:
+            raise ValueError('Separate white backgrounds remain in Perspective.')
+        rules = sorted([d['rect'] for d in drawings if d['fill'] is None
+                        and d['color'] is not None and d['rect'].width > 1000
+                        and d['rect'].height < .1 and .8 < (d['width'] or 0) < 1.2
+                        and perspective_body.contains(d['rect'])], key=lambda r: r.y0)
+        if len(rules) != 2:
+            raise ValueError(f'Expected two Perspective separators, found {len(rules)}.')
+        if abs(rules[0].x0 - rules[1].x0) > .5 or abs(rules[0].x1 - rules[1].x1) > .5:
+            raise ValueError('Perspective separators are not aligned.')
+        if abs(rules[0].width - (perspective_body.width - 10 * 72 / 25.4)) > .75:
+            raise ValueError('Perspective separators must follow the inner text margins.')
+        # No text may cross a separator or touch it within 3 mm.
+        clearance = 3 * 72 / 25.4
         for line in lines:
             rect = fitz.Rect(line['bbox'])
-            if perspective_body.contains(rect) and not any(p.contains(rect) for p in panels):
-                raise ValueError('Perspective text exceeds its untitled panel.')
-        if not panels[0].contains(hits('subword tokens')[0]):
-            raise ValueError('The GPT analogy must be in the first panel.')
-        if not panels[2].contains(hits('Research hypothesis')[0]):
-            raise ValueError('The combined hypothesis must be in the last panel.')
+            if perspective_body.contains(rect):
+                for rule in rules:
+                    if rect.y0 < rule.y0 + clearance and rect.y1 > rule.y0 - clearance:
+                        raise ValueError('Perspective text touches a separator.')
+        if max(r.y1 for r in hits('parts of words') + hits('geometric pieces as tokens')) >= rules[0].y0:
+            raise ValueError('The GPT analogy must be above the first separator.')
+        if not all(rules[0].y0 < r.y0 < rules[1].y0 for r in hits('Near object') + hits('Far object')):
+            raise ValueError('The LiDAR figure must be between the separators.')
+        if min(r.y0 for r in hits('Research hypothesis')) <= rules[1].y0:
+            raise ValueError('The combined hypothesis must follow the hierarchy.')
+
         naval_images = [fitz.Rect(i['bbox']) for i in page.get_image_info()
                         if naval_body.contains(fitz.Rect(i['bbox']))]
         if len(naval_images) != 1:
@@ -172,8 +189,8 @@ def main() -> None:
             raise ValueError('Obsolete project QR link remains.')
         if args.preview:
             page.get_pixmap(dpi=55, alpha=False).save(args.preview)
-        print('PASS: A0, embedded fonts, seven numbered cards, three Perspective panels, '
-              '8 mm card gaps, 5 mm panel gaps, reduced Naval image and LinkedIn QR.')
+        print('PASS: A0, embedded fonts, seven numbered cards, two Perspective separators, '
+              'no white panels, 8 mm card gaps, reduced Naval image and LinkedIn QR.')
 
 
 if __name__ == '__main__':

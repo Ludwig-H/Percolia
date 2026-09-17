@@ -93,25 +93,27 @@ Objects present in a scan, absent from a \textbf{reference 3D model}.
 \end{posterbox}
 \gap
 \begin{posterbox}[inriared]{5}{Perspective: geometry-guided 3D learning}{48.3cm}
-% Three distinct, untitled panels; their total heights plus two gaps equal 48.3 cm.
-\begin{perspectivesubblock}{7.0cm}
-GPT represents text with \textbf{subword tokens} \refb{7}.
+% Three untitled parts share one background. Two 8 mm rule gaps complete 48.3 cm.
+\begin{perspectivesubblock}{9.3cm}
+GPT splits text into \textbf{tokens}, often parts of words \refb{7}.\\
+It learns how these tokens fit together.
 \vfill
-\centering\resizebox{0.97\linewidth}{!}{\input{figures/gpt_subwords.tex}}\par
+\centering\resizebox{0.94\linewidth}{!}{\input{figures/gpt_subwords.tex}}\par
+\vfill
+\RaggedRight In 3D, our idea is to use \textbf{geometric pieces as tokens}, rather than individual points.
+\end{perspectivesubblock}
+\perspectivesubgap
+\begin{perspectivesubblock}{13.8cm}
+\vfill
+\centering\resizebox{0.98\linewidth}{!}{\input{figures/defense/verrou_portee.tex}}\par
 \vfill
 \end{perspectivesubblock}
 \perspectivesubgap
-\begin{perspectivesubblock}{14.5cm}
+\begin{perspectivesubblock}{23.6cm}
 \vfill
-\centering\resizebox{\linewidth}{!}{\input{figures/defense/verrou_portee.tex}}\par
+\centering\resizebox{0.77\linewidth}{!}{\input{figures/defense/hierarchie_surfaces.tex}}\par
 \vfill
-\end{perspectivesubblock}
-\perspectivesubgap
-\begin{perspectivesubblock}{25.8cm}
-\vfill
-\centering\resizebox{0.80\linewidth}{!}{\input{figures/defense/hierarchie_surfaces.tex}}\par
-\vfill
-\RaggedRight\smalltext{\textcolor{inriared}{\textbf{Research hypothesis:}} use polyhedral tokens and hierarchical merging scales as multiscale context to guide a 3D foundation model.}
+\RaggedRight\smalltext{\textcolor{inriared}{\textbf{Research hypothesis:}} guide a \mbox{3D foundation model} with polyhedral tokens and multiscale context from their merging hierarchy.}
 \end{perspectivesubblock}
 \end{posterbox}
 \gap

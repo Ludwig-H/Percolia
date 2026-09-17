@@ -58,17 +58,18 @@
     \setlength{\parskip}{0.25cm}\setlength{\parindent}{0pt}
     \setlength{\abovedisplayskip}{0.25cm}\setlength{\belowdisplayskip}{0.25cm}
 }{\end{minipage}\end{beamercolorbox}\par\nointerlineskip}
-% Untitled white panels inside the grey Perspective body.
-% The argument is the TOTAL panel height, including its 3 mm padding.
+% Three untitled parts inherit the parent background: no extra painted panels.
+% Each argument is the total part height. Separators occupy exactly 8 mm.
 \newenvironment{perspectivesubblock}[1]{%
   \par\nointerlineskip
-  \setbeamercolor{perspective subbody}{fg=black,bg=white}%
-  \begin{beamercolorbox}[wd=\linewidth,sep=0.3cm]{perspective subbody}
-  \begin{minipage}[t][\dimexpr#1-0.6cm\relax][t]{\dimexpr\linewidth-0.6cm\relax}
-    \fontsize{27}{32}\selectfont\RaggedRight
+  \begin{minipage}[t][#1][t]{\linewidth}
+    \fontsize{30}{35}\selectfont\RaggedRight
     \setlength{\parskip}{0.2cm}\setlength{\parindent}{0pt}
-}{\end{minipage}\end{beamercolorbox}\par\nointerlineskip}
-\newcommand{\perspectivesubgap}{\par\nointerlineskip\vskip0.5cm\nointerlineskip}
+}{\end{minipage}\par\nointerlineskip}
+\newcommand{\perspectivesubgap}{%
+  \par\nointerlineskip\vskip0.4cm
+  {\color{inriagrayblue!35}\hrule height 1pt width \linewidth}%
+  \vskip\dimexpr0.4cm-1pt\relax\nointerlineskip}
 \newcommand{\captiontext}[1]{{\fontsize{25}{29}\selectfont\color{inriagrayblue}#1\par}}
 \newcommand{\smalltext}[1]{{\fontsize{27}{31}\selectfont #1\par}}
 \newcommand{\refb}[1]{\textcolor{inriagrayblue}{\textbf{[#1]}}}

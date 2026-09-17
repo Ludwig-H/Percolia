@@ -17,34 +17,15 @@ jobs:
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
-      - name: Read thesis presentation sources
-        uses: actions/checkout@v4
-        with:
-          repository: Ludwig-H/Manuscrit-de-th-se
-          ref: 3593fbf25434c4715b37537eae1287bf49239fa7
-          path: .references/thesis
-          sparse-checkout: Soutenance/soutenance
-      - name: Read existing Inria poster template
-        uses: actions/checkout@v4
-        with:
-          repository: Ludwig-H/Generalized-Frangi-for-Automatic-Crack-Extraction-on-FIND-dataset
-          ref: 46b40eab4992515b6fde10bb2cd6924b63ab9db6
-          path: .references/frangi
-          sparse-checkout: EUVIP/poster
-      - name: Assemble local working references (no font files)
+      - name: Gather reproducible illustration assets
         run: |
-          mkdir -p reference_bundle/defense reference_bundle/template
-          cp .references/thesis/Soutenance/soutenance/main.tex reference_bundle/defense/
-          cp .references/thesis/Soutenance/soutenance/Soutenance_These_2026-09-08_LouisHauseux.pdf reference_bundle/defense/
-          cp -r .references/thesis/Soutenance/soutenance/figs reference_bundle/defense/
-          cp -r .references/thesis/Soutenance/soutenance/imgs reference_bundle/defense/
-          cp .references/frangi/EUVIP/poster/*.sty reference_bundle/template/
-          cp .references/frangi/EUVIP/poster/poster.tex reference_bundle/template/
-          cp -r .references/frangi/EUVIP/poster/logos reference_bundle/template/
-          find reference_bundle -type f \( -iname '*.ttf' -o -iname '*.otf' -o -iname '*.woff*' \) -delete
+          mkdir -p reference_bundle
+          cp Logo/percolia-lockup-horizontal.svg reference_bundle/
+          curl -fL --retry 3 https://raw.githubusercontent.com/scikit-learn-contrib/hdbscan/master/notebooks/clusterable_data.npy -o reference_bundle/clusterable_data.npy
+          curl -fL --retry 3 https://3ia.univ-cotedazur.eu/uas/3ia-en/LOGO/logo_ai_cluster.png -o reference_bundle/logo_ai_cluster.png
       - name: Export reference files
         uses: actions/upload-artifact@v4
         with:
-          name: poster-3ia-reference-assets
+          name: poster-3ia-vector-inputs
           path: reference_bundle/
           retention-days: 3

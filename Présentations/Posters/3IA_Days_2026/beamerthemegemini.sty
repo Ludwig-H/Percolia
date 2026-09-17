@@ -6,16 +6,24 @@
 % Load explicit outline files, never WOFF selected by fontconfig.
 % The historical EB Garamond Bold font is incomplete; embolden the complete
 % regular outline instead, preserving accents and OpenType small capitals.
-\newcommand{\posterfonts}[1]{%
-  \setsansfont{EBGaramond12-Regular.#1}[
-    BoldFont=EBGaramond12-Regular.#1,BoldFeatures={FakeBold=1.7},
-    ItalicFont=EBGaramond12-Italic.#1,
-    BoldItalicFont=EBGaramond12-Italic.#1,BoldItalicFeatures={FakeBold=1.7}]
-  \setmainfont{EBGaramond12-Regular.#1}[
-    BoldFont=EBGaramond12-Regular.#1,BoldFeatures={FakeBold=1.7},
-    ItalicFont=EBGaramond12-Italic.#1,
-    BoldItalicFont=EBGaramond12-Italic.#1,BoldItalicFeatures={FakeBold=1.7}]}
-\IfFileExists{EBGaramond12-Regular.otf}{\posterfonts{otf}}{\posterfonts{ttf}}
+\newcommand{\posterfonts}[2]{%
+  \setsansfont{EBGaramond12-Regular.#2}[
+    Path={#1},
+    BoldFont=EBGaramond12-Regular.#2,BoldFeatures={FakeBold=1.7},
+    ItalicFont=EBGaramond12-Italic.#2,
+    BoldItalicFont=EBGaramond12-Italic.#2,BoldItalicFeatures={FakeBold=1.7}]
+  \setmainfont{EBGaramond12-Regular.#2}[
+    Path={#1},
+    BoldFont=EBGaramond12-Regular.#2,BoldFeatures={FakeBold=1.7},
+    ItalicFont=EBGaramond12-Italic.#2,
+    BoldItalicFont=EBGaramond12-Italic.#2,BoldItalicFeatures={FakeBold=1.7}]}
+% Debian/Ubuntu fonts are outside TeX's search tree. Test absolute files first;
+% retain basename lookup for TeX Live / Overleaf installations.
+\IfFileExists{/usr/share/fonts/opentype/ebgaramond/EBGaramond12-Regular.otf}{%
+  \posterfonts{/usr/share/fonts/opentype/ebgaramond/}{otf}%
+}{\IfFileExists{/usr/share/fonts/truetype/ebgaramond/EBGaramond12-Regular.ttf}{%
+  \posterfonts{/usr/share/fonts/truetype/ebgaramond/}{ttf}%
+}{\IfFileExists{EBGaramond12-Regular.otf}{\posterfonts{}{otf}}{\posterfonts{}{ttf}}}}
 \setbeamertemplate{navigation symbols}{}
 \setbeamertemplate{headline}{%
   \begin{beamercolorbox}[wd=\paperwidth,center]{headline}

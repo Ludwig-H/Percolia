@@ -1,24 +1,16 @@
-% Adapted from the author's Inria/3IA/DS4H poster, EUVIP/poster.
-% Original Gemini: https://github.com/anishathalye/gemini
+% Inria / 3IA / DS4H Gemini poster theme, adapted for a compact title and footer.
 \RequirePackage{fontspec}
 \RequirePackage{ragged2e}
 \usefonttheme{professionalfonts}
-% Load explicit outline files, never WOFF selected by fontconfig.
-% The historical EB Garamond Bold font is incomplete; embolden the complete
-% regular outline instead, preserving accents and OpenType small capitals.
 \newcommand{\posterfonts}[2]{%
-  \setsansfont{EBGaramond12-Regular.#2}[
-    Path={#1},
+  \setsansfont{EBGaramond12-Regular.#2}[Path={#1},
     BoldFont=EBGaramond12-Regular.#2,BoldFeatures={FakeBold=1.7},
     ItalicFont=EBGaramond12-Italic.#2,
     BoldItalicFont=EBGaramond12-Italic.#2,BoldItalicFeatures={FakeBold=1.7}]
-  \setmainfont{EBGaramond12-Regular.#2}[
-    Path={#1},
+  \setmainfont{EBGaramond12-Regular.#2}[Path={#1},
     BoldFont=EBGaramond12-Regular.#2,BoldFeatures={FakeBold=1.7},
     ItalicFont=EBGaramond12-Italic.#2,
     BoldItalicFont=EBGaramond12-Italic.#2,BoldItalicFeatures={FakeBold=1.7}]}
-% Debian/Ubuntu fonts are outside TeX's search tree. Test absolute files first;
-% retain basename lookup for TeX Live / Overleaf installations.
 \IfFileExists{/usr/share/fonts/opentype/ebgaramond/EBGaramond12-Regular.otf}{%
   \posterfonts{/usr/share/fonts/opentype/ebgaramond/}{otf}%
 }{\IfFileExists{/usr/share/fonts/truetype/ebgaramond/EBGaramond12-Regular.ttf}{%
@@ -27,41 +19,57 @@
 \setbeamertemplate{navigation symbols}{}
 \setbeamertemplate{headline}{%
   \begin{beamercolorbox}[wd=\paperwidth,center]{headline}
-  \vskip0.8cm
-  \hbox to \paperwidth{\hskip3cm
-    \makebox[20cm][l]{\raisebox{-0.5\height}{\includegraphics[width=12.4cm]{assets/inria.png}}}\hfil
-    \raisebox{-0.5\height}{\includegraphics[width=22cm]{assets/3ia.png}}\hfil
-    \makebox[20cm][r]{\raisebox{-0.5\height}{\includegraphics[height=5cm]{assets/ds4h.png}}}\hskip3cm}
-  \vskip0.7cm
-  {\fontsize{76}{82}\selectfont\bfseries\inserttitle\par}
-  \vskip0.2cm
-  {\fontsize{42}{47}\selectfont\insertsubtitle\par}
-  \vskip0.5cm
-  {\fontsize{35}{40}\selectfont\insertauthor\par}
-  \vskip0.2cm
-  {\fontsize{28}{32}\selectfont\insertinstitute\par}
-  \vskip0.65cm
+    \vskip0.9cm
+    {\fontsize{74}{80}\selectfont\bfseries\inserttitle\par}
+    \vskip0.2cm
+    {\fontsize{37}{43}\selectfont\insertsubtitle\par}
+    \vskip0.6cm
+    {\fontsize{33}{38}\selectfont\insertauthor\par}
+    \vskip0.15cm
+    {\fontsize{27}{31}\selectfont\insertinstitute\par}
+    \vskip0.8cm
   \end{beamercolorbox}
-  \begin{beamercolorbox}[wd=\paperwidth,ht=0.18cm]{headline rule}\end{beamercolorbox}}
+  \begin{beamercolorbox}[wd=\paperwidth,ht=0.14cm]{headline rule}\end{beamercolorbox}}
+% All branding is placed here, below the scientific content and references.
 \setbeamertemplate{footline}{%
+  \begin{beamercolorbox}[wd=\paperwidth,sep=0.5cm]{palette primary}
+  \hspace{2cm}%
+  \begin{minipage}[c]{5cm}\centering
+    \includegraphics[width=4.2cm]{assets/percolia-p.pdf}
+  \end{minipage}\hspace{1cm}%
+  \begin{minipage}[c]{59cm}
+    {\fontsize{32}{36}\selectfont\textbf{Percolia}\quad
+     Louis \textsc{Hauseux} \& Alban \textsc{Hauseux}\par}
+    \vspace{0.15cm}
+    {\fontsize{27}{31}\selectfont Entering Inria Startup Studio\quad\textperiodcentered\quad Geometry-aware 3D perception\par}
+  \end{minipage}\hspace{1cm}%
+  \begin{minipage}[c]{10cm}\centering
+    {\hypersetup{urlcolor=black}\href{\PercoliaLinkedIn}{\qrcode[height=3.8cm,hyperlink=false]{\PercoliaLinkedIn}}}\par
+    \vspace{0.12cm}{\fontsize{22}{24}\selectfont LinkedIn\par}
+  \end{minipage}
+  \end{beamercolorbox}
   \begin{beamercolorbox}[wd=\paperwidth,ht=0.13cm]{headline rule}\end{beamercolorbox}
-  \begin{beamercolorbox}[wd=\paperwidth,center,sep=0.6cm]{headline}
-    \fontsize{27}{31}\selectfont
-    \textbf{AI Cluster 3IA C\^ote d'Azur Days 2026}\quad\textperiodcentered\quad
-    Sophia Antipolis, 24--25 September 2026
+  \begin{beamercolorbox}[wd=\paperwidth,center]{headline}
+    \vskip0.5cm
+    \hbox to \paperwidth{\hskip8cm
+      \makebox[16cm][l]{\raisebox{-0.5\height}{\includegraphics[width=9cm]{assets/inria.png}}}\hfil
+      \raisebox{-0.5\height}{\includegraphics[width=14cm]{assets/3ia.png}}\hfil
+      \makebox[16cm][r]{\raisebox{-0.5\height}{\includegraphics[height=3.1cm]{assets/ds4h.png}}}\hskip8cm}
+    \vskip0.4cm
+    {\fontsize{24}{28}\selectfont\textbf{AI Cluster 3IA C\^ote d'Azur Days}\quad\textperiodcentered\quad
+      Sophia Antipolis, 24--25 September 2026\par}
+    \vskip0.45cm
   \end{beamercolorbox}}
-% Fixed-height cards keep the two narrative columns aligned.
-% Height argument is the body height; headings add 2 cm.
 \newenvironment{posterbox}[4][inriagrayblue]{%
   \setbeamercolor{localtitle}{fg=white,bg=#1}%
-  \begin{beamercolorbox}[wd=\linewidth,ht=1.45cm,dp=0.55cm,leftskip=0.5cm]{localtitle}
-    \fontsize{38}{42}\selectfont\bfseries #2\hspace{0.4cm}#3
+  \begin{beamercolorbox}[wd=\linewidth,ht=1.35cm,dp=0.45cm,leftskip=0.5cm]{localtitle}
+    \fontsize{37}{41}\selectfont\bfseries #2\hspace{0.3cm}#3
   \end{beamercolorbox}%
   \begin{beamercolorbox}[wd=\linewidth,sep=0.5cm]{block body}%
   \begin{minipage}[t][#4][t]{\dimexpr\linewidth-1cm\relax}
-  \fontsize{30}{35}\selectfont\RaggedRight
-  \setlength{\parskip}{0.32cm}\setlength{\parindent}{0pt}
-  \setlength{\abovedisplayskip}{0.28cm}\setlength{\belowdisplayskip}{0.28cm}
+    \fontsize{30}{35}\selectfont\RaggedRight
+    \setlength{\parskip}{0.25cm}\setlength{\parindent}{0pt}
+    \setlength{\abovedisplayskip}{0.25cm}\setlength{\belowdisplayskip}{0.25cm}
 }{\end{minipage}\end{beamercolorbox}}
 \newcommand{\captiontext}[1]{{\fontsize{25}{29}\selectfont\color{inriagrayblue}#1\par}}
 \newcommand{\smalltext}[1]{{\fontsize{27}{31}\selectfont #1\par}}

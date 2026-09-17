@@ -1,7 +1,8 @@
+% Compact form of the defense's pipeline_polyfm: geometry -> encoder -> model.
 \begin{tikzpicture}[box/.style={draw=inriared,fill=white,rounded corners=2pt,line width=.8pt,text width=3.1cm,minimum height=1.12cm,align=center,font=\fontsize{11}{12}\selectfont},>={Latex[length=2mm]}]
-\node[box](a)at(0,0){Polyhedral\\components};
-\node[box](b)at(4.4,0){Vector tokens\\$z_v$};
-\node[box](c)at(8.8,0){Hierarchy-guided\\3D backbone};
+\node[box](a)at(0,0){Polyhedral\\hierarchy};
+\node[box](b)at(4.4,0){Geometric tokens\\$z_v$};
+\node[box,dashed](c)at(8.8,0){Hierarchy-guided\\3D model};
 \draw[->,inriared,line width=.9pt](a)--(b);
 \draw[->,inriared,line width=.9pt](b)--(c);
 \end{tikzpicture}

@@ -1,0 +1,26 @@
+{
+  "3ia.png": {
+    "url": "https://raw.githubusercontent.com/Ludwig-H/Generalized-Frangi-for-Automatic-Crack-Extraction-on-FIND-dataset/46b40eab4992515b6fde10bb2cd6924b63ab9db6/EUVIP/poster/logos/3ia.png",
+    "sha256": "fdc38508597116692fe04baf200b8bea4c0ae318720415f4bf10e0fd5eb9fa65"
+  },
+  "inria.png": {
+    "url": "https://raw.githubusercontent.com/Ludwig-H/Generalized-Frangi-for-Automatic-Crack-Extraction-on-FIND-dataset/46b40eab4992515b6fde10bb2cd6924b63ab9db6/EUVIP/poster/logos/inria.png",
+    "sha256": "57864d312478c3e4018ff9d778d70e6ecd34111cf204fbaa16ceb908d749cc40"
+  },
+  "ds4h.png": {
+    "url": "https://raw.githubusercontent.com/Ludwig-H/Generalized-Frangi-for-Automatic-Crack-Extraction-on-FIND-dataset/46b40eab4992515b6fde10bb2cd6924b63ab9db6/EUVIP/poster/logos/ds4h.png",
+    "sha256": "5a4924ed52a3030e5ed40f3dbb5f4bcc578eaa90528dd3fa6cfa164add6e9969"
+  },
+  "shipyard.png": {
+    "url": "https://raw.githubusercontent.com/Ludwig-H/Manuscrit-de-th-se/3593fbf25434c4715b37537eae1287bf49239fa7/Soutenance/soutenance/imgs/Resultat_MarieBenchmark.png",
+    "sha256": "29e5769f86f13df8ab722818f620f30dce52af56e6a81610d005821b1cce94df"
+  },
+  "clusterable_data.npy": {
+    "url": "https://raw.githubusercontent.com/scikit-learn-contrib/hdbscan/master/notebooks/clusterable_data.npy",
+    "sha256": "73c9302804908e22d8bbe812c3ea6d3bbb5a3a8301122c1af0348e8133021086"
+  },
+  "percolia.svg": {
+    "url": "https://raw.githubusercontent.com/Ludwig-H/Percolia/06a65516925fc2609e1b45ff698b0533fd8320d2/Logo/percolia-lockup-horizontal.svg",
+    "sha256": "ed33220a7eca339c3b7548af4dcdf283a2d45d7b2bba7fed7ff85bbd8c8c6324"
+  }
+}

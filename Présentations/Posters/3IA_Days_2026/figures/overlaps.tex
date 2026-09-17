@@ -1,0 +1,28 @@
+% Analytic equilateral-triangle example. Unit side: a=1.8.
+% Pair lenses appear at a/2=.9; triple intersection at a/sqrt(3)=1.03923.
+\begin{tikzpicture}[every node/.style={font=\fontsize{10}{11}\selectfont},line cap=round]
+\useasboundingbox (-1.2,-1.8) rectangle (8.4,3.15);
+\foreach \shift/\rad/\tag in {0/.95/0,5.25/1.09/1}{
+\begin{scope}[xshift=\shift cm]
+\coordinate(A)at(0,0);\coordinate(B)at(1.8,0);\coordinate(C)at(.9,1.558846);
+\foreach \p in {A,B,C}\draw[inriagrayblue!35,line width=.55pt](\p)circle[radius=\rad];
+\ifnum\tag=0
+  \def\ab{inriablue}\def\ac{inriaorange}\def\bc{inriamauve}
+\else
+  \def\ab{inriablue}\def\ac{inriablue}\def\bc{inriablue}
+\fi
+\foreach \p/\q/\col in {A/B/\ab,A/C/\ac,B/C/\bc}{
+ \begin{scope}\clip(\p)circle[radius=\rad];\fill[\col!65](\q)circle[radius=\rad];\end{scope}}
+\ifnum\tag=1
+ \begin{scope}\clip(A)circle[radius=\rad];\clip(B)circle[radius=\rad];\fill[inriablue!85!black](C)circle[radius=\rad];\end{scope}
+\fi
+\foreach \p in {A,B,C}\fill[inriagrayblue](\p)circle[radius=.038];
+\ifnum\tag=0
+ \node[text=inriagrayblue,align=center]at(.9,-1.50){Three pairwise overlaps\\$a/2<r<a/\sqrt3$};
+\else
+ \node[text=inriagrayblue,align=center]at(.9,-1.50){One connected region\\$r>a/\sqrt3$};
+\fi
+\end{scope}}
+\draw[-{Latex[length=3mm]},line width=1pt,inriagrayblue!65](3.15,.68)--(4.05,.68);
+\node[text=inriagrayblue,align=center,font=\fontsize{9}{10}\selectfont]at(3.6,1.32){increase\\$r$};
+\end{tikzpicture}

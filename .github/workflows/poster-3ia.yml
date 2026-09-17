@@ -7,25 +7,50 @@ on:
       - 'Présentations/Posters/3IA_Days_2026/**'
   workflow_dispatch:
 permissions:
-  contents: read
+  contents: write
 concurrency:
   group: poster-3ia-${{ github.ref }}
   cancel-in-progress: true
 jobs:
   poster:
-    runs-on: ubuntu-latest
-    timeout-minutes: 15
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      POSTER: Présentations/Posters/3IA_Days_2026
     steps:
       - uses: actions/checkout@v4
-      - name: Gather reproducible illustration assets
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install print toolchain
         run: |
-          mkdir -p reference_bundle
-          cp Logo/percolia-lockup-horizontal.svg reference_bundle/
-          curl -fL --retry 3 https://raw.githubusercontent.com/scikit-learn-contrib/hdbscan/master/notebooks/clusterable_data.npy -o reference_bundle/clusterable_data.npy
-          curl -fL --retry 3 https://3ia.univ-cotedazur.eu/uas/3ia-en/LOGO/logo_ai_cluster.png -o reference_bundle/logo_ai_cluster.png
-      - name: Export reference files
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends texlive-xetex texlive-latex-extra texlive-fonts-recommended fonts-ebgaramond libcairo2
+          python -m pip install -r "$POSTER/requirements-build.txt"
+      - name: Restore verified assets and vector figures
+        working-directory: ${{ env.POSTER }}
+        run: |
+          python prepare_assets.py
+          python make_figures.py
+      - name: Compile, check and render A0 poster
+        working-directory: ${{ env.POSTER }}
+        run: make all check preview
+      - name: Commit only poster deliverables to main
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- "$POSTER"
+          if ! git diff --cached --quiet; then
+            git commit -m 'Build checked A0 3IA poster and vendor illustration assets [skip ci]'
+            git push origin HEAD:main
+          fi
+      - name: Export checked PDF and preview
         uses: actions/upload-artifact@v4
         with:
-          name: poster-3ia-vector-inputs
-          path: reference_bundle/
-          retention-days: 3
+          name: Poster_3IA_2026_A0
+          path: |
+            Présentations/Posters/3IA_Days_2026/Poster_3IA_2026_Hauseux_A0.pdf
+            Présentations/Posters/3IA_Days_2026/apercu.png
+          retention-days: 30

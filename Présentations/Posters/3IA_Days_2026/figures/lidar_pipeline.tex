@@ -1,7 +1,9 @@
-\begin{tikzpicture}[box/.style={draw=inriablue,fill=white,rounded corners=2pt,line width=.8pt,text width=3.1cm,minimum height=1.12cm,align=center,font=\fontsize{11}{12}\selectfont},>={Latex[length=2mm]}]
-\node[box](a)at(0,0){HGP\\hierarchy};
-\node[box](b)at(4.4,0){3D-model-guided\\tree selection};
-\node[box](c)at(8.8,0){Anomaly\\instances};
-\draw[->,inriablue,line width=.9pt](a)--(b);
-\draw[->,inriablue,line width=.9pt](b)--(c);
+\begin{tikzpicture}[every node/.style={font=\fontsize{10}{11}\selectfont},
+ b/.style={draw=inriablue,line width=.7pt,fill=white,rounded corners=1mm,
+ minimum height=1.05cm,text width=2.65cm,align=center,inner sep=3pt}]
+\node[b](a)at(0,0){HGP\\hierarchy};
+\node[b](b)at(3.65,0){3D-model-guided\\tree selection};
+\node[b](c)at(7.3,0){Anomaly\\instances};
+\draw[-{Latex[length=2mm]},inriablue,line width=.8pt](a)--(b);
+\draw[-{Latex[length=2mm]},inriablue,line width=.8pt](b)--(c);
 \end{tikzpicture}

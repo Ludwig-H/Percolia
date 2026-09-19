@@ -35,9 +35,9 @@ jobs:
           python prepare_assets.py
           python make_figures.py
           python prepare_defense_figures.py
-      - name: Compile, check geometry and QR, and render A0 poster
+      - name: Compile, check geometry and QR, and render A0 poster and PNG
         working-directory: ${{ env.POSTER }}
-        run: make all check preview
+        run: make all check preview png
       - name: Commit only poster deliverables to main
         run: |
           git config user.name 'github-actions[bot]'
@@ -47,11 +47,12 @@ jobs:
             git commit -m 'Build checked 3IA poster with exact defense figures [skip ci]'
             git push origin HEAD:main
           fi
-      - name: Export checked PDF and preview
+      - name: Export checked PDF, PNG and preview
         uses: actions/upload-artifact@v4
         with:
           name: Poster_3IA_2026_A0
           path: |
             Présentations/Posters/3IA_Days_2026/Poster_3IA_2026_Hauseux_A0.pdf
+            Présentations/Posters/3IA_Days_2026/Poster_3IA_2026_Hauseux_A0.png
             Présentations/Posters/3IA_Days_2026/apercu.png
           retention-days: 30

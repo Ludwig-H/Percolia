@@ -1,6 +1,6 @@
 # Poster scientifique · Journées 3IA 2026
 
-[**PDF A0 portrait**](Poster_3IA_2026_Hauseux_A0.pdf) · [Source LaTeX](poster.tex)
+[**PDF A0 portrait**](Poster_3IA_2026_Hauseux_A0.pdf) · [**PNG A0 300 dpi**](Poster_3IA_2026_Hauseux_A0.png) · [Source LaTeX](poster.tex)
 
 [![Aperçu](apercu.png)](Poster_3IA_2026_Hauseux_A0.pdf)
 
@@ -8,7 +8,7 @@
 Louis Hauseux · Konstantin Avrachenkov · Josiane Zerubia  
 AI Cluster 3IA Côte d’Azur Days, 24–25 septembre 2026.
 
-Une page **841 × 1189 mm**, à imprimer à **100 % / taille réelle**. Gabarit Inria / Gemini ; logos institutionnels en bas, 3IA principal entre Inria et DS4H. Les publications des auteurs restent signalées en rouge.
+Une page **841 × 1189 mm**, à imprimer à **100 % / taille réelle**. `Poster_3IA_2026_Hauseux_A0.png` est le même contenu en matriciel, rendu depuis le PDF vérifié à **300 dpi** (9934 × 14044 px, RVB opaque) pour les usages qui n'acceptent pas le PDF ; `apercu.png` reste la vignette 55 dpi du README. Gabarit Inria / Gemini ; logos institutionnels en bas, 3IA principal entre Inria et DS4H. Les publications des auteurs restent signalées en rouge.
 
 ## Contenu et mise en page
 
@@ -61,10 +61,10 @@ La compilation ordinaire utilise les fichiers versionnés, sans réseau ni Pytho
 
 ```bash
 python3 -m pip install -r requirements-build.txt
-make check preview
+make check preview png
 ```
 
-Les contrôles portent sur l’A0, les polices incorporées, l’ordre des formules, l’absence de ρ, la numérotation 1–7, le contenu à l’intérieur des blocs, les **espacements mesurés dans le PDF**, les deux séparateurs Perspective et l’absence de panneaux blancs, l’ordre des trois parties et la marge du texte autour des lignes, la taille de l’image Naval Group, le QR unique et l’exemple géométrique. Ils complètent l’inspection visuelle. Les auxiliaires restent dans `build/`, ignoré par Git. Le workflow reconstruit et enregistre les livrables sur `main`.
+Les contrôles portent sur l’A0, les polices incorporées, l’ordre des formules, l’absence de ρ, la numérotation 1–7, le contenu à l’intérieur des blocs, les **espacements mesurés dans le PDF**, les deux séparateurs Perspective et l’absence de panneaux blancs, l’ordre des trois parties et la marge du texte autour des lignes, la taille de l’image Naval Group, le QR unique et l’exemple géométrique. Ils complètent l’inspection visuelle. Les auxiliaires restent dans `build/`, ignoré par Git. `make png` matricialise le PDF déjà contrôlé via `render_png.py` (PyMuPDF) : il refuse une page unique absente ou un format non A0, et n'ajoute, ne retire ni ne recompose aucun contenu. Le workflow reconstruit et enregistre les livrables sur `main`.
 
 `prepare_defense_figures.py` restaure les figures absentes depuis la révision figée ; `--force` applique à nouveau les adaptations documentées. L’exemple introductif conserve les données et paramètres HDBSCAN initiaux (`min_cluster_size=15`, `min_samples=16`, qui inclut le point lui-même).
 

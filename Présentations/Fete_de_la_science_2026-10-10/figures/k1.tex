@@ -1,0 +1,53 @@
+% K=1 on the SAME six sites as the 3IA poster.
+% Source: Présentations/Posters/3IA_Days_2026/test_six_point_geometry.py.
+% Coordinates use r0=1.2 and h=r0*sqrt(3).
+% Every shortest edge has length 2*r0=2.4. A and B connect through C;
+% D,E,F form the second triangle; C--D joins them at the SAME radius.
+% Thus all six components merge in ONE closed plateau at r0=1.2.
+% Required: tikz, xcolor; colours inriablue, inriared, inriagrayblue.
+\begin{tikzpicture}[line cap=round,line join=round,
+  every node/.style={font=\small},
+  point/.style={circle,fill=inriagrayblue,inner sep=2.2pt}]
+\useasboundingbox (-3.1,-4.0) rectangle (10.5,2.7);
+\pgfmathsetmacro{\hx}{1.2*sqrt(3)}
+\foreach \shift/\rad/\colour/\caption in {
+  0/1.1/inriablue/{Six groupes séparés},
+  7.3/1.25/inriared/{Un seul groupe}}
+{
+  \begin{scope}[xshift=\shift cm]
+    \node[font=\small\bfseries,text=\colour] at (0,2.35) {\caption};
+    \ifdim\shift pt=0pt
+      \node[font=\small,text=inriagrayblue] at (0,1.99) {$r=1{,}1$};
+    \else
+      \node[font=\small,text=inriagrayblue] at (0,1.99) {$r=1{,}25$};
+    \fi
+    \begin{scope}[scale=.57]
+      \coordinate (A) at (-1.2-\hx,1.2);
+      \coordinate (B) at (-1.2-\hx,-1.2);
+      \coordinate (C) at (-1.2,0);
+      \coordinate (D) at (1.2,0);
+      \coordinate (E) at (1.2+\hx,1.2);
+      \coordinate (F) at (1.2+\hx,-1.2);
+      % Filled UNION; opaque colour keeps overlaps at the same shade.
+      \foreach \p in {A,B,C,D,E,F} {\fill[\colour!17] (\p) circle[radius=\rad];}
+      \foreach \p in {A,B,C,D,E,F} {\draw[\colour!65,line width=.65pt] (\p) circle[radius=\rad];}
+      \foreach \p in {A,B,C,D,E,F} {\node[point] at (\p) {};}
+      \foreach \p in {A,E} {\node[above=3pt,text=inriagrayblue] at (\p) {\p};}
+      \foreach \p in {B,F} {\node[below=3pt,text=inriagrayblue] at (\p) {\p};}
+      \node[above=3pt,text=inriagrayblue] at (C) {C};
+      \node[above=3pt,text=inriagrayblue] at (D) {D};
+    \end{scope}
+  \end{scope}
+}
+% Dendrogramme non binaire: une seule multifusion, aucun ordre artificiel.
+\node[font=\small\bfseries,text=inriagrayblue] at (3.65,-1.95)
+  {Quand les disques se touchent, les groupes se rejoignent.};
+\draw[inriared,line width=1.2pt] (1.05,-2.65)--(6.25,-2.65);
+\foreach \xx/\label in {1.05/A,2.09/B,3.13/C,4.17/D,5.21/E,6.25/F} {
+  \draw[inriablue,line width=1pt] (\xx,-3.55)--(\xx,-2.65);
+  \node[text=inriagrayblue,below=2pt] at (\xx,-3.55) {\label};
+}
+\node[text=inriared,font=\small\bfseries,above=3pt] at (3.65,-2.65) {$r=1{,}2$};
+\draw[inriagrayblue,->] (.4,-3.6)--(.4,-2.4);
+\node[text=inriagrayblue,left=4pt,font=\footnotesize] at (.4,-3.02) {$r$};
+\end{tikzpicture}

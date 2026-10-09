@@ -1,0 +1,123 @@
+name: Fête de la science — slides et kit hors connexion
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/fete-science.yml'
+      - 'Présentations/Fete_de_la_science_2026-10-10/slides.tex'
+      - 'Présentations/Fete_de_la_science_2026-10-10/build.py'
+      - 'Présentations/Fete_de_la_science_2026-10-10/external_assets.json'
+      - 'Présentations/Fete_de_la_science_2026-10-10/lecteur.html'
+      - 'Présentations/Fete_de_la_science_2026-10-10/*.md'
+      - 'Présentations/Fete_de_la_science_2026-10-10/figures/**'
+      - 'Présentations/Fete_de_la_science_2026-10-10/theme/*.sty'
+      - 'Présentations/Posters/3IA_Days_2026/assets/shipyard.png'
+      - 'Présentations/Posters/3IA_Days_2026/assets/percolia.pdf'
+      - 'Présentations/Posters/3IA_Days_2026/figures/defense/deuxnn_r_boules.tex'
+      - 'Présentations/Posters/3IA_Days_2026/figures/defense/deuxnn_rp_boules.tex'
+      - 'Présentations/Posters/3IA_Days_2026/figures/defense/deuxnn_rs_boules.tex'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: fete-science-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  presentation:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      DECK: Présentations/Fete_de_la_science_2026-10-10
+      POSTER: Présentations/Posters/3IA_Days_2026
+    steps:
+      - name: Récupérer main
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Installer la chaîne de compilation
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends \
+            texlive-latex-extra texlive-lang-french texlive-fonts-recommended \
+            lmodern poppler-utils ffmpeg
+
+      - name: Compiler, contrôler les vidéos et préparer la projection
+        run: |
+          git rev-parse HEAD > "$RUNNER_TEMP/fete-science-build-head"
+          python3 "$DECK/build.py"
+
+      - name: Conserver les livrables contrôlés et les journaux
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: Fete_de_la_science_2026_Percolia
+          path: |
+            Présentations/Fete_de_la_science_2026-10-10/Fete_de_la_science_2026_Percolia.pdf
+            Présentations/Fete_de_la_science_2026-10-10/Fete_de_la_science_2026_Percolia_hors_connexion.zip
+            Présentations/Fete_de_la_science_2026-10-10/SHA256SUMS*.txt
+            Présentations/Fete_de_la_science_2026-10-10/build_report.json
+            Présentations/Fete_de_la_science_2026-10-10/compile-*.log
+            Présentations/Fete_de_la_science_2026-10-10/Fete_de_la_science_2026_Percolia.log
+            Présentations/Fete_de_la_science_2026-10-10/pdfinfo.txt
+            Présentations/Fete_de_la_science_2026-10-10/slides.txt
+          if-no-files-found: warn
+          retention-days: 30
+
+      - name: Publier uniquement les fichiers générés sur main
+        run: |
+          set -euo pipefail
+          build_head="$(cat "$RUNNER_TEMP/fete-science-build-head")"
+          inputs=(
+            '.github/workflows/fete-science.yml'
+            "$DECK/slides.tex" "$DECK/build.py" "$DECK/external_assets.json"
+            "$DECK/lecteur.html" "$DECK/README.md" "$DECK/NOTES_ORATEUR.md"
+            "$DECK/figures" "$DECK/theme/*.sty"
+            "$POSTER/assets/shipyard.png" "$POSTER/assets/percolia.pdf"
+            "$POSTER/figures/defense/deuxnn_r_boules.tex"
+            "$POSTER/figures/defense/deuxnn_rp_boules.tex"
+            "$POSTER/figures/defense/deuxnn_rs_boules.tex"
+          )
+          check_sources() {
+            git fetch origin main
+            if ! git diff --quiet "$build_head" origin/main -- "${inputs[@]}"; then
+              echo 'Les sources ont changé pendant la compilation ; relancer depuis main.' >&2
+              exit 1
+            fi
+          }
+          check_sources
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- \
+            "$DECK/Fete_de_la_science_2026_Percolia.pdf" \
+            "$DECK/Fete_de_la_science_2026_Percolia_hors_connexion.zip" \
+            "$DECK/SHA256SUMS.txt" "$DECK/SHA256SUMS_RELEASE.txt" \
+            "$DECK/build_report.json" \
+            "$DECK/diapositives/slide-01.png" "$DECK/diapositives/slide-02.png" \
+            "$DECK/diapositives/slide-03.png" "$DECK/diapositives/slide-04.png" \
+            "$DECK/diapositives/slide-05.png" "$DECK/diapositives/slide-06.png" \
+            "$DECK/diapositives/slide-07.png" "$DECK/diapositives/slide-08.png" \
+            "$DECK/diapositives/slide-09.png" \
+            "$DECK/assets/linkedin_light_affiche.png" "$DECK/assets/linkedin_dark_affiche.png" \
+            "$DECK/videos/hgp_vs_hdbscan_light.mp4" "$DECK/videos/hgp_vs_hdbscan_dark.mp4" \
+            "$DECK/theme/imgs/Filet-7pt.png" "$DECK/theme/imgs/Inria-logo-rouge.png" \
+            "$DECK/theme/imgs/RF-INria_Bloc-marque.png" "$DECK/theme/imgs/angle.png"
+          if git diff --cached --quiet; then
+            echo 'Les livrables sur main sont déjà à jour.'
+            exit 0
+          fi
+          git commit -m 'Build Fête de la science slides and offline projection kit'
+          for attempt in 1 2 3; do
+            check_sources
+            git rebase origin/main
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+          done
+          echo 'Publication refusée après trois essais sans forçage.' >&2
+          exit 1

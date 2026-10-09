@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>Percolia — Fête de la science 2026</title>
+  <style>
+    :root { color-scheme: dark; font-family: system-ui, -apple-system, "Segoe UI", sans-serif; background: #101820; color: #f4f7fa; }
+    * { box-sizing: border-box; }
+    body { margin: 0; }
+    button, input, select { font: inherit; }
+    button, select, input[type="number"], .pdf { border: 1px solid #627382; border-radius: 5px; background: #1d2c39; color: inherit; }
+    button, .pdf { padding: .4rem .7rem; cursor: pointer; }
+    button:hover, .pdf:hover { background: #314756; }
+    button:disabled { opacity: .35; cursor: default; }
+    button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible { outline: 3px solid #92d9ff; outline-offset: 3px; }
+    a { color: #b4e4ff; }
+    .viewer { min-height: 100dvh; display: flex; flex-direction: column; justify-content: center; }
+    .stage { position: relative; width: min(100%, calc((100dvh - 96px) * 16 / 9)); aspect-ratio: 16 / 9; margin: auto; background: #fff; overflow: hidden; }
+    .media { display: block; width: 100%; height: 100%; object-fit: contain; }
+    video.media { background: #000; }
+    .hidden { display: none !important; }
+    .error { position: absolute; inset: 0; display: grid; place-content: center; gap: 1rem; padding: 2rem; color: #1b3449; text-align: center; background: #f5f8fa; }
+    .error p { margin: 0; }
+    .error a { color: #095a9a; }
+    .play { position: absolute; inset: 0; margin: auto; width: fit-content; height: fit-content; padding: .8rem 1rem; }
+    .toolbar { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: .65rem 1.1rem; padding: .65rem 1rem; min-height: 60px; background: #101820; }
+    .nav, .setting { display: inline-flex; align-items: center; gap: .5rem; }
+    .count { min-width: 4.1rem; text-align: center; font-variant-numeric: tabular-nums; }
+    .setting { font-size: .9rem; white-space: nowrap; }
+    .setting input[type="number"] { width: 4.1rem; padding: .35rem; }
+    select { padding: .35rem; }
+    .pdf { text-decoration: none; font-size: .9rem; }
+    .help { margin: 0; padding: 0 1rem .6rem; text-align: center; color: #b5c0c9; font-size: .75rem; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+    .viewer:fullscreen { background: #000; min-height: 100%; }
+    .viewer:fullscreen .stage { width: 100%; height: 100%; max-height: 100dvh; aspect-ratio: auto; margin: 0; }
+    .viewer:fullscreen .toolbar { position: absolute; z-index: 3; bottom: 0; width: 100%; background: #101820e8; transition: opacity .2s; }
+    .viewer:fullscreen .help { display: none; }
+    .viewer:fullscreen.hide-controls { cursor: none; }
+    .viewer:fullscreen.hide-controls .toolbar { opacity: 0; pointer-events: none; }
+    .viewer:fullscreen.hide-controls .toolbar:focus-within { opacity: 1; pointer-events: auto; }
+    @media (max-width: 700px) {
+      .stage { width: 100%; }
+      .toolbar { gap: .6rem; }
+      .help { font-size: .7rem; }
+    }
+    @media (prefers-reduced-motion: reduce) { .viewer:fullscreen .toolbar { transition: none; } }
+  </style>
+</head>
+<body>
+  <main class="viewer" id="viewer" aria-label="Présentation Percolia">
+    <div class="stage" id="stage">
+      <img class="media" id="slide" src="diapositives/slide-01.png" alt="Diapositive 1 sur 9. Présentation Percolia à la Fête de la science.">
+      <video class="media hidden" id="video" controls muted playsinline preload="metadata" aria-label="Démonstration comparative HGP et HDBSCAN, environ 1 minute 41 secondes">
+        Votre navigateur ne permet pas de lire la vidéo. Ouvrez le fichier MP4 dans un lecteur vidéo.
+      </video>
+      <div class="error hidden" id="error" role="status">
+        <strong id="errorTitle">Diapositive indisponible</strong>
+        <p id="errorText">Vérifiez que le dossier diapositives se trouve à côté de ce lecteur.</p>
+        <a id="errorLink" href="Fete_de_la_science_2026_Percolia.pdf" target="_blank" rel="noopener">Ouvrir le PDF</a>
+      </div>
+      <button class="play hidden" id="play">Lancer la vidéo</button>
+    </div>
+    <div class="toolbar" aria-label="Commandes de présentation">
+      <div class="nav">
+        <button id="previous" aria-label="Diapositive précédente" disabled>←</button>
+        <span class="count" id="count" aria-hidden="true">1 / 9</span>
+        <button id="next" aria-label="Diapositive suivante">→</button>
+      </div>
+      <button id="fullscreen">Plein écran</button>
+      <label class="setting"><input type="checkbox" id="stand"> Boucle stand</label>
+      <label class="setting">Durée <input type="number" id="duration" min="5" max="180" step="1" value="20" aria-label="Durée de chaque diapositive en secondes"> s</label>
+      <label class="setting hidden" id="variantLabel">Vidéo
+        <select id="variant" aria-label="Variante visuelle de la même démonstration">
+          <option value="light">Clair</option>
+          <option value="dark">Sombre</option>
+        </select>
+      </label>
+      <a class="pdf" href="Fete_de_la_science_2026_Percolia.pdf" target="_blank" rel="noopener">Ouvrir le PDF</a>
+    </div>
+    <p class="help">← → ou Espace : naviguer · F : plein écran · Échap : quitter le plein écran</p>
+    <p class="sr-only" id="announcement" aria-live="polite" aria-atomic="true">Diapositive 1 sur 9.</p>
+  </main>
+  <script>
+    "use strict";
+    (() => {
+      const total = 9;
+      const videoSlide = 6;
+      const viewer = document.getElementById("viewer");
+      const slide = document.getElementById("slide");
+      const video = document.getElementById("video");
+      const previous = document.getElementById("previous");
+      const next = document.getElementById("next");
+      const count = document.getElementById("count");
+      const fullscreen = document.getElementById("fullscreen");
+      const stand = document.getElementById("stand");
+      const duration = document.getElementById("duration");
+      const variant = document.getElementById("variant");
+      const variantLabel = document.getElementById("variantLabel");
+      const error = document.getElementById("error");
+      const errorTitle = document.getElementById("errorTitle");
+      const errorText = document.getElementById("errorText");
+      const errorLink = document.getElementById("errorLink");
+      const play = document.getElementById("play");
+      const announcement = document.getElementById("announcement");
+      let index = 0;
+      let advanceTimer = null;
+      let controlsTimer = null;
+      let videoFailed = false;
+      let currentVideoPath = "";
+
+      function clearAdvance() {
+        window.clearTimeout(advanceTimer);
+        advanceTimer = null;
+      }
+
+      function seconds() {
+        const value = Number(duration.value);
+        return Number.isFinite(value) ? Math.min(180, Math.max(5, value)) : 20;
+      }
+
+      function schedule() {
+        clearAdvance();
+        if (!stand.checked) return;
+        // La démonstration doit finir avant de passer à la suite.
+        if (index === videoSlide && !videoFailed) {
+          if (video.ended) show((index + 1) % total);
+          return;
+        }
+        advanceTimer = window.setTimeout(() => show((index + 1) % total), seconds() * 1000);
+      }
+
+      function setError(title, message, href, linkLabel) {
+        errorTitle.textContent = title;
+        errorText.textContent = message;
+        errorLink.href = href;
+        errorLink.textContent = linkLabel;
+        error.classList.remove("hidden");
+      }
+
+      async function playVideo() {
+        if (index !== videoSlide || videoFailed) return;
+        try {
+          await video.play();
+          if (index === videoSlide) play.classList.add("hidden");
+        } catch (_) {
+          if (index === videoSlide && !videoFailed) {
+            play.classList.remove("hidden");
+            announcement.textContent = "Appuyez sur Lancer la vidéo pour démarrer la démonstration.";
+          }
+        }
+      }
+
+      function loadVideo(reset) {
+        const path = "videos/hgp_vs_hdbscan_" + variant.value + ".mp4";
+        videoFailed = false;
+        if (path !== currentVideoPath || video.error) {
+          currentVideoPath = path;
+          video.src = path;
+          video.load();
+        } else if (reset) {
+          try { video.currentTime = 0; } catch (_) { /* Métadonnées encore indisponibles. */ }
+        }
+        video.poster = "diapositives/slide-07.png";
+        play.textContent = "Lancer la vidéo";
+        if (stand.checked) playVideo();
+        else play.classList.remove("hidden");
+      }
+
+      function show(target) {
+        clearAdvance();
+        video.pause();
+        index = Math.min(total - 1, Math.max(0, target));
+        error.classList.add("hidden");
+        play.classList.add("hidden");
+        slide.src = "diapositives/slide-" + String(index + 1).padStart(2, "0") + ".png";
+        slide.alt = "Diapositive " + (index + 1) + " sur " + total + ". Présentation Percolia à la Fête de la science.";
+        const isVideo = index === videoSlide;
+        slide.classList.toggle("hidden", isVideo);
+        video.classList.toggle("hidden", !isVideo);
+        variantLabel.classList.toggle("hidden", !isVideo);
+        count.textContent = (index + 1) + " / " + total;
+        previous.disabled = index === 0;
+        next.disabled = index === total - 1;
+        announcement.textContent = isVideo
+          ? "Diapositive 7 sur 9. Démonstration HGP et HDBSCAN. Clair et sombre sont deux variantes du même montage."
+          : "Diapositive " + (index + 1) + " sur " + total + ".";
+        if (isVideo) loadVideo(true);
+        schedule();
+      }
+
+      async function toggleFullscreen() {
+        try {
+          if (document.fullscreenElement) await document.exitFullscreen();
+          else if (viewer.requestFullscreen) await viewer.requestFullscreen();
+        } catch (_) {
+          announcement.textContent = "Le plein écran est indisponible dans ce navigateur.";
+        }
+      }
+
+      function revealControls() {
+        viewer.classList.remove("hide-controls");
+        window.clearTimeout(controlsTimer);
+        if (document.fullscreenElement) {
+          controlsTimer = window.setTimeout(() => viewer.classList.add("hide-controls"), 2200);
+        }
+      }
+
+      slide.addEventListener("error", () => {
+        if (index === videoSlide) return;
+        setError("Diapositive " + (index + 1) + " indisponible",
+          "Vérifiez que le dossier diapositives se trouve à côté de lecteur.html.",
+          "Fete_de_la_science_2026_Percolia.pdf", "Ouvrir le PDF");
+      });
+      slide.addEventListener("load", () => {
+        if (index !== videoSlide) error.classList.add("hidden");
+      });
+      video.addEventListener("error", () => {
+        if (index !== videoSlide) return;
+        videoFailed = true;
+        play.classList.add("hidden");
+        setError("Vidéo indisponible",
+          "Vérifiez le dossier videos. Vous pouvez aussi ouvrir le MP4 dans votre lecteur vidéo.",
+          currentVideoPath, "Ouvrir le fichier MP4");
+        schedule();
+      });
+      video.addEventListener("ended", () => {
+        if (index === videoSlide && stand.checked) show((index + 1) % total);
+        else if (index === videoSlide) {
+          play.textContent = "Revoir la vidéo";
+          play.classList.remove("hidden");
+        }
+      });
+      video.addEventListener("play", () => play.classList.add("hidden"));
+      play.addEventListener("click", playVideo);
+      previous.addEventListener("click", () => show(index - 1));
+      next.addEventListener("click", () => show(index + 1));
+      fullscreen.addEventListener("click", toggleFullscreen);
+      stand.addEventListener("change", () => {
+        if (stand.checked && index === videoSlide && !videoFailed) {
+          if (video.ended) video.currentTime = 0;
+          playVideo();
+        }
+        schedule();
+      });
+      duration.addEventListener("change", () => { duration.value = String(seconds()); schedule(); });
+      variant.addEventListener("change", () => {
+        error.classList.add("hidden");
+        loadVideo(true);
+        schedule();
+      });
+      document.addEventListener("keydown", event => {
+        const target = event.target;
+        if (target instanceof HTMLElement && (target.matches("input, select, textarea") || target.isContentEditable)) return;
+        if (event.code === "Space" && target instanceof HTMLElement && target.matches("button, a, video")) return;
+        if (event.key === "ArrowRight" || event.key === "PageDown" || event.code === "Space") {
+          event.preventDefault(); if (index < total - 1) show(index + 1);
+        } else if (event.key === "ArrowLeft" || event.key === "PageUp") {
+          event.preventDefault(); if (index > 0) show(index - 1);
+        } else if (event.key === "Home") {
+          event.preventDefault(); show(0);
+        } else if (event.key === "End") {
+          event.preventDefault(); show(total - 1);
+        } else if (event.key.toLowerCase() === "f") {
+          event.preventDefault(); toggleFullscreen();
+        }
+      });
+      document.addEventListener("fullscreenchange", () => {
+        fullscreen.textContent = document.fullscreenElement ? "Quitter le plein écran" : "Plein écran";
+        // Le bouton de plein écran ne conserve pas le focus : les commandes se masquent.
+        if (document.fullscreenElement && document.activeElement === fullscreen) fullscreen.blur();
+        revealControls();
+      });
+      viewer.addEventListener("pointermove", revealControls);
+      viewer.addEventListener("pointerdown", revealControls);
+      viewer.addEventListener("focusin", revealControls);
+      if (!viewer.requestFullscreen) fullscreen.classList.add("hidden");
+      show(0);
+    })();
+  </script>
+</body>
+</html>

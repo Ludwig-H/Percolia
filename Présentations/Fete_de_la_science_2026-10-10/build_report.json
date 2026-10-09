@@ -2,7 +2,7 @@
   "pdf": {
     "pages": 10,
     "aspect_ratio": "16:9",
-    "sha256": "9d7f3d1f07e8ffad382e13c03c0f4287c24783f379a563054fe72f73c75a998c",
+    "sha256": "964217728922ec89b5e8c5e253449599328eaa19c5e3562c2134e35ae24020f6",
     "overfull_boxes_over_1pt": 0
   },
   "videos": {
@@ -32,15 +32,192 @@
   },
   "external_assets_sha256_verified": 6,
   "naval_assets": {
-    "assets/naval_raw.png": {
-      "sha256": "579065a41ac7ca58352f1f64c864bc20f89b3a4b7281b5eaced4eba7fafeed0d",
+    "assets/naval_model.png": {
+      "sha256": "befd1c0e65f92b14adf9c0a469ae10ce169a8c775b01ad9176a4f84d5d1d8c2e",
+      "size": 116722,
       "width": 1800,
       "height": 1200
     },
-    "assets/naval_model.png": {
-      "sha256": "befd1c0e65f92b14adf9c0a469ae10ce169a8c775b01ad9176a4f84d5d1d8c2e",
+    "assets/naval_model_view1.png": {
+      "sha256": "0bd59b7eadb40e76d2ee1ba13cfa42d6eccd71b941bb76b38ee07bb718c7fe40",
+      "size": 21318,
+      "width": 1000,
+      "height": 800
+    },
+    "assets/naval_model_view2.png": {
+      "sha256": "fd73b95c572cd12aa5622c3d13a9b93ef0e4b954f05670f4db51e4d108a09276",
+      "size": 33304,
+      "width": 1600,
+      "height": 680
+    },
+    "assets/naval_raw.png": {
+      "sha256": "579065a41ac7ca58352f1f64c864bc20f89b3a4b7281b5eaced4eba7fafeed0d",
+      "size": 646963,
       "width": 1800,
       "height": 1200
+    },
+    "assets/naval_raw_view1.png": {
+      "sha256": "d56cd9942cba9e27b8ec34d959b308a35da1b00a488afac71a809d1dcd991939",
+      "size": 260635,
+      "width": 1000,
+      "height": 800
+    },
+    "assets/naval_raw_view2.png": {
+      "sha256": "5d4d52bf2980837dc668818cac1f8f3a8965fb7c7268d08107cd7a6849f7c463",
+      "size": 301119,
+      "width": 1600,
+      "height": 680
+    },
+    "assets/naval_result_model_view1.png": {
+      "sha256": "024bf440b1de07ddae5ec57f39b582f35bf6c7fd483456c5a40cbc87285c4c6a",
+      "size": 66848,
+      "width": 1000,
+      "height": 800
+    },
+    "assets/naval_result_model_view2.png": {
+      "sha256": "6d5720a5d06bdb165ecbca6a329a6fd10cbfa92eab4597a4ec0994ad8370c447",
+      "size": 146880,
+      "width": 1600,
+      "height": 680
+    },
+    "assets/naval_result_view1.png": {
+      "sha256": "41e21cfde08c095542a41ab2e71b11fd2ca8e9121049d657eca012401a65b1aa",
+      "size": 630950,
+      "width": 1000,
+      "height": 800
+    },
+    "assets/naval_result_view2.png": {
+      "sha256": "772fe5cd3f68b9de255cdbca251b9157d4c18d46b916f3bfebd7102a1c7db0c3",
+      "size": 788412,
+      "width": 1600,
+      "height": 680
+    },
+    "naval_reference_components.json": {
+      "sha256": "7f4b075fed371613a214b0b98a6204614f2fe99605d6801f2856604648f20b44",
+      "size": 25290
+    },
+    "render_naval.py": {
+      "sha256": "44a1667e3a7d85d18f3f9fdb8a636432969a0c6eff8516d45e6271a677830c8c",
+      "size": 19698
+    },
+    "render_naval_views.py": {
+      "sha256": "1806893bcd98139c25d049ef7a5ed646b624999f97a0bfd505db1e68ccd76ab8",
+      "size": 13940
+    }
+  },
+  "naval_v12": {
+    "report_sha256": "a34045a9774b2ee4972d0b153d1c2424801d84333d88619415ed1abd744b3584",
+    "artifacts": {
+      "naval_v12/cut_membership.npz": {
+        "sha256": "c9b14ef2fb86d0bbfe3126c3a85b4354f1b6162202e5d6ccf6eed1ef3bb39b64",
+        "size": 105132
+      },
+      "naval_v12/full.bin.gz": {
+        "sha256": "7e4f37e399587b28ba84c0dde5cf302bc88a620f176d66a0901602fab0670cc6",
+        "size": 12349345
+      },
+      "naval_v12/replay_check.json": {
+        "sha256": "7e383a7b42a04f3a3b5356c214e7815ba8b45b5d5c09c3c138eca54e560801e9",
+        "size": 363
+      },
+      "naval_v12/result.npz": {
+        "sha256": "6535e19d52d62b24c7bdee6fb8f16c5212e0dfe66de2131b8aae05449de7bdd2",
+        "size": 9542706
+      }
+    },
+    "reproduction_files": {
+      "naval_v12/README.md": {
+        "sha256": "824a1dd0024d8ee3d46bc59716d21b60c9f7ea26aa89d7756e9b35dd9d322a09",
+        "size": 3023
+      },
+      "naval_v12/build_engine.py": {
+        "sha256": "2aa182cdf68182cb3c8f874223aaac8175f187adc49dbf36ad6c7618b64f0c1d",
+        "size": 1681
+      },
+      "naval_v12/build_manifest.json": {
+        "sha256": "9792342edcff46b3dcc24e3b5a0b7399b41f3a36664df238c4963c8e2efdd676",
+        "size": 2107
+      },
+      "naval_v12/checks.json": {
+        "sha256": "315a9d678d9c1cdcf2e599cdfb67c4845277b7961f01cef6b00d2eac08115792",
+        "size": 6444
+      },
+      "naval_v12/cut_membership.npz": {
+        "sha256": "c9b14ef2fb86d0bbfe3126c3a85b4354f1b6162202e5d6ccf6eed1ef3bb39b64",
+        "size": 105132
+      },
+      "naval_v12/data_bloc_components.npz": {
+        "sha256": "146e19ac56fb0d0d586918e900341b04819b2752607eadc8abf7f5c7ce2f784f",
+        "size": 23122
+      },
+      "naval_v12/data_model_analysis.json": {
+        "sha256": "84e0797539958fd9f4f842489e16ba8d6cb37ce9bf3902de6be9ecadee2ddaf6",
+        "size": 9036
+      },
+      "naval_v12/data_source_manifest.json": {
+        "sha256": "c30815ca8fbae5c1da351200831947890896f156e4d847fb46364f3cf67eed3a",
+        "size": 5841
+      },
+      "naval_v12/download_manifest.json": {
+        "sha256": "62156cb7ed2cad31298b3e0000d3e57b15c1b7922e1da8603431f0de707362f1",
+        "size": 48768
+      },
+      "naval_v12/download_source.py": {
+        "sha256": "033d6562f3154b49d919aee0b9f79c1e896f7953da5208ad9baaefbb82a1ed0a",
+        "size": 1542
+      },
+      "naval_v12/export_full_only.cpp": {
+        "sha256": "4e7a48013542212cea73106f97beeb3efb451667d49958bb714982292bddf2b1",
+        "size": 3967
+      },
+      "naval_v12/export_prior.cpp": {
+        "sha256": "97301f5a6508bd80d26483d08f9139dfc8ebac160b524f1d855f206fa6d5665c",
+        "size": 13251
+      },
+      "naval_v12/full.bin.gz": {
+        "sha256": "7e4f37e399587b28ba84c0dde5cf302bc88a620f176d66a0901602fab0670cc6",
+        "size": 12349345
+      },
+      "naval_v12/input_with_background_metadata.json": {
+        "sha256": "56aa63d31b10020ae68500cae731be00e2e56e54368b10c6d9ea98898d3dc2e5",
+        "size": 4991
+      },
+      "naval_v12/make_result.py": {
+        "sha256": "3b5bd32f1703a905f322b90ca71f53df960574243a0c89f7673e1984aea9cfd1",
+        "size": 3437
+      },
+      "naval_v12/naval_v12_report.json": {
+        "sha256": "a34045a9774b2ee4972d0b153d1c2424801d84333d88619415ed1abd744b3584",
+        "size": 26760
+      },
+      "naval_v12/prepare_background.py": {
+        "sha256": "f85e523e38ab20a9f4c893d7046f6096e3b91dba70315883dc2c1a5a0e79aa20",
+        "size": 3100
+      },
+      "naval_v12/prepare_data.py": {
+        "sha256": "6680795852a5205c20468a2487149265824815925108b1a1109fd57426a83ce6",
+        "size": 3388
+      },
+      "naval_v12/replay_check.json": {
+        "sha256": "7e383a7b42a04f3a3b5356c214e7815ba8b45b5d5c09c3c138eca54e560801e9",
+        "size": 363
+      },
+      "naval_v12/reproduce.py": {
+        "sha256": "342537e27f584e4ddffd1db296fc41a93d9a80eb129684ff1acf3b819c8a2e4e",
+        "size": 4715
+      },
+      "naval_v12/result.npz": {
+        "sha256": "6535e19d52d62b24c7bdee6fb8f16c5212e0dfe66de2131b8aae05449de7bdd2",
+        "size": 9542706
+      },
+      "naval_v12/selection_metadata.json": {
+        "sha256": "f00338b5cb7c313126317b55a4e7ba26c48598c3af66842425513e15068149d7",
+        "size": 2512
+      },
+      "naval_v12/source_tree.json": {
+        "sha256": "07545f1c0981bf41a18c1825b50a30aa1906359e0bbf064b7caff36c9e692813",
+        "size": 62503
+      }
     }
   }
 }

@@ -7,6 +7,10 @@ on:
       - '.github/workflows/fete-science.yml'
       - 'Présentations/Fete_de_la_science_2026-10-10/slides.tex'
       - 'Présentations/Fete_de_la_science_2026-10-10/build.py'
+      - 'Présentations/Fete_de_la_science_2026-10-10/render_naval.py'
+      - 'Présentations/Fete_de_la_science_2026-10-10/naval_assets.json'
+      - 'Présentations/Fete_de_la_science_2026-10-10/assets/naval_raw.png'
+      - 'Présentations/Fete_de_la_science_2026-10-10/assets/naval_model.png'
       - 'Présentations/Fete_de_la_science_2026-10-10/external_assets.json'
       - 'Présentations/Fete_de_la_science_2026-10-10/lecteur.html'
       - 'Présentations/Fete_de_la_science_2026-10-10/*.md'
@@ -76,6 +80,8 @@ jobs:
           inputs=(
             '.github/workflows/fete-science.yml'
             "$DECK/slides.tex" "$DECK/build.py" "$DECK/external_assets.json"
+            "$DECK/render_naval.py" "$DECK/naval_assets.json"
+            "$DECK/assets/naval_raw.png" "$DECK/assets/naval_model.png"
             "$DECK/lecteur.html" "$DECK/README.md" "$DECK/NOTES_ORATEUR.md"
             "$DECK/figures" "$DECK/theme/*.sty"
             "$POSTER/assets/shipyard.png" "$POSTER/assets/percolia.pdf"
@@ -102,7 +108,7 @@ jobs:
             "$DECK/diapositives/slide-03.png" "$DECK/diapositives/slide-04.png" \
             "$DECK/diapositives/slide-05.png" "$DECK/diapositives/slide-06.png" \
             "$DECK/diapositives/slide-07.png" "$DECK/diapositives/slide-08.png" \
-            "$DECK/diapositives/slide-09.png" \
+            "$DECK/diapositives/slide-09.png" "$DECK/diapositives/slide-10.png" \
             "$DECK/assets/linkedin_light_affiche.png" "$DECK/assets/linkedin_dark_affiche.png" \
             "$DECK/videos/hgp_vs_hdbscan_light.mp4" "$DECK/videos/hgp_vs_hdbscan_dark.mp4" \
             "$DECK/theme/imgs/Filet-7pt.png" "$DECK/theme/imgs/Inria-logo-rouge.png" \

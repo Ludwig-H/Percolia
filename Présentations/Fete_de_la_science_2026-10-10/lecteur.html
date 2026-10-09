@@ -52,7 +52,7 @@
 <body>
   <main class="viewer" id="viewer" aria-label="Présentation Percolia">
     <div class="stage" id="stage">
-      <img class="media" id="slide" src="diapositives/slide-01.png" alt="Diapositive 1 sur 9. Présentation Percolia à la Fête de la science.">
+      <img class="media" id="slide" src="diapositives/slide-01.png" alt="Diapositive 1 sur 10. Présentation Percolia à la Fête de la science.">
       <video class="media hidden" id="video" controls muted playsinline preload="metadata" aria-label="Démonstration comparative HGP et HDBSCAN, environ 1 minute 41 secondes">
         Votre navigateur ne permet pas de lire la vidéo. Ouvrez le fichier MP4 dans un lecteur vidéo.
       </video>
@@ -66,7 +66,7 @@
     <div class="toolbar" aria-label="Commandes de présentation">
       <div class="nav">
         <button id="previous" aria-label="Diapositive précédente" disabled>←</button>
-        <span class="count" id="count" aria-hidden="true">1 / 9</span>
+        <span class="count" id="count" aria-hidden="true">1 / 10</span>
         <button id="next" aria-label="Diapositive suivante">→</button>
       </div>
       <button id="fullscreen">Plein écran</button>
@@ -81,13 +81,13 @@
       <a class="pdf" href="Fete_de_la_science_2026_Percolia.pdf" target="_blank" rel="noopener">Ouvrir le PDF</a>
     </div>
     <p class="help">← → ou Espace : naviguer · F : plein écran · Échap : quitter le plein écran</p>
-    <p class="sr-only" id="announcement" aria-live="polite" aria-atomic="true">Diapositive 1 sur 9.</p>
+    <p class="sr-only" id="announcement" aria-live="polite" aria-atomic="true">Diapositive 1 sur 10.</p>
   </main>
   <script>
     "use strict";
     (() => {
-      const total = 9;
-      const videoSlide = 6;
+      const total = 10;
+      const videoSlide = 7;
       const viewer = document.getElementById("viewer");
       const slide = document.getElementById("slide");
       const video = document.getElementById("video");
@@ -163,7 +163,7 @@
         } else if (reset) {
           try { video.currentTime = 0; } catch (_) { /* Métadonnées encore indisponibles. */ }
         }
-        video.poster = "diapositives/slide-07.png";
+        video.poster = "diapositives/slide-08.png";
         play.textContent = "Lancer la vidéo";
         if (stand.checked) playVideo();
         else play.classList.remove("hidden");
@@ -185,7 +185,7 @@
         previous.disabled = index === 0;
         next.disabled = index === total - 1;
         announcement.textContent = isVideo
-          ? "Diapositive 7 sur 9. Démonstration HGP et HDBSCAN. Clair et sombre sont deux variantes du même montage."
+          ? "Diapositive 8 sur 10. Démonstration HGP et HDBSCAN. Clair et sombre sont deux variantes du même montage."
           : "Diapositive " + (index + 1) + " sur " + total + ".";
         if (isVideo) loadVideo(true);
         schedule();

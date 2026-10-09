@@ -35,19 +35,32 @@
 {\hfuzz=41pt\begin{frame}[plain]\titlepage\end{frame}}
 
 \begin{frame}{Le LiDAR : une scène en points}
-\begin{columns}[c,onlytextwidth]
-\begin{column}{.37\textwidth}
-\large
-Le capteur mesure des distances avec la lumière.\par\vspace{.5cm}
-Il produit des milliers, parfois des millions de \alert{points en 3D}.\par\vspace{.5cm}
-\textcolor{inriablue}{\textbf{Quels points appartiennent au même objet ?}}
+\large Le capteur mesure des distances et produit des \alert{points en 3D}.\par
+\vspace{.3cm}
+\begin{columns}[t,onlytextwidth]
+\begin{column}{.48\textwidth}\centering
+\textcolor{inriablue}{\textbf{Nuage LiDAR brut}}\par\vspace{.1cm}
+\includegraphics[width=\linewidth,height=3.65cm,keepaspectratio]{assets/naval_raw.png}
 \end{column}
-\begin{column}{.59\textwidth}
-\centering\includegraphics[width=\linewidth]{\poster/assets/shipyard.png}\par
-\small Exemple : repérer des objets ajoutés dans un chantier naval.
-\source{Benchmark synthétique, 2 millions de points. Rouge : conforme au modèle 3D. Autres couleurs : objets ajoutés. Gris : fond. © Naval Group. Travaux avec Marie Aspro, Inria Startup Studio.}
+\begin{column}{.48\textwidth}\centering
+\textcolor{inriablue}{\textbf{Modèle théorique}}\par\vspace{.1cm}
+\includegraphics[width=\linewidth,height=3.65cm,keepaspectratio]{assets/naval_model.png}
 \end{column}
 \end{columns}
+\vspace{.25cm}
+\centering\normalsize\textcolor{inriablue}{\textbf{Quels objets sont présents dans le scan mais absents du modèle ?}}
+\source{Scène synthétique de chantier naval fournie par Marie Aspro. Nuage brut et structures attendues dans le modèle de référence. © Naval Group.}
+\end{frame}
+
+\begin{frame}{Repérer les objets ajoutés}
+\large Le modèle 3D guide les regroupements.\par
+\vspace{.18cm}
+\centering
+\includegraphics[width=.95\linewidth,height=4.35cm,keepaspectratio]{\poster/assets/shipyard.png}\par
+\vspace{.15cm}\normalsize
+\textcolor{red}{\textbf{Rouge : conforme au modèle.}}\quad
+\textbf{Autres couleurs : objets ajoutés.}\par
+\source{Résultat HGP sur le benchmark synthétique de 2 millions de points. Gris : fond. Travaux avec Marie Aspro, Inria Startup Studio. © Naval Group.}
 \end{frame}
 
 \begin{frame}{Le clustering : regrouper les points}

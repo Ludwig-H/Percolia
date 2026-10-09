@@ -10,23 +10,24 @@ Louis Hauseux présente les travaux de sa thèse et le projet Percolia développ
 2. Ouvrir `lecteur.html` dans un navigateur. Les diapositives et vidéos fonctionnent hors connexion.
 3. Utiliser les flèches ou la barre d'espace. Le bouton plein écran permet la projection. La boucle « stand » défile automatiquement et laisse la vidéo aller jusqu'au bout.
 
-Le PDF `Fete_de_la_science_2026_Percolia.pdf` permet une projection classique. À la diapositive 7, les liens ouvrent les MP4 si le lecteur PDF accepte les liens vers des fichiers locaux. Sinon, ouvrir directement les fichiers du dossier `videos/`. Le lecteur HTML assure la lecture sans dépendre des capacités multimédias du lecteur PDF.
+Le PDF `Fete_de_la_science_2026_Percolia.pdf` permet une projection classique. À la diapositive 8, les liens ouvrent les MP4 si le lecteur PDF accepte les liens vers des fichiers locaux. Sinon, ouvrir directement les fichiers du dossier `videos/`. Le lecteur HTML assure la lecture sans dépendre des capacités multimédias du lecteur PDF.
 
-Neuf diapositives, environ cinq minutes d'explication, puis 1 min 41 s de vidéo. Les notes sont dans `NOTES_ORATEUR.md`. Pour une explication courte, utiliser les pages 2, 4 et 5, puis la vidéo.
+Dix diapositives, environ cinq à six minutes d'explication, puis 1 min 41 s de vidéo. Les notes sont dans `NOTES_ORATEUR.md`. Pour une explication courte, utiliser les pages 2 et 3, puis 5 et 6, et la vidéo.
 
 ## Contenu
 
 | Page | Sujet |
 |---|---|
 | 1 | Des points aux objets, Percolia et Inria |
-| 2 | LiDAR et exemple de chantier naval |
-| 3 | Regrouper les points |
-| 4 | K=1, union des boules et lien simple |
-| 5 | K=2, zones couvertes deux fois |
-| 6 | La hiérarchie HGP |
-| 7 | Démonstrations vidéo HGP et HDBSCAN |
-| 8 | Perspective : pièces géométriques pour l'IA |
-| 9 | Percolia avec Louis et Alban, QR LinkedIn |
+| 2 | Nuage LiDAR brut et modèle théorique : observer les différences |
+| 3 | Repérer les objets ajoutés : résultat sur le chantier naval |
+| 4 | Regrouper les points |
+| 5 | K=1, union des boules et lien simple |
+| 6 | K=2, zones couvertes deux fois |
+| 7 | La hiérarchie HGP |
+| 8 | Démonstrations vidéo HGP et HDBSCAN |
+| 9 | Perspective : pièces géométriques pour l'IA |
+| 10 | Percolia avec Louis et Alban, QR LinkedIn |
 
 ## Les deux vidéos
 
@@ -53,7 +54,22 @@ python3 build.py
 
 Dépendances : Python 3, pdfLaTeX, Beamer/TikZ, babel français, Latin Modern, QRcode, Poppler et FFmpeg. Les images du thème et les vidéos sont récupérées à des révisions précises, avec vérification SHA256. Le workflow `.github/workflows/fete-science.yml` compile, vérifie et publie les livrables sur `main`.
 
-L'image du chantier naval est un benchmark synthétique de deux millions de points, © Naval Group, travaux avec Marie Aspro (Inria Startup Studio). Le modèle de fondation 3D guidé par la hiérarchie reste une perspective de recherche.
+Les vues du nuage brut et du modèle théorique utilisent la même caméra et le même cadrage. Le fichier `scan_lidar.ply` contient 2 321 251 points avant cadrage et échantillonnage visuel. Les deux vues montrent la même portion de la scène. Le modèle de référence reprend les structures du maillage `bloc_full.ply` qui correspondent aux treize boîtes OFF fournies. Le nuage est montré dans une couleur neutre, sans étiquettes de segmentation. Leur provenance, les empreintes des fichiers, la sélection des structures et les paramètres de rendu sont conservés dans `naval_assets.json`. La compilation vérifie les PNG publiés ; elle ne nécessite pas l'accès aux fichiers 3D sur Google Drive.
+
+`render_naval.py` permet de refaire ces deux vues depuis les fichiers 3D sources autorisés, avec NumPy, Matplotlib et Pillow. Pour cette scène, il utilise le nuage PLY, le maillage complet et les treize boîtes OFF pour sélectionner les structures du modèle de référence. Les fichiers sources doivent être récupérés séparément ; le kit de projection contient les images et leur provenance. Les paramètres exacts et versions des dépendances sont dans `naval_assets.json`, section `local_reproduction`.
+
+```sh
+NAVAL_SOURCES=/chemin/vers/naval_data
+python3 render_naval.py \
+  --raw "$NAVAL_SOURCES/scan_lidar.ply" \
+  --model "$NAVAL_SOURCES/bloc_full.ply" \
+  --reference-box-dir "$NAVAL_SOURCES/bounding_boxes" \
+  --roi -3.4 3.4 -3.4 3.4 -0.09 3.1 \
+  --azimuth 70 --elevation 20 --point-size .9 --point-alpha .8 --point-color '#39444c' --max-points 85000 \
+  --width 1800 --height 1200
+```
+
+La figure de résultat est le benchmark synthétique du poster 3IA, avec deux millions de points, © Naval Group, travaux avec Marie Aspro (Inria Startup Studio). Le projet industriel « Usine du Futur » de Marie a été testé à Lorient ; cette illustration HGP ne désigne pas un navire ou un compartiment précis de ce site. Le modèle de fondation 3D guidé par la hiérarchie reste une perspective de recherche.
 
 ## Événement
 

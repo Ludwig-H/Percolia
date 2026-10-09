@@ -26,7 +26,7 @@ import zlib
 
 HERE = Path(__file__).resolve().parent
 JOB = "Fete_de_la_science_2026_Percolia"
-PAGE_COUNT = 9
+PAGE_COUNT = 10
 PDF = HERE / f"{JOB}.pdf"
 ZIP = HERE / f"{JOB}_hors_connexion.zip"
 VIDEO_NAMES = ("hgp_vs_hdbscan_light.mp4", "hgp_vs_hdbscan_dark.mp4")
@@ -110,6 +110,30 @@ def check_videos_and_extract_stills() -> dict:
     return videos
 
 
+def check_naval_assets() -> dict:
+    """Check the committed views; original Drive source data are not CI inputs."""
+    manifest = json.loads((HERE / "naval_assets.json").read_text(encoding="utf-8"))
+    files = manifest["files"]
+    checked = {}
+    for relative in ("assets/naval_raw.png", "assets/naval_model.png"):
+        entry = files[relative]
+        path = HERE / relative
+        if not path.is_file():
+            raise FileNotFoundError(f"Missing committed Naval Group view: {relative}")
+        if sha256(path) != entry["sha256"] or path.stat().st_size != entry["size"]:
+            raise ValueError(f"Naval Group view checksum or size mismatch: {relative}")
+        with path.open("rb") as picture:
+            header = picture.read(24)
+        if header[:8] != b"\x89PNG\r\n\x1a\n":
+            raise ValueError(f"Expected a PNG illustration: {relative}")
+        width, height = struct.unpack(">II", header[16:24])
+        if (width, height) != (entry["width"], entry["height"]):
+            raise ValueError(f"Naval Group view dimensions mismatch: {relative}")
+        checked[relative] = {"sha256": entry["sha256"], "width": width, "height": height}
+        print(f"SHA-256 and dimensions verified: {relative}", flush=True)
+    return checked
+
+
 def compile_pdf() -> dict:
     required_poster_files = (
         "assets/shipyard.png", "assets/percolia.pdf",
@@ -179,7 +203,8 @@ def render_slides() -> list[str]:
 
 
 def make_offline_zip(slides: list[str]) -> list[str]:
-    files = [f"{JOB}.pdf", "lecteur.html", "NOTES_ORATEUR.md", "README.md", "external_assets.json", "build_report.json"]
+    files = [f"{JOB}.pdf", "lecteur.html", "NOTES_ORATEUR.md", "README.md", "external_assets.json", "build_report.json",
+             "naval_assets.json", "render_naval.py", "assets/naval_raw.png", "assets/naval_model.png"]
     files += slides
     files += [f"videos/{name}" for name in VIDEO_NAMES]
     files += ["assets/linkedin_light_affiche.png", "assets/linkedin_dark_affiche.png"]
@@ -212,11 +237,12 @@ def main() -> None:
         if shutil.which(executable) is None:
             raise RuntimeError(f"Required tool is not installed: {executable}")
     manifest = restore_external_assets()
+    naval = check_naval_assets()
     videos = check_videos_and_extract_stills()
     pdf = compile_pdf()
     slides = render_slides()
     report = {"pdf": pdf, "videos": videos, "renders": {"count": len(slides), "width": 1600, "height": 900},
-              "external_assets_sha256_verified": len(manifest["files"])}
+              "external_assets_sha256_verified": len(manifest["files"]), "naval_assets": naval}
     (HERE / "build_report.json").write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     files = make_offline_zip(slides)
     published = files + [ZIP.name]

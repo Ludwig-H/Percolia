@@ -1,0 +1,474 @@
+{
+  "files": {
+    "assets/naval_raw.png": {
+      "sha256": "579065a41ac7ca58352f1f64c864bc20f89b3a4b7281b5eaced4eba7fafeed0d",
+      "size": 646963,
+      "width": 1800,
+      "height": 1200,
+      "mode": "L"
+    },
+    "assets/naval_model.png": {
+      "sha256": "befd1c0e65f92b14adf9c0a469ae10ce169a8c775b01ad9176a4f84d5d1d8c2e",
+      "size": 116722,
+      "width": 1800,
+      "height": 1200,
+      "mode": "RGB"
+    }
+  },
+  "credit": "© Naval Group — benchmark synthétique, travail avec Marie Aspro (Inria Startup Studio)",
+  "source_description": "Scan LiDAR synthétique réel du benchmark (2 321 251 points). Le modèle affiché utilise les maillages des 13 objets couverts par les 13 boîtes de référence OFF; les maillages Anomaly_1 à Anomaly_5 et Background sont exclus. Cube_3, présent dans le CAD mais absent des 13 OFF du notebook, est également omis de la référence affichée.",
+  "sources": {
+    "source_folder": "https://drive.google.com/drive/folders/1UgwysdyoORCfi_yF2Rgu6B4a9z_w8zkA",
+    "bbox_folder": "https://drive.google.com/drive/folders/1oCfegLY2e8uv4Wcs1kFTijrB1vD7BAcE",
+    "retrieved_utc": "2026-10-09",
+    "files": [
+      {
+        "path": "scan_lidar.ply",
+        "drive_id": "1k3Bd_HucRn1v066Xed5P_JRY8pPbiXIS",
+        "size_bytes": 60796504,
+        "sha256": "fbcbe22be7d4bca36d15e5e0549a26af6218303668bf5ee4f1119c7246da8ab1",
+        "source_url": "https://drive.google.com/file/d/1k3Bd_HucRn1v066Xed5P_JRY8pPbiXIS/view"
+      },
+      {
+        "path": "bloc_full.ply",
+        "drive_id": "1C3sSBzJmAS2mKlxhAacEPQcUiInUO_VV",
+        "size_bytes": 126025,
+        "sha256": "18405ab5a78149749f6146dbc91ea8cfbb939eedfeca4c6053748ecf51f72d3f",
+        "source_url": "https://drive.google.com/file/d/1C3sSBzJmAS2mKlxhAacEPQcUiInUO_VV/view"
+      },
+      {
+        "path": "full_scene_7.fbx",
+        "drive_id": "1KdVY3qSGWbSDHq41es9gshe8-GXGiINs",
+        "size_bytes": 239180,
+        "sha256": "e9f22b0c5fb758fea2e95b486a252095729a5d00ad20f8ccb1b144e5682b84be",
+        "source_url": "https://drive.google.com/file/d/1KdVY3qSGWbSDHq41es9gshe8-GXGiINs/view"
+      },
+      {
+        "path": "bounding_boxes/Plane_2_obb.off",
+        "drive_id": "1B7YO4lluaEFGiKzj_CqvDz6GPIXWJ1UA",
+        "size_bytes": 283,
+        "sha256": "32f55abc861536850a0b842c197fe64cd290aa1931fb2506967b4f566a7b9d31",
+        "source_url": "https://drive.google.com/file/d/1B7YO4lluaEFGiKzj_CqvDz6GPIXWJ1UA/view"
+      },
+      {
+        "path": "bounding_boxes/Pipe_4_obb.off",
+        "drive_id": "1LGXOoQCW9SOFVttmGTgwH185RjnORSEO",
+        "size_bytes": 258,
+        "sha256": "9f5a088410105590bb270a5469c388857aac0b767645d32555fbf56c64decbbc",
+        "source_url": "https://drive.google.com/file/d/1LGXOoQCW9SOFVttmGTgwH185RjnORSEO/view"
+      },
+      {
+        "path": "bounding_boxes/Pipe_1_obb.off",
+        "drive_id": "1TE6m8psGyY0frG74rp4tp5D8GIIiTPJa",
+        "size_bytes": 266,
+        "sha256": "61f42b281c2ce90d11f7d43c975ca0055691a9fc938fe07762d61f1d52334231",
+        "source_url": "https://drive.google.com/file/d/1TE6m8psGyY0frG74rp4tp5D8GIIiTPJa/view"
+      },
+      {
+        "path": "bounding_boxes/Pipe_11_obb.off",
+        "drive_id": "1piSR7yxVteXqpA15k4odHRbsJVVFoFoA",
+        "size_bytes": 278,
+        "sha256": "bc599624ac3eb2d102e7c52b700ebd9f4c66bb6c8ae1930110b3863b8cd9c940",
+        "source_url": "https://drive.google.com/file/d/1piSR7yxVteXqpA15k4odHRbsJVVFoFoA/view"
+      },
+      {
+        "path": "bounding_boxes/Equerre_3_obb.off",
+        "drive_id": "1y0fJDm341bLXVWxT7NwyZYDTW5EsoGg2",
+        "size_bytes": 314,
+        "sha256": "3cf85de3aed9ed0362f37108d5838112b1108ecb1e14eec167b56ecbcea1514b",
+        "source_url": "https://drive.google.com/file/d/1y0fJDm341bLXVWxT7NwyZYDTW5EsoGg2/view"
+      },
+      {
+        "path": "bounding_boxes/Cube_2_obb.off",
+        "drive_id": "13O1LZ8rCa6lvPemoGfYLk4Zk8y2cdAxP",
+        "size_bytes": 290,
+        "sha256": "ef8a261abb8a22c4f1e4913afcd8f5410fea01b0ec1c13ec6ca79b76a02baf04",
+        "source_url": "https://drive.google.com/file/d/13O1LZ8rCa6lvPemoGfYLk4Zk8y2cdAxP/view"
+      },
+      {
+        "path": "bounding_boxes/Pipe_10_obb.off",
+        "drive_id": "1JxDG2lSL21-A5RGNP1J3k0vkFh_mWBZM",
+        "size_bytes": 278,
+        "sha256": "14f7cfce562fbec3ebf6d698e28387738cf4ab0110cf0283c10546cda034adbc",
+        "source_url": "https://drive.google.com/file/d/1JxDG2lSL21-A5RGNP1J3k0vkFh_mWBZM/view"
+      },
+      {
+        "path": "bounding_boxes/Equerre_1_obb.off",
+        "drive_id": "11CqkfH3HuX7cyibWNjTnMdwzBl7dq0X_",
+        "size_bytes": 306,
+        "sha256": "3c3eaae41fb48540c8123e76e3cc469de36f825cd36e252b01f70800005f414b",
+        "source_url": "https://drive.google.com/file/d/11CqkfH3HuX7cyibWNjTnMdwzBl7dq0X_/view"
+      },
+      {
+        "path": "bounding_boxes/Plane_1_obb.off",
+        "drive_id": "1xK4vLP4Gv_sSSPl5MarTD_lostewse80",
+        "size_bytes": 210,
+        "sha256": "450d1e222cfd43409673388925fde27bd6062b8eb3fc527fabc11a6b69dac984",
+        "source_url": "https://drive.google.com/file/d/1xK4vLP4Gv_sSSPl5MarTD_lostewse80/view"
+      },
+      {
+        "path": "bounding_boxes/Pipe_2_obb.off",
+        "drive_id": "17jvxmm7ZxzqsgBQjnDQsvSycAuzXkS5S",
+        "size_bytes": 298,
+        "sha256": "3031a792a0301583b92ca588008a5ded6254c6ef3416bd81dde2b6ef2499500d",
+        "source_url": "https://drive.google.com/file/d/17jvxmm7ZxzqsgBQjnDQsvSycAuzXkS5S/view"
+      },
+      {
+        "path": "bounding_boxes/Cube_1_obb.off",
+        "drive_id": "1BI1sm50RUiMu8RiCNgwnV2rSzfRtwgKg",
+        "size_bytes": 262,
+        "sha256": "442e62b2be86caf628386c8c46f25647c1df01ef1af951ce6cbf498b63c5a257",
+        "source_url": "https://drive.google.com/file/d/1BI1sm50RUiMu8RiCNgwnV2rSzfRtwgKg/view"
+      },
+      {
+        "path": "bounding_boxes/Equerre_2_obb.off",
+        "drive_id": "1vxj3AMkZ4vhHaN_UU_xxHI1NL0bh40-D",
+        "size_bytes": 302,
+        "sha256": "1e8878107dc43063fd3eb5c2b210b2b587aa356e7f3f215e39176a31fd867d67",
+        "source_url": "https://drive.google.com/file/d/1vxj3AMkZ4vhHaN_UU_xxHI1NL0bh40-D/view"
+      },
+      {
+        "path": "bounding_boxes/Pipe_3_obb.off",
+        "drive_id": "1I2Q0uQrg1RUrXIMnGJnqVqMZC5AbMdNw",
+        "size_bytes": 290,
+        "sha256": "e4828b7eb5765bdae1409fd39a629dbac50ecdd9b7286efd713e8d7cc2828a70",
+        "source_url": "https://drive.google.com/file/d/1I2Q0uQrg1RUrXIMnGJnqVqMZC5AbMdNw/view"
+      }
+    ],
+    "scan": {
+      "vertices": 2321251,
+      "faces": 0,
+      "properties": [
+        "double x",
+        "double y",
+        "double z"
+      ],
+      "format": "ascii 1.0",
+      "sha256": "fbcbe22be7d4bca36d15e5e0549a26af6218303668bf5ee4f1119c7246da8ab1"
+    },
+    "mesh": {
+      "vertices": 2250,
+      "faces": 4428,
+      "face_shape": "triangles",
+      "format": "ascii 1.0",
+      "components": 20,
+      "explicit_anomalies": 5,
+      "reference_boxes": 13,
+      "infrastructure_meshes": 14,
+      "infrastructure_mesh_without_OFF": "Cube_3",
+      "background_meshes": 1
+    }
+  },
+  "generation": {
+    "description": "Same projection and crop for measured/synthetic raw scan and supplied theoretical mesh; no segmentation labels used.",
+    "renderer": "render_naval.py",
+    "raw": {
+      "file": "scan_lidar.ply",
+      "sha256": "fbcbe22be7d4bca36d15e5e0549a26af6218303668bf5ee4f1119c7246da8ab1",
+      "valid_points_before_crop": 2321251,
+      "points_in_crop": 346444,
+      "drawn_points": 69289,
+      "stride": 5,
+      "origin": null
+    },
+    "model": [
+      {
+        "file": "bloc_full.ply",
+        "sha256": "18405ab5a78149749f6146dbc91ea8cfbb939eedfeca4c6053748ecf51f72d3f",
+        "vertices_in_source": 2250,
+        "faces_in_source": 4428,
+        "origin": null
+      }
+    ],
+    "geographic_crop_in_source_coordinates": [
+      -3.4,
+      3.4,
+      -3.4,
+      3.4,
+      -0.09,
+      3.1
+    ],
+    "crop_note": "Same XYZ clipping volume in both panels. Mesh polygons are clipped geometrically; no synthetic cap or geometry is added at the clipping boundary.",
+    "reference_model_selection": [
+      {
+        "selection": "13 actual connected mesh components uniquely matched to the 13 supplied reference OFF boxes; intrusive objects and enclosing room excluded",
+        "components_in_source": 20,
+        "objects_kept": 13,
+        "vertices_kept": 2094,
+        "faces_kept": 4140,
+        "matches": [
+          {
+            "box": "Pipe_3_obb.off",
+            "box_sha256": "e4828b7eb5765bdae1409fd39a629dbac50ecdd9b7286efd713e8d7cc2828a70",
+            "component_root_vertex": 127,
+            "vertices": 288,
+            "min": [
+              1.73967,
+              0.650001,
+              -0.0205712
+            ],
+            "max": [
+              2.63167,
+              0.850001,
+              1.75355
+            ]
+          },
+          {
+            "box": "Equerre_2_obb.off",
+            "box_sha256": "1e8878107dc43063fd3eb5c2b210b2b587aa356e7f3f215e39176a31fd867d67",
+            "component_root_vertex": 297,
+            "vertices": 10,
+            "min": [
+              -1.82941,
+              0.0578872,
+              0.0452775
+            ],
+            "max": [
+              -1.78339,
+              0.383887,
+              0.371277
+            ]
+          },
+          {
+            "box": "Cube_1_obb.off",
+            "box_sha256": "442e62b2be86caf628386c8c46f25647c1df01ef1af951ce6cbf498b63c5a257",
+            "component_root_vertex": 303,
+            "vertices": 8,
+            "min": [
+              -2.5,
+              1.56088,
+              0.0430852
+            ],
+            "max": [
+              -1.5,
+              2.56088,
+              1.04309
+            ]
+          },
+          {
+            "box": "Pipe_2_obb.off",
+            "box_sha256": "3031a792a0301583b92ca588008a5ded6254c6ef3416bd81dde2b6ef2499500d",
+            "component_root_vertex": 441,
+            "vertices": 288,
+            "min": [
+              1.73967,
+              -0.849999,
+              -0.0205713
+            ],
+            "max": [
+              2.63167,
+              -0.649999,
+              1.75355
+            ]
+          },
+          {
+            "box": "Plane_1_obb.off",
+            "box_sha256": "450d1e222cfd43409673388925fde27bd6062b8eb3fc527fabc11a6b69dac984",
+            "component_root_vertex": 603,
+            "vertices": 8,
+            "min": [
+              -3.0,
+              -2.95,
+              -0.0500002
+            ],
+            "max": [
+              3.0,
+              3.05,
+              0.0500002
+            ]
+          },
+          {
+            "box": "Equerre_1_obb.off",
+            "box_sha256": "3c3eaae41fb48540c8123e76e3cc469de36f825cd36e252b01f70800005f414b",
+            "component_root_vertex": 619,
+            "vertices": 10,
+            "min": [
+              -0.0103179,
+              -1.95813,
+              0.0452773
+            ],
+            "max": [
+              0.315682,
+              -1.91211,
+              0.371277
+            ]
+          },
+          {
+            "box": "Pipe_10_obb.off",
+            "box_sha256": "14f7cfce562fbec3ebf6d698e28387738cf4ab0110cf0283c10546cda034adbc",
+            "component_root_vertex": 896,
+            "vertices": 420,
+            "min": [
+              -2.73411,
+              -2.67394,
+              2.14931
+            ],
+            "max": [
+              0.318197,
+              0.412767,
+              2.31286
+            ]
+          },
+          {
+            "box": "Cube_2_obb.off",
+            "box_sha256": "ef8a261abb8a22c4f1e4913afcd8f5410fea01b0ec1c13ec6ca79b76a02baf04",
+            "component_root_vertex": 1045,
+            "vertices": 8,
+            "min": [
+              -3.0,
+              -2.93912,
+              0.0430844
+            ],
+            "max": [
+              -1.19209e-07,
+              0.0608815,
+              2.67316
+            ]
+          },
+          {
+            "box": "Equerre_3_obb.off",
+            "box_sha256": "3cf85de3aed9ed0362f37108d5838112b1108ecb1e14eec167b56ecbcea1514b",
+            "component_root_vertex": 1057,
+            "vertices": 10,
+            "min": [
+              -0.0103179,
+              -0.555913,
+              0.0452774
+            ],
+            "max": [
+              0.315682,
+              -0.509892,
+              0.371277
+            ]
+          },
+          {
+            "box": "Pipe_11_obb.off",
+            "box_sha256": "bc599624ac3eb2d102e7c52b700ebd9f4c66bb6c8ae1930110b3863b8cd9c940",
+            "component_root_vertex": 1342,
+            "vertices": 420,
+            "min": [
+              -2.73411,
+              -2.67394,
+              1.77688
+            ],
+            "max": [
+              0.318197,
+              0.412767,
+              1.94043
+            ]
+          },
+          {
+            "box": "Pipe_1_obb.off",
+            "box_sha256": "61f42b281c2ce90d11f7d43c975ca0055691a9fc938fe07762d61f1d52334231",
+            "component_root_vertex": 1665,
+            "vertices": 288,
+            "min": [
+              1.73967,
+              -2.35,
+              -0.0205719
+            ],
+            "max": [
+              2.63167,
+              -2.15,
+              1.75355
+            ]
+          },
+          {
+            "box": "Pipe_4_obb.off",
+            "box_sha256": "9f5a088410105590bb270a5469c388857aac0b767645d32555fbf56c64decbbc",
+            "component_root_vertex": 2033,
+            "vertices": 288,
+            "min": [
+              1.73967,
+              2.15,
+              -0.0205711
+            ],
+            "max": [
+              2.63167,
+              2.35,
+              1.75355
+            ]
+          },
+          {
+            "box": "Plane_2_obb.off",
+            "box_sha256": "32f55abc861536850a0b842c197fe64cd290aa1931fb2506967b4f566a7b9d31",
+            "component_root_vertex": 2223,
+            "vertices": 48,
+            "min": [
+              2.22034,
+              -2.94581,
+              0.0118661
+            ],
+            "max": [
+              2.86328,
+              3.05419,
+              2.48217
+            ]
+          }
+        ]
+      }
+    ],
+    "camera": {
+      "projection": "orthographic",
+      "azimuth_degrees": 70.0,
+      "elevation_degrees": 20.0,
+      "up_axis_in_source": "z",
+      "center": [
+        5.000000000032756e-06,
+        -1.999999999990898e-05,
+        1.3216099000000001
+      ],
+      "basis_columns_right_up_eye": [
+        [
+          -0.9396926207859083,
+          -0.11697777844051101,
+          0.32139380484326974
+        ],
+        [
+          0.3420201433256688,
+          -0.3213938048432696,
+          0.883022221559489
+        ],
+        [
+          0.0,
+          0.9396926207859083,
+          0.3420201433256687
+        ]
+      ],
+      "eye_distance": null,
+      "bounds_2d": [
+        -4.632081167371124,
+        4.645697159117393,
+        -3.179498139197218,
+        3.005687411795127
+      ]
+    },
+    "render": {
+      "width": 1800,
+      "height": 1200,
+      "point_size_pt2": 0.9,
+      "point_color_before_grayscale_conversion": "#39444c",
+      "point_alpha": 0.8,
+      "background": "#ffffff",
+      "raw_png_mode": "L (8-bit neutral grayscale)",
+      "mesh_depth_buffer": true,
+      "mesh_supersampling": 2
+    },
+    "outputs": {
+      "naval_raw.png": "579065a41ac7ca58352f1f64c864bc20f89b3a4b7281b5eaced4eba7fafeed0d",
+      "naval_model.png": "befd1c0e65f92b14adf9c0a469ae10ce169a8c775b01ad9176a4f84d5d1d8c2e"
+    }
+  },
+  "camera_orientation_note": "Caméra orthographique commune : azimut 70°, élévation 20°; orientation rapprochée de la capture Plotly du résultat, sans prétendre à une calibration exacte depuis la seule image.",
+  "sampling_note": "Le nuage complet comprend 2 321 251 points; le cadrage géographique en retient 346 444, dont 69 289 sont dessinés par sous-échantillonnage déterministe un sur cinq, sans recours aux étiquettes ni recoloration de segmentation.",
+  "local_reproduction": {
+    "command": "python render_naval.py --raw /path/to/naval_data/scan_lidar.ply --model /path/to/naval_data/bloc_full.ply --reference-box-dir /path/to/naval_data/bounding_boxes --roi -3.4 3.4 -3.4 3.4 -0.09 3.1 --azimuth 70 --elevation 20 --point-size .9 --point-alpha .8 --point-color '#39444c' --max-points 85000 --width 1800 --height 1200",
+    "dependencies": {
+      "numpy": "2.3.5",
+      "matplotlib": "3.10.8",
+      "Pillow": "12.3.0"
+    },
+    "renderer_sha256": "44a1667e3a7d85d18f3f9fdb8a636432969a0c6eff8516d45e6271a677830c8c",
+    "note": "Les sources volumineuses restent hors dépôt; la compilation utilise les PNG versionnés et vérifie leurs empreintes et dimensions."
+  }
+}

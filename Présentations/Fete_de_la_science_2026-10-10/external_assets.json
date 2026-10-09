@@ -1,6 +1,11 @@
 {
   "description": "Illustrations du template Inria et vidéo LinkedIn HGP/HDBSCAN en version claire ; sources publiques épinglées et empreintes SHA-256 vérifiées.",
   "files": {
+    "assets/roues_dentee.jpeg": {
+      "url": "https://raw.githubusercontent.com/Ludwig-H/Manuscrit-de-th-se/3593fbf25434c4715b37537eae1287bf49239fa7/Soutenance/soutenance/imgs/roues_dentee.jpeg",
+      "sha256": "7d55eea465b868ed2f68046e3ad70b7a6c916e2a0f04627c00d3a9ecb40757fe",
+      "size": 1636
+    },
     "theme/imgs/Filet-7pt.png": {
       "url": "https://raw.githubusercontent.com/Ludwig-H/Generalized-Frangi-for-Automatic-Crack-Extraction-on-FIND-dataset/875202c0a9aa6cd11b001469d65ee7635459d3dd/EUVIP/presentation/theme/imgs/Filet-7pt.png",
       "sha256": "4edff64394816305d94b09dd842cfd2d40761d5987f69593e1e153f47244805b",

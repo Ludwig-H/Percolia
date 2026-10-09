@@ -1,0 +1,34 @@
+{
+  "pdf": {
+    "pages": 9,
+    "aspect_ratio": "16:9",
+    "sha256": "5272a3a2db6cbe83994fd999d3dd39cf1e88aa480fe6309add468f379a7478ab",
+    "overfull_boxes_over_1pt": 0
+  },
+  "videos": {
+    "hgp_vs_hdbscan_light.mp4": {
+      "codec": "h264",
+      "width": 1080,
+      "height": 1350,
+      "duration_seconds": 100.7,
+      "audio": false,
+      "sha256": "fd0073e673b6104a8f5c763d4dfe15dba508caf85870377543906a32cbbf606c",
+      "still_at_seconds": 14
+    },
+    "hgp_vs_hdbscan_dark.mp4": {
+      "codec": "h264",
+      "width": 1080,
+      "height": 1350,
+      "duration_seconds": 100.7,
+      "audio": false,
+      "sha256": "87d2267cac57001d3c87939e840274cef01bd52d905f39d6b3a351bda493a7d5",
+      "still_at_seconds": 14
+    }
+  },
+  "renders": {
+    "count": 9,
+    "width": 1600,
+    "height": 900
+  },
+  "external_assets_sha256_verified": 6
+}

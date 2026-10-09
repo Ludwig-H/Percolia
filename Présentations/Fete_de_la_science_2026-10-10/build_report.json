@@ -2,7 +2,7 @@
   "pdf": {
     "pages": 12,
     "aspect_ratio": "16:9",
-    "sha256": "e598a8805e6d7899fcbd258c8ebc8069f48b77c528c7a0d7b20e26ae2500e96c",
+    "sha256": "8d3bc3921ce647f62b69544a38099e8e497432e1b5910a06fa978e0d9907e8f9",
     "overfull_boxes_over_1pt": 0
   },
   "videos": {
@@ -21,7 +21,7 @@
     "width": 1600,
     "height": 900
   },
-  "external_assets_sha256_verified": 5,
+  "external_assets_sha256_verified": 6,
   "naval_assets": {
     "assets/naval_model.png": {
       "sha256": "befd1c0e65f92b14adf9c0a469ae10ce169a8c775b01ad9176a4f84d5d1d8c2e",

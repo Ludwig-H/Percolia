@@ -1,8 +1,8 @@
 {
   "pdf": {
-    "pages": 9,
+    "pages": 10,
     "aspect_ratio": "16:9",
-    "sha256": "5272a3a2db6cbe83994fd999d3dd39cf1e88aa480fe6309add468f379a7478ab",
+    "sha256": "9d7f3d1f07e8ffad382e13c03c0f4287c24783f379a563054fe72f73c75a998c",
     "overfull_boxes_over_1pt": 0
   },
   "videos": {
@@ -26,9 +26,21 @@
     }
   },
   "renders": {
-    "count": 9,
+    "count": 10,
     "width": 1600,
     "height": 900
   },
-  "external_assets_sha256_verified": 6
+  "external_assets_sha256_verified": 6,
+  "naval_assets": {
+    "assets/naval_raw.png": {
+      "sha256": "579065a41ac7ca58352f1f64c864bc20f89b3a4b7281b5eaced4eba7fafeed0d",
+      "width": 1800,
+      "height": 1200
+    },
+    "assets/naval_model.png": {
+      "sha256": "befd1c0e65f92b14adf9c0a469ae10ce169a8c775b01ad9176a4f84d5d1d8c2e",
+      "width": 1800,
+      "height": 1200
+    }
+  }
 }

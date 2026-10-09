@@ -21,6 +21,7 @@ import tempfile
 import urllib.parse
 import urllib.request
 import zipfile
+import zlib
 
 
 HERE = Path(__file__).resolve().parent
@@ -144,9 +145,16 @@ def compile_pdf() -> dict:
     size = re.search(r"^Page size:\s+([0-9.]+) x ([0-9.]+) pts", info, flags=re.MULTILINE)
     if not size or abs(float(size[1]) / float(size[2]) - 16 / 9) > 0.002:
         raise ValueError("Expected 16:9 slides")
+    # pdfLaTeX normally compresses its annotation objects; inspect Flate streams too.
+    pdf_data = PDF.read_bytes()
+    expanded_pdf = bytearray(pdf_data)
+    for stream in re.finditer(rb"\bstream\r?\n(.*?)\r?\nendstream", pdf_data, flags=re.DOTALL):
+        try:
+            expanded_pdf.extend(zlib.decompress(stream[1]))
+        except zlib.error:
+            pass
     for path in ("videos/hgp_vs_hdbscan_light.mp4", "videos/hgp_vs_hdbscan_dark.mp4"):
-        # Literal PDF strings preserve the local video destinations.
-        if path.encode() not in PDF.read_bytes():
+        if path.encode() not in expanded_pdf:
             raise ValueError(f"Missing local video hyperlink in PDF: {path}")
     command(["pdftotext", str(PDF), str(HERE / "slides.txt")])
     return {"pages": PAGE_COUNT, "aspect_ratio": "16:9", "sha256": sha256(PDF), "overfull_boxes_over_1pt": 0}

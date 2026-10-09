@@ -12,21 +12,25 @@ Les diapositives 1 à 7, 9 et 10 se racontent en cinq à six minutes. La vidéo 
 
 ### 2. Le LiDAR : observer avant d'expliquer
 
-« Un LiDAR envoie de la lumière et mesure des distances. Chaque mesure donne un point dans l'espace. À gauche, le nuage de points brut ; à droite, le modèle théorique de la scène. Quels objets sont présents dans le scan mais absents du modèle ? »
+« Un LiDAR envoie de la lumière et mesure des distances. Chaque mesure donne un point dans l'espace. En haut, le nuage brut ; en bas, le modèle théorique. On regarde la même scène du dessus et de côté. Quels objets sont présents dans le scan mais absents du modèle ? »
 
-Laisser quelques secondes au public pour comparer les deux vues. Demander ce qu'il remarque et où il chercherait. Garder la réponse pour la diapositive suivante ; ne pas montrer ni désigner à l'avance les objets ajoutés. Les deux vues utilisent le même point de vue pour faciliter cette comparaison.
+Laisser quelques secondes au public pour comparer les vues et proposer une réponse. Garder l'explication pour la diapositive suivante. Les deux colonnes présentent deux projections de la même région ; pour chaque colonne, le scan et le modèle ont le même cadrage.
 
-Le fichier source `scan_lidar.ply` contient **2 321 251 points**, avant le cadrage et l'échantillonnage utilisés pour l'illustration. Les deux vues montrent la même portion de la scène. Le modèle de référence reprend les structures du maillage `bloc_full.ply` qui correspondent aux treize boîtes OFF fournies. La provenance, la sélection des structures et les paramètres de caméra figurent dans `naval_assets.json`. Le scan est affiché en couleur neutre, sans réutiliser les étiquettes de segmentation.
+Le fichier source `scan_lidar.ply` contient **2 321 251 points** avant cadrage. Le modèle reprend 14 infrastructures du maillage CAD `bloc_full.ply` : les 13 références OFF, plus `Cube_3` identifié dans le CAD. La région étudiée contient 330 543 points ; un point sur quatre est affiché, soit 82 636 points communs aux huit images. Cet allègement visuel ne réduit pas les données utilisées par le calcul. La question montre des points gris, sans réutiliser les étiquettes de segmentation.
 
 ### 3. Repérer les objets ajoutés
 
-« Voici ce que le regroupement des points permet de faire apparaître. Le rouge correspond au modèle. Les autres couleurs isolent les objets ajoutés. On peut maintenant les examiner un par un. »
+« Le modèle nous indique où se trouvent les structures attendues. Nous regroupons les points qui restent. Le rouge est compatible avec le modèle ; les autres couleurs montrent les groupes repérés. On retrouve les deux mêmes vues. »
 
-La figure de résultat est celle du poster 3IA : **benchmark synthétique de chantier naval**, deux millions de points. Rouge : points conformes au modèle de référence ; autres couleurs : objets ajoutés ; gris : fond. Travaux avec Marie Aspro, à l'Inria Startup Studio. Crédit : © Naval Group. La comparaison au modèle guide la segmentation ; les couleurs ne sont pas des catégories apprises comme « voiture » ou « arbre ».
+En haut : le nuage regroupé. En bas : les structures du modèle, avec les points des groupes repérés. Les couleurs des groupes restent les mêmes entre les deux vues. Le rouge représente la compatibilité avec les priors ; les boîtes peuvent aussi couvrir des portions d'objets ajoutés. Le gris représente le fond connu ou des résidus non retenus par la coupe. Les groupes colorés proviennent des résultats calculés sur les points résiduels. La vue du bas superpose ces points aux structures du modèle de référence.
 
-« Deux millions » est l'ordre de grandeur donné dans le poster et le rapport AYANA ; le fichier de scan utilisé pour les vues d'entrée contient précisément 2 321 251 points.
+**Pour les ingénieurs :** les priors sont appliqués avant le calcul : 290 878 points sont compatibles avec les 14 boîtes alignées sur les axes (min/max des 13 OFF ; boîte CAD de `Cube_3` élargie de 3 cm). Parmi les points restants, 15 791 se trouvent à au plus 3 cm des 104 triangles du fond CAD connu. Les 23 874 résidus sont tous quantifiés sur 21 bits et traités par le code Morse HGP 3D v12 inchangé, pour la tour complète K=1 à K=3.
 
-Le projet industriel de Marie, « Usine du Futur », a été testé sur le site Naval Group de Lorient. Cette illustration HGP porte sur un benchmark synthétique : ne pas l'attribuer à un navire ou à un compartiment précis de Lorient.
+La coupe fermée de K=3 au rayon de 4 cm est projetée sur les points par une union externe des incidences fortes. Le seuil de 200 points conserve cinq couvertures natives disjointes, totalisant 23 784 points ; 90 résidus restent gris. V12 n'offre pas d'API native de priors ni de hiérarchie des points Hr. Cette projection expérimentale des composantes continues est une étape externe. Les seuils de 3 cm, 4 cm et 200 points sont les paramètres de cette démonstration. Cinq groupes ne suffisent pas à certifier l'exactitude d'une détection d'anomalies.
+
+Aucune géométrie d'anomalie ni étiquette de vérité terrain n'entre dans les priors, la sélection ou les couleurs. Le protocole, les paramètres, la révision du code et les limites figurent dans `naval_v12_report.json`, aussi copié dans `naval_v12/`. Les coordonnées et indices d'origine sont conservés dans `naval_v12/result.npz`. L'export natif complet et les scripts de reproduction sont livrés dans ce même dossier ; un rejeu complet a reproduit les empreintes et les appartenances.
+
+Il s'agit du benchmark synthétique de chantier naval fourni par Marie Aspro, © Naval Group. Le projet industriel « Usine du Futur » a été testé à Lorient ; cette scène ne désigne pas un navire ou un compartiment précis du site.
 
 ### 4. Le clustering
 
@@ -86,7 +90,8 @@ Le QR code mène à la page LinkedIn de Percolia.
 - R. Campello, D. Moulavi, J. Sander, *Density-Based Clustering Based on Hierarchical Density Estimates*, PAKDD, 2013.
 - [Rapport d'activité AYANA 2025, section 7.7](https://radar.inria.fr/report/2025/ayana/index.html#AYANA-RA-2025_label_NavalResult) : application LiDAR du poster.
 - [Rapport d'activité ACENTAURI 2025, section 9.1.1](https://radar.inria.fr/report/2025/acentauri/index.html) : projet « Usine du Futur » avec Naval Group et validation à Lorient.
-- `naval_assets.json` : fichiers 3D d'origine, empreintes et paramètres des deux vues d'entrée ; `render_naval.py` : génération des vues sans étiquettes de segmentation.
+- `naval_assets.json` et `naval_reference_components.json` : fichiers 3D d'origine, sélection du modèle, empreintes et paramètres des deux angles ; `render_naval_views.py` et `render_naval.py` : génération des vues.
+- `naval_v12_report.json` et `naval_v12/` : révision Morse HGP v12, hiérarchie, prétraitement par les références géométriques et protocole de projection externe.
 - Vidéos, protocole et définition HGP : [E-HGP, Zoltan](https://github.com/Ludwig-H/E-HGP/tree/ac2d5bab814e84db6e1c9340f54995aa9cda58aa/Zoltan/demos/videos_hgp_hdbscan), [définition HGP 3D](https://github.com/Ludwig-H/E-HGP/blob/ac2d5bab814e84db6e1c9340f54995aa9cda58aa/docs/math/DEFINITION_HGP_3D.md).
 - A. Geiger et al., *Are we ready for Autonomous Driving? The KITTI Vision Benchmark Suite*, CVPR, 2012. [KITTI](https://www.cvlibs.net/datasets/kitti/).
 - J. Behley et al., *SemanticKITTI: A Dataset for Semantic Scene Understanding of LiDAR Sequences*, ICCV, 2019. [SemanticKITTI](https://www.semantic-kitti.org/).

@@ -1,0 +1,554 @@
+{
+  "mesh_components": [
+    {
+      "component": 0,
+      "n": 420,
+      "min": [
+        -2.73411,
+        -2.67394,
+        2.14931
+      ],
+      "max": [
+        0.318197,
+        0.412767,
+        2.31286
+      ],
+      "bbox_matches": [
+        "Pipe_10_obb.off"
+      ],
+      "fbx_name": "Pipe_10",
+      "role": "expected_reference"
+    },
+    {
+      "component": 1,
+      "n": 420,
+      "min": [
+        -2.73411,
+        -2.67394,
+        1.77688
+      ],
+      "max": [
+        0.318197,
+        0.412767,
+        1.94043
+      ],
+      "bbox_matches": [
+        "Pipe_11_obb.off"
+      ],
+      "fbx_name": "Pipe_11",
+      "role": "expected_reference"
+    },
+    {
+      "component": 2,
+      "n": 288,
+      "min": [
+        1.73967,
+        0.650001,
+        -0.0205712
+      ],
+      "max": [
+        2.63167,
+        0.850001,
+        1.75355
+      ],
+      "bbox_matches": [
+        "Pipe_3_obb.off"
+      ],
+      "fbx_name": "Pipe_3",
+      "role": "expected_reference"
+    },
+    {
+      "component": 3,
+      "n": 288,
+      "min": [
+        1.73967,
+        -0.849999,
+        -0.0205713
+      ],
+      "max": [
+        2.63167,
+        -0.649999,
+        1.75355
+      ],
+      "bbox_matches": [
+        "Pipe_2_obb.off"
+      ],
+      "fbx_name": "Pipe_2",
+      "role": "expected_reference"
+    },
+    {
+      "component": 4,
+      "n": 288,
+      "min": [
+        1.73967,
+        -2.35,
+        -0.0205719
+      ],
+      "max": [
+        2.63167,
+        -2.15,
+        1.75355
+      ],
+      "bbox_matches": [
+        "Pipe_1_obb.off"
+      ],
+      "fbx_name": "Pipe_1",
+      "role": "expected_reference"
+    },
+    {
+      "component": 5,
+      "n": 288,
+      "min": [
+        1.73967,
+        2.15,
+        -0.0205711
+      ],
+      "max": [
+        2.63167,
+        2.35,
+        1.75355
+      ],
+      "bbox_matches": [
+        "Pipe_4_obb.off"
+      ],
+      "fbx_name": "Pipe_4",
+      "role": "expected_reference"
+    },
+    {
+      "component": 6,
+      "n": 64,
+      "min": [
+        -1.08533,
+        0.316046,
+        0.12903
+      ],
+      "max": [
+        -0.310613,
+        1.09076,
+        0.987036
+      ],
+      "bbox_matches": [],
+      "fbx_name": "Anomaly_1",
+      "role": "explicit_anomaly"
+    },
+    {
+      "component": 7,
+      "n": 52,
+      "min": [
+        -9.0,
+        -31.0,
+        -0.200001
+      ],
+      "max": [
+        9.0,
+        31.0,
+        10.3887
+      ],
+      "bbox_matches": [],
+      "fbx_name": "Background",
+      "role": "background"
+    },
+    {
+      "component": 8,
+      "n": 48,
+      "min": [
+        2.22034,
+        -2.94581,
+        0.0118661
+      ],
+      "max": [
+        2.86328,
+        3.05419,
+        2.48217
+      ],
+      "bbox_matches": [
+        "Plane_2_obb.off"
+      ],
+      "fbx_name": "Plane_2",
+      "role": "expected_reference"
+    },
+    {
+      "component": 9,
+      "n": 10,
+      "min": [
+        -1.82941,
+        0.0578872,
+        0.0452775
+      ],
+      "max": [
+        -1.78339,
+        0.383887,
+        0.371277
+      ],
+      "bbox_matches": [
+        "Equerre_2_obb.off"
+      ],
+      "fbx_name": "Equerre_2",
+      "role": "expected_reference"
+    },
+    {
+      "component": 10,
+      "n": 10,
+      "min": [
+        -0.0103179,
+        -1.95813,
+        0.0452773
+      ],
+      "max": [
+        0.315682,
+        -1.91211,
+        0.371277
+      ],
+      "bbox_matches": [
+        "Equerre_1_obb.off"
+      ],
+      "fbx_name": "Equerre_1",
+      "role": "expected_reference"
+    },
+    {
+      "component": 11,
+      "n": 10,
+      "min": [
+        -0.0103179,
+        -0.555913,
+        0.0452774
+      ],
+      "max": [
+        0.315682,
+        -0.509892,
+        0.371277
+      ],
+      "bbox_matches": [
+        "Equerre_3_obb.off"
+      ],
+      "fbx_name": "Equerre_3",
+      "role": "expected_reference"
+    },
+    {
+      "component": 12,
+      "n": 8,
+      "min": [
+        -2.5,
+        1.56088,
+        0.0430852
+      ],
+      "max": [
+        -1.5,
+        2.56088,
+        1.04309
+      ],
+      "bbox_matches": [
+        "Cube_1_obb.off"
+      ],
+      "fbx_name": "Cube_1",
+      "role": "expected_reference"
+    },
+    {
+      "component": 13,
+      "n": 8,
+      "min": [
+        -3.21692,
+        0.660556,
+        0.0463296
+      ],
+      "max": [
+        -2.29691,
+        1.46548,
+        0.512572
+      ],
+      "bbox_matches": [],
+      "fbx_name": "Anomaly_3",
+      "role": "explicit_anomaly"
+    },
+    {
+      "component": 14,
+      "n": 8,
+      "min": [
+        -3.0,
+        -2.95,
+        -0.0500002
+      ],
+      "max": [
+        3.0,
+        3.05,
+        0.0500002
+      ],
+      "bbox_matches": [
+        "Plane_1_obb.off"
+      ],
+      "fbx_name": "Plane_1",
+      "role": "expected_reference"
+    },
+    {
+      "component": 15,
+      "n": 8,
+      "min": [
+        -3.0,
+        -2.93912,
+        0.0430844
+      ],
+      "max": [
+        -1.19209e-07,
+        0.0608815,
+        2.67316
+      ],
+      "bbox_matches": [
+        "Cube_2_obb.off"
+      ],
+      "fbx_name": "Cube_2",
+      "role": "expected_reference"
+    },
+    {
+      "component": 16,
+      "n": 8,
+      "min": [
+        0.378899,
+        0.0302892,
+        0.0369067
+      ],
+      "max": [
+        2.69489,
+        0.17047,
+        2.0047
+      ],
+      "bbox_matches": [],
+      "fbx_name": "Anomaly_5",
+      "role": "explicit_anomaly"
+    },
+    {
+      "component": 17,
+      "n": 8,
+      "min": [
+        0.378899,
+        -2.7153,
+        0.0369069
+      ],
+      "max": [
+        2.69489,
+        -2.57512,
+        2.0047
+      ],
+      "bbox_matches": [],
+      "fbx_name": "Anomaly_2",
+      "role": "explicit_anomaly"
+    },
+    {
+      "component": 18,
+      "n": 8,
+      "min": [
+        0.378899,
+        2.65151,
+        0.0369066
+      ],
+      "max": [
+        2.69489,
+        2.79169,
+        2.0047
+      ],
+      "bbox_matches": [],
+      "fbx_name": "Anomaly_4",
+      "role": "explicit_anomaly"
+    },
+    {
+      "component": 19,
+      "n": 8,
+      "min": [
+        -2.0,
+        -1.93912,
+        2.67316
+      ],
+      "max": [
+        -1.0,
+        -0.939119,
+        2.82316
+      ],
+      "bbox_matches": [],
+      "fbx_name": "Cube_3",
+      "role": "infrastructure_without_reference_box"
+    }
+  ],
+  "reference_boxes": [
+    {
+      "name": "Cube_1_obb.off",
+      "n": 8,
+      "min": [
+        -2.53,
+        1.53088,
+        0.0130851
+      ],
+      "max": [
+        -1.47,
+        2.59088,
+        1.07309
+      ]
+    },
+    {
+      "name": "Cube_2_obb.off",
+      "n": 8,
+      "min": [
+        -3.03,
+        -2.96912,
+        0.0130845
+      ],
+      "max": [
+        0.0299999,
+        0.0908815,
+        2.70316
+      ]
+    },
+    {
+      "name": "Equerre_1_obb.off",
+      "n": 8,
+      "min": [
+        -0.0403179,
+        -1.98813,
+        0.0152774
+      ],
+      "max": [
+        0.345682,
+        -1.88211,
+        0.401277
+      ]
+    },
+    {
+      "name": "Equerre_2_obb.off",
+      "n": 8,
+      "min": [
+        -1.85941,
+        0.0278872,
+        0.0152775
+      ],
+      "max": [
+        -1.75339,
+        0.413887,
+        0.401277
+      ]
+    },
+    {
+      "name": "Equerre_3_obb.off",
+      "n": 8,
+      "min": [
+        -0.0403179,
+        -0.585913,
+        0.0152774
+      ],
+      "max": [
+        0.345682,
+        -0.479892,
+        0.401277
+      ]
+    },
+    {
+      "name": "Pipe_10_obb.off",
+      "n": 8,
+      "min": [
+        -2.83701,
+        -2.77536,
+        2.11931
+      ],
+      "max": [
+        1.6661,
+        1.74347,
+        2.34286
+      ]
+    },
+    {
+      "name": "Pipe_11_obb.off",
+      "n": 8,
+      "min": [
+        -2.83701,
+        -2.77536,
+        1.74688
+      ],
+      "max": [
+        1.6661,
+        1.74347,
+        1.97043
+      ]
+    },
+    {
+      "name": "Pipe_1_obb.off",
+      "n": 8,
+      "min": [
+        1.70967,
+        -2.38,
+        -0.0505718
+      ],
+      "max": [
+        2.66167,
+        -2.12,
+        1.78355
+      ]
+    },
+    {
+      "name": "Pipe_2_obb.off",
+      "n": 8,
+      "min": [
+        1.70967,
+        -0.879999,
+        -0.0505713
+      ],
+      "max": [
+        2.66167,
+        -0.619999,
+        1.78355
+      ]
+    },
+    {
+      "name": "Pipe_3_obb.off",
+      "n": 8,
+      "min": [
+        1.70967,
+        0.620001,
+        -0.0505712
+      ],
+      "max": [
+        2.66167,
+        0.880001,
+        1.78355
+      ]
+    },
+    {
+      "name": "Pipe_4_obb.off",
+      "n": 8,
+      "min": [
+        1.70967,
+        2.12,
+        -0.0505712
+      ],
+      "max": [
+        2.66167,
+        2.38,
+        1.78355
+      ]
+    },
+    {
+      "name": "Plane_1_obb.off",
+      "n": 8,
+      "min": [
+        -3.03,
+        -2.98,
+        -0.08
+      ],
+      "max": [
+        3.03,
+        3.08,
+        0.08
+      ]
+    },
+    {
+      "name": "Plane_2_obb.off",
+      "n": 8,
+      "min": [
+        2.18453,
+        -2.97581,
+        -0.0239407
+      ],
+      "max": [
+        2.89909,
+        3.08419,
+        2.51798
+      ]
+    }
+  ]
+}

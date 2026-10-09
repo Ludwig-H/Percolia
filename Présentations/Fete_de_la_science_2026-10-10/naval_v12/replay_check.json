@@ -1,0 +1,9 @@
+{
+  "status": "passed",
+  "input_points": 23874,
+  "Kmax": 3,
+  "native_FULL_sha256": "12c1fa3a52ba11633b9bf514f44c16727adc19e366a3d41c082d480bead4d2a9",
+  "candidate_memberships_identical": true,
+  "selected_components": 5,
+  "geometry_stage": "published original ROI and geometry-filtered mask replayed; see preparation scripts for original prior computation"
+}

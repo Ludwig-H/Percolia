@@ -1,0 +1,281 @@
+{
+  "cpu_8_threads": {
+    "phase": "full",
+    "pass": 0,
+    "trame": "NavalFinal",
+    "voie": "cpu",
+    "status": "ok",
+    "etapes_schema": "recouvert",
+    "coord_bits": 21,
+    "kmax": 3,
+    "threads": 8,
+    "sites": 23874,
+    "wall_ns": 736973772,
+    "etapes_ns": {
+      "P": 2091622,
+      "C": 687355431,
+      "G": 43835406,
+      "raccord": 0,
+      "TMVR": 3614641
+    },
+    "fenetres_ns": {
+      "G": 224791482,
+      "foret": 83342568,
+      "foret_apres_g": 18687089,
+      "T": 46678322,
+      "M": 18507859,
+      "V": 12781002,
+      "R": 5372002
+    },
+    "c_ns": {
+      "parcours": 304361864,
+      "feuilles": 311808380,
+      "emission": 11727766,
+      "fin_etage": 57211745,
+      "transferts": 0,
+      "publication": 0
+    },
+    "g_ns": {
+      "ouverture": 7507311,
+      "tables": 3816056
+    },
+    "hors_mur_ns": {
+      "validation": 10394759,
+      "empreinte": 116731937
+    },
+    "pic_octets": 156632596,
+    "cpu_ns": 4896132000,
+    "rss_max_octets": 159363072,
+    "appareil_octets": 0,
+    "epinglee_octets": 0,
+    "pic_appareil_octets": 0,
+    "memoire_octets": {
+      "P": [
+        1426104,
+        1432448
+      ],
+      "C": [
+        50788048,
+        156632596
+      ],
+      "tour": [
+        99099472,
+        116116463
+      ]
+    },
+    "recouvrement": {
+      "tour_ns": 47526309,
+      "ouverture_ns": 7507311,
+      "fin_g_ns": 43835406,
+      "fin_ns": 47450047,
+      "queue_ns": 3614641,
+      "noyau_reprises": 277,
+      "noyau_arrets": 274,
+      "admis_octets": 80084089
+    },
+    "fins_par_ordre_ns": [
+      [
+        43835406,
+        43875725,
+        45977647,
+        0,
+        46426234
+      ],
+      [
+        42568231,
+        42618204,
+        44190846,
+        46836204,
+        45759533
+      ],
+      [
+        31257837,
+        31290955,
+        35163150,
+        45880960,
+        37174910
+      ]
+    ],
+    "full_sha256": "12c1fa3a52ba11633b9bf514f44c16727adc19e366a3d41c082d480bead4d2a9",
+    "whole_process_wall_s": 0.8758183230020222
+  },
+  "cpu_1_threads": {
+    "phase": "full",
+    "pass": 0,
+    "trame": "NavalFinal",
+    "voie": "cpu",
+    "status": "ok",
+    "etapes_schema": "recouvert",
+    "coord_bits": 21,
+    "kmax": 3,
+    "threads": 1,
+    "sites": 23874,
+    "wall_ns": 3564886471,
+    "etapes_ns": {
+      "P": 1626501,
+      "C": 3246907004,
+      "G": 310608869,
+      "raccord": 0,
+      "TMVR": 5700034
+    },
+    "fenetres_ns": {
+      "G": 227842182,
+      "foret": 60131808,
+      "foret_apres_g": 5202549,
+      "T": 36608132,
+      "M": 11172177,
+      "V": 10015384,
+      "R": 2334283
+    },
+    "c_ns": {
+      "parcours": 1169135419,
+      "feuilles": 1880390379,
+      "emission": 43035902,
+      "fin_etage": 152784143,
+      "transferts": 0,
+      "publication": 0
+    },
+    "g_ns": {
+      "ouverture": 27436486,
+      "tables": 12016578
+    },
+    "hors_mur_ns": {
+      "validation": 11311038,
+      "empreinte": 132340464
+    },
+    "pic_octets": 156632596,
+    "cpu_ns": 3561771000,
+    "rss_max_octets": 160010240,
+    "appareil_octets": 0,
+    "epinglee_octets": 0,
+    "pic_appareil_octets": 0,
+    "memoire_octets": {
+      "P": [
+        1426104,
+        1432448
+      ],
+      "C": [
+        50788048,
+        156632596
+      ],
+      "tour": [
+        99099472,
+        114429962
+      ]
+    },
+    "recouvrement": {
+      "tour_ns": 316352736,
+      "ouverture_ns": 27436486,
+      "fin_g_ns": 310608869,
+      "fin_ns": 316308903,
+      "queue_ns": 5700034,
+      "noyau_reprises": 1402,
+      "noyau_arrets": 1399,
+      "admis_octets": 79396073
+    },
+    "fins_par_ordre_ns": [
+      [
+        310608869,
+        310612724,
+        312137181,
+        0,
+        315820175
+      ],
+      [
+        293412875,
+        293428598,
+        297979196,
+        315481499,
+        305381198
+      ],
+      [
+        218840499,
+        218849683,
+        228978686,
+        304656454,
+        230260937
+      ]
+    ],
+    "full_sha256": "12c1fa3a52ba11633b9bf514f44c16727adc19e366a3d41c082d480bead4d2a9",
+    "whole_process_wall_s": 3.7159153999964474
+  },
+  "tiny_fixture": {
+    "points_quantized": [
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        2,
+        0,
+        0
+      ],
+      [
+        10,
+        0,
+        0
+      ],
+      [
+        12,
+        0,
+        0
+      ]
+    ],
+    "Kmax": 3,
+    "closed_cut_radius_units": 1,
+    "expected_K1": "pairs0/1 and2/3 (balls of radius1 touch each pair; gap8 prevents crossmerge)",
+    "observed_native_K1_components": 2,
+    "pass": true
+  },
+  "native_FULL_archive": {
+    "uncompressed_sha256": "12c1fa3a52ba11633b9bf514f44c16727adc19e366a3d41c082d480bead4d2a9",
+    "uncompressed_bytes": 70786594,
+    "gzip_bytes": 12349345,
+    "native_export_digest_equals_probe_and_client": true,
+    "fresh_export_cut_rows": 346356
+  },
+  "commands": [
+    [
+      "/workspace/scratch/4d84f5139184/naval_v12/build/mhgp12_full_probe",
+      "--trame=/workspace/scratch/4d84f5139184/naval_v12/input_with_background/residual.xyz.u32le,/workspace/scratch/4d84f5139184/naval_v12/input_with_background/residual.ids.u32le,NavalFinal",
+      "--k=3",
+      "--threads=8",
+      "--passes=1",
+      "--digest",
+      "--cache=0",
+      "--budget=7000000000"
+    ],
+    [
+      "/workspace/scratch/4d84f5139184/naval_v12/build/mhgp12_full_probe",
+      "--trame=/workspace/scratch/4d84f5139184/naval_v12/input_with_background/residual.xyz.u32le,/workspace/scratch/4d84f5139184/naval_v12/input_with_background/residual.ids.u32le,NavalFinal",
+      "--k=3",
+      "--threads=1",
+      "--passes=1",
+      "--digest",
+      "--cache=0",
+      "--budget=7000000000"
+    ],
+    [
+      "/workspace/scratch/4d84f5139184/naval_v12/build/export_prior_final",
+      "/workspace/scratch/4d84f5139184/naval_v12/fixture/four.xyz.u32le",
+      "/workspace/scratch/4d84f5139184/naval_v12/fixture/four.ids.u32le",
+      "3",
+      "1",
+      "/workspace/scratch/4d84f5139184/naval_v12/fixture/four",
+      "1",
+      "1"
+    ],
+    [
+      "/workspace/scratch/4d84f5139184/naval_v12/build/export_prior_final",
+      "/workspace/scratch/4d84f5139184/naval_v12/input_with_background/residual.xyz.u32le",
+      "/workspace/scratch/4d84f5139184/naval_v12/input_with_background/residual.ids.u32le",
+      "3",
+      "8",
+      "/workspace/scratch/4d84f5139184/naval_v12/final_publish",
+      "70368677068816000000",
+      "417857523561",
+      "--export-full"
+    ]
+  ]
+}

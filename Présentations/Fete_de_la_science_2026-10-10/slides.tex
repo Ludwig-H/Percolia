@@ -18,6 +18,26 @@
 \definecolor{inriamauve}{HTML}{9B7BAE}
 \newcommand{\poster}{../Posters/3IA_Days_2026}
 \newcommand{\source}[1]{\par\vspace{.10cm}{\fontsize{6.5}{8}\selectfont\color{gris_fonce_inria}#1\par}}
+
+% The two projections stay in the same columns on the question and answer.
+\newcommand{\navalgrid}[6]{%
+\begin{columns}[c,onlytextwidth]
+\begin{column}{.40\textwidth}\centering\small\textbf{Vue du dessus}\end{column}
+\begin{column}{.57\textwidth}\centering\small\textbf{Vue de côté}\end{column}
+\end{columns}
+\vspace{.02cm}\centering
+{\fontsize{9}{10}\selectfont\color{inriablue}\textbf{#1}\par}
+\begin{columns}[c,onlytextwidth]
+\begin{column}{.40\textwidth}\centering\includegraphics[width=\linewidth,height=2.12cm,keepaspectratio]{#3}\end{column}
+\begin{column}{.57\textwidth}\centering\includegraphics[width=\linewidth,height=2.12cm,keepaspectratio]{#4}\end{column}
+\end{columns}
+\vspace{.02cm}
+{\fontsize{9}{10}\selectfont\color{inriablue}\textbf{#2}\par}
+\begin{columns}[c,onlytextwidth]
+\begin{column}{.40\textwidth}\centering\includegraphics[width=\linewidth,height=2.12cm,keepaspectratio]{#5}\end{column}
+\begin{column}{.57\textwidth}\centering\includegraphics[width=\linewidth,height=2.12cm,keepaspectratio]{#6}\end{column}
+\end{columns}}
+
 \hypersetup{pdftitle={Des points aux objets : apprendre aux machines à comprendre la 3D},
  pdfauthor={Louis Hauseux},pdfsubject={Percolia, Fête de la science, Antibes Juan-les-Pins, 10 octobre 2026},
  colorlinks=true,urlcolor=inria-rouge}
@@ -35,32 +55,26 @@
 {\hfuzz=41pt\begin{frame}[plain]\titlepage\end{frame}}
 
 \begin{frame}{Le LiDAR : une scène en points}
-\large Le capteur mesure des distances et produit des \alert{points en 3D}.\par
-\vspace{.3cm}
-\begin{columns}[t,onlytextwidth]
-\begin{column}{.48\textwidth}\centering
-\textcolor{inriablue}{\textbf{Nuage LiDAR brut}}\par\vspace{.1cm}
-\includegraphics[width=\linewidth,height=3.65cm,keepaspectratio]{assets/naval_raw.png}
-\end{column}
-\begin{column}{.48\textwidth}\centering
-\textcolor{inriablue}{\textbf{Modèle théorique}}\par\vspace{.1cm}
-\includegraphics[width=\linewidth,height=3.65cm,keepaspectratio]{assets/naval_model.png}
-\end{column}
-\end{columns}
-\vspace{.25cm}
+\normalsize Le capteur mesure des distances et produit des \alert{points en 3D}.\par
+\vspace{.10cm}
+\navalgrid{Nuage LiDAR brut}{Modèle théorique}
+ {assets/naval_raw_view1.png}{assets/naval_raw_view2.png}
+ {assets/naval_model_view1.png}{assets/naval_model_view2.png}
+\vspace{.12cm}
 \centering\normalsize\textcolor{inriablue}{\textbf{Quels objets sont présents dans le scan mais absents du modèle ?}}
-\source{Scène synthétique de chantier naval fournie par Marie Aspro. Nuage brut et structures attendues dans le modèle de référence. © Naval Group.}
+\source{Deux projections de la même scène synthétique de chantier naval fournie par Marie Aspro. © Naval Group.}
 \end{frame}
 
 \begin{frame}{Repérer les objets ajoutés}
-\large Le modèle 3D guide les regroupements.\par
-\vspace{.18cm}
-\centering
-\includegraphics[width=.95\linewidth,height=4.35cm,keepaspectratio]{\poster/assets/shipyard.png}\par
-\vspace{.15cm}\normalsize
-\textcolor{red}{\textbf{Rouge : conforme au modèle.}}\quad
-\textbf{Autres couleurs : objets ajoutés.}\par
-\source{Résultat HGP sur le benchmark synthétique de 2 millions de points. Gris : fond. Travaux avec Marie Aspro, Inria Startup Studio. © Naval Group.}
+\normalsize Comparer les groupes au modèle.\par
+\vspace{.10cm}
+\navalgrid{Groupes repérés dans le nuage}{Modèle et groupes repérés}
+ {assets/naval_result_view1.png}{assets/naval_result_view2.png}
+ {assets/naval_result_model_view1.png}{assets/naval_result_model_view2.png}
+\vspace{.12cm}\centering\small
+\textcolor{red}{\textbf{Rouge : compatible avec le modèle.}}\quad
+\textbf{Autres couleurs : groupes repérés.}\par
+\source{Filtrage par le modèle, puis Morse HGP 3D v12 sur les points restants. Même scène et mêmes projections. © Naval Group.}
 \end{frame}
 
 \begin{frame}{Le clustering : regrouper les points}

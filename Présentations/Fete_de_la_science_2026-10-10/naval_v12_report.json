@@ -1,0 +1,861 @@
+{
+  "schema_version": 1,
+  "status": "completed",
+  "created_utc": "2026-10-09",
+  "engine": {
+    "repository": "https://github.com/Ludwig-H/E-HGP",
+    "version": "Morse HGP 3D v12",
+    "commit": "ac2d5bab814e84db6e1c9340f54995aa9cda58aa",
+    "backend": "cpu_reference",
+    "object_computed": "full_pi0, complete continuous-component tower for orders1..3 including vertical maps",
+    "quantification": "quantized_u21_input_only",
+    "upstream_public_status": "not_claimed",
+    "product_sources_modified": false,
+    "external_clients": [
+      "export_prior.cpp",
+      "export_full_only.cpp"
+    ],
+    "native_prior_API": false,
+    "native_Hr_point_hierarchy_API": false,
+    "GCP_used": false
+  },
+  "source_data": {
+    "source_folder": "https://drive.google.com/drive/folders/1UgwysdyoORCfi_yF2Rgu6B4a9z_w8zkA",
+    "bbox_folder": "https://drive.google.com/drive/folders/1oCfegLY2e8uv4Wcs1kFTijrB1vD7BAcE",
+    "retrieved_utc": "2026-10-09",
+    "files": [
+      {
+        "path": "scan_lidar.ply",
+        "drive_id": "1k3Bd_HucRn1v066Xed5P_JRY8pPbiXIS",
+        "size_bytes": 60796504,
+        "sha256": "fbcbe22be7d4bca36d15e5e0549a26af6218303668bf5ee4f1119c7246da8ab1",
+        "source_url": "https://drive.google.com/file/d/1k3Bd_HucRn1v066Xed5P_JRY8pPbiXIS/view"
+      },
+      {
+        "path": "bloc_full.ply",
+        "drive_id": "1C3sSBzJmAS2mKlxhAacEPQcUiInUO_VV",
+        "size_bytes": 126025,
+        "sha256": "18405ab5a78149749f6146dbc91ea8cfbb939eedfeca4c6053748ecf51f72d3f",
+        "source_url": "https://drive.google.com/file/d/1C3sSBzJmAS2mKlxhAacEPQcUiInUO_VV/view"
+      },
+      {
+        "path": "full_scene_7.fbx",
+        "drive_id": "1KdVY3qSGWbSDHq41es9gshe8-GXGiINs",
+        "size_bytes": 239180,
+        "sha256": "e9f22b0c5fb758fea2e95b486a252095729a5d00ad20f8ccb1b144e5682b84be",
+        "source_url": "https://drive.google.com/file/d/1KdVY3qSGWbSDHq41es9gshe8-GXGiINs/view"
+      },
+      {
+        "path": "bounding_boxes/Plane_2_obb.off",
+        "drive_id": "1B7YO4lluaEFGiKzj_CqvDz6GPIXWJ1UA",
+        "size_bytes": 283,
+        "sha256": "32f55abc861536850a0b842c197fe64cd290aa1931fb2506967b4f566a7b9d31",
+        "source_url": "https://drive.google.com/file/d/1B7YO4lluaEFGiKzj_CqvDz6GPIXWJ1UA/view"
+      },
+      {
+        "path": "bounding_boxes/Pipe_4_obb.off",
+        "drive_id": "1LGXOoQCW9SOFVttmGTgwH185RjnORSEO",
+        "size_bytes": 258,
+        "sha256": "9f5a088410105590bb270a5469c388857aac0b767645d32555fbf56c64decbbc",
+        "source_url": "https://drive.google.com/file/d/1LGXOoQCW9SOFVttmGTgwH185RjnORSEO/view"
+      },
+      {
+        "path": "bounding_boxes/Pipe_1_obb.off",
+        "drive_id": "1TE6m8psGyY0frG74rp4tp5D8GIIiTPJa",
+        "size_bytes": 266,
+        "sha256": "61f42b281c2ce90d11f7d43c975ca0055691a9fc938fe07762d61f1d52334231",
+        "source_url": "https://drive.google.com/file/d/1TE6m8psGyY0frG74rp4tp5D8GIIiTPJa/view"
+      },
+      {
+        "path": "bounding_boxes/Pipe_11_obb.off",
+        "drive_id": "1piSR7yxVteXqpA15k4odHRbsJVVFoFoA",
+        "size_bytes": 278,
+        "sha256": "bc599624ac3eb2d102e7c52b700ebd9f4c66bb6c8ae1930110b3863b8cd9c940",
+        "source_url": "https://drive.google.com/file/d/1piSR7yxVteXqpA15k4odHRbsJVVFoFoA/view"
+      },
+      {
+        "path": "bounding_boxes/Equerre_3_obb.off",
+        "drive_id": "1y0fJDm341bLXVWxT7NwyZYDTW5EsoGg2",
+        "size_bytes": 314,
+        "sha256": "3cf85de3aed9ed0362f37108d5838112b1108ecb1e14eec167b56ecbcea1514b",
+        "source_url": "https://drive.google.com/file/d/1y0fJDm341bLXVWxT7NwyZYDTW5EsoGg2/view"
+      },
+      {
+        "path": "bounding_boxes/Cube_2_obb.off",
+        "drive_id": "13O1LZ8rCa6lvPemoGfYLk4Zk8y2cdAxP",
+        "size_bytes": 290,
+        "sha256": "ef8a261abb8a22c4f1e4913afcd8f5410fea01b0ec1c13ec6ca79b76a02baf04",
+        "source_url": "https://drive.google.com/file/d/13O1LZ8rCa6lvPemoGfYLk4Zk8y2cdAxP/view"
+      },
+      {
+        "path": "bounding_boxes/Pipe_10_obb.off",
+        "drive_id": "1JxDG2lSL21-A5RGNP1J3k0vkFh_mWBZM",
+        "size_bytes": 278,
+        "sha256": "14f7cfce562fbec3ebf6d698e28387738cf4ab0110cf0283c10546cda034adbc",
+        "source_url": "https://drive.google.com/file/d/1JxDG2lSL21-A5RGNP1J3k0vkFh_mWBZM/view"
+      },
+      {
+        "path": "bounding_boxes/Equerre_1_obb.off",
+        "drive_id": "11CqkfH3HuX7cyibWNjTnMdwzBl7dq0X_",
+        "size_bytes": 306,
+        "sha256": "3c3eaae41fb48540c8123e76e3cc469de36f825cd36e252b01f70800005f414b",
+        "source_url": "https://drive.google.com/file/d/11CqkfH3HuX7cyibWNjTnMdwzBl7dq0X_/view"
+      },
+      {
+        "path": "bounding_boxes/Plane_1_obb.off",
+        "drive_id": "1xK4vLP4Gv_sSSPl5MarTD_lostewse80",
+        "size_bytes": 210,
+        "sha256": "450d1e222cfd43409673388925fde27bd6062b8eb3fc527fabc11a6b69dac984",
+        "source_url": "https://drive.google.com/file/d/1xK4vLP4Gv_sSSPl5MarTD_lostewse80/view"
+      },
+      {
+        "path": "bounding_boxes/Pipe_2_obb.off",
+        "drive_id": "17jvxmm7ZxzqsgBQjnDQsvSycAuzXkS5S",
+        "size_bytes": 298,
+        "sha256": "3031a792a0301583b92ca588008a5ded6254c6ef3416bd81dde2b6ef2499500d",
+        "source_url": "https://drive.google.com/file/d/17jvxmm7ZxzqsgBQjnDQsvSycAuzXkS5S/view"
+      },
+      {
+        "path": "bounding_boxes/Cube_1_obb.off",
+        "drive_id": "1BI1sm50RUiMu8RiCNgwnV2rSzfRtwgKg",
+        "size_bytes": 262,
+        "sha256": "442e62b2be86caf628386c8c46f25647c1df01ef1af951ce6cbf498b63c5a257",
+        "source_url": "https://drive.google.com/file/d/1BI1sm50RUiMu8RiCNgwnV2rSzfRtwgKg/view"
+      },
+      {
+        "path": "bounding_boxes/Equerre_2_obb.off",
+        "drive_id": "1vxj3AMkZ4vhHaN_UU_xxHI1NL0bh40-D",
+        "size_bytes": 302,
+        "sha256": "1e8878107dc43063fd3eb5c2b210b2b587aa356e7f3f215e39176a31fd867d67",
+        "source_url": "https://drive.google.com/file/d/1vxj3AMkZ4vhHaN_UU_xxHI1NL0bh40-D/view"
+      },
+      {
+        "path": "bounding_boxes/Pipe_3_obb.off",
+        "drive_id": "1I2Q0uQrg1RUrXIMnGJnqVqMZC5AbMdNw",
+        "size_bytes": 290,
+        "sha256": "e4828b7eb5765bdae1409fd39a629dbac50ecdd9b7286efd713e8d7cc2828a70",
+        "source_url": "https://drive.google.com/file/d/1I2Q0uQrg1RUrXIMnGJnqVqMZC5AbMdNw/view"
+      }
+    ],
+    "scan": {
+      "vertices": 2321251,
+      "faces": 0,
+      "properties": [
+        "double x",
+        "double y",
+        "double z"
+      ],
+      "format": "ascii 1.0",
+      "sha256": "fbcbe22be7d4bca36d15e5e0549a26af6218303668bf5ee4f1119c7246da8ab1"
+    },
+    "mesh": {
+      "vertices": 2250,
+      "faces": 4428,
+      "face_shape": "triangles",
+      "format": "ascii 1.0",
+      "components": 20,
+      "explicit_anomalies": 5,
+      "reference_boxes": 13,
+      "infrastructure_meshes": 14,
+      "infrastructure_mesh_without_OFF": "Cube_3",
+      "background_meshes": 1
+    }
+  },
+  "parameters": {
+    "Kmax": 3,
+    "display_order": 3,
+    "threads": 8,
+    "leaf_size": 24,
+    "cache_bytes": 0,
+    "memory_budget_probe_bytes": 7000000000,
+    "cut_radius_m": 0.04,
+    "min_cluster_size_original_points": 200
+  },
+  "input": {
+    "source_scan_sha256": "fbcbe22be7d4bca36d15e5e0549a26af6218303668bf5ee4f1119c7246da8ab1",
+    "scan_points": 2321251,
+    "roi_points": 330543,
+    "reference_supported_points": 290878,
+    "residual_points": 23874,
+    "roi_bounds_m": {
+      "min": [
+        -3.23,
+        -3.18,
+        -0.28
+      ],
+      "max": [
+        3.23,
+        3.28419,
+        3.05316
+      ]
+    },
+    "prior_type": "AABB membership, same min/max rule as original Marie notebook; 14th box derived from identified CAD Cube_3 plus 3 cm margin",
+    "priors": [
+      {
+        "name": "Cube_1_obb.off",
+        "n": 8,
+        "min": [
+          -2.53,
+          1.53088,
+          0.0130851
+        ],
+        "max": [
+          -1.47,
+          2.59088,
+          1.07309
+        ]
+      },
+      {
+        "name": "Cube_2_obb.off",
+        "n": 8,
+        "min": [
+          -3.03,
+          -2.96912,
+          0.0130845
+        ],
+        "max": [
+          0.0299999,
+          0.0908815,
+          2.70316
+        ]
+      },
+      {
+        "name": "Equerre_1_obb.off",
+        "n": 8,
+        "min": [
+          -0.0403179,
+          -1.98813,
+          0.0152774
+        ],
+        "max": [
+          0.345682,
+          -1.88211,
+          0.401277
+        ]
+      },
+      {
+        "name": "Equerre_2_obb.off",
+        "n": 8,
+        "min": [
+          -1.85941,
+          0.0278872,
+          0.0152775
+        ],
+        "max": [
+          -1.75339,
+          0.413887,
+          0.401277
+        ]
+      },
+      {
+        "name": "Equerre_3_obb.off",
+        "n": 8,
+        "min": [
+          -0.0403179,
+          -0.585913,
+          0.0152774
+        ],
+        "max": [
+          0.345682,
+          -0.479892,
+          0.401277
+        ]
+      },
+      {
+        "name": "Pipe_10_obb.off",
+        "n": 8,
+        "min": [
+          -2.83701,
+          -2.77536,
+          2.11931
+        ],
+        "max": [
+          1.6661,
+          1.74347,
+          2.34286
+        ]
+      },
+      {
+        "name": "Pipe_11_obb.off",
+        "n": 8,
+        "min": [
+          -2.83701,
+          -2.77536,
+          1.74688
+        ],
+        "max": [
+          1.6661,
+          1.74347,
+          1.97043
+        ]
+      },
+      {
+        "name": "Pipe_1_obb.off",
+        "n": 8,
+        "min": [
+          1.70967,
+          -2.38,
+          -0.0505718
+        ],
+        "max": [
+          2.66167,
+          -2.12,
+          1.78355
+        ]
+      },
+      {
+        "name": "Pipe_2_obb.off",
+        "n": 8,
+        "min": [
+          1.70967,
+          -0.879999,
+          -0.0505713
+        ],
+        "max": [
+          2.66167,
+          -0.619999,
+          1.78355
+        ]
+      },
+      {
+        "name": "Pipe_3_obb.off",
+        "n": 8,
+        "min": [
+          1.70967,
+          0.620001,
+          -0.0505712
+        ],
+        "max": [
+          2.66167,
+          0.880001,
+          1.78355
+        ]
+      },
+      {
+        "name": "Pipe_4_obb.off",
+        "n": 8,
+        "min": [
+          1.70967,
+          2.12,
+          -0.0505712
+        ],
+        "max": [
+          2.66167,
+          2.38,
+          1.78355
+        ]
+      },
+      {
+        "name": "Plane_1_obb.off",
+        "n": 8,
+        "min": [
+          -3.03,
+          -2.98,
+          -0.08
+        ],
+        "max": [
+          3.03,
+          3.08,
+          0.08
+        ]
+      },
+      {
+        "name": "Plane_2_obb.off",
+        "n": 8,
+        "min": [
+          2.18453,
+          -2.97581,
+          -0.0239407
+        ],
+        "max": [
+          2.89909,
+          3.08419,
+          2.51798
+        ]
+      },
+      {
+        "name": "Cube_3_CAD_AABB_margin0.03m",
+        "min": [
+          -2.03,
+          -1.96912,
+          2.6431600000000004
+        ],
+        "max": [
+          -0.97,
+          -0.909119,
+          2.85316
+        ],
+        "source": "FBX Cube_3 bounds; external declared margin"
+      }
+    ],
+    "sampling": {
+      "method": "none",
+      "all_roi_points_preserved": true,
+      "all_residual_points_input_to_v12": true
+    },
+    "quantization": {
+      "bits": 21,
+      "origin_m": [
+        -3.22998,
+        -3.18,
+        -0.039415
+      ],
+      "unit_m": 3.0823674594723985e-06,
+      "isotropic": true,
+      "rounding": "numpy.rint ties to even",
+      "max_l2_error_m": 2.598395587292704e-06,
+      "unique_sites": 23874
+    },
+    "pilot_points": 1629,
+    "pilot_sampling": "first original point per 10 cm voxel; pilot only, not final output",
+    "preregistered_readout": {
+      "Kmax": 3,
+      "radius_m": 0.04,
+      "min_cluster_size": 200,
+      "intended_view": "native K1 tree closed cut exact single linkage; K3 incidence view experimental if supported",
+      "unknown_semantics": "candidate outside declared geometric reference, no anomaly ground truth used"
+    },
+    "background_prior": {
+      "source_mesh": "Background (component7), identified by FBX name; 104 original triangles",
+      "source_sha256": "18405ab5a78149749f6146dbc91ea8cfbb939eedfeca4c6053748ecf51f72d3f",
+      "distance": "minimum Euclidean point-to-finite-triangle distance; orthogonal interior projection and clipped edge distances",
+      "tolerance_m": 0.03,
+      "semantics": "known surrounding environment, ignored context; distinct from14structureAABBs",
+      "removed_from_residual_points": 15791,
+      "uses_anomaly_meshes": false
+    },
+    "residual_points_before_background": 39665,
+    "input_folder": "input_with_background"
+  },
+  "protocol": {
+    "steps": [
+      "Crop original scan to global14referenceAABB bounds plus0.2m; keep330543 original points and full-scan IDs.",
+      "Mark290878 points explained by union of14AABB references:13originalOFF via min/max as notebook, plus identified CAD Cube_3 bounds enlarged by3cm.",
+      "Mark15791 remaining points as known surrounding context when distance to any of104original Background mesh triangles is at most3cm.",
+      "Quantize all23874 remaining original points isotropically, preserving all IDs and every point; no voxel or random sampling.",
+      "Run unchanged v12 CPU prepare_cloud, build_index, build_catalogue K1..3, build_tower and validate_forests.",
+      "Read native K3 components at closed radius4cm using an exact rational cut; represent them by unions of strong P_b=interior union shell incidences with p+qmin<=3 and incidence rank no later than cut.",
+      "Retain genuine native component covers with at least200 original points; all5retained covers are disjoint.",
+      "Render the original ROI: model-supported points class0, retained candidate component points class1 with native nodeIDs, surrounding context and90other residuals class-1."
+    ],
+    "prior_application": "External geometry filters condition the input BEFORE the native v12 computation; priors do not modify v12 kernels or build_tower API.",
+    "oracle_use": "No Anomaly_1..5 mesh, anomaly labels or masks are used for prior generation, node selection or result colouring.",
+    "point_view_status": "Experimental external strong-incidence point coverage of native continuous components. This is not the unported Hr point hierarchy or a native flat extractor."
+  },
+  "selection": {
+    "order_displayed": 3,
+    "readout": "native continuous component at closed cut, represented by union of strong P_b incidences existing no later than cut; external point coverage, not Hr",
+    "radius_m": 0.04,
+    "cut_radius_squared_quantized_numerator": "70368677068816000000",
+    "cut_radius_squared_quantized_denominator": "417857523561",
+    "cut_rank": 350702,
+    "min_cluster_size_original_points": 200,
+    "components_at_cut": 98,
+    "selected_component_count": 5,
+    "selected_points": 23784,
+    "retained_overlap_points": 0,
+    "all_coverage_overlap_points": 186,
+    "points_without_any_strong_incidence": 57,
+    "residual_points_unassigned_in_render": 90,
+    "selected_nodes": [
+      {
+        "native_node_id": 197955,
+        "point_count": 3495,
+        "label": "Candidat 1",
+        "min_m": [
+          -3.22899,
+          0.659221,
+          0.0410975
+        ],
+        "max_m": [
+          -2.28144,
+          1.48099,
+          0.522302
+        ]
+      },
+      {
+        "native_node_id": 197962,
+        "point_count": 2753,
+        "label": "Candidat 2",
+        "min_m": [
+          0.433883,
+          0.00430346,
+          0.0800639
+        ],
+        "max_m": [
+          2.04479,
+          0.202837,
+          1.44842
+        ]
+      },
+      {
+        "native_node_id": 197963,
+        "point_count": 10128,
+        "label": "Candidat 3",
+        "min_m": [
+          0.416041,
+          2.62214,
+          0.0824959
+        ],
+        "max_m": [
+          2.18415,
+          2.84072,
+          1.57609
+        ]
+      },
+      {
+        "native_node_id": 197964,
+        "point_count": 2075,
+        "label": "Candidat 4",
+        "min_m": [
+          0.422278,
+          -2.74316,
+          0.0801121
+        ],
+        "max_m": [
+          2.18418,
+          -2.54506,
+          1.56022
+        ]
+      },
+      {
+        "native_node_id": 197965,
+        "point_count": 5333,
+        "label": "Candidat 5",
+        "min_m": [
+          -1.11103,
+          0.319598,
+          0.100921
+        ],
+        "max_m": [
+          -0.291732,
+          1.11202,
+          0.991018
+        ]
+      }
+    ],
+    "class_schema": {
+      "0": "supported by a declared geometric AABB prior; not inferred by HGP",
+      "1": "member of a retained native K3 component coverage outside geometric priors; candidate to check",
+      "-1": "known surrounding Background or small/uncovered residual, displayed as ignored context"
+    },
+    "cluster_schema": "-1 for context/model-supported points; actual native K3 node ID for candidate points",
+    "quantized_coords_dtype": "int32 for full context; only v12_input_mask rows are nonnegative u21 values actually processed"
+  },
+  "performance": {
+    "scope": "one cold exploratory CPU pass; not a statistical performance benchmark; excludes originalPLY parsing, prior filtering, text exports and figure rendering",
+    "selected_cpu8": {
+      "phase": "full",
+      "pass": 0,
+      "trame": "NavalFinal",
+      "voie": "cpu",
+      "status": "ok",
+      "etapes_schema": "recouvert",
+      "coord_bits": 21,
+      "kmax": 3,
+      "threads": 8,
+      "sites": 23874,
+      "wall_ns": 736973772,
+      "etapes_ns": {
+        "P": 2091622,
+        "C": 687355431,
+        "G": 43835406,
+        "raccord": 0,
+        "TMVR": 3614641
+      },
+      "fenetres_ns": {
+        "G": 224791482,
+        "foret": 83342568,
+        "foret_apres_g": 18687089,
+        "T": 46678322,
+        "M": 18507859,
+        "V": 12781002,
+        "R": 5372002
+      },
+      "c_ns": {
+        "parcours": 304361864,
+        "feuilles": 311808380,
+        "emission": 11727766,
+        "fin_etage": 57211745,
+        "transferts": 0,
+        "publication": 0
+      },
+      "g_ns": {
+        "ouverture": 7507311,
+        "tables": 3816056
+      },
+      "hors_mur_ns": {
+        "validation": 10394759,
+        "empreinte": 116731937
+      },
+      "pic_octets": 156632596,
+      "cpu_ns": 4896132000,
+      "rss_max_octets": 159363072,
+      "appareil_octets": 0,
+      "epinglee_octets": 0,
+      "pic_appareil_octets": 0,
+      "memoire_octets": {
+        "P": [
+          1426104,
+          1432448
+        ],
+        "C": [
+          50788048,
+          156632596
+        ],
+        "tour": [
+          99099472,
+          116116463
+        ]
+      },
+      "recouvrement": {
+        "tour_ns": 47526309,
+        "ouverture_ns": 7507311,
+        "fin_g_ns": 43835406,
+        "fin_ns": 47450047,
+        "queue_ns": 3614641,
+        "noyau_reprises": 277,
+        "noyau_arrets": 274,
+        "admis_octets": 80084089
+      },
+      "fins_par_ordre_ns": [
+        [
+          43835406,
+          43875725,
+          45977647,
+          0,
+          46426234
+        ],
+        [
+          42568231,
+          42618204,
+          44190846,
+          46836204,
+          45759533
+        ],
+        [
+          31257837,
+          31290955,
+          35163150,
+          45880960,
+          37174910
+        ]
+      ],
+      "full_sha256": "12c1fa3a52ba11633b9bf514f44c16727adc19e366a3d41c082d480bead4d2a9",
+      "whole_process_wall_s": 0.8758183230020222
+    },
+    "cpu1_determinism_check": {
+      "phase": "full",
+      "pass": 0,
+      "trame": "NavalFinal",
+      "voie": "cpu",
+      "status": "ok",
+      "etapes_schema": "recouvert",
+      "coord_bits": 21,
+      "kmax": 3,
+      "threads": 1,
+      "sites": 23874,
+      "wall_ns": 3564886471,
+      "etapes_ns": {
+        "P": 1626501,
+        "C": 3246907004,
+        "G": 310608869,
+        "raccord": 0,
+        "TMVR": 5700034
+      },
+      "fenetres_ns": {
+        "G": 227842182,
+        "foret": 60131808,
+        "foret_apres_g": 5202549,
+        "T": 36608132,
+        "M": 11172177,
+        "V": 10015384,
+        "R": 2334283
+      },
+      "c_ns": {
+        "parcours": 1169135419,
+        "feuilles": 1880390379,
+        "emission": 43035902,
+        "fin_etage": 152784143,
+        "transferts": 0,
+        "publication": 0
+      },
+      "g_ns": {
+        "ouverture": 27436486,
+        "tables": 12016578
+      },
+      "hors_mur_ns": {
+        "validation": 11311038,
+        "empreinte": 132340464
+      },
+      "pic_octets": 156632596,
+      "cpu_ns": 3561771000,
+      "rss_max_octets": 160010240,
+      "appareil_octets": 0,
+      "epinglee_octets": 0,
+      "pic_appareil_octets": 0,
+      "memoire_octets": {
+        "P": [
+          1426104,
+          1432448
+        ],
+        "C": [
+          50788048,
+          156632596
+        ],
+        "tour": [
+          99099472,
+          114429962
+        ]
+      },
+      "recouvrement": {
+        "tour_ns": 316352736,
+        "ouverture_ns": 27436486,
+        "fin_g_ns": 310608869,
+        "fin_ns": 316308903,
+        "queue_ns": 5700034,
+        "noyau_reprises": 1402,
+        "noyau_arrets": 1399,
+        "admis_octets": 79396073
+      },
+      "fins_par_ordre_ns": [
+        [
+          310608869,
+          310612724,
+          312137181,
+          0,
+          315820175
+        ],
+        [
+          293412875,
+          293428598,
+          297979196,
+          315481499,
+          305381198
+        ],
+        [
+          218840499,
+          218849683,
+          228978686,
+          304656454,
+          230260937
+        ]
+      ],
+      "full_sha256": "12c1fa3a52ba11633b9bf514f44c16727adc19e366a3d41c082d480bead4d2a9",
+      "whole_process_wall_s": 3.7159153999964474
+    }
+  },
+  "quality_evidence": {
+    "native_forest_validation": "passed",
+    "tiny_K1_closed_cut_fixture": {
+      "points_quantized": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          2,
+          0,
+          0
+        ],
+        [
+          10,
+          0,
+          0
+        ],
+        [
+          12,
+          0,
+          0
+        ]
+      ],
+      "Kmax": 3,
+      "closed_cut_radius_units": 1,
+      "expected_K1": "pairs0/1 and2/3 (balls of radius1 touch each pair; gap8 prevents crossmerge)",
+      "observed_native_K1_components": 2,
+      "pass": true
+    },
+    "same_FULL_digest_threads1_and8": true,
+    "native_FULL_export": {
+      "uncompressed_sha256": "12c1fa3a52ba11633b9bf514f44c16727adc19e366a3d41c082d480bead4d2a9",
+      "uncompressed_bytes": 70786594,
+      "gzip_bytes": 12349345,
+      "native_export_digest_equals_probe_and_client": true,
+      "fresh_export_cut_rows": 346356
+    },
+    "independent_review": "naval_public_sources checked original IDs, full ROI alignment,98cutnodes alive, membership equality point-by-point,5retained covers disjoint, no Background point candidate",
+    "retained_original_points": 23784,
+    "unassigned_residual_points": 90,
+    "end_to_end_bundle_replay": {
+      "status": "passed",
+      "input_points": 23874,
+      "Kmax": 3,
+      "native_FULL_sha256": "12c1fa3a52ba11633b9bf514f44c16727adc19e366a3d41c082d480bead4d2a9",
+      "candidate_memberships_identical": true,
+      "selected_components": 5,
+      "geometry_stage": "published original ROI and geometry-filtered mask replayed; see preparation scripts for original prior computation"
+    }
+  },
+  "hierarchy": {
+    "format": "native FUL1, gzip compressed",
+    "uncompressed_sha256": "12c1fa3a52ba11633b9bf514f44c16727adc19e366a3d41c082d480bead4d2a9",
+    "uncompressed_size": 70786594,
+    "native_K3_nodes": 199693,
+    "native_K3_births": 117430,
+    "all_strong_incidences": 352290,
+    "strong_incidences_at_cut": 346356,
+    "exact_levels": "preserved in native FUL1; rational cut numerator/denominator also saved in selection metadata"
+  },
+  "previous_trials": [
+    {
+      "input": "14AABB residual only, without surrounding Background prior",
+      "points": 39665,
+      "Kmax": 3,
+      "radius_m": 0.04,
+      "large_components": 5,
+      "finding": "largest cover19304merged small added volume with surrounding floor; rejected as display result",
+      "FULL_sha256": "b639e609a403c7608e16308850a1c2237d9421c887776568f06e0ee18a0d7da3"
+    },
+    {
+      "input": "same14AABB residual",
+      "radius_m": 0.02,
+      "status": "diagnostic alternative run; not selected; no claim derived from it"
+    }
+  ],
+  "limitations": [
+    "Result is a synthetic benchmark demonstration, not validation on a real shipyard scan.",
+    "Geometric priors use axis-aligned bounding boxes as in the original notebook, not full14mesh occupancy or native convex-prior objects.",
+    "The background distance tolerance3cm and displayed radius4cm are explicit demonstration parameters, not trained or generally optimal thresholds.",
+    "Strong-incidence cover views can overlap;186points overlap across all small/large covers before minimum-size filtering. The5retained covers have zero overlap.",
+    "Five retained groups are candidates outside the declared model. This count alone does not certify anomaly detection accuracy.",
+    "The exact native tower pertains to the quantized23874-point residual; the surrounding/model-supported context was not clustered by v12.",
+    "Upstream v12 is exploratory with public_status=not_claimed; no public exactness or real-time guarantee is claimed."
+  ],
+  "artifacts": {
+    "naval_v12/result.npz": {
+      "sha256": "6535e19d52d62b24c7bdee6fb8f16c5212e0dfe66de2131b8aae05449de7bdd2",
+      "size": 9542706
+    },
+    "naval_v12/full.bin.gz": {
+      "sha256": "7e4f37e399587b28ba84c0dde5cf302bc88a620f176d66a0901602fab0670cc6",
+      "size": 12349345
+    },
+    "naval_v12/cut_membership.npz": {
+      "sha256": "c9b14ef2fb86d0bbfe3126c3a85b4354f1b6162202e5d6ccf6eed1ef3bb39b64",
+      "size": 105132
+    },
+    "naval_v12/replay_check.json": {
+      "sha256": "7e383a7b42a04f3a3b5356c214e7815ba8b45b5d5c09c3c138eca54e560801e9",
+      "size": 363,
+      "kind": "end_to_end_reproduction_receipt"
+    }
+  },
+  "reproduction": {
+    "entrypoint": "naval_v12/reproduce.py",
+    "source_pinning": "source_tree.json and download_manifest.json; Git blob hash verification before compilation",
+    "requirements": "Python3.10+ with NumPy, g++ with C++20, public source/data download access or predownloaded local inputs",
+    "native_kernel_sources": "52unchanged upstreamCPU compilation units; sameO3/C++20/u21 build flags as build_manifest.json",
+    "label_and_hierarchy_replay": "Replay saved originalROI coordinates and geometric-filtered input mask, rerun pinned v12, then verify native FULL digest and all candidate memberships. Original prior computations are supplied as prepare_data.py / prepare_background.py and their data provenance."
+  }
+}

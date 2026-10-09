@@ -1,0 +1,1645 @@
+{
+  "commit": "ac2d5bab814e84db6e1c9340f54995aa9cda58aa",
+  "files": [
+    {
+      "path": "morsehgp3D_v12/CMakeLists.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "da340b568dc394ce4459a52d278a8c7f3d72c7d4",
+      "size": 19317,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/da340b568dc394ce4459a52d278a8c7f3d72c7d4"
+    },
+    {
+      "path": "morsehgp3D_v12/bench/catalogue_probe.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "809a8d7505d63451344a894dbe7e0040562d983e",
+      "size": 18966,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/809a8d7505d63451344a894dbe7e0040562d983e"
+    },
+    {
+      "path": "morsehgp3D_v12/bench/data/SHA256SUMS.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "76dde52bce4f2a95930f1e90f2903246df3d7494",
+      "size": 2170,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/76dde52bce4f2a95930f1e90f2903246df3d7494"
+    },
+    {
+      "path": "morsehgp3D_v12/bench/data/crop_scenes.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a7d2f63126715fb9cd29df3590da7a5ad6857cbf",
+      "size": 6309,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/a7d2f63126715fb9cd29df3590da7a5ad6857cbf"
+    },
+    {
+      "path": "morsehgp3D_v12/bench/data/make_g4_bundle.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5e47d12e78143aa6b923e9f1c708e096cb30f5a1",
+      "size": 4918,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/5e47d12e78143aa6b923e9f1c708e096cb30f5a1"
+    },
+    {
+      "path": "morsehgp3D_v12/bench/data/prepare_boreas.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b12583ccd8f14de5e229eb3fb36638749fd26c73",
+      "size": 22690,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/b12583ccd8f14de5e229eb3fb36638749fd26c73"
+    },
+    {
+      "path": "morsehgp3D_v12/bench/data/prepare_eth3d.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0e9ed28807fe0d779dd72ea709771403f4a7c663",
+      "size": 7956,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/0e9ed28807fe0d779dd72ea709771403f4a7c663"
+    },
+    {
+      "path": "morsehgp3D_v12/bench/data/prepare_forinstance.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b8e4ac4caab2a4cf8bdcd1af7567926dbd8aedec",
+      "size": 5694,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/b8e4ac4caab2a4cf8bdcd1af7567926dbd8aedec"
+    },
+    {
+      "path": "morsehgp3D_v12/bench/data/prepare_ign_lidarhd.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ea69eac0a992ff175498397dea37cfee49806326",
+      "size": 6246,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/ea69eac0a992ff175498397dea37cfee49806326"
+    },
+    {
+      "path": "morsehgp3D_v12/bench/data/prepare_semantickitti.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d66f3eca99b5a346aa83d7e685a0cad32f666053",
+      "size": 15874,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/d66f3eca99b5a346aa83d7e685a0cad32f666053"
+    },
+    {
+      "path": "morsehgp3D_v12/bench/data/prepare_small.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2d37498846af7950f43a51cf834921226695694c",
+      "size": 15620,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/2d37498846af7950f43a51cf834921226695694c"
+    },
+    {
+      "path": "morsehgp3D_v12/bench/data/replay_all.sh",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3b197841c41fb8bd17f4678acc8fa8c16218d82b",
+      "size": 6930,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/3b197841c41fb8bd17f4678acc8fa8c16218d82b"
+    },
+    {
+      "path": "morsehgp3D_v12/bench/data/summarize.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2eb7202b7ecffef030096635548058105408b95e",
+      "size": 4484,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/2eb7202b7ecffef030096635548058105408b95e"
+    },
+    {
+      "path": "morsehgp3D_v12/bench/data/v12data/__init__.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "91159f5e9fcc1517e8b40f99b35644ad4f94dd31",
+      "size": 415,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/91159f5e9fcc1517e8b40f99b35644ad4f94dd31"
+    },
+    {
+      "path": "morsehgp3D_v12/bench/data/v12data/common.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9e4498eb114842af95b3360e54a543bae44aeb59",
+      "size": 20567,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/9e4498eb114842af95b3360e54a543bae44aeb59"
+    },
+    {
+      "path": "morsehgp3D_v12/bench/data/v12data/dettrig.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "34e0be9adb94e4dd2c8626c5029d7eae3e43248c",
+      "size": 1237,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/34e0be9adb94e4dd2c8626c5029d7eae3e43248c"
+    },
+    {
+      "path": "morsehgp3D_v12/bench/data/v12data/formats/__init__.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "01074b434a9a6c03b6dcffe121af3d109bfe7f22",
+      "size": 343,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/01074b434a9a6c03b6dcffe121af3d109bfe7f22"
+    },
+    {
+      "path": "morsehgp3D_v12/bench/data/v12data/formats/kitti_bin.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b2b329e3cc87f91b71873c839e4f4c7cd029f55c",
+      "size": 715,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/b2b329e3cc87f91b71873c839e4f4c7cd029f55c"
+    },
+    {
+      "path": "morsehgp3D_v12/bench/data/v12data/formats/las.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fac740e661ef820e94f187549952577959e6daf9",
+      "size": 3497,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/fac740e661ef820e94f187549952577959e6daf9"
+    },
+    {
+      "path": "morsehgp3D_v12/bench/data/v12data/formats/laz.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "bd871606c6f08516bfee03663dc60c0e18628d0e",
+      "size": 2084,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/bd871606c6f08516bfee03663dc60c0e18628d0e"
+    },
+    {
+      "path": "morsehgp3D_v12/bench/data/v12data/formats/ply.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "04b1047c5a02ac1ccd648bf27086fae763ef019b",
+      "size": 3178,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/04b1047c5a02ac1ccd648bf27086fae763ef019b"
+    },
+    {
+      "path": "morsehgp3D_v12/bench/data/v12data/formats/sevenzip.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0a76fb57607f1af64a260b05953e12a1b5552fdd",
+      "size": 2516,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/0a76fb57607f1af64a260b05953e12a1b5552fdd"
+    },
+    {
+      "path": "morsehgp3D_v12/bench/data/v12data/formats/text_xyz.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "824ccaaa4918d264abb0f56d8913c3a331fe70c1",
+      "size": 2349,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/824ccaaa4918d264abb0f56d8913c3a331fe70c1"
+    },
+    {
+      "path": "morsehgp3D_v12/bench/data/v12data/httprange.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "89c2199d87edbc12b4c3b8770153d59730194578",
+      "size": 2919,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/89c2199d87edbc12b4c3b8770153d59730194578"
+    },
+    {
+      "path": "morsehgp3D_v12/bench/data/v12data/lasconv.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b7e57847d0d52a2ad631114765c44d84d53d8c05",
+      "size": 7208,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/b7e57847d0d52a2ad631114765c44d84d53d8c05"
+    },
+    {
+      "path": "morsehgp3D_v12/bench/data/v12data/patchwork.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d4177c1ed6444bfd5bb80259cf8f8910ed4309ac",
+      "size": 4979,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/d4177c1ed6444bfd5bb80259cf8f8910ed4309ac"
+    },
+    {
+      "path": "morsehgp3D_v12/bench/data/v12data/splitmix.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3dc4a2107c9cf82c767f354c9db3de8b85a41da9",
+      "size": 2068,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/3dc4a2107c9cf82c767f354c9db3de8b85a41da9"
+    },
+    {
+      "path": "morsehgp3D_v12/bench/data/verify_inputs.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a9ca571769d76ed788db652195e33a8b6d54fa4f",
+      "size": 8612,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/a9ca571769d76ed788db652195e33a8b6d54fa4f"
+    },
+    {
+      "path": "morsehgp3D_v12/bench/data_cache.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "626d7e9be0a9cdf77d135c2977d2eae7655e3893",
+      "size": 38640,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/626d7e9be0a9cdf77d135c2977d2eae7655e3893"
+    },
+    {
+      "path": "morsehgp3D_v12/bench/data_cache_test.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ff032c68d5d86fb3b9daa0635029a05c12b38996",
+      "size": 11357,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/ff032c68d5d86fb3b9daa0635029a05c12b38996"
+    },
+    {
+      "path": "morsehgp3D_v12/bench/donnees_test.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "368cdcd6d4b6d44140220696397f4df31d59d7f9",
+      "size": 14394,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/368cdcd6d4b6d44140220696397f4df31d59d7f9"
+    },
+    {
+      "path": "morsehgp3D_v12/bench/full_probe.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c1e693481f0254cb2360570123fd5b0a1de8db2d",
+      "size": 27989,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/c1e693481f0254cb2360570123fd5b0a1de8db2d"
+    },
+    {
+      "path": "morsehgp3D_v12/bench/g4_catalogue_device.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "57378b9446904fa16c21e1c4270c929082fbfece",
+      "size": 22097,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/57378b9446904fa16c21e1c4270c929082fbfece"
+    },
+    {
+      "path": "morsehgp3D_v12/bench/g4_catalogue_flux.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2b1d63da7b485ec27f85e2b35dfbb39f8035e325",
+      "size": 24068,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/2b1d63da7b485ec27f85e2b35dfbb39f8035e325"
+    },
+    {
+      "path": "morsehgp3D_v12/bench/g4_catalogue_flux_judge.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ac3a131c9a5c09fd28d5f99d3ffd1595a0989fab",
+      "size": 22289,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/ac3a131c9a5c09fd28d5f99d3ffd1595a0989fab"
+    },
+    {
+      "path": "morsehgp3D_v12/bench/g4_catalogue_flux_lecteur.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ef9cb00853d5a726aad82c94613154c62d028f41",
+      "size": 18028,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/ef9cb00853d5a726aad82c94613154c62d028f41"
+    },
+    {
+      "path": "morsehgp3D_v12/bench/g4_catalogue_flux_selftest.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "25e893f58232514b09bc393cfa039e6b91aaeb32",
+      "size": 17945,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/25e893f58232514b09bc393cfa039e6b91aaeb32"
+    },
+    {
+      "path": "morsehgp3D_v12/bench/g4_catalogue_flux_tables.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "30559739ba975c9b223e5646e985173ca150844b",
+      "size": 7203,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/30559739ba975c9b223e5646e985173ca150844b"
+    },
+    {
+      "path": "morsehgp3D_v12/bench/g4_catalogue_judge.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b43b5798a5c625860286e41d0f2b840e391d207e",
+      "size": 23250,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/b43b5798a5c625860286e41d0f2b840e391d207e"
+    },
+    {
+      "path": "morsehgp3D_v12/bench/g4_catalogue_mutants.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ae110f2f7a0e71c4706d8e080dbe0ffa2995322d",
+      "size": 2566,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/ae110f2f7a0e71c4706d8e080dbe0ffa2995322d"
+    },
+    {
+      "path": "morsehgp3D_v12/bench/g4_catalogue_schema.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "167cc374c09977c419e38f8cc26cac0f760ba069",
+      "size": 11713,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/167cc374c09977c419e38f8cc26cac0f760ba069"
+    },
+    {
+      "path": "morsehgp3D_v12/bench/g4_catalogue_t1d.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "204b9d88dc2b5b24238989e2d2e80abec378c5a8",
+      "size": 10921,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/204b9d88dc2b5b24238989e2d2e80abec378c5a8"
+    },
+    {
+      "path": "morsehgp3D_v12/bench/g4_catalogue_t1d_judge.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "df773081b2fbdf8baddd7581281942dfbd376563",
+      "size": 13227,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/df773081b2fbdf8baddd7581281942dfbd376563"
+    },
+    {
+      "path": "morsehgp3D_v12/bench/g4_catalogue_t1d_selftest.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "61b3c2928d262763d9e06653f5491352d819197e",
+      "size": 10447,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/61b3c2928d262763d9e06653f5491352d819197e"
+    },
+    {
+      "path": "morsehgp3D_v12/bench/index_io.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "63df886e8db6b9f0f28ab583da569673114eec25",
+      "size": 2517,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/63df886e8db6b9f0f28ab583da569673114eec25"
+    },
+    {
+      "path": "morsehgp3D_v12/bench/index_io_test.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "369bc6c830d94fa779503df8c075e56c42a7a777",
+      "size": 2976,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/369bc6c830d94fa779503df8c075e56c42a7a777"
+    },
+    {
+      "path": "morsehgp3D_v12/bench/index_probe.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e36a18a91d2c867e6ef9b7655c3a268dceb7fe3a",
+      "size": 8992,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/e36a18a91d2c867e6ef9b7655c3a268dceb7fe3a"
+    },
+    {
+      "path": "morsehgp3D_v12/bench/index_semantic.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1a595c459d1f80d25cafc0f5942bc5b9a9f038b3",
+      "size": 9347,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/1a595c459d1f80d25cafc0f5942bc5b9a9f038b3"
+    },
+    {
+      "path": "morsehgp3D_v12/bench/tower_export.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ba78f9a41b6b85653dce983cfcc97eb8ab853aab",
+      "size": 7561,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/ba78f9a41b6b85653dce983cfcc97eb8ab853aab"
+    },
+    {
+      "path": "morsehgp3D_v12/bench/tower_probe.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7baa7aaaa7bc40a5aafd1df081d56c10666bfca2",
+      "size": 15326,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/7baa7aaaa7bc40a5aafd1df081d56c10666bfca2"
+    },
+    {
+      "path": "morsehgp3D_v12/cmake/expect_refusal.cmake",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "87c9fe8c582e680e6404f41415dd7c1d7266dfe9",
+      "size": 4477,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/87c9fe8c582e680e6404f41415dd7c1d7266dfe9"
+    },
+    {
+      "path": "morsehgp3D_v12/cmake/gates.cmake",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fdfcd8fa4ba32fb25154d41e499e56344d252d9f",
+      "size": 17974,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/fdfcd8fa4ba32fb25154d41e499e56344d252d9f"
+    },
+    {
+      "path": "morsehgp3D_v12/cmake/modules.cmake",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "aa640b036b2351557b84ff62e0cbd09682bb5850",
+      "size": 1750,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/aa640b036b2351557b84ff62e0cbd09682bb5850"
+    },
+    {
+      "path": "morsehgp3D_v12/cmake/run_expect.cmake",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "bc3e2013959f7eedf62031043ec9f5f966bb563f",
+      "size": 7249,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/bc3e2013959f7eedf62031043ec9f5f966bb563f"
+    },
+    {
+      "path": "morsehgp3D_v12/src/catalogue/assemble.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0161be7c2103b41ef63cb7f0b02728a8efd6432d",
+      "size": 8451,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/0161be7c2103b41ef63cb7f0b02728a8efd6432d"
+    },
+    {
+      "path": "morsehgp3D_v12/src/catalogue/catalogue.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d12e03c08ed23045a8a0dbb24048b0f6f4ac3c6f",
+      "size": 3998,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/d12e03c08ed23045a8a0dbb24048b0f6f4ac3c6f"
+    },
+    {
+      "path": "morsehgp3D_v12/src/catalogue/catalogue.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6a229bceeb9efd5759fc793ca06fa2fde93ff7bc",
+      "size": 13838,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/6a229bceeb9efd5759fc793ca06fa2fde93ff7bc"
+    },
+    {
+      "path": "morsehgp3D_v12/src/catalogue/device_cuda.cu",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "62fe20419186eedac62d631933e10333066c839e",
+      "size": 15851,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/62fe20419186eedac62d631933e10333066c839e"
+    },
+    {
+      "path": "morsehgp3D_v12/src/catalogue/device_driver.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f12c717f69be3d5b105d4a9e1ba56491be603e3c",
+      "size": 7031,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/f12c717f69be3d5b105d4a9e1ba56491be603e3c"
+    },
+    {
+      "path": "morsehgp3D_v12/src/catalogue/device_leaf.cu",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ba376b1855a7e9463912ea9e7a69429351cf549c",
+      "size": 2101,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/ba376b1855a7e9463912ea9e7a69429351cf549c"
+    },
+    {
+      "path": "morsehgp3D_v12/src/catalogue/device_leaves.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f6fe85df75fd3c889d88d50cd48aaebfe53f63d5",
+      "size": 14236,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/f6fe85df75fd3c889d88d50cd48aaebfe53f63d5"
+    },
+    {
+      "path": "morsehgp3D_v12/src/catalogue/device_pipeline.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8b78dbaa9743d513a2a2f0aa61e99719ca4d8987",
+      "size": 20602,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/8b78dbaa9743d513a2a2f0aa61e99719ca4d8987"
+    },
+    {
+      "path": "morsehgp3D_v12/src/catalogue/device_stub.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cdfdf1b1fdca3b81ed6d833d94c7eaa40c7b4af1",
+      "size": 1198,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/cdfdf1b1fdca3b81ed6d833d94c7eaa40c7b4af1"
+    },
+    {
+      "path": "morsehgp3D_v12/src/catalogue/exec_host.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "76997ba1a5adfdfa727c4d2e84d31e3a86a8e949",
+      "size": 5425,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/76997ba1a5adfdfa727c4d2e84d31e3a86a8e949"
+    },
+    {
+      "path": "morsehgp3D_v12/src/catalogue/export.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ea2dedc877123cb0f2506e36a4c1e5fbc2439071",
+      "size": 6365,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/ea2dedc877123cb0f2506e36a4c1e5fbc2439071"
+    },
+    {
+      "path": "morsehgp3D_v12/src/catalogue/finish_driver.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9a3f035b8dd87af37c41f75774733e380313a241",
+      "size": 14655,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/9a3f035b8dd87af37c41f75774733e380313a241"
+    },
+    {
+      "path": "morsehgp3D_v12/src/catalogue/finish_kernels.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5c0ffb4a8c07a29f170cbef831a0e848c9188b74",
+      "size": 10794,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/5c0ffb4a8c07a29f170cbef831a0e848c9188b74"
+    },
+    {
+      "path": "morsehgp3D_v12/src/catalogue/finish_level.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a862a4723ea9a16138531d0fe31dcf7bbe2921d3",
+      "size": 9591,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/a862a4723ea9a16138531d0fe31dcf7bbe2921d3"
+    },
+    {
+      "path": "morsehgp3D_v12/src/catalogue/finish_outputs.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4927e7c8422180b79af14d84592e85130148f618",
+      "size": 7295,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/4927e7c8422180b79af14d84592e85130148f618"
+    },
+    {
+      "path": "morsehgp3D_v12/src/catalogue/finish_repair.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5c555b4932cc559f81a76d918e95c16f25403e91",
+      "size": 7565,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/5c555b4932cc559f81a76d918e95c16f25403e91"
+    },
+    {
+      "path": "morsehgp3D_v12/src/catalogue/finish_slices.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "af727c6c4db8899ebd31a60a748bbc920d173699",
+      "size": 13190,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/af727c6c4db8899ebd31a60a748bbc920d173699"
+    },
+    {
+      "path": "morsehgp3D_v12/src/catalogue/finish_sort.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0044c9ca03a8a6ae9119808a0bc197a16c3506c2",
+      "size": 11625,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/0044c9ca03a8a6ae9119808a0bc197a16c3506c2"
+    },
+    {
+      "path": "morsehgp3D_v12/src/catalogue/internal.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "acb160470fac4b9345611ab95d25c03cde053d69",
+      "size": 4251,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/acb160470fac4b9345611ab95d25c03cde053d69"
+    },
+    {
+      "path": "morsehgp3D_v12/src/catalogue/leaf_arith.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "93b28a6c880331cfb9b0c758aec14574637b189c",
+      "size": 5150,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/93b28a6c880331cfb9b0c758aec14574637b189c"
+    },
+    {
+      "path": "morsehgp3D_v12/src/catalogue/leaf_census.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ac10989a84bce5bd50c4646f16ac2951275a5ad7",
+      "size": 8276,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/ac10989a84bce5bd50c4646f16ac2951275a5ad7"
+    },
+    {
+      "path": "morsehgp3D_v12/src/catalogue/leaf_common.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "262de97707c7b40bfdd548ba81ca814d36af5767",
+      "size": 10996,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/262de97707c7b40bfdd548ba81ca814d36af5767"
+    },
+    {
+      "path": "morsehgp3D_v12/src/catalogue/leaf_j3.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cd86cd44a438e4ecaea4678878075655cc1b178e",
+      "size": 11817,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/cd86cd44a438e4ecaea4678878075655cc1b178e"
+    },
+    {
+      "path": "morsehgp3D_v12/src/catalogue/leaf_predicates.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "989cae3a27dc93f88664cfa70b3e424ff72c5b5c",
+      "size": 13245,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/989cae3a27dc93f88664cfa70b3e424ff72c5b5c"
+    },
+    {
+      "path": "morsehgp3D_v12/src/catalogue/leaves.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "19f30302fa415dcc94fdc8b57d0af92ea6a0ccc1",
+      "size": 13102,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/19f30302fa415dcc94fdc8b57d0af92ea6a0ccc1"
+    },
+    {
+      "path": "morsehgp3D_v12/src/catalogue/module.cmake",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f584dc230c729efe8dfb0d66e69fc90fc26e15b4",
+      "size": 928,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/f584dc230c729efe8dfb0d66e69fc90fc26e15b4"
+    },
+    {
+      "path": "morsehgp3D_v12/src/catalogue/outputs.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1a41a25baafe3a0a64422a4652bf8d70ffd976d8",
+      "size": 2651,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/1a41a25baafe3a0a64422a4652bf8d70ffd976d8"
+    },
+    {
+      "path": "morsehgp3D_v12/src/catalogue/simt.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a8f3c86502239a53f897e37106398258a8be34c4",
+      "size": 13544,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/a8f3c86502239a53f897e37106398258a8be34c4"
+    },
+    {
+      "path": "morsehgp3D_v12/src/catalogue/slices.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ae9e10ad1902538cbb0103f70f38aed9a19e15c2",
+      "size": 16732,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/ae9e10ad1902538cbb0103f70f38aed9a19e15c2"
+    },
+    {
+      "path": "morsehgp3D_v12/src/catalogue/slices.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a68bf0ce541ac2650710c1861e5e33557bc9742e",
+      "size": 7642,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/a68bf0ce541ac2650710c1861e5e33557bc9742e"
+    },
+    {
+      "path": "morsehgp3D_v12/src/catalogue/source_pins.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8034ba6b118595610bb5cc554b62eeb1ee29c780",
+      "size": 9065,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/8034ba6b118595610bb5cc554b62eeb1ee29c780"
+    },
+    {
+      "path": "morsehgp3D_v12/src/catalogue/table.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b70f2ab4e7a3de3cae79d4dc046aee192a3ebdcf",
+      "size": 2131,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/b70f2ab4e7a3de3cae79d4dc046aee192a3ebdcf"
+    },
+    {
+      "path": "morsehgp3D_v12/src/catalogue/transfer_meter.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "87679e0f0bebe6078f0646318c9d44f41a863059",
+      "size": 6542,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/87679e0f0bebe6078f0646318c9d44f41a863059"
+    },
+    {
+      "path": "morsehgp3D_v12/src/catalogue/traversal.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a945422422f339f63bac09faa3aadb54b16ec05d",
+      "size": 1883,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/a945422422f339f63bac09faa3aadb54b16ec05d"
+    },
+    {
+      "path": "morsehgp3D_v12/src/catalogue/traversal.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "077502c1f17b95e0b8827942f263960e294ea3d8",
+      "size": 3615,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/077502c1f17b95e0b8827942f263960e294ea3d8"
+    },
+    {
+      "path": "morsehgp3D_v12/src/catalogue/traversal_driver.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e1f4fcf736a45aa3a0c85dd855975e793b3cfd53",
+      "size": 8624,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/e1f4fcf736a45aa3a0c85dd855975e793b3cfd53"
+    },
+    {
+      "path": "morsehgp3D_v12/src/catalogue/traversal_kernels.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "13b3dba8e38a4055f67321698c38085bc40749ff",
+      "size": 13838,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/13b3dba8e38a4055f67321698c38085bc40749ff"
+    },
+    {
+      "path": "morsehgp3D_v12/src/catalogue/traversal_records.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1cde3781b501e432fe6a43387acef55ebb082e53",
+      "size": 10473,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/1cde3781b501e432fe6a43387acef55ebb082e53"
+    },
+    {
+      "path": "morsehgp3D_v12/src/catalogue/traversal_scan.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b357b3b2bbb5f5c7fef2a09f3c8ecc90a417ec1b",
+      "size": 7647,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/b357b3b2bbb5f5c7fef2a09f3c8ecc90a417ec1b"
+    },
+    {
+      "path": "morsehgp3D_v12/src/cloud/cloud.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e882a7b49ba6bc8f982fb289b3a014ee848f6907",
+      "size": 8175,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/e882a7b49ba6bc8f982fb289b3a014ee848f6907"
+    },
+    {
+      "path": "morsehgp3D_v12/src/cloud/cloud.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e85bc565569595762bcadd891d694e9215354209",
+      "size": 7288,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/e85bc565569595762bcadd891d694e9215354209"
+    },
+    {
+      "path": "morsehgp3D_v12/src/cloud/module.cmake",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9a986d2ed996b44a186dc9d65eea2b8714703760",
+      "size": 117,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/9a986d2ed996b44a186dc9d65eea2b8714703760"
+    },
+    {
+      "path": "morsehgp3D_v12/src/cloud/morton.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f153c5d5015aa3cede92a5b3887c0f4887fb9891",
+      "size": 5898,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/f153c5d5015aa3cede92a5b3887c0f4887fb9891"
+    },
+    {
+      "path": "morsehgp3D_v12/src/core/buffer.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "dd8573e3d8bc74b16c4a1ee280fb1ee041c80889",
+      "size": 12383,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/dd8573e3d8bc74b16c4a1ee280fb1ee041c80889"
+    },
+    {
+      "path": "morsehgp3D_v12/src/core/buffer.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e0e646249dac19c60f62c579810d99746c197d7a",
+      "size": 14629,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/e0e646249dac19c60f62c579810d99746c197d7a"
+    },
+    {
+      "path": "morsehgp3D_v12/src/core/core.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9ded229db7e2db2f6644726a6652eff1f9a1d042",
+      "size": 325,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/9ded229db7e2db2f6644726a6652eff1f9a1d042"
+    },
+    {
+      "path": "morsehgp3D_v12/src/core/ledger.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "93dc62cdd04a69860808fcf43d8a6d998b62e735",
+      "size": 3337,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/93dc62cdd04a69860808fcf43d8a6d998b62e735"
+    },
+    {
+      "path": "morsehgp3D_v12/src/core/ledger.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "18884a466c3e8d3ede05a59a4bd24bdde29897c3",
+      "size": 3326,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/18884a466c3e8d3ede05a59a4bd24bdde29897c3"
+    },
+    {
+      "path": "morsehgp3D_v12/src/core/module.cmake",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4f1859a3da07b75540ab35ffd18c6c675375af11",
+      "size": 128,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/4f1859a3da07b75540ab35ffd18c6c675375af11"
+    },
+    {
+      "path": "morsehgp3D_v12/src/core/reasons.def",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5592e411a0060d90a7c8161cbf5849912d411435",
+      "size": 5676,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/5592e411a0060d90a7c8161cbf5849912d411435"
+    },
+    {
+      "path": "morsehgp3D_v12/src/core/status.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cbf73d51bacee7b6ed897235722c98b23b81b74e",
+      "size": 8153,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/cbf73d51bacee7b6ed897235722c98b23b81b74e"
+    },
+    {
+      "path": "morsehgp3D_v12/src/core/types.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "39207e59150fc803f9a6eff9a0481bb28a42b450",
+      "size": 4778,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/39207e59150fc803f9a6eff9a0481bb28a42b450"
+    },
+    {
+      "path": "morsehgp3D_v12/src/index/access.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8f4b0bddbdac0051f47ba0b26b1c633ab0b7c666",
+      "size": 330,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/8f4b0bddbdac0051f47ba0b26b1c633ab0b7c666"
+    },
+    {
+      "path": "morsehgp3D_v12/src/index/bounds.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "97ee98aaa169d140f8405f69d671d6e437e95a3a",
+      "size": 3452,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/97ee98aaa169d140f8405f69d671d6e437e95a3a"
+    },
+    {
+      "path": "morsehgp3D_v12/src/index/build.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "aec049cae0c803fd03342891a3015c339e540f9d",
+      "size": 5566,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/aec049cae0c803fd03342891a3015c339e540f9d"
+    },
+    {
+      "path": "morsehgp3D_v12/src/index/census.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "acf1f084f6b6c98c7451f49b4408324671f27a4a",
+      "size": 4560,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/acf1f084f6b6c98c7451f49b4408324671f27a4a"
+    },
+    {
+      "path": "morsehgp3D_v12/src/index/census_workspace.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6ac6b06510cb8059f8f39f3adda1a4bfdb9dce74",
+      "size": 6339,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/6ac6b06510cb8059f8f39f3adda1a4bfdb9dce74"
+    },
+    {
+      "path": "morsehgp3D_v12/src/index/index.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9e3a436b2c25862f0ff0a7aaadf0c37582e1c391",
+      "size": 10824,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/9e3a436b2c25862f0ff0a7aaadf0c37582e1c391"
+    },
+    {
+      "path": "morsehgp3D_v12/src/index/module.cmake",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "afa39946d0a8ad629ac527602b5d3b8701e1f138",
+      "size": 65,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/afa39946d0a8ad629ac527602b5d3b8701e1f138"
+    },
+    {
+      "path": "morsehgp3D_v12/src/io/directory.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c8023407ad25f1646a52a50d6b67ce3a4874dbcd",
+      "size": 12434,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/c8023407ad25f1646a52a50d6b67ce3a4874dbcd"
+    },
+    {
+      "path": "morsehgp3D_v12/src/io/input.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a3b2d2b151e04042a4d9e7c324a3d4ebf0361c84",
+      "size": 5955,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/a3b2d2b151e04042a4d9e7c324a3d4ebf0361c84"
+    },
+    {
+      "path": "morsehgp3D_v12/src/io/io.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "60d5ac205e4dac4fd98eb60923d676aa5ee96d8f",
+      "size": 11863,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/60d5ac205e4dac4fd98eb60923d676aa5ee96d8f"
+    },
+    {
+      "path": "morsehgp3D_v12/src/io/module.cmake",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e3a1c0e34a9fb925a60102b5b8d2334cc359d305",
+      "size": 150,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/e3a1c0e34a9fb925a60102b5b8d2334cc359d305"
+    },
+    {
+      "path": "morsehgp3D_v12/src/io/sha256.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "396c681d67cbf9fd1f1fd32b87c5fba0353817d8",
+      "size": 10356,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/396c681d67cbf9fd1f1fd32b87c5fba0353817d8"
+    },
+    {
+      "path": "morsehgp3D_v12/src/io/writer.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "047b3a17e0b999b88063aec08fcb7a2c104a4fe3",
+      "size": 5535,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/047b3a17e0b999b88063aec08fcb7a2c104a4fe3"
+    },
+    {
+      "path": "morsehgp3D_v12/src/num/big.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "75b6b6705169eb7e5e944d485cfedbd3980365e5",
+      "size": 14113,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/75b6b6705169eb7e5e944d485cfedbd3980365e5"
+    },
+    {
+      "path": "morsehgp3D_v12/src/num/big.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "79851c17b3e025710909372409a8b655ac33caef",
+      "size": 5220,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/79851c17b3e025710909372409a8b655ac33caef"
+    },
+    {
+      "path": "morsehgp3D_v12/src/num/budgets.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "35522309a4bc2899df13becff0e795947197f229",
+      "size": 8277,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/35522309a4bc2899df13becff0e795947197f229"
+    },
+    {
+      "path": "morsehgp3D_v12/src/num/center_region.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "40c9277fd564082f31dd1b2647f87765b1d055e1",
+      "size": 6343,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/40c9277fd564082f31dd1b2647f87765b1d055e1"
+    },
+    {
+      "path": "morsehgp3D_v12/src/num/center_region.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2fe0b36d1495d1c539fc11225d699370c3118819",
+      "size": 1219,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/2fe0b36d1495d1c539fc11225d699370c3118819"
+    },
+    {
+      "path": "morsehgp3D_v12/src/num/center_region.provenance.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ccda6730bf9abe83a2117d6e91011a21a387ef5c",
+      "size": 1855,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/ccda6730bf9abe83a2117d6e91011a21a387ef5c"
+    },
+    {
+      "path": "morsehgp3D_v12/src/num/center_view.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f6b77380a20865eb5445ff47a018f03ed660fa22",
+      "size": 5213,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/f6b77380a20865eb5445ff47a018f03ed660fa22"
+    },
+    {
+      "path": "morsehgp3D_v12/src/num/centers.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "30c60a972e14b2f81dcc3b5de54fc7e5a905ac1d",
+      "size": 4935,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/30c60a972e14b2f81dcc3b5de54fc7e5a905ac1d"
+    },
+    {
+      "path": "morsehgp3D_v12/src/num/frame.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8fe83971deccb315dfc4393fe7fe9f20b2f49d39",
+      "size": 4109,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/8fe83971deccb315dfc4393fe7fe9f20b2f49d39"
+    },
+    {
+      "path": "morsehgp3D_v12/src/num/geometry.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d56c7eca61f75dbf1537c63eaa6770ac7f84c9bd",
+      "size": 13539,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/d56c7eca61f75dbf1537c63eaa6770ac7f84c9bd"
+    },
+    {
+      "path": "morsehgp3D_v12/src/num/geometry_internal.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4a90b3f07f73d320c521c01e3d850f57b7d2b5f2",
+      "size": 4960,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/4a90b3f07f73d320c521c01e3d850f57b7d2b5f2"
+    },
+    {
+      "path": "morsehgp3D_v12/src/num/guard.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "65995d1da4adee706337201ce88bbfdb746d9d31",
+      "size": 7296,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/65995d1da4adee706337201ce88bbfdb746d9d31"
+    },
+    {
+      "path": "morsehgp3D_v12/src/num/guard.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "416f8820085389448f9a8cf682769c8893d9f488",
+      "size": 11568,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/416f8820085389448f9a8cf682769c8893d9f488"
+    },
+    {
+      "path": "morsehgp3D_v12/src/num/integer.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a4a3525f6f4b162a2f878fe4857fdeb8299de1e7",
+      "size": 2914,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/a4a3525f6f4b162a2f878fe4857fdeb8299de1e7"
+    },
+    {
+      "path": "morsehgp3D_v12/src/num/lattice.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "89880ea74ffa12ad82e72a8e0a96adb4f0c90a75",
+      "size": 3892,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/89880ea74ffa12ad82e72a8e0a96adb4f0c90a75"
+    },
+    {
+      "path": "morsehgp3D_v12/src/num/lattice_bounds.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9aedff1dee9f19ddd1c98d1b1f2979d77d69e23f",
+      "size": 3586,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/9aedff1dee9f19ddd1c98d1b1f2979d77d69e23f"
+    },
+    {
+      "path": "morsehgp3D_v12/src/num/lattice_internal.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9454d9ddb13935f4cbd8a545af31e0d3fffc14be",
+      "size": 930,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/9454d9ddb13935f4cbd8a545af31e0d3fffc14be"
+    },
+    {
+      "path": "morsehgp3D_v12/src/num/level.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7a2e99b4248e5850f26ca6e76ce2ee51504f22e7",
+      "size": 3733,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/7a2e99b4248e5850f26ca6e76ce2ee51504f22e7"
+    },
+    {
+      "path": "morsehgp3D_v12/src/num/local.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2195634a5076119f60cded7b570c748d01476f75",
+      "size": 1913,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/2195634a5076119f60cded7b570c748d01476f75"
+    },
+    {
+      "path": "morsehgp3D_v12/src/num/local.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fd57b416f7f977736bc726da652abd172b80352a",
+      "size": 1438,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/fd57b416f7f977736bc726da652abd172b80352a"
+    },
+    {
+      "path": "morsehgp3D_v12/src/num/module.cmake",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "90d178f6fdf91e1b7a0c33dd9a8de36e930fed44",
+      "size": 468,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/90d178f6fdf91e1b7a0c33dd9a8de36e930fed44"
+    },
+    {
+      "path": "morsehgp3D_v12/src/num/num.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "07669ede0b5618f8d70e314665aab92cf5c40e4a",
+      "size": 541,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/07669ede0b5618f8d70e314665aab92cf5c40e4a"
+    },
+    {
+      "path": "morsehgp3D_v12/src/num/orientation_certificate.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "66d7d0e3f9fb9b0ea5ab4ba0ab0fc5bb4246bcbb",
+      "size": 2239,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/66d7d0e3f9fb9b0ea5ab4ba0ab0fc5bb4246bcbb"
+    },
+    {
+      "path": "morsehgp3D_v12/src/num/power_certificate.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "79d371cd3a02241159fa37f5f6fbd42f283df135",
+      "size": 2987,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/79d371cd3a02241159fa37f5f6fbd42f283df135"
+    },
+    {
+      "path": "morsehgp3D_v12/src/num/power_checked.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "70435cdcb861dec2235f05296c324b80e1f7ac40",
+      "size": 1832,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/70435cdcb861dec2235f05296c324b80e1f7ac40"
+    },
+    {
+      "path": "morsehgp3D_v12/src/num/predicates.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cdb1f62b0eddc1021dea46550bfdb85e85e773f9",
+      "size": 20177,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/cdb1f62b0eddc1021dea46550bfdb85e85e773f9"
+    },
+    {
+      "path": "morsehgp3D_v12/src/num/q4_weights.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9d8e04e47560ab8a2f1e5088be10cd03100af205",
+      "size": 4985,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/9d8e04e47560ab8a2f1e5088be10cd03100af205"
+    },
+    {
+      "path": "morsehgp3D_v12/src/num/radical.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "41cfb084f600c01e96e2963716467252e903ed21",
+      "size": 9944,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/41cfb084f600c01e96e2963716467252e903ed21"
+    },
+    {
+      "path": "morsehgp3D_v12/src/num/radical.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "615738da8fad0d6bf532322c4b408cfb63678642",
+      "size": 5000,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/615738da8fad0d6bf532322c4b408cfb63678642"
+    },
+    {
+      "path": "morsehgp3D_v12/src/num/rational.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b77d5f5b08278ce7fcd396e605df0c0566e3a502",
+      "size": 2512,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/b77d5f5b08278ce7fcd396e605df0c0566e3a502"
+    },
+    {
+      "path": "morsehgp3D_v12/src/num/rational.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0a545bdcfe00f946ef96bd3839ab0f15d505665b",
+      "size": 2441,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/0a545bdcfe00f946ef96bd3839ab0f15d505665b"
+    },
+    {
+      "path": "morsehgp3D_v12/src/num/roots.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2fb4f2b15b0807f59a664de87c18d0dfa1c5a9d0",
+      "size": 4169,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/2fb4f2b15b0807f59a664de87c18d0dfa1c5a9d0"
+    },
+    {
+      "path": "morsehgp3D_v12/src/num/roots.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b595c64894cb92130e05fb55f2ebe8dced59a067",
+      "size": 3672,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/b595c64894cb92130e05fb55f2ebe8dced59a067"
+    },
+    {
+      "path": "morsehgp3D_v12/src/num/sphere.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "692d0239c428e1b458ca6efed06767a0700e7084",
+      "size": 13955,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/692d0239c428e1b458ca6efed06767a0700e7084"
+    },
+    {
+      "path": "morsehgp3D_v12/src/num/wide.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "55f65d6bf33d7d57f5bb1d0f7dcde91920a9d66a",
+      "size": 6340,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/55f65d6bf33d7d57f5bb1d0f7dcde91920a9d66a"
+    },
+    {
+      "path": "morsehgp3D_v12/src/sched/module.cmake",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "17bfeb3a9c87e045ed37563b0648ce5b525f63d2",
+      "size": 32,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/17bfeb3a9c87e045ed37563b0648ce5b525f63d2"
+    },
+    {
+      "path": "morsehgp3D_v12/src/sched/pool.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "af3ee96f32ea6dea34c3fa6fc879ae8ec85dd7dd",
+      "size": 4449,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/af3ee96f32ea6dea34c3fa6fc879ae8ec85dd7dd"
+    },
+    {
+      "path": "morsehgp3D_v12/src/sched/sched.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "07edb4b689cabd1ca3c8c32b54a1c6bd6f377e61",
+      "size": 3649,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/07edb4b689cabd1ca3c8c32b54a1c6bd6f377e61"
+    },
+    {
+      "path": "morsehgp3D_v12/src/sched/source_pins.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "facdf456c4042f735fbb5ec7af7c2bcd481db2bb",
+      "size": 2350,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/facdf456c4042f735fbb5ec7af7c2bcd481db2bb"
+    },
+    {
+      "path": "morsehgp3D_v12/src/tower/cells.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "56bd1a989b5c99ae728ef70b6453446f33f0d693",
+      "size": 4527,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/56bd1a989b5c99ae728ef70b6453446f33f0d693"
+    },
+    {
+      "path": "morsehgp3D_v12/src/tower/cells_stage.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "43e691bc7f88d69c0c373dc2d895728afba03735",
+      "size": 7490,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/43e691bc7f88d69c0c373dc2d895728afba03735"
+    },
+    {
+      "path": "morsehgp3D_v12/src/tower/export_full.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "534855e236aa5ffbfb72d1947f727c5bce0768eb",
+      "size": 6328,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/534855e236aa5ffbfb72d1947f727c5bce0768eb"
+    },
+    {
+      "path": "morsehgp3D_v12/src/tower/export_full.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f389fb71494110a82ee90aa9c7e9dd50aaaa0797",
+      "size": 2140,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/f389fb71494110a82ee90aa9c7e9dd50aaaa0797"
+    },
+    {
+      "path": "morsehgp3D_v12/src/tower/first_probes.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3b5f0304f8220cb1a36e940249c9920cfac1bea4",
+      "size": 4789,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/3b5f0304f8220cb1a36e940249c9920cfac1bea4"
+    },
+    {
+      "path": "morsehgp3D_v12/src/tower/forest.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "af8c6cb72c1193da01e2a72d8209aa6a2d970137",
+      "size": 11997,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/af8c6cb72c1193da01e2a72d8209aa6a2d970137"
+    },
+    {
+      "path": "morsehgp3D_v12/src/tower/forest_births.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a38ed00e5461f213454795a1a83aecad188c5d1d",
+      "size": 5748,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/a38ed00e5461f213454795a1a83aecad188c5d1d"
+    },
+    {
+      "path": "morsehgp3D_v12/src/tower/forest_build.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3e58779ed0ce7aa1729e41574ecdb7029e74f8b2",
+      "size": 9584,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/3e58779ed0ce7aa1729e41574ecdb7029e74f8b2"
+    },
+    {
+      "path": "morsehgp3D_v12/src/tower/forest_contract.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4f2f98da5abc7ed11a9f50755983a3a15152ac81",
+      "size": 5414,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/4f2f98da5abc7ed11a9f50755983a3a15152ac81"
+    },
+    {
+      "path": "morsehgp3D_v12/src/tower/forest_internal.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "90f0764a9c57a4b1b7837534d8f9e75d8f85a2ca",
+      "size": 12577,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/90f0764a9c57a4b1b7837534d8f9e75d8f85a2ca"
+    },
+    {
+      "path": "morsehgp3D_v12/src/tower/forest_kernel.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "71ae90c03d6ef6a9f56c221be7ca08a781bdc9b5",
+      "size": 9495,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/71ae90c03d6ef6a9f56c221be7ca08a781bdc9b5"
+    },
+    {
+      "path": "morsehgp3D_v12/src/tower/forest_source_pins.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e6916606879eb9eb4ebb358d19e24fcf6e716927",
+      "size": 4280,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/e6916606879eb9eb4ebb358d19e24fcf6e716927"
+    },
+    {
+      "path": "morsehgp3D_v12/src/tower/forest_sources.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f3c216442a3658ca29eca23112649bbd38e79ee6",
+      "size": 666,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/f3c216442a3658ca29eca23112649bbd38e79ee6"
+    },
+    {
+      "path": "morsehgp3D_v12/src/tower/forest_stages.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d1a7c955d2a788986fb7758b7ee5650f96f92517",
+      "size": 12408,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/d1a7c955d2a788986fb7758b7ee5650f96f92517"
+    },
+    {
+      "path": "morsehgp3D_v12/src/tower/forest_validate.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6f2d0a607eae960a00c404e83bf131d27e2c676b",
+      "size": 7387,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/6f2d0a607eae960a00c404e83bf131d27e2c676b"
+    },
+    {
+      "path": "morsehgp3D_v12/src/tower/internal.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cbea9fa92867521af4ec5df4737621f71372899f",
+      "size": 19329,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/cbea9fa92867521af4ec5df4737621f71372899f"
+    },
+    {
+      "path": "morsehgp3D_v12/src/tower/module.cmake",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2c626aace78662d912baf1b8294086b9cc389bc1",
+      "size": 776,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/2c626aace78662d912baf1b8294086b9cc389bc1"
+    },
+    {
+      "path": "morsehgp3D_v12/src/tower/passes.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "bf0b741947363740004038acc0eaed9b36e53dfa",
+      "size": 11126,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/bf0b741947363740004038acc0eaed9b36e53dfa"
+    },
+    {
+      "path": "morsehgp3D_v12/src/tower/pipeline.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "dac5dbe848370cc55bbff5aa10787356ec25b5f2",
+      "size": 11792,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/dac5dbe848370cc55bbff5aa10787356ec25b5f2"
+    },
+    {
+      "path": "morsehgp3D_v12/src/tower/pipeline.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c5c54d0f58b05d90eed0aa6f50b4a779bb711d17",
+      "size": 10213,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/c5c54d0f58b05d90eed0aa6f50b4a779bb711d17"
+    },
+    {
+      "path": "morsehgp3D_v12/src/tower/pipeline_run.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fb8e4ab1f19dd4c0a88a8abc9a44b0acb5d1edcc",
+      "size": 20427,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/fb8e4ab1f19dd4c0a88a8abc9a44b0acb5d1edcc"
+    },
+    {
+      "path": "morsehgp3D_v12/src/tower/populations.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "494e1f72ef83916f45c0d0cc5e65262447d0bf9b",
+      "size": 18125,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/494e1f72ef83916f45c0d0cc5e65262447d0bf9b"
+    },
+    {
+      "path": "morsehgp3D_v12/src/tower/profile.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1e4ac57ecb14395643398ea46fd16b340daa155a",
+      "size": 2097,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/1e4ac57ecb14395643398ea46fd16b340daa155a"
+    },
+    {
+      "path": "morsehgp3D_v12/src/tower/proposal.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ed9c8a723944b8055b10ef60025a2ae8944e879b",
+      "size": 7502,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/ed9c8a723944b8055b10ef60025a2ae8944e879b"
+    },
+    {
+      "path": "morsehgp3D_v12/src/tower/radix.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1cab603484a8f6472282606a10de356f2c815c33",
+      "size": 7397,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/1cab603484a8f6472282606a10de356f2c815c33"
+    },
+    {
+      "path": "morsehgp3D_v12/src/tower/registry_branches.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4b78e6b16de6809e650c69c066bb83837808987d",
+      "size": 12019,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/4b78e6b16de6809e650c69c066bb83837808987d"
+    },
+    {
+      "path": "morsehgp3D_v12/src/tower/resolve.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8eaecd7de965b5e9f936ca46d3bf09abf2cdb0f5",
+      "size": 16237,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/8eaecd7de965b5e9f936ca46d3bf09abf2cdb0f5"
+    },
+    {
+      "path": "morsehgp3D_v12/src/tower/source_pins.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9e233aae71f5c26042488a9bece263d27ee929da",
+      "size": 5383,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/9e233aae71f5c26042488a9bece263d27ee929da"
+    },
+    {
+      "path": "morsehgp3D_v12/src/tower/stage.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c4f5f1848480af694b825a2eff8c269f8112a6dc",
+      "size": 11193,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/c4f5f1848480af694b825a2eff8c269f8112a6dc"
+    },
+    {
+      "path": "morsehgp3D_v12/src/tower/stage.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3ce2e4779fce4a0ed65d96661ac727cbfceceed4",
+      "size": 4990,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/3ce2e4779fce4a0ed65d96661ac727cbfceceed4"
+    },
+    {
+      "path": "morsehgp3D_v12/src/tower/supports.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3db6e287240cea75c05484716012ab04db69327c",
+      "size": 10526,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/3db6e287240cea75c05484716012ab04db69327c"
+    },
+    {
+      "path": "morsehgp3D_v12/src/tower/tower.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3d96fffe7136ba6d49d9f3415ec7c1c28c4794c8",
+      "size": 16710,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/3d96fffe7136ba6d49d9f3415ec7c1c28c4794c8"
+    },
+    {
+      "path": "morsehgp3D_v12/src/tower/vertical_images.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e6a005d47971beb182ce5e564f315a4e2219ecc6",
+      "size": 5117,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/e6a005d47971beb182ce5e564f315a4e2219ecc6"
+    },
+    {
+      "path": "morsehgp3D_v12/tests/support/exit_probe.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4cb35a58f980bcbeffa8ac1dd6adec38ea99c993",
+      "size": 1213,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/4cb35a58f980bcbeffa8ac1dd6adec38ea99c993"
+    },
+    {
+      "path": "morsehgp3D_v12/tests/support/expect_abnormal_stop.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1ec173e586d21fd6890b090e0b6329b1bb32c74a",
+      "size": 1163,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/1ec173e586d21fd6890b090e0b6329b1bb32c74a"
+    },
+    {
+      "path": "morsehgp3D_v12/tests/support/fake_abnormal_stop.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "45d5569c80694711a4c77550f9f04e5f6e696008",
+      "size": 221,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/45d5569c80694711a4c77550f9f04e5f6e696008"
+    },
+    {
+      "path": "morsehgp3D_v12/tests/support/fenv.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8735f2a277142ddcf7c640569a1a02688eb36ab9",
+      "size": 1570,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/8735f2a277142ddcf7c640569a1a02688eb36ab9"
+    },
+    {
+      "path": "morsehgp3D_v12/tests/support/framework_probe.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "914daae9ea0dea00713be8ae4fd3ab1c349f0b0b",
+      "size": 1859,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/914daae9ea0dea00713be8ae4fd3ab1c349f0b0b"
+    },
+    {
+      "path": "morsehgp3D_v12/tests/support/gate_fixture/CMakeLists.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fab42d1c765fea2b3a0c0dc9359e17a667aff66a",
+      "size": 4462,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/fab42d1c765fea2b3a0c0dc9359e17a667aff66a"
+    },
+    {
+      "path": "morsehgp3D_v12/tests/support/gate_fixture/enfant/CMakeLists.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "08b8a661686a312f8501895955b339448d7174d5",
+      "size": 392,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/08b8a661686a312f8501895955b339448d7174d5"
+    },
+    {
+      "path": "morsehgp3D_v12/tests/support/mhgp12_gate.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9356254dfd490eb7f2f5239c1868c590449ca880",
+      "size": 7818,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/9356254dfd490eb7f2f5239c1868c590449ca880"
+    },
+    {
+      "path": "morsehgp3D_v12/tests/support/test.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ba788248cfacf57640493dee6372f6df692556d4",
+      "size": 9144,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/ba788248cfacf57640493dee6372f6df692556d4"
+    },
+    {
+      "path": "morsehgp3D_v12/tests/support/test_check_style.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "21f4abc9ea90bcc7cd2cb2307e75ee1b40f97081",
+      "size": 16853,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/21f4abc9ea90bcc7cd2cb2307e75ee1b40f97081"
+    },
+    {
+      "path": "morsehgp3D_v12/tests/support/test_g4_matrix.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "571ea3369ef719175cd1b6ff2c9d618950b60e2d",
+      "size": 9255,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/571ea3369ef719175cd1b6ff2c9d618950b60e2d"
+    },
+    {
+      "path": "morsehgp3D_v12/tests/support/test_gate_helper.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "339dd3a17141cc559db64449e49aecb7337a5083",
+      "size": 6398,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/339dd3a17141cc559db64449e49aecb7337a5083"
+    },
+    {
+      "path": "morsehgp3D_v12/tests/support/test_gate_properties.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b624cc9d4094a7bbe4242416e7f6d4cb08fd2c2f",
+      "size": 9322,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/b624cc9d4094a7bbe4242416e7f6d4cb08fd2c2f"
+    },
+    {
+      "path": "morsehgp3D_v12/tests/support/tests.cmake",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "099dee4e89adfdb3fbac3d7b8bbe5d2291f076e6",
+      "size": 16067,
+      "url": "https://api.github.com/repos/Ludwig-H/E-HGP/git/blobs/099dee4e89adfdb3fbac3d7b8bbe5d2291f076e6"
+    }
+  ]
+}

@@ -30,6 +30,12 @@ PAGE_COUNT = 10
 PDF = HERE / f"{JOB}.pdf"
 ZIP = HERE / f"{JOB}_hors_connexion.zip"
 VIDEO_NAMES = ("hgp_vs_hdbscan_light.mp4", "hgp_vs_hdbscan_dark.mp4")
+NAVAL_IMAGES = tuple(
+    f"assets/naval_{kind}_view{view}.png"
+    for kind in ("raw", "model", "result", "result_model")
+    for view in (1, 2)
+)
+LEGACY_NAVAL_IMAGES = ("assets/naval_raw.png", "assets/naval_model.png")
 
 
 def sha256(path: Path) -> str:
@@ -114,29 +120,74 @@ def check_naval_assets() -> dict:
     """Check the committed views; original Drive source data are not CI inputs."""
     manifest = json.loads((HERE / "naval_assets.json").read_text(encoding="utf-8"))
     files = manifest["files"]
+    required = {*NAVAL_IMAGES, *LEGACY_NAVAL_IMAGES, "naval_reference_components.json",
+                "render_naval.py", "render_naval_views.py"}
+    if not required.issubset(files):
+        raise ValueError(f"Naval Group manifest is missing package inputs: {sorted(required - files.keys())}")
     checked = {}
-    for relative in ("assets/naval_raw.png", "assets/naval_model.png"):
-        entry = files[relative]
+    for relative, entry in sorted(files.items()):
         path = HERE / relative
+        if not path.resolve().is_relative_to(HERE):
+            raise ValueError(f"Invalid Naval Group asset path: {relative}")
         if not path.is_file():
-            raise FileNotFoundError(f"Missing committed Naval Group view: {relative}")
+            raise FileNotFoundError(f"Missing committed Naval Group asset: {relative}")
         if sha256(path) != entry["sha256"] or path.stat().st_size != entry["size"]:
-            raise ValueError(f"Naval Group view checksum or size mismatch: {relative}")
-        with path.open("rb") as picture:
-            header = picture.read(24)
-        if header[:8] != b"\x89PNG\r\n\x1a\n":
-            raise ValueError(f"Expected a PNG illustration: {relative}")
-        width, height = struct.unpack(">II", header[16:24])
-        if (width, height) != (entry["width"], entry["height"]):
-            raise ValueError(f"Naval Group view dimensions mismatch: {relative}")
-        checked[relative] = {"sha256": entry["sha256"], "width": width, "height": height}
-        print(f"SHA-256 and dimensions verified: {relative}", flush=True)
+            raise ValueError(f"Naval Group asset checksum or size mismatch: {relative}")
+        checked[relative] = {"sha256": entry["sha256"], "size": entry["size"]}
+        if path.suffix == ".png":
+            with path.open("rb") as picture:
+                header = picture.read(24)
+            if header[:8] != b"\x89PNG\r\n\x1a\n":
+                raise ValueError(f"Expected a PNG illustration: {relative}")
+            width, height = struct.unpack(">II", header[16:24])
+            if (width, height) != (entry["width"], entry["height"]):
+                raise ValueError(f"Naval Group view dimensions mismatch: {relative}")
+            checked[relative].update(width=width, height=height)
+        elif path.suffix == ".json":
+            json.loads(path.read_text(encoding="utf-8"))
+        print(f"SHA-256 and size verified: {relative}", flush=True)
     return checked
+
+
+def check_naval_v12_artifacts() -> dict:
+    """Verify published analysis outputs without rerunning the 3D computation."""
+    report_path = HERE / "naval_v12_report.json"
+    if report_path.read_bytes() != (HERE / "naval_v12/naval_v12_report.json").read_bytes():
+        raise ValueError("The deck and reproduction copies of the v12 report differ")
+    report = json.loads(report_path.read_text(encoding="utf-8"))
+    files = report["artifacts"]
+    if "naval_v12/result.npz" not in files:
+        raise ValueError("The v12 report must identify its representative-point result")
+    checked = {}
+    for relative, entry in sorted(files.items()):
+        path = HERE / relative
+        if not path.resolve().is_relative_to(HERE):
+            raise ValueError(f"Invalid analysis artifact path: {relative}")
+        if not path.is_file() or sha256(path) != entry["sha256"] or path.stat().st_size != entry["size"]:
+            raise ValueError(f"Analysis artifact checksum or size mismatch: {relative}")
+        if relative.endswith(".npz"):
+            with zipfile.ZipFile(path) as archive:
+                if archive.testzip() is not None:
+                    raise ValueError(f"Analysis NPZ CRC check failed: {relative}")
+                if relative == "naval_v12/result.npz":
+                    required = {f"{name}.npy" for name in ("coords", "original_ids", "quantized_coords", "cluster_id", "class_id")}
+                    if not required.issubset(archive.namelist()):
+                        raise ValueError("Representative-point output is missing declared data fields")
+        checked[relative] = {"sha256": entry["sha256"], "size": entry["size"]}
+        print(f"SHA-256 verified: {relative}", flush=True)
+    reproduction = {
+        path.relative_to(HERE).as_posix(): {"sha256": sha256(path), "size": path.stat().st_size}
+        for path in sorted((HERE / "naval_v12").rglob("*"))
+        if path.is_file() and "__pycache__" not in path.parts and path.suffix != ".pyc"
+    }
+    if report["reproduction"]["entrypoint"] not in reproduction:
+        raise ValueError("The v12 reproduction entrypoint is missing")
+    return {"report_sha256": sha256(report_path), "artifacts": checked, "reproduction_files": reproduction}
 
 
 def compile_pdf() -> dict:
     required_poster_files = (
-        "assets/shipyard.png", "assets/percolia.pdf",
+        "assets/percolia.pdf",
         "figures/defense/deuxnn_r_boules.tex", "figures/defense/deuxnn_rp_boules.tex",
         "figures/defense/deuxnn_rs_boules.tex",
     )
@@ -204,10 +255,16 @@ def render_slides() -> list[str]:
 
 def make_offline_zip(slides: list[str]) -> list[str]:
     files = [f"{JOB}.pdf", "lecteur.html", "NOTES_ORATEUR.md", "README.md", "external_assets.json", "build_report.json",
-             "naval_assets.json", "render_naval.py", "assets/naval_raw.png", "assets/naval_model.png"]
+             "naval_assets.json", "naval_v12_report.json"]
+    naval = json.loads((HERE / "naval_assets.json").read_text(encoding="utf-8"))
+    files += sorted(naval["files"])
+    files += [path.relative_to(HERE).as_posix() for path in sorted((HERE / "naval_v12").rglob("*"))
+              if path.is_file() and "__pycache__" not in path.parts and path.suffix != ".pyc"]
     files += slides
     files += [f"videos/{name}" for name in VIDEO_NAMES]
     files += ["assets/linkedin_light_affiche.png", "assets/linkedin_dark_affiche.png"]
+    if len(files) != len(set(files)):
+        raise ValueError("Offline package input list contains duplicate paths")
     html = (HERE / "lecteur.html").read_text(encoding="utf-8")
     if "http://" in html or "https://" in html:
         # External source links are allowed, but no script, CSS, image or video is fetched remotely.
@@ -238,11 +295,13 @@ def main() -> None:
             raise RuntimeError(f"Required tool is not installed: {executable}")
     manifest = restore_external_assets()
     naval = check_naval_assets()
+    analysis = check_naval_v12_artifacts()
     videos = check_videos_and_extract_stills()
     pdf = compile_pdf()
     slides = render_slides()
     report = {"pdf": pdf, "videos": videos, "renders": {"count": len(slides), "width": 1600, "height": 900},
-              "external_assets_sha256_verified": len(manifest["files"]), "naval_assets": naval}
+              "external_assets_sha256_verified": len(manifest["files"]), "naval_assets": naval,
+              "naval_v12": analysis}
     (HERE / "build_report.json").write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     files = make_offline_zip(slides)
     published = files + [ZIP.name]

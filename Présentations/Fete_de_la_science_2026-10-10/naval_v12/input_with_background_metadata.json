@@ -1,0 +1,256 @@
+{
+  "source_scan_sha256": "fbcbe22be7d4bca36d15e5e0549a26af6218303668bf5ee4f1119c7246da8ab1",
+  "scan_points": 2321251,
+  "roi_points": 330543,
+  "reference_supported_points": 290878,
+  "residual_points": 23874,
+  "roi_bounds_m": {
+    "min": [
+      -3.23,
+      -3.18,
+      -0.28
+    ],
+    "max": [
+      3.23,
+      3.28419,
+      3.05316
+    ]
+  },
+  "prior_type": "AABB membership, same min/max rule as original Marie notebook; 14th box derived from identified CAD Cube_3 plus 3 cm margin",
+  "priors": [
+    {
+      "name": "Cube_1_obb.off",
+      "n": 8,
+      "min": [
+        -2.53,
+        1.53088,
+        0.0130851
+      ],
+      "max": [
+        -1.47,
+        2.59088,
+        1.07309
+      ]
+    },
+    {
+      "name": "Cube_2_obb.off",
+      "n": 8,
+      "min": [
+        -3.03,
+        -2.96912,
+        0.0130845
+      ],
+      "max": [
+        0.0299999,
+        0.0908815,
+        2.70316
+      ]
+    },
+    {
+      "name": "Equerre_1_obb.off",
+      "n": 8,
+      "min": [
+        -0.0403179,
+        -1.98813,
+        0.0152774
+      ],
+      "max": [
+        0.345682,
+        -1.88211,
+        0.401277
+      ]
+    },
+    {
+      "name": "Equerre_2_obb.off",
+      "n": 8,
+      "min": [
+        -1.85941,
+        0.0278872,
+        0.0152775
+      ],
+      "max": [
+        -1.75339,
+        0.413887,
+        0.401277
+      ]
+    },
+    {
+      "name": "Equerre_3_obb.off",
+      "n": 8,
+      "min": [
+        -0.0403179,
+        -0.585913,
+        0.0152774
+      ],
+      "max": [
+        0.345682,
+        -0.479892,
+        0.401277
+      ]
+    },
+    {
+      "name": "Pipe_10_obb.off",
+      "n": 8,
+      "min": [
+        -2.83701,
+        -2.77536,
+        2.11931
+      ],
+      "max": [
+        1.6661,
+        1.74347,
+        2.34286
+      ]
+    },
+    {
+      "name": "Pipe_11_obb.off",
+      "n": 8,
+      "min": [
+        -2.83701,
+        -2.77536,
+        1.74688
+      ],
+      "max": [
+        1.6661,
+        1.74347,
+        1.97043
+      ]
+    },
+    {
+      "name": "Pipe_1_obb.off",
+      "n": 8,
+      "min": [
+        1.70967,
+        -2.38,
+        -0.0505718
+      ],
+      "max": [
+        2.66167,
+        -2.12,
+        1.78355
+      ]
+    },
+    {
+      "name": "Pipe_2_obb.off",
+      "n": 8,
+      "min": [
+        1.70967,
+        -0.879999,
+        -0.0505713
+      ],
+      "max": [
+        2.66167,
+        -0.619999,
+        1.78355
+      ]
+    },
+    {
+      "name": "Pipe_3_obb.off",
+      "n": 8,
+      "min": [
+        1.70967,
+        0.620001,
+        -0.0505712
+      ],
+      "max": [
+        2.66167,
+        0.880001,
+        1.78355
+      ]
+    },
+    {
+      "name": "Pipe_4_obb.off",
+      "n": 8,
+      "min": [
+        1.70967,
+        2.12,
+        -0.0505712
+      ],
+      "max": [
+        2.66167,
+        2.38,
+        1.78355
+      ]
+    },
+    {
+      "name": "Plane_1_obb.off",
+      "n": 8,
+      "min": [
+        -3.03,
+        -2.98,
+        -0.08
+      ],
+      "max": [
+        3.03,
+        3.08,
+        0.08
+      ]
+    },
+    {
+      "name": "Plane_2_obb.off",
+      "n": 8,
+      "min": [
+        2.18453,
+        -2.97581,
+        -0.0239407
+      ],
+      "max": [
+        2.89909,
+        3.08419,
+        2.51798
+      ]
+    },
+    {
+      "name": "Cube_3_CAD_AABB_margin0.03m",
+      "min": [
+        -2.03,
+        -1.96912,
+        2.6431600000000004
+      ],
+      "max": [
+        -0.97,
+        -0.909119,
+        2.85316
+      ],
+      "source": "FBX Cube_3 bounds; external declared margin"
+    }
+  ],
+  "sampling": {
+    "method": "none",
+    "all_roi_points_preserved": true,
+    "all_residual_points_input_to_v12": true
+  },
+  "quantization": {
+    "bits": 21,
+    "origin_m": [
+      -3.22998,
+      -3.18,
+      -0.039415
+    ],
+    "unit_m": 3.0823674594723985e-06,
+    "isotropic": true,
+    "rounding": "numpy.rint ties to even",
+    "max_l2_error_m": 2.598395587292704e-06,
+    "unique_sites": 23874
+  },
+  "pilot_points": 1629,
+  "pilot_sampling": "first original point per 10 cm voxel; pilot only, not final output",
+  "preregistered_readout": {
+    "Kmax": 3,
+    "radius_m": 0.04,
+    "min_cluster_size": 200,
+    "intended_view": "native K1 tree closed cut exact single linkage; K3 incidence view experimental if supported",
+    "unknown_semantics": "candidate outside declared geometric reference, no anomaly ground truth used"
+  },
+  "background_prior": {
+    "source_mesh": "Background (component7), identified by FBX name; 104 original triangles",
+    "source_sha256": "18405ab5a78149749f6146dbc91ea8cfbb939eedfeca4c6053748ecf51f72d3f",
+    "distance": "minimum Euclidean point-to-finite-triangle distance; orthogonal interior projection and clipped edge distances",
+    "tolerance_m": 0.03,
+    "semantics": "known surrounding environment, ignored context; distinct from14structureAABBs",
+    "removed_from_residual_points": 15791,
+    "uses_anomaly_meshes": false
+  },
+  "residual_points_before_background": 39665,
+  "input_folder": "input_with_background"
+}

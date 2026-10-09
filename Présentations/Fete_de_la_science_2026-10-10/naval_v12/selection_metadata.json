@@ -1,0 +1,100 @@
+{
+  "order_displayed": 3,
+  "readout": "native continuous component at closed cut, represented by union of strong P_b incidences existing no later than cut; external point coverage, not Hr",
+  "radius_m": 0.04,
+  "cut_radius_squared_quantized_numerator": "70368677068816000000",
+  "cut_radius_squared_quantized_denominator": "417857523561",
+  "cut_rank": 350702,
+  "min_cluster_size_original_points": 200,
+  "components_at_cut": 98,
+  "selected_component_count": 5,
+  "selected_points": 23784,
+  "retained_overlap_points": 0,
+  "all_coverage_overlap_points": 186,
+  "points_without_any_strong_incidence": 57,
+  "residual_points_unassigned_in_render": 90,
+  "selected_nodes": [
+    {
+      "native_node_id": 197955,
+      "point_count": 3495,
+      "label": "Candidat 1",
+      "min_m": [
+        -3.22899,
+        0.659221,
+        0.0410975
+      ],
+      "max_m": [
+        -2.28144,
+        1.48099,
+        0.522302
+      ]
+    },
+    {
+      "native_node_id": 197962,
+      "point_count": 2753,
+      "label": "Candidat 2",
+      "min_m": [
+        0.433883,
+        0.00430346,
+        0.0800639
+      ],
+      "max_m": [
+        2.04479,
+        0.202837,
+        1.44842
+      ]
+    },
+    {
+      "native_node_id": 197963,
+      "point_count": 10128,
+      "label": "Candidat 3",
+      "min_m": [
+        0.416041,
+        2.62214,
+        0.0824959
+      ],
+      "max_m": [
+        2.18415,
+        2.84072,
+        1.57609
+      ]
+    },
+    {
+      "native_node_id": 197964,
+      "point_count": 2075,
+      "label": "Candidat 4",
+      "min_m": [
+        0.422278,
+        -2.74316,
+        0.0801121
+      ],
+      "max_m": [
+        2.18418,
+        -2.54506,
+        1.56022
+      ]
+    },
+    {
+      "native_node_id": 197965,
+      "point_count": 5333,
+      "label": "Candidat 5",
+      "min_m": [
+        -1.11103,
+        0.319598,
+        0.100921
+      ],
+      "max_m": [
+        -0.291732,
+        1.11202,
+        0.991018
+      ]
+    }
+  ],
+  "class_schema": {
+    "0": "supported by a declared geometric AABB prior; not inferred by HGP",
+    "1": "member of a retained native K3 component coverage outside geometric priors; candidate to check",
+    "-1": "known surrounding Background or small/uncovered residual, displayed as ignored context"
+  },
+  "cluster_schema": "-1 for context/model-supported points; actual native K3 node ID for candidate points",
+  "quantized_coords_dtype": "int32 for full context; only v12_input_mask rows are nonnegative u21 values actually processed"
+}

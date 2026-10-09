@@ -19,8 +19,8 @@ Dix diapositives, environ cinq à six minutes d'explication, puis 1 min 41 s de 
 | Page | Sujet |
 |---|---|
 | 1 | Des points aux objets, Percolia et Inria |
-| 2 | Nuage LiDAR brut et modèle théorique : observer les différences |
-| 3 | Repérer les objets ajoutés : résultat sur le chantier naval |
+| 2 | Nuage LiDAR brut et modèle théorique, vus du dessus et de côté |
+| 3 | Groupes Morse HGP v12 et comparaison au modèle, aux mêmes angles |
 | 4 | Regrouper les points |
 | 5 | K=1, union des boules et lien simple |
 | 6 | K=2, zones couvertes deux fois |
@@ -54,22 +54,37 @@ python3 build.py
 
 Dépendances : Python 3, pdfLaTeX, Beamer/TikZ, babel français, Latin Modern, QRcode, Poppler et FFmpeg. Les images du thème et les vidéos sont récupérées à des révisions précises, avec vérification SHA256. Le workflow `.github/workflows/fete-science.yml` compile, vérifie et publie les livrables sur `main`.
 
-Les vues du nuage brut et du modèle théorique utilisent la même caméra et le même cadrage. Le fichier `scan_lidar.ply` contient 2 321 251 points avant cadrage et échantillonnage visuel. Les deux vues montrent la même portion de la scène. Le modèle de référence reprend les structures du maillage `bloc_full.ply` qui correspondent aux treize boîtes OFF fournies. Le nuage est montré dans une couleur neutre, sans étiquettes de segmentation. Leur provenance, les empreintes des fichiers, la sélection des structures et les paramètres de rendu sont conservés dans `naval_assets.json`. La compilation vérifie les PNG publiés ; elle ne nécessite pas l'accès aux fichiers 3D sur Google Drive.
+Les pages 2 et 3 montrent la même région sous deux projections orthographiques : vue du dessus (XY) et vue de côté (XZ). Le nuage brut et le modèle occupent les deux lignes de la question. La réponse montre les groupes de points calculés, puis le modèle superposé aux groupes repérés. Les cadrages restent identiques entre la question et la réponse pour chaque angle.
 
-`render_naval.py` permet de refaire ces deux vues depuis les fichiers 3D sources autorisés, avec NumPy, Matplotlib et Pillow. Pour cette scène, il utilise le nuage PLY, le maillage complet et les treize boîtes OFF pour sélectionner les structures du modèle de référence. Les fichiers sources doivent être récupérés séparément ; le kit de projection contient les images et leur provenance. Les paramètres exacts et versions des dépendances sont dans `naval_assets.json`, section `local_reproduction`.
+Le fichier `scan_lidar.ply` contient 2 321 251 points avant cadrage. Le modèle de référence reprend 14 infrastructures du maillage CAD `bloc_full.ply` : celles associées aux 13 boîtes OFF d'origine, plus `Cube_3`, identifié dans le CAD. La sélection est documentée dans `naval_assets.json` et `naval_reference_components.json`. Les huit images utilisent les mêmes 82 636 points d'origine, obtenus par un pas d'affichage de quatre dans les 330 543 points de la région étudiée. Cet allègement visuel intervient après le calcul. Le nuage de la question reste neutre, sans utiliser les étiquettes de segmentation pour sa couleur.
 
-```sh
-NAVAL_SOURCES=/chemin/vers/naval_data
-python3 render_naval.py \
-  --raw "$NAVAL_SOURCES/scan_lidar.ply" \
-  --model "$NAVAL_SOURCES/bloc_full.ply" \
-  --reference-box-dir "$NAVAL_SOURCES/bounding_boxes" \
-  --roi -3.4 3.4 -3.4 3.4 -0.09 3.1 \
-  --azimuth 70 --elevation 20 --point-size .9 --point-alpha .8 --point-color '#39444c' --max-points 85000 \
-  --width 1800 --height 1200
-```
+Les priors géométriques sont appliqués **avant** Morse HGP 3D v12, selon ce protocole :
 
-La figure de résultat est le benchmark synthétique du poster 3IA, avec deux millions de points, © Naval Group, travaux avec Marie Aspro (Inria Startup Studio). Le projet industriel « Usine du Futur » de Marie a été testé à Lorient ; cette illustration HGP ne désigne pas un navire ou un compartiment précis de ce site. Le modèle de fondation 3D guidé par la hiérarchie reste une perspective de recherche.
+1. Retirer les points compatibles avec 14 boîtes alignées sur les axes : règle min/max des 13 OFF d'origine, complétée par la boîte CAD de `Cube_3` avec une marge de 3 cm.
+2. Retirer le fond connu : distance euclidienne d'au plus 3 cm aux 104 triangles CAD `Background`.
+3. Quantifier les 23 874 points résiduels sur 21 bits, sans sous-échantillonnage, puis calculer la tour native complète pour K=1 à K=3 avec le code v12 inchangé.
+4. Couper les composantes continues natives de K=3 au rayon fermé de 4 cm ; une union externe des incidences fortes les projette sur les points. Conserver les couvertures d'au moins 200 points d'origine.
+
+| Étape | Points |
+|---|---:|
+| Région étudiée | 330 543 |
+| Compatibles avec les boîtes du modèle | 290 878 |
+| Fond connu retiré ensuite | 15 791 |
+| Résidus réellement calculés par v12 | 23 874 |
+| Cinq couvertures retenues, disjointes | 23 784 |
+| Autres résidus | 90 |
+
+Le préfiltrage et la projection sont externes : v12 n'a pas d'API native de priors ni de hiérarchie des points Hr. Les couleurs montrent des groupes candidats, pas une mesure d'exactitude de détection ; les boîtes peuvent aussi couvrir une partie d'un ajout. Le rouge indique la compatibilité avec les références, le gris le fond connu ou les résidus non retenus. Aucune géométrie d'anomalie ni étiquette de vérité terrain ne sert au filtrage, au choix des groupes ou aux couleurs. La hiérarchie native porte sur les résidus quantifiés ; l'affichage retrouve leurs coordonnées originales.
+
+`naval_v12_report.json` conserve la révision `ac2d5bab814e84db6e1c9340f54995aa9cda58aa`, le protocole, les paramètres et les limites. Le même rapport est présent dans `naval_v12/`, avec `result.npz`, les appartenances de la coupe, l'export natif complet `full.bin.gz`, les scripts et les manifestes de reproduction. Le kit conserve tous ces fichiers ; `SHA256SUMS.txt` permet de contrôler chaque membre. Les deux illustrations 3D historiques sont aussi conservées pour que toutes les entrées de `naval_assets.json` soient vérifiables dans le kit.
+
+`render_naval_views.py` produit les images à partir des données sources et des résultats calculés, avec les fonctions de lecture de `render_naval.py`. `naval_reference_components.json` conserve la sélection des composants CAD. Les sources 3D doivent être récupérées séparément pour refaire le filtrage et les images. Les commandes exactes, paramètres de caméra et versions des dépendances figurent dans `naval_assets.json`.
+
+Pour rejouer le moteur sur les coordonnées résiduelles sauvegardées et vérifier l'export complet et les appartenances, lancer `python3 naval_v12/reproduce.py`. Cela demande NumPy et un compilateur C++20 ; le script récupère les sources CPU épinglées, ou accepte `--source-dir` pour un dossier déjà téléchargé. Ce rejeu a été vérifié jusqu'au bout avec les mêmes empreintes et appartenances. La compilation des slides et le workflow utilisent les PNG et résultats déjà calculés : ils vérifient les empreintes, dimensions et archives sans installer NumPy ni relancer le calcul 3D.
+
+Les deux vidéos de la page 8 sont conservées dans leur version d'origine. Elles proviennent du dossier LinkedIn épinglé ci-dessus et restent distinctes de ce nouveau calcul v12 sur la scène navale.
+
+Cette scène synthétique de chantier naval a été fournie par Marie Aspro, © Naval Group. Le projet industriel « Usine du Futur » de Marie a été testé à Lorient ; cette illustration ne désigne pas un navire ou un compartiment précis de ce site. Le modèle de fondation 3D guidé par la hiérarchie reste une perspective de recherche.
 
 ## Événement
 

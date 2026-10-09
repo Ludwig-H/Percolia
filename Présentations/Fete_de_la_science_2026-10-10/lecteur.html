@@ -86,7 +86,7 @@
     "use strict";
     (() => {
       const total = 12;
-      const videoSlide = 8;
+      const videoSlide = 7;
       const viewer = document.getElementById("viewer");
       const slide = document.getElementById("slide");
       const video = document.getElementById("video");
@@ -173,7 +173,7 @@
         }
         video.poster = navalMode
           ? "assets/naval_chantier_" + navalMode + "_affiche.png"
-          : "diapositives/slide-09.png";
+          : "diapositives/slide-08.png";
         video.setAttribute("aria-label", navalMode
           ? (navalMode === "question" ? "Question" : "Réponse") + " : scène de chantier naval en 3D, points à gauche et modèle à droite, 12 secondes"
           : "Démonstration comparative HGP et HDBSCAN, environ 1 minute 41 secondes");
@@ -199,7 +199,7 @@
         previous.disabled = index === 0;
         next.disabled = index === total - 1;
         announcement.textContent = isVideo
-          ? "Diapositive 9 sur 12. Démonstration HGP et HDBSCAN."
+          ? "Diapositive 8 sur 12. Démonstration HGP et HDBSCAN."
           : "Diapositive " + (index + 1) + " sur " + total + ".";
         if (isVideo) loadVideo(true);
         schedule();

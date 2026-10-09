@@ -44,7 +44,7 @@
 \title{Des points aux objets}
 \subtitle{Apprendre aux machines à comprendre la 3D}
 \author{Louis \textsc{Hauseux}\\[.4em]
- \small Percolia, avec Alban \textsc{Hauseux}\\
+ \small Percolia\\
  Inria Startup Studio\\[.5em]
  Fête de la science, Antibes Juan-les-Pins\\10 octobre 2026}
 \date{10 octobre 2026}
@@ -62,7 +62,7 @@
  {assets/naval_model_view1.png}{assets/naval_model_view2.png}
 \vspace{.12cm}
 \centering\normalsize\textcolor{inriablue}{\textbf{Quels objets sont présents dans le scan mais absents du modèle ?}}
-\source{Deux projections de la même scène synthétique de chantier naval fournie par Marie Aspro. © Naval Group.}
+\source{Chantier naval synthétique. Collaboration avec Marie Aspro. © Naval Group.}
 \end{frame}
 
 \begin{frame}{Repérer les objets ajoutés}
@@ -74,7 +74,7 @@
 \vspace{.12cm}\centering\small
 \textcolor{red}{\textbf{Rouge : compatible avec le modèle.}}\quad
 \textbf{Autres couleurs : groupes repérés.}\par
-\source{Filtrage par le modèle, puis Morse HGP 3D v12 sur les points restants. Même scène et mêmes projections. © Naval Group.}
+\source{Le modèle décrit les structures attendues. HGP regroupe les points restants. © Naval Group.}
 \end{frame}
 
 \begin{frame}{Le clustering : regrouper les points}
@@ -83,8 +83,8 @@
 \vspace{.3cm}
 \large Les points proches forment des \textcolor{inriablue}{\textbf{groupes}}.\par
 \vspace{.2cm}\normalsize
-La géométrie permet de les construire sans apprendre des noms d'objets.
-\source{Exemple du poster 3IA, données de démonstration HDBSCAN [Campello et al., 2013]. Les couleurs représentent des groupes.}
+On regroupe les points à partir de leur position.
+\source{Regroupement avec HDBSCAN [Campello et al., 2013].}
 \end{frame}
 
 \begin{frame}{\(K=1\) : des boules qui se rejoignent}
@@ -93,7 +93,7 @@ La géométrie permet de les construire sans apprendre des noms d'objets.
 \centering\resizebox{.78\linewidth}{!}{\input{figures/k1.tex}}\par
 \vspace{.08cm}\normalsize
 Un chemin de contacts suffit à réunir deux groupes.\par
-\source{Cas \(K=1\) : union des boules et hiérarchie du lien simple (single linkage). Les six points sont exactement ceux du poster 3IA.}
+\source{Cas \(K=1\) : union des boules et hiérarchie du lien simple (single linkage).}
 \end{frame}
 
 \begin{frame}{\(K=2\) : les zones couvertes deux fois}
@@ -115,24 +115,15 @@ Un chemin de contacts suffit à réunir deux groupes.\par
 \end{columns}
 \vspace{.3cm}
 \centering\large Les mêmes six points, \alert{une autre façon de se regrouper}.
-\source{Rayon croissant de gauche à droite. Modèle de Hartigan, estimation de densité par les \(K\) plus proches voisins [Hartigan, 1975 ; Biau et Devroye, 2015]. HGP calcule la hiérarchie de ces zones.}
+\source{Modèle de Hartigan et densité estimée par les \(K\) plus proches voisins [Hartigan, 1975 ; Biau et Devroye, 2015].}
 \end{frame}
 
-\begin{frame}{Les artefacts d'un capteur LiDAR}
-\normalsize Le même objet, deux distances au capteur.\par
-\vspace{.18cm}
-\centering\resizebox{!}{3.85cm}{\input{figures/artefacts_lidar.tex}}\par
-\vspace{.20cm}
-\large Plus loin : \textcolor{inriablue}{\textbf{moins de points, plus espacés}}.\par
-\vspace{.12cm}\normalsize
-La forme de l'objet reste la même.
-\source{Schéma repris du poster 3IA 2026. Les lignes de balayage et les retours changent avec la portée. La géométrie comme représentation plus stable est une hypothèse de recherche.}
-\end{frame}
+
 
 \begin{frame}{HGP : conserver toute la hiérarchie}
 \centering\resizebox{.98\linewidth}{!}{\input{figures/hierarchies.tex}}\par
 \vspace{.28cm}
-\large Une hiérarchie raconte \textcolor{inriablue}{\textbf{quand les groupes se rejoignent}}.\par
+\large La hiérarchie indique \textcolor{inriablue}{\textbf{à quel rayon les groupes se rejoignent}}.\par
 \vspace{.18cm}\normalsize
 HGP utilise des interactions entre plusieurs points pour la calculer.\par
 \source{\textcolor{inriared}{[Hauseux, Avrachenkov, Zerubia, Applied Network Science, 2026 ; EUSIPCO, 2024]}. À droite, ABC, CD et DEF peuvent partager des points. Hauteurs schématiques.}
@@ -141,8 +132,8 @@ HGP utilise des interactions entre plusieurs points pour la calculer.\par
 \begin{frame}{Les regroupements en mouvement}
 \begin{columns}[c,onlytextwidth]
 \begin{column}{.34\textwidth}
-\large Comparer visuellement HGP et HDBSCAN.\par\vspace{.5cm}
-\normalsize Quatre scènes pour observer des comportements différents.\par\vspace{.4cm}
+\large HGP et HDBSCAN sur les mêmes nuages de points.\par\vspace{.5cm}
+\normalsize Les regroupements changent avec l'échelle.\par\vspace{.4cm}
 \href{run:videos/hgp_vs_hdbscan_light.mp4}{\textbf{Lire la vidéo}}\par\vspace{.4cm}
 \small
 1 min 41 s, sans son.
@@ -154,11 +145,21 @@ HGP utilise des interactions entre plusieurs points pour la calculer.\par
 \source{Données KITTI et SemanticKITTI [Geiger et al., 2012 ; Behley et al., 2019]. Niveaux choisis dans chaque hiérarchie pour les objets montrés.}
 \end{frame}
 
+\begin{frame}{Les artefacts d'un capteur LiDAR}
+\normalsize Le même objet, deux distances au capteur.\par
+\vspace{.18cm}
+\centering\resizebox{!}{3.85cm}{\input{figures/artefacts_lidar.tex}}\par
+\vspace{.20cm}
+\large Plus loin : \textcolor{inriablue}{\textbf{moins de points, plus espacés}}.\par
+\vspace{.12cm}\normalsize
+La forme de l'objet reste la même.
+\end{frame}
+
 \begin{frame}{Perspective : des pièces géométriques pour l'IA}
 \begin{columns}[c,onlytextwidth]
 \begin{column}{.42\textwidth}
 \large Un modèle de langage travaille sur des morceaux de texte.\par\vspace{.4cm}
-En 3D, notre idée : lui donner des \textcolor{inriablue}{\textbf{pièces géométriques}} et leur hiérarchie.\par\vspace{.4cm}
+Pour la 3D, nous voulons utiliser des \textcolor{inriablue}{\textbf{pièces géométriques}} et leur hiérarchie.\par\vspace{.4cm}
 \normalsize Apprendre à reconnaître une voiture ou un arbre en tenant compte de leur forme et du voisinage.
 \end{column}
 \begin{column}{.53\textwidth}\centering
@@ -166,29 +167,26 @@ En 3D, notre idée : lui donner des \textcolor{inriablue}{\textbf{pièces géom�
 \end{column}
 \end{columns}
 \vspace{.15cm}
-\alert{\textbf{Une piste de recherche pour un modèle de fondation 3D.}}
-\source{Perspective du poster Percolia 3IA 2026. Schéma de pièces et de fusions.}
+\alert{\textbf{Objectif : un modèle de fondation 3D guidé par HGP.}}
 \end{frame}
 
-\begin{frame}{Percolia, avec mon frère Alban}
+\begin{frame}{Percolia}
 \begin{columns}[c,onlytextwidth]
 \begin{column}{.65\textwidth}
 \large Louis et Alban \textsc{Hauseux}\par
-\normalsize À l'Inria Startup Studio depuis octobre 2026.\par\vspace{.45cm}
-\textcolor{inriablue}{\textbf{Aujourd'hui}}\par
-Regrouper les points 3D et exploiter leur géométrie.\par\vspace{.4cm}
-\textcolor{inriared}{\textbf{La suite}}\par
-Apprendre aux machines à reconnaître les objets.\par
-À terme, aider des robots à comprendre leur environnement.
+\normalsize Cofondateurs, Inria Startup Studio depuis octobre 2026.\par\vspace{.45cm}
+\textcolor{inriablue}{\textbf{Structuration des données 3D}}\par
+Clustering et géométrie pour la segmentation LiDAR.\par\vspace{.4cm}
+\textcolor{inriared}{\textbf{Apprentissage 3D}}\par
+Utiliser la hiérarchie HGP pour guider un modèle de fondation.
 \end{column}
 \begin{column}{.29\textwidth}\centering
 \includegraphics[width=.92\linewidth,trim=0bp 0bp 0bp 0bp]{\poster/assets/percolia.pdf}\par
 \vspace{.4cm}
 {\hypersetup{urlcolor=black}\qrcode[height=1.75cm,hyperlink=false]{https://www.linkedin.com/company/percolia/}}\par
-\vspace{.15cm}\href{https://www.linkedin.com/company/percolia/}{Suivre Percolia}
+\vspace{.15cm}\href{https://www.linkedin.com/company/percolia/}{LinkedIn de Percolia}
 \end{column}
 \end{columns}
-\vspace{.45cm}\large\textcolor{inriablue}{\textbf{Qu'aimeriez-vous apprendre à un robot à reconnaître ?}}
 \end{frame}
 \begin{frame}{Bibliographie}
 \begingroup

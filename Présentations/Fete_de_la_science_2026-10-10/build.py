@@ -9,6 +9,7 @@ The neighbouring 3IA poster supplies its existing figures and illustrations.
 from __future__ import annotations
 
 import calendar
+from fractions import Fraction
 import hashlib
 import json
 import os
@@ -26,10 +27,12 @@ import zlib
 
 HERE = Path(__file__).resolve().parent
 JOB = "Fete_de_la_science_2026_Percolia"
-PAGE_COUNT = 10
+PAGE_COUNT = 12
 PDF = HERE / f"{JOB}.pdf"
 ZIP = HERE / f"{JOB}_hors_connexion.zip"
-VIDEO_NAMES = ("hgp_vs_hdbscan_light.mp4", "hgp_vs_hdbscan_dark.mp4")
+VIDEO_NAMES = ("hgp_vs_hdbscan_light.mp4",)
+NAVAL_VIDEO_NAMES = ("naval_chantier_question.mp4", "naval_chantier_solution.mp4")
+NAVAL_VIDEO_POSTERS = ("assets/naval_chantier_question_affiche.png", "assets/naval_chantier_solution_affiche.png")
 NAVAL_IMAGES = tuple(
     f"assets/naval_{kind}_view{view}.png"
     for kind in ("raw", "model", "result", "result_model")
@@ -101,8 +104,7 @@ def check_videos_and_extract_stills() -> dict:
             raise ValueError(f"Unexpected video format: {name}")
         if abs(duration - 100.7) > 0.1:
             raise ValueError(f"Unexpected video duration ({duration}): {name}")
-        theme = "light" if "light" in name else "dark"
-        still = HERE / "assets" / f"linkedin_{theme}_affiche.png"
+        still = HERE / "assets" / "linkedin_light_affiche.png"
         still.parent.mkdir(exist_ok=True)
         command([
             "ffmpeg", "-v", "error", "-y", "-ss", "14", "-i", str(path),
@@ -114,6 +116,63 @@ def check_videos_and_extract_stills() -> dict:
             "still_at_seconds": 14,
         }
     return videos
+
+
+def check_naval_videos() -> dict:
+    """Check rendered orbital views without rerunning the native v12 engine."""
+    manifest_path = HERE / "naval_video_assets.json"
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    sources = {}
+    for entry in manifest["sources"].values():
+        if not isinstance(entry, dict) or "file" not in entry:
+            continue
+        relative = entry["file"]
+        source = HERE / relative
+        if not source.resolve().is_relative_to(HERE) or not source.is_file() or sha256(source) != entry["sha256"]:
+            raise ValueError(f"Naval Group orbital video source checksum mismatch: {relative}")
+        if "bytes" in entry and source.stat().st_size != entry["bytes"]:
+            raise ValueError(f"Naval Group orbital video source size mismatch: {relative}")
+        sources[relative] = {"sha256": entry["sha256"], "bytes": source.stat().st_size}
+    outputs = manifest["outputs"]
+    required = {*(f"videos/{name}" for name in NAVAL_VIDEO_NAMES), *NAVAL_VIDEO_POSTERS}
+    if set(outputs) != required:
+        raise ValueError("The Naval Group video manifest must describe exactly two videos and two posters")
+    checked = {}
+    for relative, entry in sorted(outputs.items()):
+        path = HERE / relative
+        if not path.is_file() or sha256(path) != entry["sha256"] or path.stat().st_size != entry["bytes"]:
+            raise ValueError(f"Naval Group video output checksum or size mismatch: {relative}")
+        checked[relative] = {"sha256": entry["sha256"], "bytes": entry["bytes"]}
+        if path.suffix == ".png":
+            header = path.read_bytes()[:24]
+            if header[:8] != b"\x89PNG\r\n\x1a\n":
+                raise ValueError(f"Expected a Naval Group video poster in PNG: {relative}")
+            width, height = struct.unpack(">II", header[16:24])
+            if (width, height) != (entry["width"], entry["height"]):
+                raise ValueError(f"Naval Group video poster dimensions mismatch: {relative}")
+            checked[relative].update(width=width, height=height)
+            continue
+        probe = json.loads(command([
+            "ffprobe", "-v", "error", "-count_frames", "-show_streams", "-show_format", "-of", "json", str(path),
+        ]))
+        picture = [stream for stream in probe["streams"] if stream["codec_type"] == "video"]
+        if len(picture) != 1 or any(stream["codec_type"] == "audio" for stream in probe["streams"]):
+            raise ValueError(f"Expected one video stream and no audio: {relative}")
+        stream = picture[0]
+        width, height = stream["width"], stream["height"]
+        duration = float(probe["format"]["duration"])
+        fps = Fraction(stream["avg_frame_rate"])
+        frames = int(stream["nb_read_frames"])
+        if stream["codec_name"] != "h264" or stream["pix_fmt"] != "yuv420p" or (width, height) != (1600, 900):
+            raise ValueError(f"Unexpected Naval Group orbital video format: {relative}")
+        if fps != 24 or frames != 288 or abs(duration - 12.0) > 0.02:
+            raise ValueError(f"Expected a 12-second, 288-frame, 24-fps orbital video: {relative}")
+        if ((width, height) != (entry["width"], entry["height"]) or fps != Fraction(str(entry["fps"]))
+                or frames != entry["frames"] or abs(duration - entry["duration_seconds"]) > 0.02):
+            raise ValueError(f"Naval Group orbital video manifest metadata mismatch: {relative}")
+        checked[relative].update(codec=stream["codec_name"], width=width, height=height,
+                                 duration_seconds=duration, fps=float(fps), frames=frames, audio=False)
+    return {"manifest_sha256": sha256(manifest_path), "sources": sources, "outputs": checked}
 
 
 def check_naval_assets() -> dict:
@@ -228,7 +287,7 @@ def compile_pdf() -> dict:
             expanded_pdf.extend(zlib.decompress(stream[1]))
         except zlib.error:
             pass
-    for path in ("videos/hgp_vs_hdbscan_light.mp4", "videos/hgp_vs_hdbscan_dark.mp4"):
+    for path in (f"videos/{name}" for name in VIDEO_NAMES):
         if path.encode() not in expanded_pdf:
             raise ValueError(f"Missing local video hyperlink in PDF: {path}")
     command(["pdftotext", str(PDF), str(HERE / "slides.txt")])
@@ -255,14 +314,16 @@ def render_slides() -> list[str]:
 
 def make_offline_zip(slides: list[str]) -> list[str]:
     files = [f"{JOB}.pdf", "lecteur.html", "NOTES_ORATEUR.md", "README.md", "external_assets.json", "build_report.json",
-             "naval_assets.json", "naval_v12_report.json"]
+             "naval_assets.json", "naval_v12_report.json", "naval_video_assets.json", "render_naval_video.py"]
     naval = json.loads((HERE / "naval_assets.json").read_text(encoding="utf-8"))
     files += sorted(naval["files"])
     files += [path.relative_to(HERE).as_posix() for path in sorted((HERE / "naval_v12").rglob("*"))
               if path.is_file() and "__pycache__" not in path.parts and path.suffix != ".pyc"]
     files += slides
     files += [f"videos/{name}" for name in VIDEO_NAMES]
-    files += ["assets/linkedin_light_affiche.png", "assets/linkedin_dark_affiche.png"]
+    files += [f"videos/{name}" for name in NAVAL_VIDEO_NAMES]
+    files += list(NAVAL_VIDEO_POSTERS)
+    files += ["assets/linkedin_light_affiche.png"]
     if len(files) != len(set(files)):
         raise ValueError("Offline package input list contains duplicate paths")
     html = (HERE / "lecteur.html").read_text(encoding="utf-8")
@@ -297,11 +358,12 @@ def main() -> None:
     naval = check_naval_assets()
     analysis = check_naval_v12_artifacts()
     videos = check_videos_and_extract_stills()
+    naval_videos = check_naval_videos()
     pdf = compile_pdf()
     slides = render_slides()
     report = {"pdf": pdf, "videos": videos, "renders": {"count": len(slides), "width": 1600, "height": 900},
               "external_assets_sha256_verified": len(manifest["files"]), "naval_assets": naval,
-              "naval_v12": analysis}
+              "naval_v12": analysis, "naval_videos": naval_videos}
     (HERE / "build_report.json").write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     files = make_offline_zip(slides)
     published = files + [ZIP.name]

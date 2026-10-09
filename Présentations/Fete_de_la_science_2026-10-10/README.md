@@ -10,9 +10,11 @@ Louis Hauseux présente les travaux de sa thèse et le projet Percolia développ
 2. Ouvrir `lecteur.html` dans un navigateur. Les diapositives et vidéos fonctionnent hors connexion.
 3. Utiliser les flèches ou la barre d'espace. Le bouton plein écran permet la projection. La boucle « stand » défile automatiquement et laisse la vidéo aller jusqu'au bout.
 
-Le PDF `Fete_de_la_science_2026_Percolia.pdf` permet une projection classique. À la diapositive 8, les liens ouvrent les MP4 si le lecteur PDF accepte les liens vers des fichiers locaux. Sinon, ouvrir directement les fichiers du dossier `videos/`. Le lecteur HTML assure la lecture sans dépendre des capacités multimédias du lecteur PDF.
+Les boutons **Question 3D** et **Réponse 3D** ouvrent les deux animations du chantier naval : points à gauche, modèle 3D à droite. Ils ramènent respectivement aux pages 2 et 3. **Revenir à la diapositive** retrouve la comparaison fixe.
 
-Dix diapositives, environ cinq à six minutes d'explication, puis 1 min 41 s de vidéo. Les notes sont dans `NOTES_ORATEUR.md`. Pour une explication courte, utiliser les pages 2 et 3, puis 5 et 6, et la vidéo.
+Le PDF `Fete_de_la_science_2026_Percolia.pdf` permet une projection classique. À la diapositive 9, le lien ouvre le montage HGP–HDBSCAN si le lecteur PDF accepte les liens vers des fichiers locaux. Sinon, ouvrir directement les fichiers du dossier `videos/`. Le lecteur HTML assure la lecture sans dépendre des capacités multimédias du lecteur PDF.
+
+Douze diapositives, dont une bibliographie finale, environ six minutes d'explication, puis 1 min 41 s de vidéo. Les deux vues orbitales ajoutent 12 secondes chacune. Les notes sont dans `NOTES_ORATEUR.md`. Pour une explication courte, utiliser les pages 2 et 3, puis 5 et 6, et la vidéo.
 
 ## Contenu
 
@@ -24,20 +26,26 @@ Dix diapositives, environ cinq à six minutes d'explication, puis 1 min 41 s de 
 | 4 | Regrouper les points |
 | 5 | K=1, union des boules et lien simple |
 | 6 | K=2, zones couvertes deux fois |
-| 7 | La hiérarchie HGP |
-| 8 | Démonstrations vidéo HGP et HDBSCAN |
-| 9 | Perspective : pièces géométriques pour l'IA |
-| 10 | Percolia avec Louis et Alban, QR LinkedIn |
+| 7 | Artefacts LiDAR : le même objet mesuré de près ou de loin |
+| 8 | La hiérarchie HGP |
+| 9 | Démonstration vidéo HGP et HDBSCAN |
+| 10 | Perspective : pièces géométriques pour l'IA |
+| 11 | Percolia avec Louis et Alban, QR LinkedIn |
+| 12 | Bibliographie |
 
-## Les deux vidéos
+## Les vidéos
 
-`videos/hgp_vs_hdbscan_light.mp4` et `videos/hgp_vs_hdbscan_dark.mp4` sont les variantes claire et sombre du **même montage** de quatre scènes, avec légendes anglaises. Format H.264, 1080 × 1350, 30 images/s, 100,7 s, sans son.
+`videos/hgp_vs_hdbscan_light.mp4` présente quatre scènes comparant HGP et HDBSCAN, avec légendes anglaises. Format H.264, 1080 × 1350, 30 images/s, 100,7 s, sans son.
 
-Sources : `E-HGP/Zoltan/demos/videos_hgp_hdbscan/reseaux_sociaux/LinkedIn/`, révision `ac2d5bab814e84db6e1c9340f54995aa9cda58aa`. Les empreintes et URLs précises sont dans `external_assets.json`. Les fichiers copiés sont inchangés.
+Source : `E-HGP/Zoltan/demos/videos_hgp_hdbscan/reseaux_sociaux/LinkedIn/`, révision `ac2d5bab814e84db6e1c9340f54995aa9cda58aa`. L'empreinte et l'URL précise sont dans `external_assets.json`. Le fichier est inchangé.
 
 Ces scènes illustrent des groupes présents dans les hiérarchies. Le niveau est choisi pour chaque objet et la quatrième scène utilise les étiquettes pour isoler les instances. Le montage ne constitue pas un résultat de segmentation finale automatiquement sélectionnée, ni un benchmark général. Le détail est dans les notes.
 
 Crédits : KITTI, Geiger et al., CVPR 2012 ; SemanticKITTI, Behley et al., ICCV 2019. Les conditions des données originales s'appliquent aux vidéos dérivées : KITTI, CC BY-NC-SA 3.0 ; SemanticKITTI, CC BY-NC-SA 4.0. Respecter les attributions et les restrictions d'utilisation des sources lors d'une réutilisation.
+
+`videos/naval_chantier_question.mp4` montre le nuage brut à gauche et les 14 infrastructures du modèle à droite. `videos/naval_chantier_solution.mp4` reprend la même orbite, avec les groupes v12 colorés à gauche et le même modèle à droite. Les panneaux partagent la même caméra à chaque instant. Format H.264, 1600 × 900, 24 images/s, 12 s, sans son. © Naval Group, scène synthétique fournie par Marie Aspro.
+
+Les coordonnées originales de la région étudiée proviennent de `naval_v12/result.npz`, déjà vérifiées contre le scan. Le modèle utilise `naval_v12/bloc_full.ply` et la sélection CAD de référence. `naval_video_assets.json` conserve les sources, empreintes, paramètres de caméra et métadonnées des deux animations. Les vidéos illustrent les mêmes résultats sauvegardés que les vues fixes.
 
 ## Sources et édition
 
@@ -52,7 +60,9 @@ cd Présentations/Fete_de_la_science_2026-10-10
 python3 build.py
 ```
 
-Dépendances : Python 3, pdfLaTeX, Beamer/TikZ, babel français, Latin Modern, QRcode, Poppler et FFmpeg. Les images du thème et les vidéos sont récupérées à des révisions précises, avec vérification SHA256. Le workflow `.github/workflows/fete-science.yml` compile, vérifie et publie les livrables sur `main`.
+`build.py` utilise les animations déjà présentes. Pour les refaire, utiliser la commande de rendu donnée plus bas avant de lancer la compilation.
+
+Dépendances pour les slides : Python 3, pdfLaTeX, Beamer/TikZ, babel français, Latin Modern, QRcode, Poppler et FFmpeg. Le rendu des animations utilise aussi NumPy, Pillow, Matplotlib, DejaVu et un compilateur C++. Les images du thème et le montage LinkedIn sont récupérés à des révisions précises, avec vérification SHA256. Le workflow `.github/workflows/fete-science.yml` rend les animations, compile, vérifie et publie les livrables sur `main`.
 
 Les pages 2 et 3 montrent la même région sous deux projections orthographiques : vue du dessus (XY) et vue de côté (XZ). Le nuage brut et le modèle occupent les deux lignes de la question. La réponse montre les groupes de points calculés, puis le modèle superposé aux groupes repérés. Les cadrages restent identiques entre la question et la réponse pour chaque angle.
 
@@ -80,9 +90,15 @@ Le préfiltrage et la projection sont externes : v12 n'a pas d'API native de pri
 
 `render_naval_views.py` produit les images à partir des données sources et des résultats calculés, avec les fonctions de lecture de `render_naval.py`. `naval_reference_components.json` conserve la sélection des composants CAD. Les sources 3D doivent être récupérées séparément pour refaire le filtrage et les images. Les commandes exactes, paramètres de caméra et versions des dépendances figurent dans `naval_assets.json`.
 
-Pour rejouer le moteur sur les coordonnées résiduelles sauvegardées et vérifier l'export complet et les appartenances, lancer `python3 naval_v12/reproduce.py`. Cela demande NumPy et un compilateur C++20 ; le script récupère les sources CPU épinglées, ou accepte `--source-dir` pour un dossier déjà téléchargé. Ce rejeu a été vérifié jusqu'au bout avec les mêmes empreintes et appartenances. La compilation des slides et le workflow utilisent les PNG et résultats déjà calculés : ils vérifient les empreintes, dimensions et archives sans installer NumPy ni relancer le calcul 3D.
+Pour rejouer le moteur sur les coordonnées résiduelles sauvegardées et vérifier l'export complet et les appartenances, lancer `python3 naval_v12/reproduce.py`. Cela demande NumPy et un compilateur C++20 ; le script récupère les sources CPU épinglées, ou accepte `--source-dir` pour un dossier déjà téléchargé. Ce rejeu a été vérifié jusqu'au bout avec les mêmes empreintes et appartenances. Le workflow utilise les résultats déjà calculés, sans relancer le calcul v12.
 
-Les deux vidéos de la page 8 sont conservées dans leur version d'origine. Elles proviennent du dossier LinkedIn épinglé ci-dessus et restent distinctes de ce nouveau calcul v12 sur la scène navale.
+Pour refaire seulement les deux animations, depuis ce dossier :
+
+```sh
+python3 render_naval_video.py --result naval_v12/result.npz --model naval_v12/bloc_full.ply --components naval_reference_components.json --output-dir videos --manifest naval_video_assets.json
+```
+
+Le montage HGP–HDBSCAN de la page 9 conserve sa version d'origine. Il provient du dossier LinkedIn épinglé ci-dessus et reste distinct du calcul v12 sur la scène navale.
 
 Cette scène synthétique de chantier naval a été fournie par Marie Aspro, © Naval Group. Le projet industriel « Usine du Futur » de Marie a été testé à Lorient ; cette illustration ne désigne pas un navire ou un compartiment précis de ce site. Le modèle de fondation 3D guidé par la hiérarchie reste une perspective de recherche.
 

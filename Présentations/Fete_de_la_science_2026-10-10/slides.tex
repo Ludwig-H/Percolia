@@ -84,7 +84,7 @@
 \large Les points proches forment des \textcolor{inriablue}{\textbf{groupes}}.\par
 \vspace{.2cm}\normalsize
 La géométrie permet de les construire sans apprendre des noms d'objets.
-\source{Exemple du poster 3IA, données de démonstration HDBSCAN \textcolor{inriared}{[Campello et al., 2013]}. Les couleurs représentent des groupes.}
+\source{Exemple du poster 3IA, données de démonstration HDBSCAN [Campello et al., 2013]. Les couleurs représentent des groupes.}
 \end{frame}
 
 \begin{frame}{\(K=1\) : des boules qui se rejoignent}
@@ -115,7 +115,18 @@ Un chemin de contacts suffit à réunir deux groupes.\par
 \end{columns}
 \vspace{.3cm}
 \centering\large Les mêmes six points, \alert{une autre façon de se regrouper}.
-\source{Rayon croissant de gauche à droite. Modèle de Hartigan, estimation de densité par les \(K\) plus proches voisins. HGP calcule la hiérarchie de ces zones.}
+\source{Rayon croissant de gauche à droite. Modèle de Hartigan, estimation de densité par les \(K\) plus proches voisins [Hartigan, 1975 ; Biau et Devroye, 2015]. HGP calcule la hiérarchie de ces zones.}
+\end{frame}
+
+\begin{frame}{Les artefacts d'un capteur LiDAR}
+\normalsize Le même objet, deux distances au capteur.\par
+\vspace{.18cm}
+\centering\resizebox{!}{3.85cm}{\input{figures/artefacts_lidar.tex}}\par
+\vspace{.20cm}
+\large Plus loin : \textcolor{inriablue}{\textbf{moins de points, plus espacés}}.\par
+\vspace{.12cm}\normalsize
+La forme de l'objet reste la même.
+\source{Schéma repris du poster 3IA 2026. Les lignes de balayage et les retours changent avec la portée. La géométrie comme représentation plus stable est une hypothèse de recherche.}
 \end{frame}
 
 \begin{frame}{HGP : conserver toute la hiérarchie}
@@ -132,17 +143,15 @@ HGP utilise des interactions entre plusieurs points pour la calculer.\par
 \begin{column}{.34\textwidth}
 \large Comparer visuellement HGP et HDBSCAN.\par\vspace{.5cm}
 \normalsize Quatre scènes pour observer des comportements différents.\par\vspace{.4cm}
-\href{run:videos/hgp_vs_hdbscan_light.mp4}{\textbf{Lire la version claire}}\par\vspace{.15cm}
-\href{run:videos/hgp_vs_hdbscan_dark.mp4}{\textbf{Lire la version sombre}}\par\vspace{.4cm}
-\small Le même montage, deux thèmes.\par
+\href{run:videos/hgp_vs_hdbscan_light.mp4}{\textbf{Lire la vidéo}}\par\vspace{.4cm}
+\small
 1 min 41 s, sans son.
 \end{column}
 \begin{column}{.62\textwidth}\centering
-\href{run:videos/hgp_vs_hdbscan_light.mp4}{\includegraphics[height=4.45cm]{assets/linkedin_light_affiche.png}}\hspace{.15cm}
-\href{run:videos/hgp_vs_hdbscan_dark.mp4}{\includegraphics[height=4.45cm]{assets/linkedin_dark_affiche.png}}
+\href{run:videos/hgp_vs_hdbscan_light.mp4}{\includegraphics[height=4.75cm]{assets/linkedin_light_affiche.png}}
 \end{column}
 \end{columns}
-\source{Données KITTI et SemanticKITTI \textcolor{inriared}{[Geiger et al., 2012 ; Behley et al., 2019]}. Niveaux choisis dans chaque hiérarchie pour les objets montrés.}
+\source{Données KITTI et SemanticKITTI [Geiger et al., 2012 ; Behley et al., 2019]. Niveaux choisis dans chaque hiérarchie pour les objets montrés.}
 \end{frame}
 
 \begin{frame}{Perspective : des pièces géométriques pour l'IA}
@@ -180,5 +189,45 @@ Apprendre aux machines à reconnaître les objets.\par
 \end{column}
 \end{columns}
 \vspace{.45cm}\large\textcolor{inriablue}{\textbf{Qu'aimeriez-vous apprendre à un robot à reconnaître ?}}
+\end{frame}
+\begin{frame}{Bibliographie}
+\begingroup
+\fontsize{8}{10}\selectfont\color{gris_fonce_inria}
+\setlength{\parskip}{.20cm}
+\begin{columns}[t,onlytextwidth]
+\begin{column}{.47\textwidth}
+{\color{inriared}\hypersetup{urlcolor=inriared}
+L. Hauseux, K. Avrachenkov et J. Zerubia.
+\href{https://doi.org/10.1007/s41109-025-00756-1}{\emph{Generalization of single-linkage with higher-order interactions}}.
+Applied Network Science, 11, article 9, 2026.\par
+
+L. Hauseux, K. Avrachenkov et J. Zerubia.
+\href{https://doi.org/10.23919/EUSIPCO63174.2024.10715271}{\emph{Benefits of hypergraphs for density-based clustering}}.
+EUSIPCO, pp.~2302--2306, 2024.\par
+}
+\vspace{.10cm}
+J. A. Hartigan.
+\emph{Clustering Algorithms}.
+Wiley, 1975.\par
+
+G. Biau et L. Devroye.
+\emph{Lectures on the Nearest Neighbor Method}.
+Springer, 2015.\par
+\end{column}
+\begin{column}{.49\textwidth}
+R. J. G. B. Campello, D. Moulavi et J. Sander.
+\emph{Density-Based Clustering Based on Hierarchical Density Estimates}.
+PAKDD, pp.~160--172, 2013.\par
+
+A. Geiger, P. Lenz et R. Urtasun.
+\emph{Are we ready for Autonomous Driving? The KITTI Vision Benchmark Suite}.
+CVPR, 2012.\par
+
+J. Behley et al.
+\emph{SemanticKITTI: A Dataset for Semantic Scene Understanding of LiDAR Sequences}.
+ICCV, 2019.\par
+\end{column}
+\end{columns}
+\endgroup
 \end{frame}
 \end{document}

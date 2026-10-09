@@ -52,7 +52,7 @@
 <body>
   <main class="viewer" id="viewer" aria-label="Présentation Percolia">
     <div class="stage" id="stage">
-      <img class="media" id="slide" src="diapositives/slide-01.png" alt="Diapositive 1 sur 10. Présentation Percolia à la Fête de la science.">
+      <img class="media" id="slide" src="diapositives/slide-01.png" alt="Diapositive 1 sur 12. Présentation Percolia à la Fête de la science.">
       <video class="media hidden" id="video" controls muted playsinline preload="metadata" aria-label="Démonstration comparative HGP et HDBSCAN, environ 1 minute 41 secondes">
         Votre navigateur ne permet pas de lire la vidéo. Ouvrez le fichier MP4 dans un lecteur vidéo.
       </video>
@@ -66,28 +66,27 @@
     <div class="toolbar" aria-label="Commandes de présentation">
       <div class="nav">
         <button id="previous" aria-label="Diapositive précédente" disabled>←</button>
-        <span class="count" id="count" aria-hidden="true">1 / 10</span>
+        <span class="count" id="count" aria-hidden="true">1 / 12</span>
         <button id="next" aria-label="Diapositive suivante">→</button>
       </div>
       <button id="fullscreen">Plein écran</button>
       <label class="setting"><input type="checkbox" id="stand"> Boucle stand</label>
       <label class="setting">Durée <input type="number" id="duration" min="5" max="180" step="1" value="20" aria-label="Durée de chaque diapositive en secondes"> s</label>
-      <label class="setting hidden" id="variantLabel">Vidéo
-        <select id="variant" aria-label="Variante visuelle de la même démonstration">
-          <option value="light">Clair</option>
-          <option value="dark">Sombre</option>
-        </select>
-      </label>
+      <div class="nav" aria-label="Vues 3D du chantier naval">
+        <button id="navalQuestion">Question 3D</button>
+        <button id="navalSolution">Réponse 3D</button>
+        <button class="hidden" id="returnSlide">Revenir à la diapositive</button>
+      </div>
       <a class="pdf" href="Fete_de_la_science_2026_Percolia.pdf" target="_blank" rel="noopener">Ouvrir le PDF</a>
     </div>
     <p class="help">← → ou Espace : naviguer · F : plein écran · Échap : quitter le plein écran</p>
-    <p class="sr-only" id="announcement" aria-live="polite" aria-atomic="true">Diapositive 1 sur 10.</p>
+    <p class="sr-only" id="announcement" aria-live="polite" aria-atomic="true">Diapositive 1 sur 12.</p>
   </main>
   <script>
     "use strict";
     (() => {
-      const total = 10;
-      const videoSlide = 7;
+      const total = 12;
+      const videoSlide = 8;
       const viewer = document.getElementById("viewer");
       const slide = document.getElementById("slide");
       const video = document.getElementById("video");
@@ -97,8 +96,9 @@
       const fullscreen = document.getElementById("fullscreen");
       const stand = document.getElementById("stand");
       const duration = document.getElementById("duration");
-      const variant = document.getElementById("variant");
-      const variantLabel = document.getElementById("variantLabel");
+      const navalQuestion = document.getElementById("navalQuestion");
+      const navalSolution = document.getElementById("navalSolution");
+      const returnSlide = document.getElementById("returnSlide");
       const error = document.getElementById("error");
       const errorTitle = document.getElementById("errorTitle");
       const errorText = document.getElementById("errorText");
@@ -110,6 +110,11 @@
       let controlsTimer = null;
       let videoFailed = false;
       let currentVideoPath = "";
+      let navalMode = null;
+
+      function isVideoMode() {
+        return index === videoSlide || navalMode !== null;
+      }
 
       function clearAdvance() {
         window.clearTimeout(advanceTimer);
@@ -125,7 +130,7 @@
         clearAdvance();
         if (!stand.checked) return;
         // La démonstration doit finir avant de passer à la suite.
-        if (index === videoSlide && !videoFailed) {
+        if (isVideoMode() && !videoFailed) {
           if (video.ended) show((index + 1) % total);
           return;
         }
@@ -141,12 +146,13 @@
       }
 
       async function playVideo() {
-        if (index !== videoSlide || videoFailed) return;
+        if (!isVideoMode() || videoFailed) return;
+        const requestedPath = currentVideoPath;
         try {
           await video.play();
-          if (index === videoSlide) play.classList.add("hidden");
+          if (isVideoMode() && requestedPath === currentVideoPath) play.classList.add("hidden");
         } catch (_) {
-          if (index === videoSlide && !videoFailed) {
+          if (isVideoMode() && requestedPath === currentVideoPath && !videoFailed) {
             play.classList.remove("hidden");
             announcement.textContent = "Appuyez sur Lancer la vidéo pour démarrer la démonstration.";
           }
@@ -154,7 +160,9 @@
       }
 
       function loadVideo(reset) {
-        const path = "videos/hgp_vs_hdbscan_" + variant.value + ".mp4";
+        const path = navalMode
+          ? "videos/naval_chantier_" + navalMode + ".mp4"
+          : "videos/hgp_vs_hdbscan_light.mp4";
         videoFailed = false;
         if (path !== currentVideoPath || video.error) {
           currentVideoPath = path;
@@ -163,7 +171,12 @@
         } else if (reset) {
           try { video.currentTime = 0; } catch (_) { /* Métadonnées encore indisponibles. */ }
         }
-        video.poster = "diapositives/slide-08.png";
+        video.poster = navalMode
+          ? "assets/naval_chantier_" + navalMode + "_affiche.png"
+          : "diapositives/slide-09.png";
+        video.setAttribute("aria-label", navalMode
+          ? (navalMode === "question" ? "Question" : "Réponse") + " : scène de chantier naval en 3D, points à gauche et modèle à droite, 12 secondes"
+          : "Démonstration comparative HGP et HDBSCAN, environ 1 minute 41 secondes");
         play.textContent = "Lancer la vidéo";
         if (stand.checked) playVideo();
         else play.classList.remove("hidden");
@@ -172,6 +185,7 @@
       function show(target) {
         clearAdvance();
         video.pause();
+        navalMode = null;
         index = Math.min(total - 1, Math.max(0, target));
         error.classList.add("hidden");
         play.classList.add("hidden");
@@ -180,14 +194,28 @@
         const isVideo = index === videoSlide;
         slide.classList.toggle("hidden", isVideo);
         video.classList.toggle("hidden", !isVideo);
-        variantLabel.classList.toggle("hidden", !isVideo);
+        returnSlide.classList.add("hidden");
         count.textContent = (index + 1) + " / " + total;
         previous.disabled = index === 0;
         next.disabled = index === total - 1;
         announcement.textContent = isVideo
-          ? "Diapositive 8 sur 10. Démonstration HGP et HDBSCAN. Clair et sombre sont deux variantes du même montage."
+          ? "Diapositive 9 sur 12. Démonstration HGP et HDBSCAN."
           : "Diapositive " + (index + 1) + " sur " + total + ".";
         if (isVideo) loadVideo(true);
+        schedule();
+      }
+
+      function openNaval(mode) {
+        show(mode === "question" ? 1 : 2);
+        navalMode = mode;
+        slide.classList.add("hidden");
+        video.classList.remove("hidden");
+        returnSlide.classList.remove("hidden");
+        announcement.textContent = mode === "question"
+          ? "Question 3D. Comparer le nuage brut à gauche au modèle à droite."
+          : "Réponse 3D. À gauche, les groupes repérés ; à droite, le même modèle de référence.";
+        loadVideo(true);
+        if (!stand.checked) playVideo();
         schedule();
       }
 
@@ -209,16 +237,16 @@
       }
 
       slide.addEventListener("error", () => {
-        if (index === videoSlide) return;
+        if (isVideoMode()) return;
         setError("Diapositive " + (index + 1) + " indisponible",
           "Vérifiez que le dossier diapositives se trouve à côté de lecteur.html.",
           "Fete_de_la_science_2026_Percolia.pdf", "Ouvrir le PDF");
       });
       slide.addEventListener("load", () => {
-        if (index !== videoSlide) error.classList.add("hidden");
+        if (!isVideoMode()) error.classList.add("hidden");
       });
       video.addEventListener("error", () => {
-        if (index !== videoSlide) return;
+        if (!isVideoMode()) return;
         videoFailed = true;
         play.classList.add("hidden");
         setError("Vidéo indisponible",
@@ -227,8 +255,8 @@
         schedule();
       });
       video.addEventListener("ended", () => {
-        if (index === videoSlide && stand.checked) show((index + 1) % total);
-        else if (index === videoSlide) {
+        if (isVideoMode() && stand.checked) show((index + 1) % total);
+        else if (isVideoMode()) {
           play.textContent = "Revoir la vidéo";
           play.classList.remove("hidden");
         }
@@ -237,20 +265,18 @@
       play.addEventListener("click", playVideo);
       previous.addEventListener("click", () => show(index - 1));
       next.addEventListener("click", () => show(index + 1));
+      navalQuestion.addEventListener("click", () => openNaval("question"));
+      navalSolution.addEventListener("click", () => openNaval("solution"));
+      returnSlide.addEventListener("click", () => show(index));
       fullscreen.addEventListener("click", toggleFullscreen);
       stand.addEventListener("change", () => {
-        if (stand.checked && index === videoSlide && !videoFailed) {
+        if (stand.checked && isVideoMode() && !videoFailed) {
           if (video.ended) video.currentTime = 0;
           playVideo();
         }
         schedule();
       });
       duration.addEventListener("change", () => { duration.value = String(seconds()); schedule(); });
-      variant.addEventListener("change", () => {
-        error.classList.add("hidden");
-        loadVideo(true);
-        schedule();
-      });
       document.addEventListener("keydown", event => {
         const target = event.target;
         if (target instanceof HTMLElement && (target.matches("input, select, textarea") || target.isContentEditable)) return;

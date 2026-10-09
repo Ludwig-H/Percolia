@@ -1,5 +1,5 @@
 {
-  "description": "Illustrations du template Inria et deux thèmes du même montage vidéo LinkedIn ; sources publiques épinglées et empreintes SHA-256 vérifiées.",
+  "description": "Illustrations du template Inria et vidéo LinkedIn HGP/HDBSCAN en version claire ; sources publiques épinglées et empreintes SHA-256 vérifiées.",
   "files": {
     "theme/imgs/Filet-7pt.png": {
       "url": "https://raw.githubusercontent.com/Ludwig-H/Generalized-Frangi-for-Automatic-Crack-Extraction-on-FIND-dataset/875202c0a9aa6cd11b001469d65ee7635459d3dd/EUVIP/presentation/theme/imgs/Filet-7pt.png",
@@ -20,11 +20,6 @@
       "url": "https://raw.githubusercontent.com/Ludwig-H/Generalized-Frangi-for-Automatic-Crack-Extraction-on-FIND-dataset/875202c0a9aa6cd11b001469d65ee7635459d3dd/EUVIP/presentation/theme/imgs/angle.png",
       "sha256": "51f4b4af287cc36f139e9672e876bfecc66d5fa0c2e4f397c295c080e902dc4a",
       "size": 39630
-    },
-    "videos/hgp_vs_hdbscan_dark.mp4": {
-      "url": "https://raw.githubusercontent.com/Ludwig-H/E-HGP/ac2d5bab814e84db6e1c9340f54995aa9cda58aa/Zoltan/demos/videos_hgp_hdbscan/reseaux_sociaux/LinkedIn/hgp_vs_hdbscan_dark.mp4",
-      "sha256": "87d2267cac57001d3c87939e840274cef01bd52d905f39d6b3a351bda493a7d5",
-      "size": 7500603
     },
     "videos/hgp_vs_hdbscan_light.mp4": {
       "url": "https://raw.githubusercontent.com/Ludwig-H/E-HGP/ac2d5bab814e84db6e1c9340f54995aa9cda58aa/Zoltan/demos/videos_hgp_hdbscan/reseaux_sociaux/LinkedIn/hgp_vs_hdbscan_light.mp4",

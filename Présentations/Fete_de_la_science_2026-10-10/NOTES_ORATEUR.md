@@ -4,7 +4,7 @@ Présentation de Louis Hauseux, Percolia avec Alban Hauseux, Fête de la science
 
 ## Une conversation de cinq minutes
 
-Les diapositives 1 à 7, 9 et 10 se racontent en cinq à six minutes. La vidéo ajoute environ une minute quarante. Pour un visiteur pressé : 2 et 3, puis 5 et 6, et la vidéo. Pour un enfant : montrer les groupes, faire suivre les contacts entre les disques du doigt et demander ce qu'un robot pourrait reconnaître.
+Les diapositives 1 à 8, 10 et 11 se racontent en environ six minutes. La vidéo de la page 9 ajoute environ une minute quarante ; les deux animations du chantier naval durent 12 secondes chacune. La page 12 rassemble la bibliographie. Pour un visiteur pressé : 2 et 3, puis 5 et 6, et la vidéo. Pour un enfant : montrer les groupes, faire suivre les contacts entre les disques du doigt et demander ce qu'un robot pourrait reconnaître.
 
 ### 1. Des points aux objets
 
@@ -16,6 +16,8 @@ Les diapositives 1 à 7, 9 et 10 se racontent en cinq à six minutes. La vidéo 
 
 Laisser quelques secondes au public pour comparer les vues et proposer une réponse. Garder l'explication pour la diapositive suivante. Les deux colonnes présentent deux projections de la même région ; pour chaque colonne, le scan et le modèle ont le même cadrage.
 
+Le bouton **Question 3D** du lecteur lance une orbite de 12 secondes : nuage brut à gauche, modèle à droite, avec la même caméra dans les deux panneaux. **Revenir à la diapositive** retrouve les vues fixes. Demander au public de repérer les ajouts avant de lancer la réponse.
+
 Le fichier source `scan_lidar.ply` contient **2 321 251 points** avant cadrage. Le modèle reprend 14 infrastructures du maillage CAD `bloc_full.ply` : les 13 références OFF, plus `Cube_3` identifié dans le CAD. La région étudiée contient 330 543 points ; un point sur quatre est affiché, soit 82 636 points communs aux huit images. Cet allègement visuel ne réduit pas les données utilisées par le calcul. La question montre des points gris, sans réutiliser les étiquettes de segmentation.
 
 ### 3. Repérer les objets ajoutés
@@ -23,6 +25,8 @@ Le fichier source `scan_lidar.ply` contient **2 321 251 points** avant cadrage. 
 « Le modèle nous indique où se trouvent les structures attendues. Nous regroupons les points qui restent. Le rouge est compatible avec le modèle ; les autres couleurs montrent les groupes repérés. On retrouve les deux mêmes vues. »
 
 En haut : le nuage regroupé. En bas : les structures du modèle, avec les points des groupes repérés. Les couleurs des groupes restent les mêmes entre les deux vues. Le rouge représente la compatibilité avec les priors ; les boîtes peuvent aussi couvrir des portions d'objets ajoutés. Le gris représente le fond connu ou des résidus non retenus par la coupe. Les groupes colorés proviennent des résultats calculés sur les points résiduels. La vue du bas superpose ces points aux structures du modèle de référence.
+
+Le bouton **Réponse 3D** lance la même orbite, avec les groupes colorés à gauche et le même modèle de référence à droite. Le rouge et le gris gardent le sens indiqué sur la diapositive. Les coordonnées et groupes sont ceux du résultat v12 sauvegardé ; cette animation ne refait aucun calcul de hiérarchie.
 
 **Pour les ingénieurs :** les priors sont appliqués avant le calcul : 290 878 points sont compatibles avec les 14 boîtes alignées sur les axes (min/max des 13 OFF ; boîte CAD de `Cube_3` élargie de 3 cm). Parmi les points restants, 15 791 se trouvent à au plus 3 cm des 104 triangles du fond CAD connu. Les 23 874 résidus sont tous quantifiés sur 21 bits et traités par le code Morse HGP 3D v12 inchangé, pour la tour complète K=1 à K=3.
 
@@ -54,31 +58,41 @@ Bien montrer que la lentille du milieu reste une zone distincte au stade interm�
 
 **Pour les ingénieurs :** \(E_K(r)=\{y:\#\{i:\|y-x_i\|\leq r\}\geq K\}\). C'est le superniveau de l'estimateur de densité K-NN après changement de variable entre densité et rayon. À K=2, les composantes sont des unions de lentilles. Leur rattachement nécessite des recouvrements, notamment des intersections triples. Ne pas assimiler directement K au `min_samples` de toutes les bibliothèques DBSCAN/HDBSCAN : leurs conventions diffèrent.
 
-### 7. La hiérarchie HGP
+### 7. Les artefacts LiDAR
+
+« Une même voiture ne donne pas le même nuage quand elle est proche ou loin du capteur. De loin, on a moins de points et davantage d'espace entre eux. Pourtant, c'est toujours la même voiture. Nous cherchons une description qui garde sa géométrie malgré ces différences de mesure. »
+
+La figure compare un échantillonnage fin et un échantillonnage plus espacé d'une même forme. La reconstruction de droite est plus grossière. L'idée que la géométrie pourrait varier moins que l'échantillonnage est une hypothèse de travail, pas une garantie d'invariance à la portée ou au capteur.
+
+### 8. La hiérarchie HGP
 
 « Choisir une seule taille de groupe oblige à choisir une seule échelle. Nous conservons toute l'histoire : quelles petites pièces apparaissent, et quand elles se réunissent. HGP généralise le lien simple avec des interactions entre plusieurs points. »
 
 Le diagramme de droite représente des groupes qui peuvent partager des points. C et D apparaissent dans plusieurs branches. Les hauteurs sont schématiques : on compare l'ordre des fusions, pas des valeurs numériques mesurées sur les axes du dessin. HGP calcule la hiérarchie exacte du modèle géométrique choisi, ce qui ne suffit pas à garantir une reconnaissance sémantique parfaite dans toutes les scènes.
 
-### 8. La vidéo
+### 9. La vidéo
 
 « Le haut montre HGP, le bas HDBSCAN. L'échelle change pendant la vidéo. On regarde si les objets restent séparés ou s'ils se rejoignent trop tôt. Ici, A est un piéton et B et C sont des vélos. »
 
-Les versions claire et sombre sont le **même montage**, avec quatre scènes. Choisir une seule version pendant l'explication. Le montage dure 100,7 secondes, sans son. Les légendes d'origine sont en anglais.
+Le montage contient quatre scènes et dure 100,7 secondes, sans son. Les légendes d'origine sont en anglais.
 
 Ce sont des exemples de groupes présents dans les hiérarchies, avec un niveau choisi pour chaque objet, et non une segmentation finale automatiquement sélectionnée. Les trois premières scènes retirent le sol avec Patchwork++ et conservent le voisinage. La quatrième isole les instances à partir des étiquettes de référence. Les coches proviennent de la comparaison aux objets annotés. Ces scènes illustrent des comportements, sans établir une supériorité générale de HGP.
 
-### 9. Les pièces pour l'IA
+### 10. Les pièces pour l'IA
 
 « Les modèles de langage travaillent sur des morceaux de texte. Pour la 3D, nous proposons des pièces géométriques : leur forme, leur taille, leur voisinage et la manière dont elles se réunissent. Nous voulons tester si cette organisation aide une IA à apprendre. »
 
 Le schéma représente des morceaux de surface qui se réunissent. Le modèle de fondation 3D guidé par HGP est une **piste de recherche**. Aucun résultat d'apprentissage n'est revendiqué ici. L'association avec un modèle de langage est une perspective pour dialoguer avec des robots sur leur environnement.
 
-### 10. Percolia
+### 11. Percolia
 
 « Avec Alban, nous avons rejoint l'Inria Startup Studio en octobre. Nous développons des outils pour exploiter la géométrie des données 3D. Notre ambition est de contribuer à des machines qui comprennent mieux ce qu'elles voient. Qu'aimeriez-vous apprendre à un robot à reconnaître ? »
 
 Le QR code mène à la page LinkedIn de Percolia.
+
+### 12. Bibliographie
+
+Les références rassemblent les travaux sur les hiérarchies de clustering et HGP. Laisser cette page disponible pour les visiteurs qui souhaitent retrouver les articles ; elle n'appelle pas de commentaire détaillé dans le parcours court.
 
 ## Sources
 

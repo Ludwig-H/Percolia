@@ -9,6 +9,7 @@ on:
       - 'Présentations/Fete_de_la_science_2026-10-10/build.py'
       - 'Présentations/Fete_de_la_science_2026-10-10/render_naval.py'
       - 'Présentations/Fete_de_la_science_2026-10-10/render_naval_views.py'
+      - 'Présentations/Fete_de_la_science_2026-10-10/render_naval_video.py'
       - 'Présentations/Fete_de_la_science_2026-10-10/naval_assets.json'
       - 'Présentations/Fete_de_la_science_2026-10-10/naval_reference_components.json'
       - 'Présentations/Fete_de_la_science_2026-10-10/assets/naval_raw.png'
@@ -60,11 +61,21 @@ jobs:
           sudo apt-get update -qq
           sudo apt-get install -y --no-install-recommends \
             texlive-latex-extra texlive-lang-french texlive-fonts-recommended \
-            lmodern poppler-utils ffmpeg
+            lmodern poppler-utils ffmpeg fonts-dejavu-core g++ \
+            python3-numpy python3-pil python3-matplotlib
+
+      - name: Produire les deux vues orbitales depuis les coordonnées sauvegardées
+        run: |
+          git rev-parse HEAD > "$RUNNER_TEMP/fete-science-build-head"
+          python3 "$DECK/render_naval_video.py" \
+            --result "$DECK/naval_v12/result.npz" \
+            --model "$DECK/naval_v12/bloc_full.ply" \
+            --components "$DECK/naval_reference_components.json" \
+            --output-dir "$DECK/videos" \
+            --manifest "$DECK/naval_video_assets.json"
 
       - name: Compiler, contrôler les vidéos et préparer la projection
         run: |
-          git rev-parse HEAD > "$RUNNER_TEMP/fete-science-build-head"
           python3 "$DECK/build.py"
 
       - name: Conserver les livrables contrôlés et les journaux
@@ -77,6 +88,9 @@ jobs:
             Présentations/Fete_de_la_science_2026-10-10/Fete_de_la_science_2026_Percolia_hors_connexion.zip
             Présentations/Fete_de_la_science_2026-10-10/SHA256SUMS*.txt
             Présentations/Fete_de_la_science_2026-10-10/build_report.json
+            Présentations/Fete_de_la_science_2026-10-10/naval_video_assets.json
+            Présentations/Fete_de_la_science_2026-10-10/videos/naval_chantier_question.mp4
+            Présentations/Fete_de_la_science_2026-10-10/videos/naval_chantier_solution.mp4
             Présentations/Fete_de_la_science_2026-10-10/compile-*.log
             Présentations/Fete_de_la_science_2026-10-10/Fete_de_la_science_2026_Percolia.log
             Présentations/Fete_de_la_science_2026-10-10/pdfinfo.txt
@@ -92,6 +106,7 @@ jobs:
             '.github/workflows/fete-science.yml'
             "$DECK/slides.tex" "$DECK/build.py" "$DECK/external_assets.json"
             "$DECK/render_naval.py" "$DECK/render_naval_views.py" "$DECK/naval_assets.json" "$DECK/naval_reference_components.json"
+            "$DECK/render_naval_video.py"
             "$DECK/assets/naval_raw.png" "$DECK/assets/naval_model.png"
             "$DECK/assets/naval_raw_view1.png" "$DECK/assets/naval_raw_view2.png"
             "$DECK/assets/naval_model_view1.png" "$DECK/assets/naval_model_view2.png"
@@ -125,8 +140,13 @@ jobs:
             "$DECK/diapositives/slide-05.png" "$DECK/diapositives/slide-06.png" \
             "$DECK/diapositives/slide-07.png" "$DECK/diapositives/slide-08.png" \
             "$DECK/diapositives/slide-09.png" "$DECK/diapositives/slide-10.png" \
-            "$DECK/assets/linkedin_light_affiche.png" "$DECK/assets/linkedin_dark_affiche.png" \
-            "$DECK/videos/hgp_vs_hdbscan_light.mp4" "$DECK/videos/hgp_vs_hdbscan_dark.mp4" \
+            "$DECK/diapositives/slide-11.png" \
+            "$DECK/diapositives/slide-12.png" \
+            "$DECK/assets/linkedin_light_affiche.png" \
+            "$DECK/videos/hgp_vs_hdbscan_light.mp4" \
+            "$DECK/videos/naval_chantier_question.mp4" "$DECK/videos/naval_chantier_solution.mp4" \
+            "$DECK/assets/naval_chantier_question_affiche.png" "$DECK/assets/naval_chantier_solution_affiche.png" \
+            "$DECK/naval_video_assets.json" \
             "$DECK/theme/imgs/Filet-7pt.png" "$DECK/theme/imgs/Inria-logo-rouge.png" \
             "$DECK/theme/imgs/RF-INria_Bloc-marque.png" "$DECK/theme/imgs/angle.png"
           if git diff --cached --quiet; then

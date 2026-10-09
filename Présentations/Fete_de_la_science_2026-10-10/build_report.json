@@ -1,8 +1,8 @@
 {
   "pdf": {
-    "pages": 10,
+    "pages": 12,
     "aspect_ratio": "16:9",
-    "sha256": "964217728922ec89b5e8c5e253449599328eaa19c5e3562c2134e35ae24020f6",
+    "sha256": "32be52ceeca2d76e63a4cc5d142f3868d39ead3d289e201ab9bddaa3d7ce3804",
     "overfull_boxes_over_1pt": 0
   },
   "videos": {
@@ -14,23 +14,14 @@
       "audio": false,
       "sha256": "fd0073e673b6104a8f5c763d4dfe15dba508caf85870377543906a32cbbf606c",
       "still_at_seconds": 14
-    },
-    "hgp_vs_hdbscan_dark.mp4": {
-      "codec": "h264",
-      "width": 1080,
-      "height": 1350,
-      "duration_seconds": 100.7,
-      "audio": false,
-      "sha256": "87d2267cac57001d3c87939e840274cef01bd52d905f39d6b3a351bda493a7d5",
-      "still_at_seconds": 14
     }
   },
   "renders": {
-    "count": 10,
+    "count": 12,
     "width": 1600,
     "height": 900
   },
-  "external_assets_sha256_verified": 6,
+  "external_assets_sha256_verified": 5,
   "naval_assets": {
     "assets/naval_model.png": {
       "sha256": "befd1c0e65f92b14adf9c0a469ae10ce169a8c775b01ad9176a4f84d5d1d8c2e",
@@ -130,6 +121,10 @@
         "sha256": "824a1dd0024d8ee3d46bc59716d21b60c9f7ea26aa89d7756e9b35dd9d322a09",
         "size": 3023
       },
+      "naval_v12/bloc_full.ply": {
+        "sha256": "18405ab5a78149749f6146dbc91ea8cfbb939eedfeca4c6053748ecf51f72d3f",
+        "size": 126025
+      },
       "naval_v12/build_engine.py": {
         "sha256": "2aa182cdf68182cb3c8f874223aaac8175f187adc49dbf36ad6c7618b64f0c1d",
         "size": 1681
@@ -217,6 +212,71 @@
       "naval_v12/source_tree.json": {
         "sha256": "07545f1c0981bf41a18c1825b50a30aa1906359e0bbf064b7caff36c9e692813",
         "size": 62503
+      }
+    }
+  },
+  "naval_videos": {
+    "manifest_sha256": "649bdc36d70e0d9a419eb2544eb335b0bb69e2b3ca3299c5712cd3b017e94d24",
+    "sources": {
+      "naval_v12/result.npz": {
+        "sha256": "6535e19d52d62b24c7bdee6fb8f16c5212e0dfe66de2131b8aae05449de7bdd2",
+        "bytes": 9542706
+      },
+      "naval_v12/bloc_full.ply": {
+        "sha256": "18405ab5a78149749f6146dbc91ea8cfbb939eedfeca4c6053748ecf51f72d3f",
+        "bytes": 126025
+      },
+      "naval_reference_components.json": {
+        "sha256": "7f4b075fed371613a214b0b98a6204614f2fe99605d6801f2856604648f20b44",
+        "bytes": 25290
+      },
+      "render_naval_video.py": {
+        "sha256": "ae91739acf70d7452c1efa339c203b0dc71d1339cc5013c913204f4b54052cf8",
+        "bytes": 25034
+      },
+      "render_naval.py": {
+        "sha256": "44a1667e3a7d85d18f3f9fdb8a636432969a0c6eff8516d45e6271a677830c8c",
+        "bytes": 19698
+      },
+      "naval_v12/data_source_manifest.json": {
+        "sha256": "c30815ca8fbae5c1da351200831947890896f156e4d847fb46364f3cf67eed3a",
+        "bytes": 5841
+      }
+    },
+    "outputs": {
+      "assets/naval_chantier_question_affiche.png": {
+        "sha256": "f41e725c11d8dc2056a0a737f4e54d2d06cc6ed26a2eb2fab76e0303d0bcc5da",
+        "bytes": 588273,
+        "width": 1600,
+        "height": 900
+      },
+      "assets/naval_chantier_solution_affiche.png": {
+        "sha256": "265ba9fbe38a3a7bac032e5a6f7e7e3ff65b982bd8b77344c36fccf19fb9d4a5",
+        "bytes": 580821,
+        "width": 1600,
+        "height": 900
+      },
+      "videos/naval_chantier_question.mp4": {
+        "sha256": "9d4f36b167576e048095d91f6c31e8c916b213bd0e3127eac2b298521a1b9ad3",
+        "bytes": 17394093,
+        "codec": "h264",
+        "width": 1600,
+        "height": 900,
+        "duration_seconds": 12.0,
+        "fps": 24.0,
+        "frames": 288,
+        "audio": false
+      },
+      "videos/naval_chantier_solution.mp4": {
+        "sha256": "b45a03f9751d479f4091d0f2c748f79aeaf61a6b6f4123b0afd65002b249698d",
+        "bytes": 19434021,
+        "codec": "h264",
+        "width": 1600,
+        "height": 900,
+        "duration_seconds": 12.0,
+        "fps": 24.0,
+        "frames": 288,
+        "audio": false
       }
     }
   }

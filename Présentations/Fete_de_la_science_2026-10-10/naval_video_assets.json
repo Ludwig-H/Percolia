@@ -1,0 +1,183 @@
+{
+  "renderer": "render_naval_video.py",
+  "schema_version": 1,
+  "description": "Two matching 360-degree views of exact raw LiDAR XYZ and the true reference CAD; the second only changes point colours using the reviewed real v12 result.",
+  "sources": {
+    "result": {
+      "file": "naval_v12/result.npz",
+      "sha256": "6535e19d52d62b24c7bdee6fb8f16c5212e0dfe66de2131b8aae05449de7bdd2",
+      "bytes": 9542706,
+      "coordinates": "reviewed exact original scan XYZ indexed by original PointId",
+      "engine_commit": "ac2d5bab814e84db6e1c9340f54995aa9cda58aa"
+    },
+    "model": {
+      "file": "naval_v12/bloc_full.ply",
+      "sha256": "18405ab5a78149749f6146dbc91ea8cfbb939eedfeca4c6053748ecf51f72d3f",
+      "bytes": 126025,
+      "source_url": "https://drive.google.com/file/d/1C3sSBzJmAS2mKlxhAacEPQcUiInUO_VV/view"
+    },
+    "named_components": {
+      "file": "naval_reference_components.json",
+      "sha256": "7f4b075fed371613a214b0b98a6204614f2fe99605d6801f2856604648f20b44"
+    },
+    "renderer": {
+      "file": "render_naval_video.py",
+      "sha256": "ae91739acf70d7452c1efa339c203b0dc71d1339cc5013c913204f4b54052cf8"
+    },
+    "projection_helper": {
+      "file": "render_naval.py",
+      "sha256": "44a1667e3a7d85d18f3f9fdb8a636432969a0c6eff8516d45e6271a677830c8c"
+    },
+    "source_manifest": {
+      "file": "naval_v12/data_source_manifest.json",
+      "sha256": "c30815ca8fbae5c1da351200831947890896f156e4d847fb46364f3cf67eed3a"
+    },
+    "original_scan_sha256": "fbcbe22be7d4bca36d15e5e0549a26af6218303668bf5ee4f1119c7246da8ab1"
+  },
+  "model": {
+    "selection": [
+      "Cube_1",
+      "Cube_2",
+      "Cube_3",
+      "Equerre_1",
+      "Equerre_2",
+      "Equerre_3",
+      "Pipe_1",
+      "Pipe_2",
+      "Pipe_3",
+      "Pipe_4",
+      "Pipe_10",
+      "Pipe_11",
+      "Plane_1",
+      "Plane_2"
+    ],
+    "actual_original_triangles": 4152,
+    "actual_original_vertices": 2102,
+    "bounding_boxes_are_not_display_geometry": true,
+    "anomaly_meshes_used": false,
+    "background_mesh_displayed": false
+  },
+  "point_sampling": {
+    "ROI_original_points": 330543,
+    "stride": 4,
+    "drawn_points_each_video": 82636,
+    "same_original_PointIds_in_both_videos": true,
+    "original_PointIds_le_i64_sha256": "5408a4ef67281d0da4190ef4b43e3d97de0144f8ea0deb6b5d25e0e09dc9ef61"
+  },
+  "camera": {
+    "projection": "orthographic",
+    "elevation_degrees": 24.0,
+    "start_azimuth_degrees": 45.0,
+    "total_rotation_degrees": 360,
+    "azimuth_formula": "start + 360 * frame_index / frame_count",
+    "shared_azimuth_elevation_le_f64_sha256": "0554b157e363b6dc3d25daeb9efb7c9de473912b05c95ca00493aa5b5a8d3fe1",
+    "trajectory_columns": [
+      "azimuth_degrees",
+      "elevation_degrees"
+    ],
+    "video_trajectory_sha256": {
+      "question": "0554b157e363b6dc3d25daeb9efb7c9de473912b05c95ca00493aa5b5a8d3fe1",
+      "solution": "0554b157e363b6dc3d25daeb9efb7c9de473912b05c95ca00493aa5b5a8d3fe1"
+    },
+    "center_xyz_m": [
+      5.000000000032756e-06,
+      0.052095,
+      1.3865799
+    ],
+    "fixed_projected_bounds_m": [
+      -4.820696777921733,
+      4.820696777921733,
+      -4.531068800610013,
+      4.531068800610013
+    ],
+    "bounds_for_entire_orbit": true,
+    "same_camera_and_axes_for_every_panel": true,
+    "same_right_panel_pixels_in_both_videos_before_encoding": true,
+    "same_left_geometry_and_depth_in_both_videos_before_encoding": true,
+    "source_bounds_xyz_m": [
+      [
+        -3.22998,
+        -3.18,
+        -0.0500002
+      ],
+      [
+        3.22999,
+        3.28419,
+        2.82316
+      ]
+    ]
+  },
+  "render": {
+    "width": 1600,
+    "height": 900,
+    "duration_seconds": 12.0,
+    "fps": 24,
+    "frames": 288,
+    "background": "#ffffff",
+    "point_radius_pixels": 0.95,
+    "supersampling": 2,
+    "triangle_depth_buffer": true,
+    "point_depth_buffer": true,
+    "surface_reconstruction_of_LiDAR": false,
+    "panel_width": 749,
+    "panel_height": 704
+  },
+  "result_colours": {
+    "supported_by_geometric_reference": "#c9191e",
+    "context": "#b6bdc3",
+    "native_v12_node_palette": {
+      "197955": "#e69f00",
+      "197962": "#0072b2",
+      "197963": "#009e73",
+      "197964": "#8e55a1",
+      "197965": "#b85c9d"
+    },
+    "semantics": "geometry-filtered reference points; real K3 strong-incidence component cover at 4 cm, minimum 200 points; candidate objects to check, not native Hr/EOM or anomaly ground truth"
+  },
+  "encoding": {
+    "codec": "H.264",
+    "pixel_format": "yuv420p",
+    "audio": false,
+    "faststart": true,
+    "crf": 18,
+    "preset": "fast"
+  },
+  "outputs": {
+    "videos/naval_chantier_question.mp4": {
+      "sha256": "9d4f36b167576e048095d91f6c31e8c916b213bd0e3127eac2b298521a1b9ad3",
+      "bytes": 17394093,
+      "width": 1600,
+      "height": 900,
+      "frames": 288,
+      "fps": 24.0,
+      "duration_seconds": 12.0,
+      "codec": "h264",
+      "pixel_format": "yuv420p",
+      "audio_streams": 0
+    },
+    "videos/naval_chantier_solution.mp4": {
+      "sha256": "b45a03f9751d479f4091d0f2c748f79aeaf61a6b6f4123b0afd65002b249698d",
+      "bytes": 19434021,
+      "width": 1600,
+      "height": 900,
+      "frames": 288,
+      "fps": 24.0,
+      "duration_seconds": 12.0,
+      "codec": "h264",
+      "pixel_format": "yuv420p",
+      "audio_streams": 0
+    },
+    "assets/naval_chantier_question_affiche.png": {
+      "sha256": "f41e725c11d8dc2056a0a737f4e54d2d06cc6ed26a2eb2fab76e0303d0bcc5da",
+      "bytes": 588273,
+      "width": 1600,
+      "height": 900
+    },
+    "assets/naval_chantier_solution_affiche.png": {
+      "sha256": "265ba9fbe38a3a7bac032e5a6f7e7e3ff65b982bd8b77344c36fccf19fb9d4a5",
+      "bytes": 580821,
+      "width": 1600,
+      "height": 900
+    }
+  }
+}
